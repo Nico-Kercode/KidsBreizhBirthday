@@ -1,0 +1,41 @@
+<?php
+
+
+namespace Kbb\Model;
+
+use \Kbb\Model\Manager;
+
+
+
+
+class MemberManager extends Manager{
+
+
+    public function registerMember($pseudo,$email, $passHash){
+
+        $db = $this->dbConnect();
+        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , date_inscription) VALUES(:pseudo,:email, :password,now())');
+        $addNewMember = $addmember->execute(array(
+            "pseudo" => $pseudo,
+            "email" => $email,
+            "password" =>$passHash
+            ));
+       
+        return $addNewMember;
+
+    }
+
+    public function loginMember($pseudo) {
+        $db = $this->dbConnect();
+        $loginMember = $db->prepare('SELECT * FROM membres WHERE pseudo= ?');
+        $loginMember-> execute(array($pseudo));
+        $member= $loginMember->fetch();
+        $loginMember-> closeCursor();
+        return  $member;
+
+
+    }
+
+ 
+
+}
