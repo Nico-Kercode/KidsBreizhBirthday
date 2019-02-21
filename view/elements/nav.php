@@ -1,38 +1,73 @@
-<header>
-    <a href="index.php?action=accueil" id="logo">Kid's Breizh <br> Birthday</a>
-    <div id="hamburger">
-        <div id="hamburger-content">
-            <nav>
-                <ul>
-                    <li><a href="#">menu1</a></li>
-                    <li><a href="#">menu2</a></li>
-                    <li><a href="#">menu3</a></li>
-                    <li><a href="#">menu4</a></li>
-                </ul>
-            </nav>
-            <?php if(isset($_SESSION['pseudo'])) { ?>
+<div id="wrapper" class="animate">
+    <form class="form-inline" method="post" action="" />
+    <button class="btn btn-outline-dark " type="submit">Rechercher</button>
+    <input class="form-control search w-25" type="search" placeholder="Rechercher" aria-label="Search">
 
-            <p class="button"> Bienvenue <em> <span ><?= $_SESSION['pseudo']?></span> </em>  <a href="index.php?action=deco">DECONNEXION</a></p>
+    
 
-            
+    </form>
+    <nav class="navbar header-top fixed-top navbar-expand-lg id=" navbar" ">
+        <span class=" navbar-toggler-icon
+        leftmenutrigger"></span>
+        <a class="navbar-brand" href="#">LOGO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav animate side-nav">
 
-                
+                <?php if(isset($_SESSION['pseudo'])) { ?>
+
+                <h4> Bienvenue <em> <span><?= $_SESSION['pseudo']?></span> </em></h4>
+
+                <?php } ?>
 
 
-            <?php } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?action=accueil">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Side Menu Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
 
+            <!-- MENU PRINCIPAL -->
 
-            <?php if(empty($_SESSION)) { ?>
+            <ul class="navbar-nav ml-md-auto d-md-flex">
+                <?php if(empty($_SESSION)) { ?>
+                <li class="nav-item">
 
-            <a href="index.php?action=formRegister" class="button button-sign-up">S'inscrire</a>
-            <a href="index.php?action=formLogin" class="button button-sign-in">Se connecter</a>
-            <?php } ?>
+                    <a class="nav-link" href="index.php?action=formLogin">CONNEXION</a>
+
+                    <?php } ?>
+                    <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <?php if(isset($_SESSION['pseudo'])) { ?>
+                <p class="p-2"> Bienvenue <em> <span><?= $_SESSION['pseudo']?></span> </em></p>
+                <?php } ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> menu
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Top Menu Items</a>
+                </li>
+                <?php if(isset($_SESSION['pseudo'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?action=deco">Deconnexion</a>
+                </li>
+                <!-- Fin php session -->
+                <?php } ?>
+            </ul>
         </div>
-        <button id="hamburger-button">&#9776;</button>
-        <div id="hamburger-sidebar">
-            <div id="hamburger-sidebar-header"></div>
-            <div id="hamburger-sidebar-body"></div>
-        </div>
-        <div id="hamburger-overlay"></div>
-    </div>
-</header>
+    </nav>
+</div>

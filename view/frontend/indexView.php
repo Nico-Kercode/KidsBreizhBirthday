@@ -8,11 +8,7 @@
 <div class="container-fluid " id="sousmenu">
 
     <div class="col-lg-10 offset-lg-2" id="sousmenu">
-        <form class="form-inline" method="post" action=""/>
-            <button class="btn btn-outline-dark " type="submit">Rechercher</button>
-            <input class="form-control search w-75" type="search" placeholder="Rechercher" aria-label="Search">
-
-        </form>
+       
     </div>
 
 </div>
