@@ -9,6 +9,9 @@ body {
   a{
       color: black;
   }
+  li{
+      list-style: none;
+  }
   
 
 #nav{
@@ -52,5 +55,5 @@ body {
 }
 #avatar{
     display: block;
-    width: 25%;
+    width: 50%;
 }

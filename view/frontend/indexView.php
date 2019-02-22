@@ -14,7 +14,7 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid" src="assets/img/<?= htmlspecialchars($_SESSION['avatar'])?>" alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+            <img class="img-fluid" src="assets/img/avatars/<?= htmlspecialchars($_SESSION['avatar'])?>" alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
 
   
             <h4>
@@ -22,6 +22,7 @@
             </h4>
             <li><a href="index.php?action=moncompte">Gerer mon compte</a></li>
             <?php } ?>
+
   <!-- Affichage gestion des annonces si rang = 1 (professionels) -->
 
             <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1') { ?>
@@ -32,6 +33,7 @@
 
 
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            
 
             <form class="form-inline  my-lg-10">
                 <input class="form-control mr-sm-2 w-75" type="search"
