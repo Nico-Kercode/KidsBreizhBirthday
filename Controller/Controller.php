@@ -63,6 +63,7 @@ class Controller
             $_SESSION['id']=$member['id'];
             $_SESSION['pseudo']=$member['pseudo'];
             $_SESSION['email']= $member['email'];
+            $_SESSION['avatar']= $member['avatar'];
             $_SESSION['rang']= $member['rang'];
             $_SESSION['password']= $member['password'];
 

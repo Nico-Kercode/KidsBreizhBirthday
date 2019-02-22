@@ -64,6 +64,8 @@ class App
                 require('view\frontend\loginView.php');
     
             }
+
+
             // **** mise a jour infos utilisateurs ***** // 
 
 
@@ -110,6 +112,7 @@ class App
 
             }
 
+            //  Add avatar //
 
             elseif ($_GET['action'] == 'upload') {
                
@@ -144,7 +147,9 @@ class App
                     {
                         exit("Impossible de copier le fichier dans $content_dir");
                     }
-                    echo($name_file);
+                    echo('votre fichier '.$name_file.' à bien été envoyé sur notre serveur');
+                    header("refresh:3;index.php");
+                    
 
                     // require('view\frontend\userAccountView.php');
                 

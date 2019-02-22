@@ -54,6 +54,5 @@ class MemberManager extends Manager{
 
     }
 
- 
 
 }

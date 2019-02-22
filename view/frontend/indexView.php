@@ -14,7 +14,7 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid" src="assets/img/avatars/<?= htmlspecialchars($_SESSION['avatar'])?>" alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+            <img class="img-fluid" src="assets/img/<?= htmlspecialchars($_SESSION['avatar'])?>" alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
 
   
             <h4>

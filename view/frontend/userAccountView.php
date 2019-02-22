@@ -18,8 +18,8 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid" id="avatar" src="assets/img/avatars/<?= htmlspecialchars($_SESSION['avatar'])?>"
-                alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+            <img class="img-fluid" id="avatar" src="assets/img/<?= $_SESSION['avatar']?>"
+                alt="<?= $_SESSION['avatar']?>">
 
             <?php } ?>
 
@@ -50,27 +50,25 @@
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">Pseudo</label>
                     <div class="col-sm-9">
-                        <input type="text" name="pseudo" class="form-control" placeholder="<?= $_SESSION['pseudo']?>"
-                            >
+                        <input type="text" name="pseudo" class="form-control" placeholder="<?= $_SESSION['pseudo']?>">
 
                     </div>
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="text" name="email" class="form-control" placeholder="<?= $_SESSION['email']?>"
-                            >
+                        <input type="text" name="email" class="form-control" placeholder="<?= $_SESSION['email']?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-4 control-label">Nouveau mot de passe</label>
                     <div class="col-sm-9">
                         <input type="password" name="password_1" class="form-control"
-                            placeholder="saisissez votre nouveau mot de passe" >
+                            placeholder="saisissez votre nouveau mot de passe">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="confirm_password" class="col-sm-5 control-label">Confirmation du mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" name="password_2" class="form-control" >
+                        <input type="password" name="password_2" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
