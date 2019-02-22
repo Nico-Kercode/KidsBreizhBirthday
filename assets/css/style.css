@@ -1,0 +1,56 @@
+*{
+    margin:0 ;
+    padding: 0;
+}
+
+body {
+    color: black;
+  }
+  a{
+      color: black;
+  }
+  
+
+#nav{
+    background-color: rgb(130, 130, 169);
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.fas.fa-bars {
+    
+ font-size: 1.5em !important;
+}
+
+#sousmenu{
+  
+    margin-top: 2%;
+    background-color: yellow;
+}
+#sousmenu img{
+    width: 50%;
+    display:block;
+    margin: auto;
+}
+#sousmenu li{
+    list-style: none;
+}
+#sousmenu a {
+    text-decoration: none;
+}
+#membre{
+   background-color: yellowgreen;
+
+}
+#membre h4,li{
+    text-align: center;
+}
+#membre span{
+    color: blue;
+}
+#sidebar{
+    padding: 1%;
+}
+#avatar{
+    display: block;
+    width: 25%;
+}

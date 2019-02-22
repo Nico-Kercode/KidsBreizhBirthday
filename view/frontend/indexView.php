@@ -5,36 +5,64 @@
 <?php include('view\elements\nav.php');?>
 
 
-<div class="container-fluid " id="sousmenu">
+<div class="container-fluid ">
 
-    <div class="col-lg-10 offset-lg-2" id="sousmenu">
-       
-    </div>
+    <div class="row" id="sousmenu">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="membre">
 
-</div>
+  <!-- Affichage gestion du compte -->
 
-<div class="row my-4">
+            <?php if(isset($_SESSION['pseudo'])) { ?>
+
+            <img class="img-fluid" src="assets/img/<?= htmlspecialchars($_SESSION['avatar'])?>" alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+
+  
+            <h4>
+                Bienvenue <em> <span><?= $_SESSION['pseudo']?></span> </em>
+            </h4>
+            <li><a href="index.php?action=moncompte">Gerer mon compte</a></li>
+            <?php } ?>
+  <!-- Affichage gestion des annonces si rang = 1 (professionels) -->
+
+            <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1') { ?>
+            <li><a href="#">Gerer mes annonces</a></li>
+            <?php } ?>
+
+        </div>
+
+
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+
+            <form class="form-inline  my-lg-10">
+                <input class="form-control mr-sm-2 w-75" type="search"
+                    placeholder="Rechercher, une activité, un lieu ..." aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
+
+        </div>
+    </div> 
+
+    <!-- fin sousmenu -->
+
+</div> <!-- container-fluid -->
+
+
+
+<div class="row my-4 p-2">
     <div class="container-fluid d-inline-flex ">
 
         <div class="d-none d-lg-block col-lg-2 sidebar" id="sidebar">
 
-            <ul>
-                <li>lien 1 :" Lorem ipsum dolor sit amet" </li>
-                <li>lien 2 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 3 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 4 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 5 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 6 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 7 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 8 :" Lorem ipsum dolor sit amet"</li>
-                <li>lien 9 :" Lorem ipsum dolor sit amet"</li>
 
-            
+
+            <ul>
+                <li><a href="#"></a></li>
+                
             </ul>
 
 
         </div>
-        <div class="col-sm-12 col-lg-10 main">
+        <div class="col-sm-12 col-lg-8 main">
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Quisque sapien velit, aliquet eget commodo nec, auctor a sapien.

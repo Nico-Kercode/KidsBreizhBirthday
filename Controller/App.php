@@ -22,8 +22,18 @@ class App
 
 
         // *************    GESTION DES UTILISATEURS  *****************   //
+            
+            elseif($_GET['action'] == 'moncompte'){
+           
 
+                if (!empty($_SESSION['pseudo'])) {
+                    require('view\frontend\userAccountView.php');
 
+                }
+                else {
+                    $this->controller->indexView();
+                } 
+            }
             // ****   Enregistrement d un utilisateur  ****
 
             elseif ($_GET['action'] == 'register'){

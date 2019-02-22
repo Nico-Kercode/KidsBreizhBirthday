@@ -41,6 +41,7 @@ class Controller
     
             $_SESSION['id']=$member['id'];
             $_SESSION['pseudo']=$member['pseudo'];
+            $_SESSION['avatar']=$member['avatar'];
             $_SESSION['rang']= $member['rang'];
 
             header('Location: index.php');
