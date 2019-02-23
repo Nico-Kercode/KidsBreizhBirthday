@@ -24,6 +24,9 @@ class Controller
         require('view/frontend/userAccountView.php'); 
 
     }
+    public function loginView() {
+        require('view\frontend\loginView.php');
+    }
 
     public function addMember($pseudo,$email,$password_1) {
 
@@ -35,26 +38,9 @@ class Controller
         header('Location: index.php');
     }
 
-    ///////////////////   UPDATE MEMBER //////////////////
-
-
-    public function updateMember($member_id,$pseudo,$email,$password_1) {
-
-
-        $passHash= password_hash($password_1, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->updtMember($member_id,$pseudo,$email,$passHash);
-        
-        header('Location: index.php?action=accounttmnagement');
-        
-    }
-
-
-
-
     public function Login($pseudo, $password){
 
-
-        $member = $this->memberManager->loginMember($pseudo);
+        $member = $this->memberManager->loginMember($pseudo,$password);
 
         if (password_verify($password,$member['password'])) {
     
@@ -74,6 +60,24 @@ class Controller
         }      
     
     }
+
+    ///////////////////   UPDATE MEMBER //////////////////
+
+
+    public function updateMember($member_id,$pseudo,$email,$password_1) {
+
+
+        $passHash= password_hash($password_1, PASSWORD_DEFAULT );
+        $registerMember = $this->memberManager->updtMember($member_id,$pseudo,$email,$passHash);
+        
+        header('Location: index.php?action=accounttmnagement');
+        
+    }
+
+
+
+
+    
     
     
 

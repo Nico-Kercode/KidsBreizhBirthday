@@ -4,10 +4,10 @@
 }
 
 body {
-    color: black;
+    color: #021c1e;
   }
   a{
-      color: black;
+      color: #021c1e;
   }
   li{
       list-style: none;
@@ -15,19 +15,31 @@ body {
   
 
 #nav{
-    background-color: rgb(130, 130, 169);
+    background-color:#004445;
     font-size: 1.2em;
     font-weight: 600;
+}
+#logo{
+    color: whitesmoke !important;
+    font-size: 1.8em;
+
 }
 .fas.fa-bars {
     
  font-size: 1.5em !important;
 }
+#navbarText a{
+    color: #6fb98f !important;
+}
+#navbarText a:hover{
+    color: whitesmoke !important;
+}
 
 #sousmenu{
   
     margin-top: 2%;
-    background-color: yellow;
+    background-color: #6fb98f;
+
 }
 #sousmenu img{
     width: 50%;
@@ -40,8 +52,25 @@ body {
 #sousmenu a {
     text-decoration: none;
 }
+#sousmenu .choix{
+    display: block;
+    background-color: #004445; 
+    width: 20%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 8% 0 8% ;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    color: whitesmoke !important;
+}
+.choix a:hover{
+    
+    color:#2c7873 !important;
+}
+
 #membre{
-   background-color: yellowgreen;
+   background-color: #2c7873;
 
 }
 #membre h4,li{

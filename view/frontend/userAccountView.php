@@ -8,8 +8,8 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="row my-5">
+        <div class="col-sm-4 col-md-4 col-lg-4 ">
 
 
             <h4>
@@ -24,11 +24,11 @@
             <?php } ?>
 
 
-            <div class="form-group my-4">
-                <form method="post" enctype="multipart/form-data" action="index.php?action=upload">
-                    <p>
-                        <input type="file" name="fichier" size="30">
-                        <input type="submit" name="upload" value="uploader">
+            <div class="form-group my-2">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" action="index.php?action=upload">
+                    <p> <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
+                        <input type="file" name="fichier" size="40" class="form-control-file my-2">
+                        <input type="submit" name="upload" value="Envoyer">
                     </p>
                 </form>
 

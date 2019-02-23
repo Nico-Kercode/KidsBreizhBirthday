@@ -8,22 +8,24 @@
 <div class="container-fluid ">
 
     <div class="row" id="sousmenu">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="membre">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1" id="membre">
 
-  <!-- Affichage gestion du compte -->
+            <!-- Affichage gestion du compte -->
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid" src="assets/img/<?= htmlspecialchars($_SESSION['avatar'])?>" alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+            <img class="img-fluid" src="assets/img/<?= htmlspecialchars($_SESSION['avatar'])?>"
+                alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
 
-  
+
             <h4>
                 Bienvenue <em> <span><?= $_SESSION['pseudo']?></span> </em>
             </h4>
-            <li><a href="index.php?action=moncompte">Gerer mon compte</a></li>
+            <li><a href="index.php?action=moncompte">Mon compte</a></li>
+            <li><a class="nav-link" href="index.php?action=deco">Deconnexion</a></li>
             <?php } ?>
 
-  <!-- Affichage gestion des annonces si rang = 1 (professionels) -->
+            <!-- Affichage gestion des annonces si rang = 1 (professionels) -->
 
             <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1') { ?>
             <li><a href="#">Gerer mes annonces</a></li>
@@ -32,17 +34,35 @@
         </div>
 
 
-        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-            
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 offset-lg-1 ">
 
-            <form class="form-inline  my-lg-10">
-                <input class="form-control mr-sm-2 w-75" type="search"
-                    placeholder="Rechercher, une activité, un lieu ..." aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Rechercher</button>
-            </form>
+
+            <ul>
+                <li>
+                    <a class="choix d-inline-flex" href="#">Theme</a>
+                    <a class="choix d-inline-flex" href="#">Age</a>
+                    <a class="choix d-inline-flex" href="#">Ville</a>
+                    <a class="choix d-inline-flex" href="#">Autres</a>
+                </li>
+            </ul>
+
+
+
+            <div class="input-group col-md-12">
+                <input class="form-control py-2 border-right-0 border" type="search" 
+                value="Recherchez un lieu , un theme ... "
+                    id="search">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+
+
 
         </div>
-    </div> 
+    </div>
 
     <!-- fin sousmenu -->
 
@@ -59,7 +79,7 @@
 
             <ul>
                 <li><a href="#"></a></li>
-                
+
             </ul>
 
 

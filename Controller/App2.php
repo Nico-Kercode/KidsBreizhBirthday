@@ -2,38 +2,38 @@
 namespace Kbb\Controller;
 
 session_start();
-setcookie( 'id','pseudo', 'email', 'rang', 'avatar', time() + 365*24*3600, null, null, false, true);  
+setcookie( 'id','pseudo', 'email', 'rang', 'avatar', time() + 365*24*3600, null, null, false, true); 
 
 use \Kbb\Controller\Controller;
 
-
 class App
 {
+
     private $controller;
 
     public function __construct() {
         $this->controller = new Controller();
     }
-
     public function run()
     {
         try {
 
-            if (!isset($_GET['action'])) {
-                $this->controller->indexView();
-            }
-
-           if (isset($_GET['action'])) {
+            if (isset($_GET['action'])) {
+                           
 
                 if($_GET['action'] == 'home') { 
-                                        
-                    $this->controller->indexView();
-                    
-                } elseif ($_GET['action'] == 'formLogin'){
+                                    
+                        $this->controller->indexView();
+                        
+                    }
+                
+                elseif ($_GET['action'] == 'formLogin'){
 
-                    $this->controller->loginView();
-    
-                } elseif ($_GET['action'] == 'login'){
+                        $this->controller->loginView();
+        
+                    }    
+                    
+                elseif ($_GET['action'] == 'login'){
 
                     if (isset($_POST['login_user'])){
                         
@@ -43,32 +43,43 @@ class App
                         $this->controller->Login($pseudo, $password);
                     }    
                 
-                } elseif($_GET['action'] == 'moncompte'){
+                }
+    
+
+                elseif ($_GET['action']) {    
+                    if ($_GET['action'] == 'deco'){
+
+                    session_unset();
+                    session_destroy();
+                    $this->controller->indexView();
+                    // require('view\frontend\indexView.php');
+
+                    }
+                }
+            
+                
+            
+                elseif($_GET['action'] == 'moncompte'){
             
 
                     if (!empty($_SESSION['pseudo'])) {
-                       
-                        $this->controller->userAccountmngt();
+                        require('view\frontend\userAccountView.php');
 
                     }
                     else {
                         $this->controller->indexView();
                     } 
-                  
+                }
+            
                 
-                } elseif ($_GET['action'] == 'deco') {    
+                elseif (isset($_GET['action'])) {
+                    if ($_GET['action'] == 'accounttmnagement') {
                     
+                        $this->controller->userAccountmngt();
+                    }
+                }
 
-                    session_unset();
-                    session_destroy();
-                    $this->controller->indexView();               
-                
-                    
-                } elseif ($_GET['action'] == 'formRegister'){
-
-                    require('view\frontend\registerView.php');
-        
-                } elseif ($_GET['action'] == 'register'){
+                elseif ($_GET['action'] == 'register'){
 
                     if (isset($_POST['reg_user'])) {
 
@@ -85,8 +96,19 @@ class App
                                 }                         
                         $this->controller->addMember($pseudo, $email, $password_1);
                     }
-                       
-                }  elseif ($_GET['action'] == 'update'){
+        
+                }
+                elseif ($_GET['action'] == 'formRegister'){
+                    require('view\frontend\registerView.php');
+        
+                }
+                
+
+
+                // // **** mise a jour infos utilisateurs ***** // 
+
+
+                elseif ($_GET['action'] == 'update'){
 
                     if (isset($_POST['update_user'])) {
                         $member_id = $_SESSION['id'];
@@ -104,12 +126,24 @@ class App
                         $this->controller->updateMember($member_id,$pseudo, $email, $password_1);
                     }
         
-                } else{
-
-                    $this->controller->indexView();
                 }
 
-           }
+                // ****  login de l utilisateur ****
+
+                
+                // ****  deconnection de l'utilisateur ****
+
+            
+
+                //  Add avatar //
+                
+            } 
+            else{
+
+                indexView();
+            }   // ********  Gestion du menu de navigation  *******        
+            
+      
 
         } catch (Exception $e) {
             $errorMessage = $e->getMessage();
@@ -117,4 +151,3 @@ class App
         }
     }
 }
-?>
