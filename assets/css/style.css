@@ -4,41 +4,56 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     color: #021c1e;
+    background-color: whitesmoke; 
   }
   a{
       color: #021c1e;
   }
+  a:hover{
+    color:#2c7873 !important;
+  }
   li{
       list-style: none;
   }
-  
+/* LOADER CSS */
 
+/* NAV */
 #nav{
-    background-color:#004445;
+    background-color:#3f4253;
     font-size: 1.2em;
     font-weight: 600;
+}
+#menuDeroulant{
+    background-color:#3f4253 !important;
+
+
 }
 #logo{
     color: whitesmoke !important;
     font-size: 1.8em;
 
 }
+#logo:hover{
+    color:#2c7873 !important;
+}
 .fas.fa-bars {
     
  font-size: 1.5em !important;
 }
 #navbarText a{
-    color: #6fb98f !important;
+    color: whitesmoke !important;
 }
 #navbarText a:hover{
-    color: whitesmoke !important;
+    color: #2c7873!important;
 }
 
 #sousmenu{
-  
-    margin-top: 2%;
-    background-color: #6fb98f;
+ 
+    padding-top: 2%;
+    background-color: whitesmoke !important;
 
 }
 #sousmenu img{
@@ -54,35 +69,67 @@ body {
 }
 #sousmenu .choix{
     display: block;
-    background-color: #004445; 
-    width: 20%;
+    background-color:#3f4253; 
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 100%;
     text-align: center;
     height: 40px;
     line-height: 40px;
-    padding: 0 8% 0 8% ;
+    font-size: 1.4em;
+    font-weight: 600;
     margin-top: 1%;
     margin-bottom: 3%;
     color: whitesmoke !important;
+}
+#sousmenu a:hover{
+    color:#2c7873 !important;
+
 }
 .choix a:hover{
     
     color:#2c7873 !important;
 }
-
-#membre{
-   background-color: #2c7873;
+#nme{
+    margin-left: 2%;
+    background-color:whitesmoke;
 
 }
+#membre{
+    margin-left: 2%;
+    background-color:whitesmoke;
+    font-size: 1em;
+    font-weight: 600;
+    color: black !important;
+
+}
+#membre a{
+    font-size: 1em;
+    color: black !important;
+
+}
+#membre a:hover{
+    color:#2c7873 !important;
+
+}
+
 #membre h4,li{
+    font-size: 1em;
+    color: black !important;
     text-align: center;
 }
 #membre span{
     color: blue;
 }
+
 #sidebar{
+    background-color:whitesmoke; 
     padding: 1%;
 }
 #avatar{
     display: block;
-    width: 50%;
+    width: 70%;
+}
+.main{
+    background-color: #f1f1f1;
 }

@@ -9,7 +9,8 @@
 <div class="news container ">
     <h1>ENREGISTREZ VOUS !</h1>
 
-    <form class="form-horizontal" role="form" method="POST" action="index.php?action=register">
+    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data"
+        action="index.php?action=register">
         <?php include('view\errorView.php'); ?>
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">Pseudo</label>
@@ -35,7 +36,16 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-dark" name="reg_user" id="button">Envoyer</button>
+
+            <!-- image -->
+
+            <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
+            <input type="file" name="image" class="form-control-file my-2">
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark" name="reg_user" >Envoyer</button>
             <div class="col-sm-9">
             </div>
         </div> <!-- /.form-group -->

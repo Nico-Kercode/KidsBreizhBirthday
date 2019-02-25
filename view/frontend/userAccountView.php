@@ -18,21 +18,33 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid" id="avatar" src="assets/img/<?= $_SESSION['avatar']?>"
+            <img class="img-fluid" id="avatar" src="<?= $_SESSION['avatar']?>"
                 alt="<?= $_SESSION['avatar']?>">
 
             <?php } ?>
 
 
-            <div class="form-group my-2">
-                <form class="form-horizontal" method="post" enctype="multipart/form-data" action="index.php?action=upload">
-                    <p> <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
-                        <input type="file" name="fichier" size="40" class="form-control-file my-2">
-                        <input type="submit" name="upload" value="Envoyer">
-                    </p>
-                </form>
+            <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data"
+                action="index.php?action=register">
+                <?php include('view\errorView.php'); ?>
 
-            </div>
+                <!-- <div class="form-group">
+
+                    
+
+                    <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
+                    <input type="file" name="image" class="form-control-file my-2">
+                </div> -->
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark" name="reg_user">Envoyer</button>
+                    <div class="col-sm-9">
+                    </div>
+                </div> <!-- /.form-group -->
+
+
+            </form>
 
 
 
@@ -45,15 +57,27 @@
 
         <div class="col-sm-8 col-md-8 col-lg-8">
 
-            <form class="form-horizontal" role="form" method="POST" action="index.php?action=update">
+            <form class="form-horizontal my-4" role="form" method="POST" action="index.php?action=update">
                 <?php include('view\errorView.php'); ?>
+                <div class="form-group">
+
+                    <!-- image -->
+
+                    <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
+                    <input type="file" name="image" class="form-control-file my-2">
+                </div>
+
+
+
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">Pseudo</label>
                     <div class="col-sm-9">
-                        <input type="text" name="pseudo" class="form-control" placeholder="<?= $_SESSION['pseudo']?>">
+                        <input type="text" name="pseudo"  class="form-control" disabled="disabled"  placeholder="<?= $_SESSION['pseudo']?>" value="<?= $_SESSION['pseudo']?>">
 
                     </div>
-                    <label for="email" class="col-sm-3 control-label">Email</label>
+
+
+                    <label for="email" class="col-sm-6 control-label">Saisissez votre nouvel Email </label>
                     <div class="col-sm-9">
                         <input type="text" name="email" class="form-control" placeholder="<?= $_SESSION['email']?>">
                     </div>

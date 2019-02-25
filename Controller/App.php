@@ -25,10 +25,14 @@ class App
 
            if (isset($_GET['action'])) {
 
+                // LIEN VERS L INDEX //
+
                 if($_GET['action'] == 'home') { 
                                         
                     $this->controller->indexView();
                     
+                // LIEN VERS FORMULAIRE LOGIN //
+
                 } elseif ($_GET['action'] == 'formLogin'){
 
                     $this->controller->loginView();
@@ -43,6 +47,8 @@ class App
                         $this->controller->Login($pseudo, $password);
                     }    
                 
+                // LIEN VERS MON COMPTE //
+
                 } elseif($_GET['action'] == 'moncompte'){
             
 
@@ -55,15 +61,18 @@ class App
                         $this->controller->indexView();
                     } 
                   
-                
+                // LIEN DECONNEXION //
+
                 } elseif ($_GET['action'] == 'deco') {    
                     
 
                     session_unset();
                     session_destroy();
-                    $this->controller->indexView();               
+                    $this->controller->indexView();   
+
                 
-                    
+                // LIEN ENREGISTREMENT UTILISATEUR //
+
                 } elseif ($_GET['action'] == 'formRegister'){
 
                     require('view\frontend\registerView.php');
@@ -72,25 +81,17 @@ class App
 
                     if (isset($_POST['reg_user'])) {
 
-                        $pseudo = htmlspecialchars($_POST['pseudo']);
-                        $email= htmlspecialchars($_POST['email']);
-                        $password = htmlspecialchars($_POST['password_1']);
-                        $password_2 = htmlspecialchars($_POST['password_2']);
-        
-                        if($password == $password_2) {
-                            $password_1 = $password_2;
-                        }           
-                                else {
-                                    throw new Exception('les mots de passe ne correspondent pas');
-                                }                         
-                        $this->controller->addMember($pseudo, $email, $password_1);
+                                            
+                        $this->controller->addMember();
                     }
-                       
-                }  elseif ($_GET['action'] == 'update'){
+                 
+                //  MISE A JOUR INFOS DU COMPTE //
+
+                } elseif ($_GET['action'] == 'update'){
 
                     if (isset($_POST['update_user'])) {
                         $member_id = $_SESSION['id'];
-                        $pseudo = htmlspecialchars($_POST['pseudo']);
+
                         $email= htmlspecialchars($_POST['email']);
                         $password = htmlspecialchars($_POST['password_1']);
                         $password_2 = htmlspecialchars($_POST['password_2']);
@@ -104,8 +105,22 @@ class App
                         $this->controller->updateMember($member_id,$pseudo, $email, $password_1);
                     }
         
-                } else{
+                } elseif ($_GET['action'] == 'ajoutAnnonce'){
 
+                    
+                    require('view\postAnnonceView.php');
+
+                // AJOUT D UNE ANNONCE //
+
+                } elseif ($_GET['action'] == 'addannonce'){
+
+                    if (isset($_POST['ajoutAnnonce'])){
+                     
+                        $this->controller->addAnnonce();
+                    }
+                }
+
+                else {
                     $this->controller->indexView();
                 }
 

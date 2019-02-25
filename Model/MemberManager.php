@@ -11,17 +11,19 @@ use \Kbb\Model\Manager;
 class MemberManager extends Manager{
 
 
-    public function registerMember($pseudo,$email, $passHash){
+    public function registerMember($pseudo,$email, $passHash,$picProfile){
 
         $db = $this->dbConnect();
-        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , date_inscription) VALUES(:pseudo,:email, :password,now())');
+        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , avatar, date_inscription) VALUES(:pseudo,:email, :password, :upic,now())');
         $addNewMember = $addmember->execute(array(
             "pseudo" => $pseudo,
             "email" => $email,
-            "password" =>$passHash
+            "password" =>$passHash,
+            "upic"=>$picProfile
             ));
+
        
-        return $addNewMember;
+
 
     }
 
@@ -56,3 +58,5 @@ class MemberManager extends Manager{
 
 
 }
+
+
