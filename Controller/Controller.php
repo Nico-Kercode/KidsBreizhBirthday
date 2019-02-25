@@ -138,6 +138,14 @@ class Controller
 
     }
 
+    public function listAnnonces() {
+                                        
+    
+        $annonces = $this->addManager->getAnnonces();
+
+        require('view\frontend\addView1.php');
+    }
+
     
 
 

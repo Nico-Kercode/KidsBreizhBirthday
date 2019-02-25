@@ -13,7 +13,17 @@ class AddManager extends Manager
             $db = $this-> dbConnect(); 
             $addAnnonce = $db->prepare('INSERT INTO annonces (ville, logo, titre, contenu, photo1 , photo2, photo3, id_MEMBRES)   
             VALUES (?, ?, ?, ?, ?, ?, ?, ? )');         
-            // VALUES (:ville, :logo, :titre, :contenu, :photo1, :id_membres)');
+            // VALUES (:ville, :logo, :titre, :contenu, :photo1, :id_MEMBRES)');
+
+
+            
+    // "ville" => $ville,
+    // "logo"=> $logo,
+    // "titre"=> $titreA,
+    // "contenu"=> $descriptif,
+    // "photo1"=> $photo1,      
+    // "id_MEMBRES"=> $membre_id
+
             
             $affectedLines = $addAnnonce->execute(array(
                 
@@ -31,7 +41,21 @@ class AddManager extends Manager
         
             return $affectedLines;
     }
-    // supprime une annonce 
+
+
+    // recupere toutes les annonces par commune
+
+    public function getAnnonces()
+    {
+        $db = $this->dbConnect();
+        $annonces = $db->query('SELECT * FROM annonces  ORDER BY  titre ASC');
+
+        return $annonces;
+    }
+    // recupere une annonce precise 
+    
+}
+// supprime une annonce 
 
     // public function deleteAnnonce($deleteid)
     // {
@@ -43,8 +67,6 @@ class AddManager extends Manager
     //     return $req;
 
     // }
-
-}
 
 
     // recupere toutes les annonces par commune
@@ -69,9 +91,5 @@ class AddManager extends Manager
     // }
 
 
-    // "ville" => $ville,
-    // "logo"=> $logo,
-    // "titre"=> $titreA,
-    // "contenu"=> $descriptif,
-    // "photo1"=> $photo1,      
-    // "id_MEMBRES"=> $membre_id
+
+

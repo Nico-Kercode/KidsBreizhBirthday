@@ -31,9 +31,15 @@ class App
                                         
                     $this->controller->indexView();
                     
-                // LIEN VERS FORMULAIRE LOGIN //
+                // LIENS VERS VANNES VIEW
 
-                } elseif ($_GET['action'] == 'formLogin'){
+                } elseif($_GET['action'] =='vannes') {
+
+                    $this->controller->listAnnonces();
+
+                // LIEN VERS FORMULAIRE LOGIN //
+           
+                } elseif($_GET['action'] == 'formLogin'){
 
                     $this->controller->loginView();
     

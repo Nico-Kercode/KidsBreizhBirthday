@@ -30,7 +30,7 @@
                     Villes
                 </a>
                 <div class="dropdown-menu" id="menuDeroulant" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Vannes</a>
+                    <a class="dropdown-item" href="index.php?action=vannes">Vannes</a>
                     <a class="dropdown-item" href="#">Lorient</a>
                     <a class="dropdown-item" href="#">#</a>
                     <div class="dropdown-divider"></div>
