@@ -7,36 +7,27 @@ class AddManager extends Manager
 {
 
     // ajoute une annonce
+
     public function addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1, $photo2, $photo3, $membre_id)
     
     {
             $db = $this-> dbConnect(); 
             $addAnnonce = $db->prepare('INSERT INTO annonces (ville, logo, titre, contenu, photo1 , photo2, photo3, id_MEMBRES)   
-            VALUES (?, ?, ?, ?, ?, ?, ?, ? )');         
-            // VALUES (:ville, :logo, :titre, :contenu, :photo1, :id_MEMBRES)');
-
-
-            
-    // "ville" => $ville,
-    // "logo"=> $logo,
-    // "titre"=> $titreA,
-    // "contenu"=> $descriptif,
-    // "photo1"=> $photo1,      
-    // "id_MEMBRES"=> $membre_id
-
+                   
+            VALUES (:ville, :logo, :titre, :contenu, :photo1, :photo2, :photo3, :id_MEMBRES)');
+           
             
             $affectedLines = $addAnnonce->execute(array(
-                
-                $ville,
-                $logo,
-                $titreA,
-                $descriptif,
-                $photo1, 
-                $photo2, 
-                $photo3,    
-                $membre_id
 
-      
+                "ville" => $ville,
+                "logo"=> $logo,
+                "titre"=> $titreA,
+                "contenu"=> $descriptif,
+                "photo1"=> $photo1,
+                "photo2"=> $photo2,
+                "photo3"=> $photo3,      
+                "id_MEMBRES"=> $membre_id
+                
             ));
         
             return $affectedLines;
@@ -52,6 +43,7 @@ class AddManager extends Manager
 
         return $annonces;
     }
+    
     // recupere une annonce precise 
     
 }
@@ -89,7 +81,3 @@ class AddManager extends Manager
     //     $req->closeCursor();
     //     return $annonces;
     // }
-
-
-
-

@@ -134,7 +134,7 @@ class Controller
 
         $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1,$photo2,$photo3,$membre_id);
 
-        header('Location: index.php?action=moncompte');
+        header('Location: index.php?action=vannes');
 
     }
 
@@ -144,6 +144,8 @@ class Controller
         $annonces = $this->addManager->getAnnonces();
 
         require('view\frontend\addView1.php');
+
+        return $annonces;
     }
 
     
