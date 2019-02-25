@@ -37,8 +37,26 @@ class App
 
                     $this->controller->listAnnonces();
 
-                // LIEN VERS FORMULAIRE LOGIN //
+                
            
+                } elseif ($_GET['action'] == 'annonce'){
+
+                    if ((isset($_GET['id'])) && $_GET['id'] > 0 && (isset($_GET['id_MEMBRES'])) && $_GET['id_MEMBRES'] > 0) {
+                  
+                        $id = $_GET['id'];
+                        $id_MEMBRES =$_GET['id_MEMBRES'];
+                    
+                        annonce($id, $id_MEMBRES);
+
+                    }
+                     else {
+                            throw new Exception('Aucun identifiant de billet envoyé');
+                    }
+
+
+                
+                
+                // LIEN VERS FORMULAIRE LOGIN //
                 } elseif($_GET['action'] == 'formLogin'){
 
                     $this->controller->loginView();

@@ -99,7 +99,7 @@
                 <div class="col-sm-12 col-lg-8 main">
 
                     <h1 class="text-center">Kid's Breizh birthday</h1>
-                    <h2>Degemer mat ! </h2>
+                    <h2 class="my-4" id="degemer" >Degemer mat ! </h2>
 
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.

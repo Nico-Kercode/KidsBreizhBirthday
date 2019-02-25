@@ -44,7 +44,25 @@ class AddManager extends Manager
         return $annonces;
     }
     
-    // recupere une annonce precise 
+    // recupere une annonce precise
+
+    public function getAnnonce($id, $id_MEMBRES)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, photo1, photo2, photo3, id_MEMBRES 
+        FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE annonces.id = ?');
+        $req->execute(array($id, $id_MEMBRES));
+        $annonce = $req->fetch();
+        $req->closeCursor();
+
+        return $annonce;
+    }
+
+    
+    
+
+
+
     
 }
 // supprime une annonce 

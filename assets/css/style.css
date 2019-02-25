@@ -8,6 +8,7 @@ body {
     padding: 0;
     color: #021c1e;
     background-color: whitesmoke; 
+    font-family: 'Acme', sans-serif !important;
   }
   a{
       color: #021c1e;
@@ -31,11 +32,13 @@ body {
 
 
 }
-/* #logo{
-    color: whitesmoke !important;
-    font-size: 1.8em;
+#degemer{
+    color: rgb(0, 0, 0) !important;
+    font-size: 3em;
+    text-shadow: 2px 2px #adaaaa;
+   
 
-} */
+}
 
 .fas.fa-bars {
     
@@ -115,6 +118,7 @@ body {
     font-size: 1em;
     color: black !important;
     text-align: center;
+ 
 }
 #membre span{
     color: blue;
@@ -135,9 +139,12 @@ body {
 /*  annonces view */ 
 #mainAnnonces{
     border: 1px solid rgb(216, 216, 216);
+    text-shadow: 1px 1px #adaaaa;
+    padding-bottom: 2%;
+   
 }
 #annonceHaut{
-    background-color: rgb(229, 224, 235);
+    background-color:rgb(218, 216, 216);
     border-bottom: 2px solid rgb(77, 71, 71);
 }
 #titreAnnonce{
@@ -150,13 +157,11 @@ body {
 }
 #plusdinfos{
     text-decoration: none;
-    background-color: white;
-    border-radius: 20px;
-    border: 1px solid black;
-    padding: 1%;
-    font-weight: 500;
-    margin: 0 auto;
+    font-size: 1.2em;
+    background-color: whitesmoke;
+    margin: 0 0 0 83%;
     text-transform: uppercase;
+    border: none !important;
 
 
 }
@@ -166,4 +171,12 @@ body {
 .photosadd{
     max-width: 700px;
     max-height: 350px;
+}
+.h1annonces span{
+    background-color: rgb(218, 216, 216);
+    border-radius: 20px;
+    font-size:1.4em;
+    width: 12%;
+    margin: 0 auto;
+    text-shadow: 2px 2px #adaaaa;
 }

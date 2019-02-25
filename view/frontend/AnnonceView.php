@@ -4,11 +4,10 @@
 
 
 
-<h1 class="text-center my-4 h1annonces"> <span>V</span>ANNES</h1>
 
 
 <?php
-while ($data = $annonces->fetch())
+while ($data = $annonce->fetch())
 {
 ?>
 
@@ -52,20 +51,10 @@ while ($data = $annonces->fetch())
         <div class=" row ">
 
 
-            <form class="form-control p-1" id="plusdinfos" role="form" method="POST"
-                action="index.php?action=annonce&id=<?= $data['id'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
-                <button id="comBtn" name="comm">Plus d'infos ...</button>
 
-            </form>
-
-            <!-- <a class="my-2" id="plusdinfos"
-                href="index.php?action=annonce&id=<?= $data['id'] ?>&id_membre=<?= $data['id_MEMBRES']?>"> Plus d'infos
-                ... </a> -->
-
-
-            <!-- <p class="p-4 text-center">
+                <p class="p-4 text-center">
                     <?= nl2br(htmlspecialchars($data['contenu'])) ?>
-                </p> -->
+                </p>
 
 
         </div>
@@ -94,15 +83,6 @@ while ($data = $annonces->fetch())
 <?php
 }  
 ?>
-
-
-
-
-
-
-
-
-
 
 
 

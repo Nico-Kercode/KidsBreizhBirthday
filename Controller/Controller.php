@@ -148,9 +148,14 @@ class Controller
         return $annonces;
     }
 
-    
+    public function annonce($id, $membre_id) {
 
+        $annonce = $this->addManager->getAnnonce($id,$membre_id);
 
-    
+        require('view\frontend\AnnonceView.php');
+        
+
+    }
+   
 
 }
