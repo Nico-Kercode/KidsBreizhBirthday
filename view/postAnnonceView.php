@@ -45,11 +45,11 @@
                     <label for="formControl" class="col-sm-510">Photo 2</label>
                     <input type="file" name="photo2" class="form-control-file my-2">
                 </div>
-               
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">Photo 3</label>
                     <input type="file" name="photo3" class="form-control-file my-2">
                 </div>
+                
                 <div class="form-group">
                     <button type="submit" class="btn btn-dark" name="ajoutAnnonce">Envoyer</button>
 

@@ -2,7 +2,7 @@
 
 namespace kbb\Model;
 
-class Post {
+class Annonce {
    
     private $id;
     private $ville;

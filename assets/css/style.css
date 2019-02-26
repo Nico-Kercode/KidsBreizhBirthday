@@ -11,7 +11,7 @@ body {
     font-family: 'Acme', sans-serif !important;
   }
   a{
-      color: #021c1e;
+      color: #021c1e!important;
   }
   a:hover{
     color: #52dad0!important;
@@ -19,24 +19,22 @@ body {
   li{
       list-style: none;
   }
-/* LOADER CSS */
 
 /* NAV */
-#nav{
-    background-color:#3f4253;
-    font-size: 1.2em;
-    font-weight: 600;
+#navbarSupportedContent a{
+    color: rgb(0, 0, 0) !important;
+
 }
-#menuDeroulant{
-    background-color:#3f4253 !important;
-
-
+#navbarSupportedContent a:hover{
+    color: #52dad0!important;
+}
+#navbar{
+background-image:linear-gradient(whitesmoke, rgb(99, 116, 182));
 }
 #degemer{
     color: rgb(0, 0, 0) !important;
     font-size: 3em;
     text-shadow: 2px 2px #adaaaa;
-   
 
 }
 
@@ -44,45 +42,14 @@ body {
     
  font-size: 1.5em !important;
 }
-#navbarText a{
-    color: whitesmoke !important;
-}
-#navbarText a:hover{
-    color: #5ae6dc!important;
+
+#avatarMenu{
+    min-width: 120px;
+    max-width: 160px;
+    min-height:160px;
+    max-height: 220px;
 }
 
-#sousmenu{
- 
-    padding-top: 2%;
-    background-color: whitesmoke !important;
-
-}
-#sousmenu img{
-    width: 50%;
-    display:block;
-    margin: auto;
-}
-#sousmenu li{
-    list-style: none;
-}
-#sousmenu a {
-    text-decoration: none;
-}
-#sousmenu .choix{
-    display: block;
-    background-color:#3f4253; 
-    border: 1px solid white;
-    border-radius: 20px;
-    width: 100%;
-    text-align: center;
-    height: 40px;
-    line-height: 40px;
-    font-size: 1.4em;
-    font-weight: 600;
-    margin-top: 1%;
-    margin-bottom: 3%;
-    color: whitesmoke !important;
-}
 #sousmenu a:hover{
     color: #52dad0!important;
 
@@ -91,22 +58,18 @@ body {
     
     color: #57e7de!important;
 }
-#nme{
-    margin-left: 2%;
-    background-color:whitesmoke;
 
-}
 #membre{
-    margin-left: 2%;
+    /* margin-left: 2%; */
     background-color:whitesmoke;
     font-size: 1em;
     font-weight: 600;
-    color: black !important;
+    color: white !important;
 
 }
 #membre a{
     font-size: 1em;
-    color: black !important;
+    color: white!important;
 
 }
 #membre a:hover{
@@ -114,15 +77,13 @@ body {
 
 }
 
-#membre h4,li{
+#membre h4,li,a{
     font-size: 1em;
-    color: black !important;
-    text-align: center;
+    color: white !important;
+    /* text-align: center; */
  
 }
-#membre span{
-    color: blue;
-}
+
 
 #sidebar{
     background-color:whitesmoke; 
@@ -147,9 +108,7 @@ body {
     background-color:rgb(218, 216, 216);
     border-bottom: 2px solid rgb(77, 71, 71);
 }
-#titreAnnonce{
-    margin-top:5%;
-}
+
 #logoA{
     margin: 0 auto !important;
     max-height: 150px;
@@ -169,14 +128,45 @@ body {
     color: #52dad0!important;
 }
 .photosadd{
-    max-width: 700px;
-    max-height: 350px;
+    min-width:700px;
+    min-height: 350px;
+    max-width: 800px;
+    max-height: 4000px;
 }
 .h1annonces span{
     background-color: rgb(218, 216, 216);
-    border-radius: 20px;
+    border-radius: 150px;
     font-size:1.4em;
     width: 12%;
     margin: 0 auto;
     text-shadow: 2px 2px #adaaaa;
 }
+#logo{
+   margin-left: 30%;
+}
+#Mainlogo a{
+    font-size:2em !important;
+    text-align: justify;
+    
+    text-shadow: 2px 2px #0f0f0f;
+}
+#annonceContent{
+
+    margin: 0 auto !important;
+}
+.titreAnnonce {
+
+    margin: 4% auto  !important;
+}
+
+#rgpd{
+    color: black !important;
+}
+#rgpd ul li{
+    color: black !important;
+}
+#rgpd a{
+    color: rgb(88, 162, 196) !important;
+
+}
+ 

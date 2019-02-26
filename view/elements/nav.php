@@ -1,73 +1,139 @@
-<!-- 
-<div class="container-fluid"> -->
-<nav class="navbar navbar-expand-lg navbar-fixed-top" id="nav">
-    <a class="navbar-brand" id="logo" href="index.php?action=home"><img class="img-fluid w-75" src="assets\img\logo.png"
-            alt="Banniere1"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><i class="fas fa-bars "></i></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Themes
-                </a>
-                <div class="dropdown-menu" id="menuDeroulant" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Activités</a>
-                    <a class="dropdown-item" href="#">Restaurants</a>
-                    <a class="dropdown-item" href="#">Parc</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Autres </a>
-                </div>
-            </li>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar" class="active">
+        <div class="sidebar-header" id="Mainlogo">
+        <!-- <a class="navbar-brand " id="logo" href="index.php?action=home"><img class="img-fluid"
+                src="assets\img\artworkIMG\logo.png" alt="Banniere1"></a> -->
+            <a href="index.php?action=home">Kid's Breizh Birthday</a>
+        </div>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Villes
-                </a>
-                <div class="dropdown-menu" id="menuDeroulant" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="index.php?action=vannes">Vannes</a>
-                    <a class="dropdown-item" href="#">Lorient</a>
-                    <a class="dropdown-item" href="#">#</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Autres</a>
-                </div>
-            </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Classement
-                </a>
-                <div class="dropdown-menu" id="menuDeroulant" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Dompteurs</a>
-                    <a class="dropdown-item" href="#">Zoos</a>
-                    <a class="dropdown-item" href="#">Chasseurs</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Autres témoignages</a>
-                </div>
+
+
+        <?php if(isset($_SESSION['pseudo'])) { ?>
+
+        <img class="img-fluid " id="avatarMenu" src="<?= htmlspecialchars($_SESSION['avatar'])?>"
+            alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+
+
+        <h4 class="d-block my-2">
+            Bienvenue <em> <span><?=  ucfirst($_SESSION['pseudo'])?></span> </em>
+        </h4>
+        <li class="d-block"><a href="index.php?action=moncompte">Mon compte</a></li>
+        <li class="d-block"><a href="index.php?action=deco">Deconnexion</a></li>
+        <?php } ?>
+        
+
+        <!-- Affichage gestion des annonces si rang = 1 (professionels) -->
+
+        <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2' ) { ?>
+        <li><a href="index.php?action=ajoutAnnonce">Ajouter une annonce</a></li>
+        <li><a href="index.php?action=annonce">Gerer mes annonces</a></li>
+
+        <?php } ?>
+
+        <ul class="list-unstyled components">
+
+
+        <?php if(empty($_SESSION)) { ?>
+        <a class="nav-link" href="index.php?action=formLogin">CONNEXION</a>
+        <?php } ?>
+            <p></p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Villes</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="index.php?action=vannes">Vannes</a>
+                    </li>
+                    <li>
+                        <a href="#">Lorient</a>
+                    </li>
+                    <li>
+                        <a href="#">Autres</a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"></a>
+            <li>
+                <a href="#"></a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Activités</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"></a>
+            <li>
+                <a href="#">A Propos</a>
             </li>
-            <li class="nav-item ">
-                <?php if(empty($_SESSION)) { ?>
-                <a class="nav-link" href="index.php?action=formLogin">CONNEXION</a>
-                <?php } ?>
-                <?php if(isset($_SESSION['pseudo'])) { ?>
-                <a class="nav-link" href="index.php?action=deco">Deconnexion</a>
-                <?php } ?>
+            <li>
+                <a href="#">Contact</a>
             </li>
         </ul>
 
-    </div>
-</nav>
+        <ul class="list-unstyled CTAs">
+            <li>
+            <!-- download bg white -->
 
-</div>
+                <a href="#" class="download">#</a>
+            </li>
+            <li>
+                <a href="index.php?action=rgpd" class="article">Protection des données</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+
+
+    <div class="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="navbar-btn active">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.php?action=home">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="input-group  my-4">
+            <input class="form-control py-2 border-right-0 border" type="search"
+                value="Recherchez un lieu , un theme ... " id="search">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>

@@ -38,15 +38,27 @@ class App
                     $this->controller->listAnnonces();
 
                 
-           
+                // AFFICHAGE VERS RGPD 
+
+                
+                } elseif($_GET['action'] =='rgpd') {
+
+                    require('view\frontend\mentionsView.php');
+
+                
+                // AFFICHAGE D'une ANNONCE 
+ 
+                
                 } elseif ($_GET['action'] == 'annonce'){
+                  
 
                     if ((isset($_GET['id'])) && $_GET['id'] > 0 && (isset($_GET['id_MEMBRES'])) && $_GET['id_MEMBRES'] > 0) {
                   
                         $id = $_GET['id'];
                         $id_MEMBRES =$_GET['id_MEMBRES'];
+    
                     
-                        annonce($id, $id_MEMBRES);
+                        $this->controller->annonce($id, $id_MEMBRES);
 
                     }
                      else {
@@ -57,6 +69,7 @@ class App
                 
                 
                 // LIEN VERS FORMULAIRE LOGIN //
+
                 } elseif($_GET['action'] == 'formLogin'){
 
                     $this->controller->loginView();
@@ -139,7 +152,7 @@ class App
                 } elseif ($_GET['action'] == 'addannonce'){
 
                     if (isset($_POST['ajoutAnnonce'])){
-                     
+                    
                         $this->controller->addAnnonce();
                     }
                 }

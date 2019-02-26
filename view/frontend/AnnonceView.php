@@ -3,35 +3,24 @@
 <?php include('view\elements\nav.php')?>
 
 
-
-
-
-<?php
-while ($data = $annonce->fetch())
-{
-?>
-
-
 <div class="container">
 
-
     <div class="col-sm-12" id="mainAnnonces">
-
-        <!-- <a class="down scroll" href="#"> <img src="assets\images\bas.png" alt="bas" width="30px"> Bas de page </a> -->
-
-        <!-- boucle affichage des annonces -->
 
         <div class=" row d-flex" id="annonceHaut">
 
             <div class="col-sm-12 col-lg-4 ">
 
-                <img class="img-fluid" id="logoA" src="<?= $data['logo']?>" alt="logo">
+                <img class="img-fluid" id="logoA" src="<?= $annonce['logo']?>" alt="logo">
+
             </div>
 
-            <div class="col-sm-12 col-lg-8" id="titreAnnonce">
-                <h2 class="font-weight-bold">
-                    <?= htmlspecialchars($data['titre']) ?>
+            <div class="col-sm-12 col-lg-8 titreAnnonce">
+                <h2 class="font-weight-bold" >
+                    <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
+                <p>publié par <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </p>
+              
 
             </div>
         </div>
@@ -40,48 +29,29 @@ while ($data = $annonce->fetch())
 
             <div class="offset-lg-2">
 
-                <img class="img-fluid photosadd" src="<?= $data['photo1']?>" alt="Photo1">
+                <img class="img-fluid photosadd" src="<?= $annonce['photo1']?>" alt="Photo1">
 
             </div>
 
         </div>
 
+        <div class="row">
 
-
-        <div class=" row ">
-
-
-
-                <p class="p-4 text-center">
-                    <?= nl2br(htmlspecialchars($data['contenu'])) ?>
-                </p>
+            <p class="p-4 text-center" id="annonceContent">
+                <?= nl2br(ucfirst(htmlspecialchars($annonce['contenu']))) ?>
+            </p>
 
 
         </div>
 
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
 
 
 </div> <!-- annonces -->
 
 
-
-</div> <!--  CONTAINER -->
-
 <?php
-}  
+// }  
 ?>
 
 

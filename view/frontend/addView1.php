@@ -18,18 +18,16 @@ while ($data = $annonces->fetch())
 
     <div class="col-sm-12" id="mainAnnonces">
 
-        <!-- <a class="down scroll" href="#"> <img src="assets\images\bas.png" alt="bas" width="30px"> Bas de page </a> -->
-
         <!-- boucle affichage des annonces -->
 
-        <div class=" row d-flex" id="annonceHaut">
+        <div class=" row " id="annonceHaut">
 
             <div class="col-sm-12 col-lg-4 ">
 
                 <img class="img-fluid" id="logoA" src="<?= $data['logo']?>" alt="logo">
             </div>
 
-            <div class="col-sm-12 col-lg-8" id="titreAnnonce">
+            <div class="col-sm-12 col-lg-8 titreAnnonce" >
                 <h2 class="font-weight-bold">
                     <?= htmlspecialchars($data['titre']) ?>
                 </h2>
@@ -58,38 +56,12 @@ while ($data = $annonces->fetch())
 
             </form>
 
-            <!-- <a class="my-2" id="plusdinfos"
-                href="index.php?action=annonce&id=<?= $data['id'] ?>&id_membre=<?= $data['id_MEMBRES']?>"> Plus d'infos
-                ... </a> -->
-
-
-            <!-- <p class="p-4 text-center">
-                    <?= nl2br(htmlspecialchars($data['contenu'])) ?>
-                </p> -->
-
-
         </div>
-
-
-
 
     </div>
 
+</div>
 
-
-
-
-
-
-
-
-
-
-</div> <!-- annonces -->
-
-
-
-</div> <!--  CONTAINER -->
 
 <?php
 }  

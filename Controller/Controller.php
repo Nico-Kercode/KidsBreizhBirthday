@@ -4,7 +4,7 @@ namespace Kbb\Controller;
 
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
-
+use \Exception;
 
 class Controller
 {
@@ -66,7 +66,7 @@ class Controller
         $path = $folder . $image ; 
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
-        $allowed=array('jpeg','png' ,'jpg','gif'); $filename=$file['name']; 
+        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); $filename=$file['name']; 
         $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
         { 
 
@@ -130,9 +130,9 @@ class Controller
         $photo1=$this->manageFile($_FILES['photo1']);
         $photo2=$this->manageFile($_FILES['photo2']);
         $photo3=$this->manageFile($_FILES['photo3']);
-        $membre_id = $_SESSION['id'];
+        $id_MEMBRES = $_SESSION['id'];
 
-        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1,$photo2,$photo3,$membre_id);
+        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1,$photo2, $photo3,$id_MEMBRES);
 
         header('Location: index.php?action=vannes');
 
@@ -148,9 +148,9 @@ class Controller
         return $annonces;
     }
 
-    public function annonce($id, $membre_id) {
+    public function annonce($id, $id_MEMBRES) {
 
-        $annonce = $this->addManager->getAnnonce($id,$membre_id);
+        $annonce = $this->addManager->getAnnonce($id, $id_MEMBRES);
 
         require('view\frontend\AnnonceView.php');
         
