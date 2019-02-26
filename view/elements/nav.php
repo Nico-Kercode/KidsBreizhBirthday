@@ -1,10 +1,10 @@
-
 <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar" class="active">
+
+
         <div class="sidebar-header" id="Mainlogo">
-        <!-- <a class="navbar-brand " id="logo" href="index.php?action=home"><img class="img-fluid"
-                src="assets\img\artworkIMG\logo.png" alt="Banniere1"></a> -->
+
             <a href="index.php?action=home">Kid's Breizh Birthday</a>
         </div>
 
@@ -17,29 +17,28 @@
             alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
 
 
-        <h4 class="d-block my-2">
+        <h4 class="d-block my-2" id="mbrNav">
             Bienvenue <em> <span><?=  ucfirst($_SESSION['pseudo'])?></span> </em>
         </h4>
-        <li class="d-block"><a href="index.php?action=moncompte">Mon compte</a></li>
-        <li class="d-block"><a href="index.php?action=deco">Deconnexion</a></li>
+        <!-- <li class="d-block"><a href="index.php?action=moncompte">Mon compte</a></li> -->
+        <!-- <li class="d-block"><a href="index.php?action=deco">Deconnexion</a></li> -->
         <?php } ?>
-        
 
-        <!-- Affichage gestion des annonces si rang = 1 (professionels) -->
 
+        <!-- Affichage gestion des annonces si rang = 1 (professionels) ou 2 (admin)-->
+
+        <ul class="list-unstyled CTAs">
         <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2' ) { ?>
-        <li><a href="index.php?action=ajoutAnnonce">Ajouter une annonce</a></li>
-        <li><a href="index.php?action=annonce">Gerer mes annonces</a></li>
+        <li class="d-block"><a href="index.php?action=ajoutAnnonce" class="article my-2">Ajouter une annonce</a></li>
+        <li class="d-block"> <a href="index.php?action=annonce" class="article my-2">Gerer mes annonces</a></li>
 
         <?php } ?>
 
+        </ul>
         <ul class="list-unstyled components">
 
 
-        <?php if(empty($_SESSION)) { ?>
-        <a class="nav-link" href="index.php?action=formLogin">CONNEXION</a>
-        <?php } ?>
-            <p></p>
+
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Villes</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -55,8 +54,9 @@
                 </ul>
             </li>
             <li>
-                <a href="#"></a>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Activités</a>
+     
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle">Activités</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
                         <a href="#">Page 1</a>
@@ -77,16 +77,37 @@
             </li>
         </ul>
 
-        <ul class="list-unstyled CTAs">
-            <li>
-            <!-- download bg white -->
 
-                <a href="#" class="download">#</a>
-            </li>
+
+        <ul class="list-unstyled CTAs">
+
+
+
+
+
+            <?php if(isset($_SESSION['pseudo'])) { ?>
             <li>
-                <a href="index.php?action=rgpd" class="article">Protection des données</a>
+                <a href="index.php?action=moncompte" class="article">Mon compte</a>
+                <?php } ?>
             </li>
+
+            <li>
+
+                <?php if(empty($_SESSION)) { ?>
+                <a href="index.php?action=formLogin" class="article">CONNEXION</a>
+                <?php } ?>
+                <!-- deconnection -->
+
+                <?php if(isset($_SESSION['pseudo'])) { ?>
+
+                <a href="index.php?action=deco" class="article">Deconnexion</a>
+
+                <?php } ?>
+            </li>
+
+            <a href="index.php?action=rgpd" class=" article my-4" >Protection des données</a>
         </ul>
+
     </nav>
 
     <!-- Page Content Holder -->
@@ -102,6 +123,9 @@
                     <span></span>
                     <span></span>
                 </button>
+
+
+
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">

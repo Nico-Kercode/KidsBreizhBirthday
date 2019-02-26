@@ -18,7 +18,7 @@
                     <select name="commune" class="form-control">
                         <option selected value="vannes">Vannes</option>
                         <option value="lorient">Lorient</option>
-                        <option>#</option>
+                        <option value="Ploemel">Ploemel</option>
                         <option>#</option>
                     </select>
                 </div>

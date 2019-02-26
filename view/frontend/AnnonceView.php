@@ -5,13 +5,15 @@
 
 <div class="container">
 
+<a href="index.php?action=vannes">Retour aux annonces</a>
+
     <div class="col-sm-12" id="mainAnnonces">
 
         <div class=" row d-flex" id="annonceHaut">
 
             <div class="col-sm-12 col-lg-4 ">
 
-                <img class="img-fluid" id="logoA" src="<?= $annonce['logo']?>" alt="logo">
+                <img class="img-fluid logoA"  src="<?= $annonce['logo']?>" alt="logo">
 
             </div>
 
@@ -19,7 +21,7 @@
                 <h2 class="font-weight-bold" >
                     <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
-                <p>publié par <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </p>
+                <p> <em>  publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </span> </em> </p>
               
 
             </div>

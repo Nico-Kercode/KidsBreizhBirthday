@@ -17,18 +17,16 @@ while ($data = $annonces->fetch())
 
 
     <div class="col-sm-12" id="mainAnnonces">
-
         <!-- boucle affichage des annonces -->
-
         <div class=" row " id="annonceHaut">
 
             <div class="col-sm-12 col-lg-4 ">
 
-                <img class="img-fluid" id="logoA" src="<?= $data['logo']?>" alt="logo">
+                <img class="img-fluid logoA" src="<?= $data['logo']?>" alt="logo">
             </div>
 
             <div class="col-sm-12 col-lg-8 titreAnnonce" >
-                <h2 class="font-weight-bold">
+                <h2 class="font-weight-bold ">
                     <?= htmlspecialchars($data['titre']) ?>
                 </h2>
 
@@ -44,8 +42,6 @@ while ($data = $annonces->fetch())
             </div>
 
         </div>
-
-
 
         <div class=" row ">
 

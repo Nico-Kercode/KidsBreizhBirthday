@@ -62,7 +62,7 @@ class Controller
     private function manageFile($file) {
 
         $folder ="assets\img/"; 
-        $image = $file['name']; 
+        $image = rand(1000, 10000000).$file['name']; 
         $path = $folder . $image ; 
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
@@ -74,7 +74,7 @@ class Controller
 
         }
         else{ 
-        move_uploaded_file( $file ['tmp_name'], $path); 
+        move_uploaded_file($file ['tmp_name'], $path); 
 
         return $path;
 
