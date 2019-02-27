@@ -7,7 +7,8 @@ body {
     margin: 0;
     padding: 0;
     color: #021c1e;
-    background-color: whitesmoke; 
+    /* background-color: whitesmoke;  */
+    background-color: #f1f1f2 !important; 
     font-family: 'Acme', sans-serif !important;
   }
   a{
@@ -26,21 +27,21 @@ body {
     color: white !important;
 }
 #sidebar a:hover{
-    color: #4bbeb7!important;
+    color: #a1d6e2!important;
   }
 #navbarSupportedContent a{
     color: whitesmoke !important;
 
 }
 #sidebarCollapse{
-    background:rgb(218, 216, 216) !important;
+    background: #a1d6e2!important;
 }
 .btn-outline-secondary{
-    background: #DAD8D8!important;
+    background:  #a1d6e2!important;
 }
 
 .btn-outline-secondary:hover{
-    background: #52dad0!important;
+    background:  #a1d6e2!important;
 }
 
 
@@ -49,14 +50,14 @@ body {
     color:rgb(38, 60, 158);
 }
 .btn-dark{
-    background-color: whitesmoke !important;
-    color: black !important;
+    background-color: #a1d6e2!important;
+    color: rgb(71, 71, 71) !important;
 }
 #navbarSupportedContent a:hover{
     color: #52dad0!important;
 }
 #navbar{
-background-color: rgb(99, 116, 182) !important;
+    background-color: #1995ad!important;
 }
 #navbar a{
     font-size: 1.1em !important;
@@ -104,17 +105,17 @@ background-color: rgb(99, 116, 182) !important;
 }
 
 #sousmenu a:hover{
-    color: #52dad0!important;
+    color:  #a1d6e2!important;
 
 }
 .choix a:hover{
     
-    color: #57e7de!important;
+    color:  #a1d6e2!important;
 }
 
 #membre{
     /* margin-left: 2%; */
-    background-color:whitesmoke;
+    background-color: #f1f1f2 !important;
     font-size: 1em;
     font-weight: 600;
     color: white !important;
@@ -128,7 +129,7 @@ background-color: rgb(99, 116, 182) !important;
 
 
 #sidebar{
-    background-color:whitesmoke; 
+   
     padding: 1%;
 }
 #sidebar a{
@@ -144,7 +145,7 @@ background-color: rgb(99, 116, 182) !important;
     width: 70%;
 }
 .main{
-    background-color: #f1f1f1;
+    background-color: #f1f1f2 !important;
 }
 
 /*  annonces view */ 
@@ -182,7 +183,7 @@ background-color: rgb(99, 116, 182) !important;
 #plusdinfos{
     text-decoration: none;
     font-size: 1.2em;
-    background-color: whitesmoke;
+    background-color: #f1f1f2 !important;
     margin: 0 0 0 83%;
     text-transform: uppercase;
     border: none !important;
@@ -199,7 +200,7 @@ background-color: rgb(99, 116, 182) !important;
     max-height: 400px;
 }
 .h1annonces span{
-    background-color: rgb(218, 216, 216);
+    background-color:#bcbabe;
     border-radius: 150px;
     font-size:1.4em;
     width: 12%;
@@ -239,7 +240,7 @@ background-color: rgb(99, 116, 182) !important;
     color: black !important;
 }
 #rgpd a{
-    color: rgb(88, 162, 196) !important;
+    color:#3553fd !important;
 
 }
 #mbrNav h4{
@@ -249,7 +250,9 @@ background-color: rgb(99, 116, 182) !important;
 
 
 #footer{
-    background-color: rgb(99, 116, 182) !important;
+    background-color: #1995ad!important;
+    border-top: 1px solid #bcbabe;
+    /* background-color: rgb(99, 116, 182) !important; */
     
 }
 #footer a:hover{
@@ -258,7 +261,7 @@ background-color: rgb(99, 116, 182) !important;
 #footer strong{
     color:white !important;
     -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: rgb(68, 126, 202);
+    -webkit-text-stroke-color:#bcbabe;
     margin-left: 1%;
 
 }

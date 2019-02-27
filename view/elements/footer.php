@@ -20,7 +20,7 @@
                 <!--Copyright-->
                 <p class="text-center text-md-left">© 2019 Copyright :
                     <a href="#">
-                        <strong>Nicolas HUBERT</strong>
+                        Nico Kercode
                     </a>
                 </p>
 
