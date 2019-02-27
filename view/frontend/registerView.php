@@ -20,19 +20,19 @@
             </div>
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input type="text" name="email" class="form-control" required>
+                <input type="text" name="email" class="form-control" pattern="regex" required>
             </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Mot de passe</label>
             <div class="col-sm-9">
-                <input type="password" name="password_1" class="form-control" required minlength="4" maxlength="10">
+                <input type="password" name="password_1" class="form-control" required minlength="6" maxlength="10">
             </div>
         </div>
         <div class="form-group">
             <label for="confirm_password" class="col-sm-3 control-label">Confirmation</label>
             <div class="col-sm-9">
-                <input type="password" name="password_2" class="form-control" required minlength="4" maxlength="10">
+                <input type="password" name="password_2" class="form-control" required minlength="6" maxlength="10">
             </div>
         </div>
         <div class="form-group">
@@ -61,8 +61,6 @@
 
 
 </div> <!-- ./container -->
-
-
 
 
 

@@ -2,6 +2,8 @@
 namespace Kbb\Model;
 
 use \kbb\model\Manager;
+use \PDO;
+
 
 class AddManager extends Manager
 {
@@ -62,6 +64,17 @@ class AddManager extends Manager
         return $annonce;
     }
 
+    // public function countAnnonces()
+    // {   
+    //     $db = $this->dbConnect();
+    //     $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces WHERE id');
+    //     $data = $resultat->fetch();
+    //     $count= $data['total'];
+    //      return $count;
+
+       
+
+    // }
     
     
 }

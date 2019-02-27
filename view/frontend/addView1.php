@@ -7,6 +7,13 @@
 <h1 class="text-center my-4 h1annonces"> <span>V</span>ANNES</h1>
 
 
+
+<h3>Il y a <?php echo ($nbannonces) ?> enregistré dans la bdd </h3>
+
+
+
+
+
 <?php
 while ($data = $annonces->fetch())
 {
@@ -14,6 +21,8 @@ while ($data = $annonces->fetch())
 
 
 <div class="container">
+
+
 
 
     <div class="col-sm-12" id="mainAnnonces">
@@ -25,7 +34,7 @@ while ($data = $annonces->fetch())
                 <img class="img-fluid logoA" src="<?= $data['logo']?>" alt="logo">
             </div>
 
-            <div class="col-sm-12 col-lg-8 titreAnnonce" >
+            <div class="col-sm-12 col-lg-8 titreAnnonce">
                 <h2 class="font-weight-bold ">
                     <?= htmlspecialchars($data['titre']) ?>
                 </h2>
@@ -56,35 +65,13 @@ while ($data = $annonces->fetch())
 
     </div>
 
-</div>
 
+</div>
 
 <?php
 }  
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-->
 
 
 

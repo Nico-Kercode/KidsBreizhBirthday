@@ -4,7 +4,7 @@
 namespace Kbb\Model;
 
 use \Kbb\Model\Manager;
-
+use \PDO;
 
 
 

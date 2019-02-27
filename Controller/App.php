@@ -36,6 +36,8 @@ class App
                 } elseif($_GET['action'] =='vannes') {
 
                     $this->controller->listAnnonces();
+                    // $this->controller->count();
+                    
 
                 
                 // AFFICHAGE VERS RGPD 
@@ -155,7 +157,35 @@ class App
                     
                         $this->controller->addAnnonce();
                     }
+
+
+                // AJOUT D UN COMMENTAIRE
+
+            
+                } 
+                elseif ($_GET['action'] == 'addComment') {
+
+                   
+
+                    if (isset($_GET['id']) && $_GET['id'] > 0)
+                    {
+                            $id_ANNONCES = $_GET['id'];
+                         
+        
+            
+                        if (isset($_POST['comment'])){
+                    
+                   
+                    $id_MEMBRES= $_SESSION['id'];
+                    $comment = htmlspecialchars($_POST['comment']);
+        
+                    postComment($comment,$id_ANNONCES, $id_MEMBRES);
+                        }
+                    }
                 }
+
+
+
 
                 else {
                     $this->controller->indexView();

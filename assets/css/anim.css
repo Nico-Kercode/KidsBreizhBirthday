@@ -1,0 +1,33 @@
+
+
+
+#anim
+    {
+      margin-top:4% !important;
+  height :150px;
+  max-width :1200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+.text{
+  display: block;
+  font-weight : 200;
+  font-size :2em !important;
+  color :rgb(0, 0, 0);
+  text-align: center !important;
+  margin-left: 20% !important;
+  }
+.dud{
+color: #6374B6;
+
+}
+
+
+
+
+
+
+
+

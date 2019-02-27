@@ -4,19 +4,23 @@ namespace Kbb\Controller;
 
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
-use \Exception;
+use \kbb\Model\CommentManager;
+
 
 class Controller
 {
 
     private $memberManager;
     private $addManager;
+    private $commentManager;
 
 
     public function __construct() {
-
+   
         $this->memberManager = new MemberManager();
         $this->addManager = new AddManager();
+        // $this->commentManager = new CommentManager();
+       
        
     }
 
@@ -77,12 +81,9 @@ class Controller
         move_uploaded_file($file ['tmp_name'], $path); 
 
         return $path;
-
         } 
 
-
     }
-
 
 
     public function Login($pseudo, $password){
@@ -155,6 +156,32 @@ class Controller
         require('view\frontend\AnnonceView.php');
         
 
+    }
+
+    public function count(){
+
+        $nbannonces = $this->addManager->countAnnonces();
+
+        return $nbannonces;
+
+        
+
+
+    }
+
+
+    public function postComment($comment,$id_ANNONCES, $id_MEMBRES )
+    {
+        
+    
+        $affectedLines = $this->commentManager->addComment($comment,$id_ANNONCES, $id_MEMBRES);
+    
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        }
+        else {
+            header('Location: index.php?action=comment&id=' . $id_ANNONCES);
+        }
     }
    
 

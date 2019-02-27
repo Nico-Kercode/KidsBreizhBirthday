@@ -42,6 +42,8 @@ body {
 .btn-outline-secondary:hover{
     background: #52dad0!important;
 }
+
+
 #mbrNav span{
 
     color:rgb(38, 60, 158);
@@ -60,11 +62,32 @@ background-color: rgb(99, 116, 182) !important;
     font-size: 1.1em !important;
 }
 
+
+.btn-floating {
+    background-color: whitesmoke !important;
+}
+#accueil{
+
+    margin-top: 10%;
+}
+
 #degemer{
     color: rgb(0, 0, 0) !important;
-    font-size: 3em;
+    font-size: 2em;
     text-shadow: 2px 2px #adaaaa;
 
+}
+.tabulation{
+    font-size:1.4em;
+    margin-right: -1px;
+    margin-left: 50px;
+}
+
+#texteAccueil{
+    font-size: 1em;
+}
+#indexView{
+    height: 1.2vh !important;
 }
 
 .fas.fa-bars {
@@ -183,15 +206,23 @@ background-color: rgb(99, 116, 182) !important;
     margin: 0 auto;
     text-shadow: 2px 2px #adaaaa;
 }
-#logo{
-   margin-left: 38%;
-}
 
 #Mainlogo a{
+    
     font-size:2em !important;
     text-align: justify;
-    
+    line-height:30px;
     text-shadow: 2px 2px #0f0f0f;
+    text-align: center;
+
+}
+.tabulation2{
+ 
+    margin-left: 15px;
+}
+.tabulation3{
+    margin-left: 16px;
+
 }
 #annonceContent{
 
@@ -211,4 +242,23 @@ background-color: rgb(99, 116, 182) !important;
     color: rgb(88, 162, 196) !important;
 
 }
- 
+#mbrNav h4{
+    font-size: 1.4em !important;
+
+} 
+
+
+#footer{
+    background-color: rgb(99, 116, 182) !important;
+    
+}
+#footer a:hover{
+    color: #5efff4!important;
+}
+#footer strong{
+    color:white !important;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: rgb(68, 126, 202);
+    margin-left: 1%;
+
+}

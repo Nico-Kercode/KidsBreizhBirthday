@@ -25,29 +25,29 @@
 
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">LOGO</label>
-                    <input type="file" name="logo" class="form-control-file my-2">
+                    <input type="file" name="logo" required class="form-control-file my-2">
                 </div>
                 <div class="form-group">
                     <label for="title" class="col-sm-3 control-label">Titre</label>
                     <div class="col-sm-9">
-                        <input type="text" name="titreA" value="" class="form-control">
+                        <input type="text" name="titreA" value="" required class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="contenu">Descriptif</label>
-                    <textarea class="form-control" rows="5" name="contentA"></textarea>
+                    <textarea class="form-control" rows="5" required name="contentA"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">Photo 1</label>
-                    <input type="file" name="photo1" class="form-control-file my-2">
+                    <input type="file" name="photo1" required class="form-control-file my-2">
                 </div>
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">Photo 2</label>
-                    <input type="file" name="photo2" class="form-control-file my-2">
+                    <input type="file" name="photo2" required class="form-control-file my-2"> 
                 </div>
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">Photo 3</label>
-                    <input type="file" name="photo3" class="form-control-file my-2">
+                    <input type="file" name="photo3" required class="form-control-file my-2 ">
                 </div>
                 
                 <div class="form-group">
