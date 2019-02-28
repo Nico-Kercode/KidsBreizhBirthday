@@ -28,7 +28,7 @@ while ($data = $annonces->fetch())
         <!-- boucle affichage des annonces -->
         <div class=" row " id="annonceHaut">
 
-            <div class="col-sm-12 col-lg-4 ">
+            <div class="col-sm-12 col-lg-4 " >
 
                 <img class="img-fluid logoA" src="<?= $data['logo']?>" alt="logo">
             </div>
@@ -43,9 +43,9 @@ while ($data = $annonces->fetch())
 
         <div class="row my-4">
 
-            <div class="offset-lg-2">
+            <div class="offset-lg-2 overflow">
 
-                <img class="img-fluid photosadd" src="<?= $data['photo1']?>" alt="Photo1">
+                <img class="img-fluid  img-thumbnail" src="<?= $data['photo1']?>" alt="Photo1">
 
             </div>
 

@@ -16,7 +16,9 @@ body {
   li{
       list-style: none;
   }
-
+  img{
+      display:block;
+  }
 /* NAV */
 #sidebar a{
     color: white !important;
@@ -168,9 +170,15 @@ body {
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
  
-    
-   
+  
 }
+.overflow{
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+}
+
+
 #annonceHaut{
     background-color:rgb(218, 216, 216);
     border-bottom: 2px solid #6374B6;
@@ -189,8 +197,7 @@ body {
 
 .logoA{
     margin: 5% 0 5% 0  !important;
-    min-height: 60px;
-    min-width: 120px;
+    
     max-height: 80px;
     max-width: 220px;
 }
@@ -287,4 +294,22 @@ body {
     margin-left: 5px;
     font-size: 1.1em !important;
     color: blue !important;
+}
+
+#basAdd{
+    margin-top: 15px;
+    padding: 1%;
+    border-top: 1px solid rgb(201, 201, 201);
+}
+#contact {
+
+    margin-top: 20px;
+}
+#result h1 {
+    background-color: rgb(230, 230, 230);
+    margin-bottom: 10% !important;
+}
+.result{
+    border: 1px solid rgb(201, 201, 201);
+    line-height: 30px !important;
 }

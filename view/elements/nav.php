@@ -109,11 +109,6 @@
 
                 <li>
 
-                    <!-- <?php if(empty($_SESSION)) { ?>
-                    <a href="index.php?action=formLogin" class="article">CONNEXION</a>
-                    <?php } ?> -->
-                    <!-- deconnection -->
-
                     <?php if(isset($_SESSION['pseudo'])) { ?>
 
                     <a href="index.php?action=deco" class="article">Deconnexion</a>
@@ -193,14 +188,16 @@
 
 
             <!-- BARRE DE RECHERCHE  -->
-
-            <div class="input-group  my-2">
-                <input class="form-control py-2 border-right-0 border" type="search"
-                    value="Recherchez un lieu , un theme ... " id="search">
-                <span class="input-group-append">
-                    <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-           
+            <form  method="POST"  action="index.php?action=search" class="input-group  my-2" >
+            <!-- <div class="input-group  my-2"> -->
+                
+                    <input class="form-control py-2 border-right-0 border" type="search"
+                        value="" name="searchbar" id="search" required>
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" name="submitSearch" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                
+            </form>
+        <!-- </div> -->

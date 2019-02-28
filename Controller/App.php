@@ -61,7 +61,7 @@ class App
                     if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {
                   
                         $id = $_GET['id'];
-                        // $id_MEMBRES =$_GET['id_MEMBRES'];
+                        
     
                     
                         $this->controller->annonce($id);
@@ -92,7 +92,7 @@ class App
                 
                 // LIEN VERS MON COMPTE //
 
-                } elseif($_GET['action'] == 'moncompte'){
+                } elseif($_GET['action'] == 'moncompte' && isset($_SESSION['rang'])){
             
 
                     if (!empty($_SESSION['pseudo'])) {
@@ -130,7 +130,7 @@ class App
                  
                 //  MISE A JOUR INFOS DU COMPTE //
 
-                } elseif ($_GET['action'] == 'update'){
+                } elseif ($_GET['action'] == 'update' && isset($_SESSION['rang'])){
 
                     if (isset($_POST['update_user'])) {
                         $member_id = $_SESSION['id'];
@@ -151,7 +151,7 @@ class App
 
                 // VUE FORMULAIRE AJOUT ANNONCE 
 
-                } elseif ($_GET['action'] == 'ajoutAnnonce'){
+                } elseif ($_GET['action'] == 'ajoutAnnonce' && isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2' ){
 
                     
                     require('view\postAnnonceView.php');
@@ -167,7 +167,7 @@ class App
 
                 // AJOUT D UN COMMENTAIRE           
                 } 
-                elseif ($_GET['action'] == 'addComment') {
+                elseif ($_GET['action'] == 'addComment' && isset($_SESSION['rang'])) {
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
@@ -181,6 +181,18 @@ class App
                     $this->controller->postComment($comment,$id_ANNONCES, $id_MEMBRES);
                         }
                     }
+
+                // SEARCH BAR 
+
+                } elseif ($_GET['action'] == 'search') {
+                   
+                    if (isset(($_POST ['submitSearch']))) {
+                        
+                        $search= $_POST['searchbar'];        
+                        $this->controller->mySearch($search);
+
+                    }
+
                 }
 
                 // FIN INSTRUCTION ROUTEUR 

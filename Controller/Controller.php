@@ -192,6 +192,25 @@ class Controller
         }
 
     }
+
+    public function mySearch($search) {
+
+        $result = $this->addManager->searchBar($search);
+
+        
+ 
+        require('view\frontend\searchResultView.php');
+        
+          
+        
+        return $result;
+
+
+    }
+
+  
+
+
    
 
 

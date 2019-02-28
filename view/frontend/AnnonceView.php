@@ -2,26 +2,26 @@
 <?php ob_start(); ?>
 
 
-
+<a class="article" href="index.php?action=vannes">Retour aux annonces</a>
 <div class="container">
 
-    <a href="index.php?action=vannes">Retour aux annonces</a>
+    
 
     <div class="col-sm-12" id="mainAnnonces">
 
         <div class=" row d-flex" id="annonceHaut">
 
-            <div class="col-sm-12 col-lg-4 ">
+            <div class=" col d-none d-lg-block ">
 
-                <img class="img-fluid logoA" src="<?= $annonce['logo']?>" alt="logo">
+                <img class=" img-fluid logoA" src="<?= $annonce['logo']?>" alt="logo">
 
             </div>
 
-            <div class="col-sm-12 col-lg-8 titreAnnonce">
+            <div class="col-lg-8 titreAnnonce">
                 <h2 class="font-weight-bold">
                     <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
-                <p> <em> publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </span> </em> </p>
+                <p class="text-right mb-2"> <em> publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </span> </em> </p>
 
 
             </div>
@@ -31,7 +31,7 @@
 
             <div class="offset-lg-2">
 
-                <img class="img-fluid photosadd" src="<?= $annonce['photo1']?>" alt="Photo1">
+                <img class="img-fluid  img-thumbnail " src="<?= $annonce['photo1']?>" alt="Photo1">
 
             </div>
 
@@ -43,6 +43,41 @@
                 <?= nl2br(ucfirst(htmlspecialchars($annonce['contenu']))) ?>
             </p>
 
+        </div>
+        <div class="row text-center d-flex" id="basAdd">
+
+            <div class="col-sm-12 col-lg-4 offset-lg-1" id="contact">
+
+                <h6 class="text-center">CONTACT :</h6>
+
+                <p class="text-center p-2">
+                    <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
+
+                </p>
+
+            </div>
+            <div class="col-lg-4 offset-lg-2">
+                <?php if(!empty($_SESSION['pseudo'])) { ?>
+
+                <h6> <em>Utilisez le formulaire pour laisser un commentaire ! </em></h6>
+
+                <form action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
+                    method="post">
+                    <div>
+                        <textarea id="comment" name="comment" rows="5" cols="50"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" />
+                    </div>
+                </form>
+
+                <?php } ?>
+
+
+
+            </div>
+
+
 
         </div>
 
@@ -53,52 +88,27 @@
     <div class="row">
 
         <!-- COMMENTAIRES -->
-        <?php if(!empty($_SESSION['pseudo'])) { ?>
-        <div class="col-sm-12">
-            <h2> <em>Utilisez le formulaire pour laisser un commentaire ! </em></h2>
-
-            <form id="postcomment"
-                action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
-                method="post">
-                <div>
-                    <label for="comment">Commentaire</label><br />
-                    <textarea id="comment" name="comment" rows="5" cols="50"></textarea>
-                </div>
-                <div>
-                    <input type="submit" id="msgSubmit" />
-                </div>
-            </form>
-        </div>
-        <?php } ?>
 
 
-
-
-        <div class="news">
-            <h2> <em>Les dernieres commentaires :</em></h2>
+        <div class="col-sm-12 my-2">
+            <h4> <em>Les dernieres avis :</em></h4>
             <?php
             // foreach va recuperer toutes le contenu du tableau $comments -> controller
-        foreach ($allComments as $comment)
+foreach ($allComments as $comment)
 
-        {
+{
 
-            ?>
-            <p <strong>Commentaire de <?= htmlspecialchars($comment['pseudo']) ?></strong> le
-                <?= $comment['date_creation'] ?>
+    ?>
+            <h6 class="text-left"><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le
+                <?= $comment['date_commentaire'] ?> </h6>
                 <br><br>
-                <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+            <p>     <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
 
-                <?php if(!empty($_SESSION['pseudo'])) { ?>
-
-                <!-- <form method="post" id="formABC"
-                    action="index.php?action=click&id=<?= $comment['id']?>&id_chapter=<?= $_GET['id']?>">
-                    <button type="submit" id="btnSubmit">Signaler</button>
-
-                </form> -->
-
-                <?php }?>
 
             </p>
+
+
+
 
             <p id="edition">
 
@@ -120,6 +130,22 @@
     </div>
 
 </div> <!-- annonces -->
+<?php
+// }  
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php $content = ob_get_clean(); ?>

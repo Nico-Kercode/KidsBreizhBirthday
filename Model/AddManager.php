@@ -55,7 +55,7 @@ class AddManager extends Manager
     public function getAnnonce($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, photo1, pseudo
+        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, contact, photo1, pseudo
         FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE annonces.id = ? ');
         $req->execute(array($id));
         $annonce = $req->fetch();
@@ -77,6 +77,24 @@ class AddManager extends Manager
        
 
     }
+
+    public function searchBar($search)
+    {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT * FROM annonces WHERE upper(titre) LIKE ? OR upper(ville) LIKE  ? OR upper (contenu) LIKE ?  ");
+        $req->execute(array('%'.$search.'%' , '%'.$search.'%' , '%'.$search.'%'  ));
+        $result = $req->fetchAll();
     
+            return $result;
+
+    }
     
+
 }
+
+// $comments->execute(array($id));
+        
+// $allComments= $comments->fetchAll();
+
+// return $allComments;

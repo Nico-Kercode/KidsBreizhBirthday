@@ -45,15 +45,15 @@ class CommentManager extends Manager
     }
 
 
-    // public function deleteComment($id)
-    // {
+    public function deleteComment($id)
+    {
 
-    //     $db = $this->dbConnect();
-    //     $req = $db->query("DELETE FROM comment WHERE id ='$id' ");
+        $db = $this->dbConnect();
+        $req = $db->query("DELETE FROM comment WHERE id ='$id' ");
        
 
-    //     return $req;
+        return $req;
 
-    // }
+    }
 
 }
