@@ -58,13 +58,13 @@ class App
                 } elseif ($_GET['action'] == 'annonce'){
                   
 
-                    if ((isset($_GET['id'])) && $_GET['id'] > 0 && (isset($_GET['id_MEMBRES'])) && $_GET['id_MEMBRES'] > 0) {
+                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {
                   
                         $id = $_GET['id'];
-                        $id_MEMBRES =$_GET['id_MEMBRES'];
+                        // $id_MEMBRES =$_GET['id_MEMBRES'];
     
                     
-                        $this->controller->annonce($id, $id_MEMBRES);
+                        $this->controller->annonce($id);
 
                     }
                      else {
@@ -148,6 +148,9 @@ class App
                         $this->controller->updateMember($member_id,$pseudo, $email, $password_1);
                     }
         
+
+                // VUE FORMULAIRE AJOUT ANNONCE 
+
                 } elseif ($_GET['action'] == 'ajoutAnnonce'){
 
                     
@@ -162,34 +165,25 @@ class App
                         $this->controller->addAnnonce();
                     }
 
-
-                // AJOUT D UN COMMENTAIRE
-
-            
+                // AJOUT D UN COMMENTAIRE           
                 } 
                 elseif ($_GET['action'] == 'addComment') {
-
-                   
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
                             $id_ANNONCES = $_GET['id'];
-                         
-        
-            
+                                 
                         if (isset($_POST['comment'])){
-                    
-                   
+                                      
                     $id_MEMBRES= $_SESSION['id'];
                     $comment = htmlspecialchars($_POST['comment']);
         
-                    postComment($comment,$id_ANNONCES, $id_MEMBRES);
+                    $this->controller->postComment($comment,$id_ANNONCES, $id_MEMBRES);
                         }
                     }
                 }
 
-
-
+                // FIN INSTRUCTION ROUTEUR 
 
                 else {
                     $this->controller->indexView();

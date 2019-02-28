@@ -57,41 +57,44 @@
         <div class="col-sm-12">
             <h2> <em>Utilisez le formulaire pour laisser un commentaire ! </em></h2>
 
-            <form action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
+            <form id="postcomment"
+                action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
                 method="post">
                 <div>
                     <label for="comment">Commentaire</label><br />
                     <textarea id="comment" name="comment" rows="5" cols="50"></textarea>
                 </div>
                 <div>
-                    <input type="submit" />
+                    <input type="submit" id="msgSubmit" />
                 </div>
             </form>
         </div>
         <?php } ?>
 
 
-         <div class="news">
+
+
+        <div class="news">
             <h2> <em>Les dernieres commentaires :</em></h2>
             <?php
             // foreach va recuperer toutes le contenu du tableau $comments -> controller
-foreach ($allComments as $comment)
+        foreach ($allComments as $comment)
 
-{
+        {
 
-    ?>
-            <p id="commentaire"><strong>Commentaire de <?= htmlspecialchars($comment['pseudo']) ?></strong> le
-                <?= $comment['creation_date'] ?>
+            ?>
+            <p <strong>Commentaire de <?= htmlspecialchars($comment['pseudo']) ?></strong> le
+                <?= $comment['date_creation'] ?>
                 <br><br>
-                <?= nl2br(htmlspecialchars($comment['content'])) ?>
+                <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
 
                 <?php if(!empty($_SESSION['pseudo'])) { ?>
 
-                <form method="post" id="formABC"
+                <!-- <form method="post" id="formABC"
                     action="index.php?action=click&id=<?= $comment['id']?>&id_chapter=<?= $_GET['id']?>">
                     <button type="submit" id="btnSubmit">Signaler</button>
 
-                </form>
+                </form> -->
 
                 <?php }?>
 
@@ -111,28 +114,12 @@ foreach ($allComments as $comment)
             <?php
     }
 }
-?> 
+?>
         </div>
 
     </div>
 
 </div> <!-- annonces -->
-<?php
-// }  
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php $content = ob_get_clean(); ?>

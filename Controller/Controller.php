@@ -151,14 +151,17 @@ class Controller
         return $annonces;
     }
 
-    public function annonce($id, $id_MEMBRES) {
+    public function annonce($id) {
 
-        $annonce = $this->addManager->getAnnonce($id, $id_MEMBRES);
+        $annonce = $this->addManager->getAnnonce($id);
+        $allComments = $this->commentManager->getComments($id);
+       
 
         require('view\frontend\AnnonceView.php');
         
 
     }
+
 
     public function count(){
 
@@ -168,12 +171,9 @@ class Controller
 
         return $total['total'];
 
-        
-
-        
-
 
     }
+
 
 
     public function postComment($comment,$id_ANNONCES, $id_MEMBRES )
@@ -186,9 +186,14 @@ class Controller
             throw new Exception('Impossible d\'ajouter le commentaire !');
         }
         else {
-            header('Location: index.php?action=comment&id=' . $id_ANNONCES);
+ 
+        header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
+
         }
+
     }
    
+
+
 
 }

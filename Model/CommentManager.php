@@ -28,21 +28,21 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    // public function getComments($id)
-    // {
-    //     $db = $this->dbConnect();
+    public function getComments($id)
+    {
+        $db = $this->dbConnect();
         
-    //     $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
-    //     FROM commentaires INNER JOIN membres ON id_MEMBRES =member.id WHERE id_ANNONCES = ?  
-    //     ORDER BY creation_date DESC');
+        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
+        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
+        ORDER BY date_commentaire DESC');
 
-    //     $comments->execute(array($id));
+        $comments->execute(array($id));
         
-    //      $allComments= $comments->fetchAll();
+        $allComments= $comments->fetchAll();
        
-    //     return $allComments;
+        return $allComments;
 
-    // }
+    }
 
 
     // public function deleteComment($id)

@@ -52,7 +52,7 @@ class AddManager extends Manager
     
     // recupere une annonce precise
 
-    public function getAnnonce($id, $id_MEMBRES)
+    public function getAnnonce($id)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, photo1, pseudo
