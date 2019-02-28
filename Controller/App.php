@@ -33,10 +33,14 @@ class App
                     
                 // LIENS VERS VANNES VIEW
 
+                } elseif ($_GET['action'] == 'count'){
+
+                     $this->controller->count();
+                
                 } elseif($_GET['action'] =='vannes') {
 
                     $this->controller->listAnnonces();
-                    // $this->controller->count();
+                   
                     
 
                 

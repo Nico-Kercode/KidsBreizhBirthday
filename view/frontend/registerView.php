@@ -2,7 +2,6 @@
 
 <?php ob_start(); ?>
 
-<?php include('view\elements\nav.php')?>
 
 
 
@@ -49,7 +48,7 @@
             <div class="col-sm-9">
             </div>
         </div> <!-- /.form-group -->
-
+</form>
         <div class="row">
 
             <div class="container">
@@ -57,10 +56,10 @@
                     <span>Déja enregistré ? :</span> <a href="index.php?action=formLogin" id="co">Connexion</a>
                 </p>
             </div>
-    </form>
+    
 
 
-</div> <!-- ./container -->
+<!-- </div> ./container -->
 
 
 

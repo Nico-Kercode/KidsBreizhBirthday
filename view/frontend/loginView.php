@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<?php include('view\elements\nav.php')?>
+
 
 
 <div class="container ">
@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="Pseudo" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">
-                    <input id="pseudo" placeholder="Pseudo" name="username" value="<?php echo $username; ?>"
+                    <input id="pseudo" required placeholder="Pseudo" name="username" value="<?php echo $username; ?>"
                         class="form-control" autofocus>
                 </div>
             </div>
@@ -23,20 +23,20 @@
 
                 <label for="password" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">
-                    <input type="password" id="password" name="password" placeholder="Mot de passe"
-                        class="form-control">
+                    <input type="password"  required id="password" name="password" placeholder="Mot de passe"
+                        class="form-control mb-4">
                 </div>
             </div>
-            <div class="input-group">
-                <button type="submit" class="btn btn-light " name="login_user" id="button">Connexion</button>
+            <div class="input-group ">
+                <button type="submit" class="btn btn-light ml-3 " name="login_user" id="button">Connexion</button>
             </div>
 
 
 
-            <div id="deja2">
-                <p class="butform">
-                    Pas encore inscrit ? <a href="index.php?action=formRegister"
-                        id="reg" ">S'enregistrer</a>
+            <div class="col-lg-9" id="deja2">
+                <p class="butform text-right">
+                    Pas encore inscrit ?   <a href="index.php?action=formRegister"
+                        id="register" ">S'enregistrer</a>
 
                 </p>
             </div>

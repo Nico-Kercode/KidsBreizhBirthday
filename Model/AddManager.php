@@ -64,17 +64,19 @@ class AddManager extends Manager
         return $annonce;
     }
 
-    // public function countAnnonces()
-    // {   
-    //     $db = $this->dbConnect();
-    //     $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces WHERE id');
-    //     $data = $resultat->fetch();
-    //     $count= $data['total'];
-    //      return $count;
+    public function countAnnonces()
+    {   
+        $db = $this->dbConnect();
+        $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces WHERE id');
+        $count = $resultat->fetch();
+        $total=$count['total'];
+        $resultat->closeCursor();
+        
+         return $total;
 
        
 
-    // }
+    }
     
     
 }

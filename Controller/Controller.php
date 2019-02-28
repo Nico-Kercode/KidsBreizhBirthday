@@ -4,7 +4,7 @@ namespace Kbb\Controller;
 
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
-use \kbb\Model\CommentManager;
+use \Kbb\Model\CommentManager;
 
 
 class Controller
@@ -16,10 +16,12 @@ class Controller
 
 
     public function __construct() {
-   
+
         $this->memberManager = new MemberManager();
         $this->addManager = new AddManager();
-        // $this->commentManager = new CommentManager();
+        $this->commentManager = new CommentManager();
+
+       
        
        
     }
@@ -160,9 +162,13 @@ class Controller
 
     public function count(){
 
-        $nbannonces = $this->addManager->countAnnonces();
+        $total = $this->addManager->countAnnonces();
 
-        return $nbannonces;
+        require('view\frontend\indexView.php');
+
+        return $total['total'];
+
+        
 
         
 

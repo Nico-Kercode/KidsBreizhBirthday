@@ -9,9 +9,10 @@ a, a:hover, a:focus {
 .navbar {
     padding: 15px 10px;
     background-color: whitesmoke !important;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
+    /* border: none;
+    border-radius: 0; */
+    /* margin-bottom: 40px; */
+    width:100%;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -35,7 +36,7 @@ a, a:hover, a:focus {
 .wrapper {
 
     display: flex;
-    width: 100%;
+    max-width: 100% !important;
     align-items: stretch;
     perspective: 1500px;
 }
@@ -180,7 +181,10 @@ a.article, a.article:hover {
     opacity: 1;
     margin: 5px auto;
 }
-
+#navbarSupportedContent{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES

@@ -1,6 +1,6 @@
 <!-- Footer -->
 
-<footer class="page-footer font-small mdb-color  pt-4 " id="footer">
+<footer class="page-footer font-small" id="footer">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -28,6 +28,7 @@
 
             <!-- Grid column -->
             <div class="col-md-5 col-lg-4 ml-lg-0">
+            
 
                 <!-- Social buttons -->
                 <div class="text-center text-md-right">

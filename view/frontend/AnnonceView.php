@@ -1,6 +1,6 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-<?php include('view\elements\nav.php')?>
+
 
 
 <div class="container">
@@ -71,7 +71,7 @@
         <?php } ?>
 
 
-        <div class="news">
+         <div class="news">
             <h2> <em>Les dernieres commentaires :</em></h2>
             <?php
             // foreach va recuperer toutes le contenu du tableau $comments -> controller
@@ -111,7 +111,7 @@ foreach ($allComments as $comment)
             <?php
     }
 }
-?>
+?> 
         </div>
 
     </div>

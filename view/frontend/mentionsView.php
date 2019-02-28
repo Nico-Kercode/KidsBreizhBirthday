@@ -1,6 +1,6 @@
 <?php $title = 'RGPD'; ?>
 <?php ob_start(); ?>
-<?php include('view\elements\nav.php')?>
+
 
 
 <div class="container" id="rgpd">

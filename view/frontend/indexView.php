@@ -2,13 +2,13 @@
 
 <?php ob_start(); ?>
 
-<?php include('view\elements\nav.php');?>
+
 
 <div class="container">
     <div class="row">
 
 
-        <div class=" d-sm-none d-md-block col-lg-10 " id="anim" >
+        <div class=" d-sm-none d-md-block col-lg-10 " id="anim">
             <div class="text"></div>
 
         </div>
@@ -30,43 +30,29 @@
                 qui proposent des presations, afin que votre enfant puisse passer une journée d'anniversaire
                 inoubliable.
                 Parc, restaurant, circuit de karting, piscine ou cinéma ... <br>
+
                 <span class="tabulation">Il</span> existe une multitude d'endroits qui propose ce genre de service ...
+
 
             </p>
 
         </div>
-    </div>
+
+    </div><!-- row -->
+
+    <!-- <a href="index.php?action=count" class=" article ml-4">
+        il y a déja <span><?= $total ?> </span> annonces repertoriées
+            dans notre base de donnée
+    </a>
+    </li> -->
+
+</div> <!-- container -->
+<div class="row">
 </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php $content = ob_get_clean(); ?>
-
 
 <?php require('template.php'); ?>

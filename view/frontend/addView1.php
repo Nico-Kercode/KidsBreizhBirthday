@@ -1,6 +1,6 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-<?php include('view\elements\nav.php')?>
+
 
 
 
@@ -8,7 +8,6 @@
 
 
 
-<h3>Il y a <?php echo ($nbannonces) ?> enregistré dans la bdd </h3>
 
 
 
@@ -71,7 +70,7 @@ while ($data = $annonces->fetch())
 <?php
 }  
 ?>
--->
+
 
 
 

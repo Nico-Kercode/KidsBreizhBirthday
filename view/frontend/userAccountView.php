@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<?php include('view\elements\nav.php');?>
+
 
 
 
@@ -79,7 +79,7 @@
 
                     <label for="email" class="col-sm-6 control-label">Saisissez votre nouvel Email </label>
                     <div class="col-sm-9">
-                        <input type="text" name="email" class="form-control" placeholder="<?= $_SESSION['email']?>">
+                        <input type="text" name="email" pattern="regex" class="form-control" placeholder="<?= $_SESSION['email']?>">
                     </div>
                 </div>
                 <div class="form-group">
