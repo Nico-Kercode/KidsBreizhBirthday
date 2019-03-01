@@ -7,6 +7,13 @@
     <div class="row">
         <div class="col-sm-12 my-2 result">
             <h1 class="text-center my-4"> <em>Resultat de votre recherche :</em></h1>
+            <h5 class="text-center">
+                
+                <?php if ($result > 0) { 
+                echo  'il y a    '.count($result).' resultats correspondants àvotre recherche'; } 
+                else { echo 'il n\'y a aucun resultat correspondant à votre recherche'; } ?> </h5>
+
+
             <?php
             // foreach va recuperer toutes le contenu du tableau $comments -> controller
 foreach ($result as $liste)
@@ -21,12 +28,13 @@ foreach ($result as $liste)
 
                 <div class="col-lg-8 offset-lg-2 p-4">
 
-                    <h4 class="bg-light"> <a
-                            href="index.php?action=annonce&id=<?= $liste['id'] ?>"><?= htmlspecialchars($liste['titre']) ?>
+                    <h4 class="article">
+                        <a href="index.php?action=annonce&id=<?= $liste['id'] ?>">
+                            <?= htmlspecialchars($liste['titre']) ?>
                             </strong></a> </h4>
 
                     <p>
-                        <strong>Contact :  <?= htmlspecialchars($liste['contact']) ?></strong>
+                        <strong>Contact : <?= htmlspecialchars($liste['contact']) ?></strong>
                     </p>
 
                 </div>

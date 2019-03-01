@@ -20,7 +20,7 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid " id="avatarMenu" src="<?= htmlspecialchars($_SESSION['avatar'])?>"
+            <img class="img-fluid "src="<?= htmlspecialchars($_SESSION['avatar'])?>"
                 alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
 
 
@@ -65,37 +65,8 @@
 
 
 
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Villes</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="index.php?action=vannes">Vannes</a>
-                        </li>
-                        <li>
-                            <a href="#">Lorient</a>
-                        </li>
-                        <li>
-                            <a href="#">Autres</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Activités</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
+               
+                
                 <li>
                     <a href="#">A Propos</a>
                 </li>
@@ -184,6 +155,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?action=formLogin" class="article">Connexion</a>
                             </li>
+                            <?php } ?>
+
+                            <?php if(!empty($_SESSION)) { ?>
+                                <li class="nav-item">
+                                <a class="nav-link" href="#" class="article" id="moncompte">Mon compte</a>
+                            </li>
+
                             <?php } ?>
                         </ul>
                     </div>

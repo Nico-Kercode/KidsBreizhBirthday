@@ -6,23 +6,19 @@
 
 <div class="container">
     <div class="row">
-
-
         <div class=" d-sm-none d-md-block col-lg-10 " id="anim">
             <div class="text"></div>
-
         </div>
-
     </div>
-
 </div>
 
 
 <div class="container" id="indexView">
     <div class="row">
-        <div id="accueil">
-            <div class="d-flex">
-            <img class="img-fluid" src="assets\img\artworkIMG\logoGateau.png" alt="logo Gateaux"> <h1 id="degemer">Kid's Breizh birthday</h1> 
+        <div class="col-sm-12 col-lg-10 offset-lg-2 " id="accueil">
+            <div class="d-flex mx-auto">
+                <img class="img-fluid" src="assets\img\artworkIMG\logoGateau.png" alt="logo Gateaux">
+                <h1 id="degemer">Kid's Breizh birthday</h1>
             </div>
 
             <p id="texteAccueil"> <span class="tabulation">Nous</span> avons regroupé pour vous tous les professionnels
@@ -32,7 +28,7 @@
                 inoubliable.
                 Parc, restaurant, circuit de karting, piscine ou cinéma ... <br>
 
-                <span class="tabulation">Il</span> existe une multitude d'endroits qui propose ce genre de service ...
+                Il existe une multitude d'endroits qui propose ce genre de service ...
 
 
             </p>
@@ -48,9 +44,6 @@
     </li> -->
 
 </div> <!-- container -->
-<div class="row">
-</div>
-
 
 
 

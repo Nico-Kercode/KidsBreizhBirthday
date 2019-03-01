@@ -86,7 +86,7 @@ class AddManager extends Manager
         $req->execute(array('%'.$search.'%' , '%'.$search.'%' , '%'.$search.'%'  ));
         $result = $req->fetchAll();
     
-            return $result;
+        return $result;
 
     }
     

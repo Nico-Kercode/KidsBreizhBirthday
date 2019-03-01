@@ -98,32 +98,9 @@ class TextScramble {
   next()
 
   // ——————————————————————————————————————————————————
-  // SUBMIT COMMENT AJAX
+  // ouverture mon compte
   // ———
-	
-$("#postcomment").submit(function(event){
-    // cancels the form submission
-    event.preventDefault();
-    submitForm();
-});
-
-function submitForm(){
-  // Initiate Variables With Form Content
-  let comment = $("#comment").val();
-
-  $.ajax({
-      type: "POST",
-      url: "index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>",
-      data: "comment=" + comment ,
-      success : function(text){
-          if (text == "success"){
-              formSuccess();
-          }
-      }
+  $( "#moncompte" ).click(function() {
+    $( "#sidebarCollapse" ).click();
   });
-}
-function formSuccess(){
-  $( "#msgSubmit" ).removeClass( "hidden" );
-}
-
 
