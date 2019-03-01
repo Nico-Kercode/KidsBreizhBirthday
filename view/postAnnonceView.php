@@ -38,6 +38,10 @@
                     <textarea class="form-control" rows="5" required name="contentA"></textarea>
                 </div>
                 <div class="form-group">
+                    <label for="contenu">Contact / adresses </label>
+                    <textarea class="form-control" rows="5" required name="contentB"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="formControl" class="col-sm-510">Photo 1</label>
                     <input type="file" name="photo1" required class="form-control-file my-2">
                 </div>

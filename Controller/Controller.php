@@ -86,7 +86,6 @@ class Controller
             $ary = explode('\\',$tempPath);
             $srcFile = array_pop($ary);
             $srcPath = join('\\', $ary) . '\\';
-            echo($srcPath);
             $folder ="assets/img/"; 
             $image = rand(1000, 10000000).$file['name']; 
             $path = $folder . $image ; 
@@ -141,12 +140,13 @@ class Controller
         $logo=$this->manageFile($_FILES['logo'],100,100);
         $titreA=htmlspecialchars($_POST['titreA']);
         $descriptif= htmlspecialchars($_POST['contentA']);
+        $contact= htmlspecialchars($_POST['contentB']);
         $photo1=$this->manageFile($_FILES['photo1'],900,450);
         $photo2=$this->manageFile($_FILES['photo2'],900,450);
         $photo3=$this->manageFile($_FILES['photo3'],900,450);
         $id_MEMBRES = $_SESSION['id'];
 
-        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1,$photo2,$photo3,$id_MEMBRES);
+        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES);
 
         header('Location: index.php?action=vannes');
 
@@ -253,8 +253,8 @@ class Controller
         // ---------------------
         // si le fichier existe dans le répertoire, on continue...
 
-        var_dump($rep_Src.$img_Src);
-        var_dump(file_exists($rep_Src.$img_Src));
+        // var_dump($rep_Src.$img_Src);
+        // var_dump(file_exists($rep_Src.$img_Src));
 
         if (file_exists($rep_Src.$img_Src) && ($W_max!=0 || $H_max!=0)) { 
           // ----------------------
@@ -304,7 +304,7 @@ class Controller
              // - Mais on peut "forcer" le redimensionnement en ajoutant ici :
                 $condition = 1; 
              if ($condition==1) {
-                 echo('Hello');
+                //  echo('Hello');
        
                 // ---------------------
                 // creation de la ressource-image "Src" en fonction de l extension

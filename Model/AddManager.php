@@ -10,14 +10,14 @@ class AddManager extends Manager
 
     // ajoute une annonce
 
-    public function addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1,$photo2, $photo3, $id_MEMBRES)
+    public function addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2, $photo3, $id_MEMBRES)
     
     {
             $db = $this-> dbConnect(); 
-            $addAnnonce = $db->prepare('INSERT INTO annonces (ville, logo, titre, contenu, photo1, photo2, photo3, id_MEMBRES)   
+            $addAnnonce = $db->prepare('INSERT INTO annonces (ville, logo, titre, contenu, contact, photo1, photo2, photo3, id_MEMBRES)   
                    
             
-            VALUES (:ville, :logo, :titre, :contenu, :photo1, :photo2, :photo3, :id_MEMBRES)');
+            VALUES (:ville, :logo, :titre, :contenu, :contact , :photo1, :photo2, :photo3, :id_MEMBRES)');
             
             
             $affectedLines = $addAnnonce->execute(array(
@@ -26,6 +26,7 @@ class AddManager extends Manager
                 "logo"=> $logo,
                 "titre"=> $titreA,
                 "contenu"=> $descriptif,
+                "contact"=> $contact,
                 "photo1"=> $photo1, 
                 "photo2"=> $photo2,
                 "photo3"=> $photo3,         

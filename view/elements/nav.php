@@ -41,8 +41,8 @@
                         annonce</a></li>
 
                 <li class="d-block">
-                    <a href="index.php?action=moncompte" class="article">Mon compte</a>
-
+                    <a href="moncompte"  class="article">Mon compte</a>
+                    <!-- <H5 >Mon compte</H5> -->
                 </li>
 
                 <?php } ?>
