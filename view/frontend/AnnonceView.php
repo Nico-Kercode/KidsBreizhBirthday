@@ -5,7 +5,7 @@
 <a class="article" href="index.php?action=vannes">Retour aux annonces</a>
 <div class="container">
 
-    
+
 
     <div class="col-sm-12" id="mainAnnonces">
 
@@ -21,7 +21,8 @@
                 <h2 class="font-weight-bold">
                     <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
-                <p class="text-right mb-2"> <em> publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </span> </em> </p>
+                <p class="text-right mb-2"> <em> publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?>
+                        </span> </em> </p>
 
 
             </div>
@@ -46,7 +47,7 @@
         </div>
         <div class="row text-center d-flex" id="basAdd">
 
-            <div class="col-sm-12 col-lg-4 offset-lg-1" id="contact">
+            <div class="col-sm-12 col-lg-4 offset-lg-1 " id="contact">
 
                 <h6 class="text-center">CONTACT :</h6>
 
@@ -59,7 +60,7 @@
             <div class="col-lg-4 offset-lg-2">
                 <?php if(!empty($_SESSION['pseudo'])) { ?>
 
-                <h6> <em>Utilisez le formulaire pour laisser un commentaire ! </em></h6>
+                <h6 class="m-4"> <em>Utilisez le formulaire pour laisser un commentaire ! </em></h6>
 
                 <form action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
                     method="post">
@@ -90,22 +91,31 @@
         <!-- COMMENTAIRES -->
 
 
-        <div class="col-sm-12 my-2">
+        <div class="col-sm-12 my-4">
+
             <h4> <em>Les dernieres avis :</em></h4>
-            <?php
-            // foreach va recuperer toutes le contenu du tableau $comments -> controller
-foreach ($allComments as $comment)
 
-{
+            <!-- foreach va recuperer toutes le contenu du tableau $comments -> controller -->
 
-    ?>
-            <h6 class="text-left"><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le
-                <?= $comment['date_commentaire'] ?> </h6>
+            <?php foreach ($allComments as $comment) { ?>
+
+            <div class="col-sm-12 result p-2">
+
+                <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
+                            <em></strong> le
+                    <?= $comment['date_commentaire'] ?> 
+
+                <span id="report">Signaler le commentaire :   
+                    <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
+                </span></h6>
                 <br><br>
-            <p>     <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+                <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
 
 
-            </p>
+
+                </p>
+
+            </div>
 
 
 
@@ -133,18 +143,6 @@ foreach ($allComments as $comment)
 <?php
 // }  
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

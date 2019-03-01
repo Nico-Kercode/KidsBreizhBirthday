@@ -44,6 +44,17 @@ class CommentManager extends Manager
 
     }
 
+    public function incrementAlert($id) {
+        $db = $this->dbConnect();
+
+        $req = $db->prepare('UPDATE commentaires SET alert = alert + 1 WHERE id = :id');
+        $success = $req->execute(array(
+            "id" => $id
+        ));
+                
+        return $success;
+    }
+
 
     public function deleteComment($id)
     {

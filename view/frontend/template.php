@@ -54,6 +54,7 @@
     </script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/search.js"></script>
+    <script src="assets/js/alert&like.js"></script>
 
 
     </div> <!-- wrapper -->

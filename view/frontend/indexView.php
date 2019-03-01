@@ -21,8 +21,9 @@
 <div class="container" id="indexView">
     <div class="row">
         <div id="accueil">
-            <h1 class="my-4" id="degemer">Kid's Breizh birthday</h1>
-
+            <div class="d-flex">
+            <img class="img-fluid" src="assets\img\artworkIMG\logoGateau.png" alt="logo Gateaux"> <h1 id="degemer">Kid's Breizh birthday</h1> 
+            </div>
 
             <p id="texteAccueil"> <span class="tabulation">Nous</span> avons regroupé pour vous tous les professionnels
                 du

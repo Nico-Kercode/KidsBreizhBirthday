@@ -46,6 +46,10 @@ body {
 
     color:rgb(38, 60, 158);
 }
+
+.dropdown-menu{
+    background-color: #1995ad!important;
+}
 .btn-dark{
     background-color: #a1d6e2!important;
     color: rgb(71, 71, 71) !important;
@@ -89,9 +93,10 @@ body {
     color: #1995ad!important; 
  }
 #degemer{
+    margin-top: 6%;
     color: rgb(0, 0, 0) !important;
-    font-size: 2em;
-    text-shadow: 2px 2px #adaaaa;
+    font-size: 2.1em;
+    text-shadow: 3px 2px  #16aeeb;
 
 }
 .tabulation{
@@ -203,7 +208,7 @@ body {
 }
 #plusdinfos{
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1em;
     background-color: #f1f1f2 !important;
     margin: 0 0 0 83%;
     text-transform: uppercase;
@@ -211,8 +216,8 @@ body {
 
 
 }
-#plusdinfos a:hover{
-    color: #52dad0!important;
+#comBtn:hover{
+    background-color: #67f1e8!important;
 }
 .photosadd{
     min-width:700px;
@@ -304,6 +309,8 @@ body {
 #contact {
 
     margin-top: 20px;
+    padding: 20px;
+    background: whitesmoke;
 }
 #result h1 {
     background-color: rgb(230, 230, 230);
@@ -312,4 +319,18 @@ body {
 .result{
     border: 1px solid rgb(201, 201, 201);
     line-height: 30px !important;
+}
+#report{
+
+    background: white;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    margin-left:48%;
+}
+.js-dislike-comment{
+    font-size:1.4em;
+}
+.js-dislike-comment:hover{
+    background: red !important;
+    
 }

@@ -5,6 +5,7 @@ namespace Kbb\Controller;
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
 use \Kbb\Model\CommentManager;
+use \Orbitale\Component\ImageMagick\Command;
 
 
 class Controller
@@ -67,9 +68,41 @@ class Controller
 
     private function manageFile($file) {
 
-        $folder ="assets\img/"; 
-        $image = rand(1000, 10000000).$file['name']; 
-        $path = $folder . $image ; 
+        // $command = new Command();
+        // var_dump($command);
+        // $response = $command
+        //     ->convert($file)
+        //     ->output('background.jpeg')
+        //     ->resize('50x50')
+        //     ->run();
+
+        //     // Check if the command failed and get the error if needed
+        //     if ($response->hasFailed()) {
+        //         var_dump($response->getError());
+        //         throw new Exception('An error occurred:'.$response->getError());
+        //     } else {
+        //         echo('Hello');
+        //         // If it has not failed, then we simply send it to the buffer
+        //         header('Content-type: image/gif');
+        //         echo file_get_contents('logo.gif');
+        //     }
+
+        //     die;
+
+        // $folder ="assets\test\img/"; 
+        // $image = rand(1000, 10000000).$file['name']; 
+        // $path = $folder . $image ; 
+        
+        // $thumb = new Imagick();
+        // var_dump ($thumb) ;
+       
+        // $thumb->readImage($file);    
+        // $thumb->resizeImage(80,40,Imagick::FILTER_LANCZOS,1);
+        // $thumb->writeImage($path);
+        // $thumb->clear();
+        // $thumb->destroy();
+
+        
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
         $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); $filename=$file['name']; 
@@ -192,6 +225,31 @@ class Controller
         }
 
     }
+
+    public function incrementAlert($arr) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arr['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arr['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update comment
+            $success = $this->commentManager->incrementAlert($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/alertView.php');
+    }
+
 
     public function mySearch($search) {
 

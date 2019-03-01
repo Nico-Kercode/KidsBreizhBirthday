@@ -1,17 +1,18 @@
 <div class="wrapper ">
     <!-- Sidebar Holder -->
 
-    <?php if(isset($_SESSION['pseudo'])) { ?>
-    <nav id="sidebar" class="">
-        <?php } ?>
-        <?php if(empty($_SESSION)) { ?>
+   
+        
         <nav id="sidebar" class="active">
-            <?php } ?>
+            
 
             <div class="sidebar-header" id="Mainlogo">
 
-                <a href="index.php?action=home">Kid's <br> <span class="tabulation2">BreiZH </span>
-                    <span class="tabulation">Birthday </span></a>
+                <a href="index.php?action=home"> <img src="assets\img\artworkIMG\logoGateau.png" class="img-fluid"
+                        alt="logo Gateau"></a>
+
+                <!-- <a href="index.php?action=home">Kid's <br> <span class="tabulation2">BreiZH </span>
+                    <span class="tabulation">Birthday </span></a> -->
             </div>
 
 
@@ -128,27 +129,16 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
                 <div class="container-fluid">
-                    <?php 
-            if(isset($_SESSION['pseudo'])) {
-            ?>
-                    <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <?php } ?>
-
-
-                    <?php if(empty($_SESSION)) { ?>
-
-
+          
                     <button type="button" id="sidebarCollapse" class="navbar-btn active">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
+                
 
-                    <?php } ?>
+
+               
 
 
 
@@ -161,24 +151,40 @@
                     </button>
 
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.php?action=home">ACCUEIL</a>
+                                <a class="nav-link" href="index.php?action=home">Accueil</a>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Villes
+                                </a>
+                                <div class=" dropdown-menu-left dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="index.php?action=vannes">Vannes</a>
+                                    <a class="dropdown-item" href="#">Lorient</a>
+                                    
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Activités
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Interieur</a>
+                                    <a class="dropdown-item" href="#">Exterieur</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Les mieux notés</a>
+                                </div>
+                            </li>
+
                             <?php if(empty($_SESSION)) { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?action=formLogin" class="article">CONNEXION</a>
+                                <a class="nav-link" href="index.php?action=formLogin" class="article">Connexion</a>
                             </li>
                             <?php } ?>
-
-                            <!--
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li> -->
                         </ul>
                     </div>
 
@@ -188,16 +194,16 @@
 
 
             <!-- BARRE DE RECHERCHE  -->
-            <form  method="POST"  action="index.php?action=search" class="input-group  my-2" >
-            <!-- <div class="input-group  my-2"> -->
-                
-                    <input class="form-control py-2 border-right-0 border" type="search"
-                        value="" name="searchbar" id="search" required>
-                    <span class="input-group-append">
-                        <button class="btn btn-outline-secondary border-left-0 border" name="submitSearch" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                
+            <form method="POST" action="index.php?action=search" class="input-group  my-2">
+                <!-- <div class="input-group  my-2"> -->
+
+                <input class="form-control py-2 border-right-0 border" type="search" value="" name="searchbar"
+                    id="search" required>
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" name="submitSearch" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+
             </form>
-        <!-- </div> -->
+            <!-- </div> -->

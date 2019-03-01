@@ -21,7 +21,7 @@ foreach ($result as $liste)
 
                 <div class="col-lg-8 offset-lg-2 p-4">
 
-                    <h4 class="articles"> <a
+                    <h4 class="bg-light"> <a
                             href="index.php?action=annonce&id=<?= $liste['id'] ?>"><?= htmlspecialchars($liste['titre']) ?>
                             </strong></a> </h4>
 

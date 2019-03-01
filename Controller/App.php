@@ -92,7 +92,7 @@ class App
                 
                 // LIEN VERS MON COMPTE //
 
-                } elseif($_GET['action'] == 'moncompte' && isset($_SESSION['rang'])){
+                } elseif($_GET['action'] == 'moncompte'){
             
 
                     if (!empty($_SESSION['pseudo'])) {
@@ -130,7 +130,7 @@ class App
                  
                 //  MISE A JOUR INFOS DU COMPTE //
 
-                } elseif ($_GET['action'] == 'update' && isset($_SESSION['rang'])){
+                } elseif ($_GET['action'] == 'update'){
 
                     if (isset($_POST['update_user'])) {
                         $member_id = $_SESSION['id'];
@@ -151,7 +151,7 @@ class App
 
                 // VUE FORMULAIRE AJOUT ANNONCE 
 
-                } elseif ($_GET['action'] == 'ajoutAnnonce' && isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2' ){
+                } elseif ($_GET['action'] == 'ajoutAnnonce'){
 
                     
                     require('view\postAnnonceView.php');
@@ -167,7 +167,7 @@ class App
 
                 // AJOUT D UN COMMENTAIRE           
                 } 
-                elseif ($_GET['action'] == 'addComment' && isset($_SESSION['rang'])) {
+                elseif ($_GET['action'] == 'addComment') {
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
@@ -182,14 +182,27 @@ class App
                         }
                     }
 
+                // ALERT COMMENTAIRES 
+
+                } elseif ($_GET['action'] == 'alert') {
+                    // Incrément du nb d'alert sur un commentaire
+                    $this->controller->incrementAlert($_GET);
+               
+                
                 // SEARCH BAR 
 
-                } elseif ($_GET['action'] == 'search') {
+
+                 } elseif ($_GET['action'] == 'search') {
                    
+
                     if (isset(($_POST ['submitSearch']))) {
+
                         
-                        $search= $_POST['searchbar'];        
+                        $search= $_POST['searchbar'];
+                        
+                    
                         $this->controller->mySearch($search);
+
 
                     }
 

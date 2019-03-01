@@ -19,7 +19,7 @@
             </div>
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input type="text" name="email" class="form-control" pattern="regex" required>
+                <input type="text" name="email" class="form-control"  required>
             </div>
         </div>
         <div class="form-group">
