@@ -13,16 +13,22 @@
 
             <div class=" col d-none d-lg-block ">
 
-                <img class=" img-fluid logoA" src="<?= $annonce['logo']?>" alt="logo">
+                <img class="img-fluid img-thumbnail" src="<?= $annonce['logo']?>" alt="logo">
 
             </div>
 
-            <div class="col-lg-8 titreAnnonce">
-                <h2 class="font-weight-bold">
+            <div class="col-lg-8 d-flex">
+                <h2 class=" text-center font-weight-bold ">
                     <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
-                <p class="text-right mb-2"> <em> publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?>
-                        </span> </em> </p>
+                <div class="col-sm-4 lg-4 offset-lg-7 mb-6">
+
+
+                    <p class="mt-4"> <em> publié par <span>
+                                <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?>
+                            </span> </em>
+                    </p>
+                </div>
 
 
             </div>
@@ -30,9 +36,9 @@
 
         <div class="row my-4">
 
-            <div class="offset-lg-2">
+            <div class=" offset-md-3 offset-lg-3">
 
-                <img class="img-fluid  img-thumbnail " src="<?= $annonce['photo1']?>" alt="Photo1">
+                <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
 
             </div>
 
@@ -65,7 +71,7 @@
                 <form action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
                     method="post">
                     <div>
-                        <textarea id="comment" name="comment" rows="5" cols="50"></textarea>
+                        <textarea class="form-control" id="comment" name="comment" rows="5" cols="50"></textarea>
                     </div>
                     <div>
                         <input type="submit" />
@@ -73,71 +79,81 @@
                 </form>
 
                 <?php } ?>
-
-
-
             </div>
-
-
-
         </div>
 
     </div>
 
 
 
-    <div class="row">
+    <div class="row d-flex">
 
         <!-- COMMENTAIRES -->
 
 
-        <div class="col-sm-12 my-4">
+        <div class="col-sm-12 col-lg-6 my-2">
 
-            <h4> <em>Les dernieres avis :</em></h4>
+            <h4 class="text-left"> <em>Les dernieres avis :</em></h4>
+        </div>
 
-            <!-- foreach va recuperer toutes le contenu du tableau $comments -> controller -->
+        <div class="col-sm-12 col-lg-6 my-2 ">
 
-            <?php foreach ($allComments as $comment) { ?>
-
-            <div class="col-sm-12 result p-2">
-
-                <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
-                            <em></strong> le
-                    <?= $comment['date_commentaire'] ?> 
-
-                <span id="report">Signaler le commentaire :   
-                    <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
-                </span></h6>
-                <br><br>
-                <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
-
-
-
-                </p>
+            <div class=" text-right">
+                <span class="pouce"> Conseillé
+                    <span id="<?= $annonce['id']?>" class=" js-like-annonce far fa-thumbs-up "> :
+                          <?=$annonce['jaime'] ?></span>
+                </span>
+                <span class="pouce"> Désonseillé
+                    <span id="<?= $annonce['id']?>" class=" js-dontlike-annonce far fa-thumbs-down "> :
+                      <?=$annonce['jaimepas'] ?></span>
+                </span>
 
             </div>
+        </div>
+    </div>
+    <!-- foreach va recuperer toutes le contenu du tableau $comments -> controller -->
+
+    <?php foreach ($allComments as $comment) { ?>
+
+    <div class="col-sm-12 col-lg-12 result ">
+
+        <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
+                    <em></strong> le
+            <?= $comment['date_commentaire'] ?>
+
+            <span id="report">Signaler :
+                <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
+            </span></h6>
+        <br><br>
+        <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+
+
+
+        </p>
+
+    </div>
 
 
 
 
-            <p id="edition">
+    <p id="edition">
 
 
-                <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] ==  '1') { ?>
+        <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] ==  '1') { ?>
 
-                <a href="index.php?action=editForm&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
-                    class="btn-dark">EDITER</a>
+        <a href="index.php?action=editForm&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
+            class="btn-dark">EDITER</a>
 
-                <a href="index.php?action=deleteC&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
-                    class="btn-dark">SUPPRIMER</a> </h3>
-            </p>
-            <?php
+        <a href="index.php?action=deleteC&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
+            class="btn-dark">SUPPRIMER</a> </h3>
+    </p>
+    <?php
     }
 }
 ?>
-        </div>
 
-    </div>
+
+
 
 </div> <!-- annonces -->
 <?php

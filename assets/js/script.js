@@ -97,10 +97,4 @@ class TextScramble {
   
   next()
 
-  // ——————————————————————————————————————————————————
-  // ouverture mon compte
-  // ———
-  $( "#moncompte" ).click(function() {
-    $( "#sidebarCollapse" ).click();
-  });
 

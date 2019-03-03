@@ -5,7 +5,7 @@ namespace Kbb\Controller;
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
 use \Kbb\Model\CommentManager;
-use \Orbitale\Component\ImageMagick\Command;
+
 
 
 class Controller
@@ -20,27 +20,50 @@ class Controller
 
         $this->memberManager = new MemberManager();
         $this->addManager = new AddManager();
-        $this->commentManager = new CommentManager();
-
-       
-       
+        $this->commentManager = new CommentManager();   
        
     }
+
+    
+    // -----------------
+    // -> ACCUEIL  
+    // ----------------
 
     public function indexView() {
         require('view/frontend/indexView.php'); 
     }
+    
+    // --------------------------------
+    // -> MISE A JOUR INFOS UTILISATEUR
+    // --------------------------------
 
     public function userAccountmngt() {
         require('view/frontend/userAccountView.php'); 
 
     }
+    
+    // --------------------
+    // -> FORMULAIRE LOGIN 
+    // --------------------
+
     public function loginView() {
         require('view\frontend\loginView.php');
     }
+    
+    // ---------------------------
+    // -> FORMULAIRE AJOUT ANNONCE
+    // ---------------------------
+
+
     public function addView() {
         require('view\frontend\postAdd.php');
     }
+
+    
+    // -----------------------
+    // REGISTER NOUVEAU MEMBRE 
+    // -----------------------
+
 
     public function addMember() {
 
@@ -56,16 +79,255 @@ class Controller
             else {
                     throw new Exception('les mots de passe ne correspondent pas');
                 }     
-        $picProfile= $this->manageFile($_FILES['image'],120,120);
-        
-
+        $picProfile= $this->manageFile($_FILES['image'],400,400);
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile);
         
     
         header('Location: index.php');
+    }  
+
+    // ------------------
+    // LOGIN
+    // ------------------
+
+    public function Login($pseudo, $password){
+
+        $member = $this->memberManager->loginMember($pseudo,$password);
+
+        if (password_verify($password,$member['password'])) {
+    
+            $_SESSION['id']=$member['id'];
+            $_SESSION['pseudo']=$member['pseudo'];
+            $_SESSION['email']= $member['email'];
+            $_SESSION['avatar']= $member['avatar'];
+            $_SESSION['rang']= $member['rang'];
+            $_SESSION['password']= $member['password'];
+
+            header('Location: index.php');
+         }    
+       else {
+            throw new Exception('Mauvaise combinaison login/password');
+        }      
+    
     }
 
+    // -------------------------
+    // EDITON INFOS UTILISATEURS
+    // -------------------------
+
+
+    public function updateMember($member_id,$pseudo,$email,$password_1) {
+
+
+        $passHash= password_hash($password_1, PASSWORD_DEFAULT );
+        $registerMember = $this->memberManager->updtMember($member_id,$pseudo,$email,$passHash);
+        
+        header('Location: index.php?action=accounttmnagement');
+        
+    }
+
+    // ------------------
+    // AJOUT ANNONCE
+    // ------------------
+
+    public function addAnnonce() {
+
+      
+        $ville=$_POST['commune'];
+        $logo=$this->manageFile($_FILES['logo'],160,80);
+        $titreA=htmlspecialchars($_POST['titreA']);
+        $descriptif= htmlspecialchars($_POST['contentA']);
+        $contact= htmlspecialchars($_POST['contentB']);
+        $photo1=$this->manageFile($_FILES['photo1'],950,400);
+        $photo2=$this->manageFile($_FILES['photo2'],950,400);
+        $photo3=$this->manageFile($_FILES['photo3'],950,400);
+        $id_MEMBRES = $_SESSION['id'];
+
+        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES);
+
+        header('Location: index.php?action=vannes&page=1');
+
+    }
+
+    // -------------------
+    // TOUTES LES ANNONCES
+    // -------------------
+
+    public function listAnnonces($numeroPage,$annonceParPage) {
+
+        $starter = ($numeroPage-1 )*$annonceParPage;
+
+        // $nbDePage = $this->addManager->countPages();
+        $annonces = $this->addManager->getAnnonces($starter,$annonceParPage);
+        
+
+        require('view\frontend\addView1.php');
+
+        return $nbDePage;
+    }
+
+    // public function nbPages() {
+
+    //     $nbDePage = $this->addManager->countPages();
+    //     require('view\frontend\addView1.php');
+
+    //     return $nbDePage;
+
+    // }
+    // ------------------
+    // ANNONCE SUR 1 PAGE
+    // ------------------
+
+    public function annonce($id) {
+
+        $annonce = $this->addManager->getAnnonce($id);
+        $allComments = $this->commentManager->getComments($id);
+       
+
+        require('view\frontend\AnnonceView.php');
+        
+
+    }
+    // ------------------
+    // J AIME +1
+    // ------------------
+
+
+    public function incrementLike($arr) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arr['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arr['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update 
+            $success = $this->addManager->incrementJaime($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/likeView.php');
+    }
+
+    // ------------------
+    // AIME PAS +1
+    // ------------------
+
+    public function incrementdontLike($arry) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arry['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arry['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update 
+            $success = $this->addManager->incrementJaimepas($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/dontlikeView.php');
+    }
+
+    // ------------------
+    // TOTAL ANNONCES
+    // ------------------
+
+    public function count(){
+
+        $total = $this->addManager->countAnnonces();
+
+        require('view\frontend\indexView.php');
+
+        return $total['total'];
+
+
+    }
+
+    // ------------------
+    // AJOUT COMMENTAIRES
+    // ------------------
+    public function postComment($comment,$id_ANNONCES, $id_MEMBRES )
+    {
+        
+    
+        $affectedLines = $this->commentManager->addComment($comment,$id_ANNONCES, $id_MEMBRES);
+    
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        }
+        else {
+ 
+        header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
+
+        }
+
+    }
+
+    // -----------------------
+    // SIGNALEMENT COMMENTAIRE
+    // -----------------------
+
+    public function incrementAlert($arr) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arr['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arr['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update comment
+            $success = $this->commentManager->incrementAlert($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/alertView.php');
+    }
+
+    // ------------------
+    // BARRE DE RECHERCHE
+    // ------------------
+
+    public function mySearch($search) {
+
+        $result = $this->addManager->searchBar($search);
+
+        require('view\frontend\searchResultView.php');
+        
+                 
+        return $result;
+
+    }
+
+    
+    // -----------------
+    // ENVOI IMAGES
+    // ----------------
 
     private function manageFile($file,$width,$height) {
 
@@ -96,155 +358,12 @@ class Controller
         } 
 
     }
-
-
-    public function Login($pseudo, $password){
-
-        $member = $this->memberManager->loginMember($pseudo,$password);
-
-        if (password_verify($password,$member['password'])) {
     
-           
-    
-            $_SESSION['id']=$member['id'];
-            $_SESSION['pseudo']=$member['pseudo'];
-            $_SESSION['email']= $member['email'];
-            $_SESSION['avatar']= $member['avatar'];
-            $_SESSION['rang']= $member['rang'];
-            $_SESSION['password']= $member['password'];
-
-            header('Location: index.php');
-         }    
-       else {
-            throw new Exception('Mauvaise combinaison login/password');
-        }      
-    
-    }
-
-
-
-    public function updateMember($member_id,$pseudo,$email,$password_1) {
-
-
-        $passHash= password_hash($password_1, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->updtMember($member_id,$pseudo,$email,$passHash);
-        
-        header('Location: index.php?action=accounttmnagement');
-        
-    }
-
-    public function addAnnonce() {
-
-      
-        $ville=$_POST['commune'];
-        $logo=$this->manageFile($_FILES['logo'],100,100);
-        $titreA=htmlspecialchars($_POST['titreA']);
-        $descriptif= htmlspecialchars($_POST['contentA']);
-        $contact= htmlspecialchars($_POST['contentB']);
-        $photo1=$this->manageFile($_FILES['photo1'],900,450);
-        $photo2=$this->manageFile($_FILES['photo2'],900,450);
-        $photo3=$this->manageFile($_FILES['photo3'],900,450);
-        $id_MEMBRES = $_SESSION['id'];
-
-        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES);
-
-        header('Location: index.php?action=vannes');
-
-    }
-
-    public function listAnnonces() {
-                                        
-    
-        $annonces = $this->addManager->getAnnonces();
-
-        require('view\frontend\addView1.php');
-
-        return $annonces;
-    }
-
-    public function annonce($id) {
-
-        $annonce = $this->addManager->getAnnonce($id);
-        $allComments = $this->commentManager->getComments($id);
-       
-
-        require('view\frontend\AnnonceView.php');
-        
-
-    }
-
-
-    public function count(){
-
-        $total = $this->addManager->countAnnonces();
-
-        require('view\frontend\indexView.php');
-
-        return $total['total'];
-
-
-    }
-
-
-
-    public function postComment($comment,$id_ANNONCES, $id_MEMBRES )
-    {
-        
-    
-        $affectedLines = $this->commentManager->addComment($comment,$id_ANNONCES, $id_MEMBRES);
-    
-        if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter le commentaire !');
-        }
-        else {
- 
-        header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
-
-        }
-
-    }
-
-    public function incrementAlert($arr) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arr['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arr['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            // Update comment
-            $success = $this->commentManager->incrementAlert($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
-        // Return $returnedValue in json format
-        require('view/frontend/alertView.php');
-    }
-
-
-    public function mySearch($search) {
-
-        $result = $this->addManager->searchBar($search);
-
-        
- 
-        require('view\frontend\searchResultView.php');
-        
-          
-        
-        return $result;
-
-    }
+    // -----------------
+    // RESIZE IMAGES !!! 
+    // ----------------
 
     private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
-
 
         $condition = 0;
         // Si certains paramètres ont pour valeur '' :
@@ -252,9 +371,6 @@ class Controller
         if ($img_Dst=='') { $img_Dst = $img_Src; } // (même nom)
         // ---------------------
         // si le fichier existe dans le répertoire, on continue...
-
-        // var_dump($rep_Src.$img_Src);
-        // var_dump(file_exists($rep_Src.$img_Src));
 
         if (file_exists($rep_Src.$img_Src) && ($W_max!=0 || $H_max!=0)) { 
           // ----------------------
@@ -302,10 +418,9 @@ class Controller
              // - Si l'image Source est plus petite que les dimensions indiquées :
              // Par defaut : PAS de redimensionnement.
              // - Mais on peut "forcer" le redimensionnement en ajoutant ici :
-                $condition = 1; 
+                 $condition = 1; 
              if ($condition==1) {
-                //  echo('Hello');
-       
+
                 // ---------------------
                 // creation de la ressource-image "Src" en fonction de l extension
                 switch($extension_Src) {
@@ -373,30 +488,3 @@ class Controller
 
 
 }
-
-
-
-// MANAGE FILES OK 
-
-// private function manageFile($file) {
-
-        
-//     $folder ="assets\test\img/"; 
-//     $image = rand(1000, 10000000).$file['name']; 
-//     $path = $folder . $image ; 
-//     $target_file=$folder.basename($file["name"]);
-//     $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
-//     $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); $filename=$file['name']; 
-//     $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
-//     { 
-
-//         throw new Exception('mauvais format de fichier');
-
-//     }
-//     else{ 
-//     move_uploaded_file($file ['tmp_name'], $path); 
-
-//     return $path;
-//     } 
-
-// }

@@ -1,4 +1,5 @@
 vendor/*
-img/*
+assets/img/*
 tmp/*
 node_modules/*
+addView1SAVE.php

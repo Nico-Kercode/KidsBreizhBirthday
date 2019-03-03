@@ -33,13 +33,19 @@ class App
                     
                 // LIENS VERS VANNES VIEW
 
-                } elseif ($_GET['action'] == 'count'){
-
-                     $this->controller->count();
-                
+              
                 } elseif($_GET['action'] =='vannes') {
 
-                    $this->controller->listAnnonces();
+                    if (isset($_GET['page'])){
+                  
+                        $numeroPage= $_GET['page'];      
+                        $annonceParPage =5;
+                    
+
+                    $this->controller->listAnnonces($numeroPage,$annonceParPage);}
+                    else {
+                        throw new Exception('Aucun numéro de page récupéré');
+                    }
                    
                     
 
@@ -166,8 +172,8 @@ class App
                     }
 
                 // AJOUT D UN COMMENTAIRE           
-                } 
-                elseif ($_GET['action'] == 'addComment') {
+                 
+                } elseif ($_GET['action'] == 'addComment') {
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
@@ -187,25 +193,27 @@ class App
                 } elseif ($_GET['action'] == 'alert') {
                     // Incrément du nb d'alert sur un commentaire
                     $this->controller->incrementAlert($_GET);
-               
+
+                } elseif ($_GET['action'] == 'like') {
+                    // Incrément du nb de like sur une annonce
+                    $this->controller->incrementLike($_GET); 
                 
-                // SEARCH BAR 
+                } elseif ($_GET['action'] == 'dontlike') {
+                    // Incrément du nb de like sur une annonce
+                    $this->controller->incrementdontLike($_GET); 
+
+                    
+                    // SEARCH BAR 
 
 
-                 } elseif ($_GET['action'] == 'search') {
+                } elseif ($_GET['action'] == 'search') {
                    
 
-                    if (isset(($_POST ['submitSearch']))) {
-
-                        
-                        $search= $_POST['searchbar'];
-                        
-                    
+                    if (isset(($_POST ['submitSearch']))) {                       
+                        $search=htmlspecialchars($_POST['searchbar']);                    
                         $this->controller->mySearch($search);
 
-
                     }
-
                 }
 
                 // FIN INSTRUCTION ROUTEUR 
@@ -214,7 +222,7 @@ class App
                     $this->controller->indexView();
                 }
 
-           }
+            }
 
         } catch (Exception $e) {
             $errorMessage = $e->getMessage();
