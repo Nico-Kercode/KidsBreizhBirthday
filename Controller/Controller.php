@@ -139,9 +139,9 @@ class Controller
         $titreA=htmlspecialchars($_POST['titreA']);
         $descriptif= htmlspecialchars($_POST['contentA']);
         $contact= htmlspecialchars($_POST['contentB']);
-        $photo1=$this->manageFile($_FILES['photo1'],950,400);
-        $photo2=$this->manageFile($_FILES['photo2'],950,400);
-        $photo3=$this->manageFile($_FILES['photo3'],950,400);
+        $photo1=$this->manageFile($_FILES['photo1'],1000,400);
+        $photo2=$this->manageFile($_FILES['photo2'],1000,400);
+        $photo3=$this->manageFile($_FILES['photo3'],1000,400);
         $id_MEMBRES = $_SESSION['id'];
 
         $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES);
@@ -158,23 +158,23 @@ class Controller
 
         $starter = ($numeroPage-1 )*$annonceParPage;
 
-        // $nbDePage = $this->addManager->countPages();
+        $nbDePage = ceil(intval($this->addManager->countAnnonces())/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage);
-        
+      
 
-        require('view\frontend\addView1.php');
+        require('view\frontend\vannesView.php');
 
         return $nbDePage;
     }
 
-    // public function nbPages() {
+    public function nbPages() {
 
-    //     $nbDePage = $this->addManager->countPages();
-    //     require('view\frontend\addView1.php');
+        $nbDePage = $this->addManager->countPages();
+        require('view\frontend\addView1.php');
 
-    //     return $nbDePage;
+        return $nbDePage;
 
-    // }
+    }
     // ------------------
     // ANNONCE SUR 1 PAGE
     // ------------------

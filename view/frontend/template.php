@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+
+
     <!-- CSS + BOOTSTRAP + GOOGLE FONTS -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -50,11 +52,13 @@
     <?= $content ?>
 
 
-   
+
 
     <!-- jQuery CDN - -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+
 
     <!-- jQuery Pagination -->
     <script type="text/javascript" src="assets\js\jquery.simplePagination.js"></script>
@@ -84,16 +88,6 @@
     });
     </script>
 
-    <!-- Script pagination -->
-    <script>
-    $(function() {
-        $(selector).pagination({
-            items: 50,
-            itemsOnPage: 4,
-            cssStyle: 'light-theme'
-        });
-    });
-    </script>
     <!-- Scripts -->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/search.js"></script>

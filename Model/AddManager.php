@@ -8,7 +8,9 @@ use \PDO;
 class AddManager extends Manager
 {
 
-    // ajoute une annonce
+    // -------------
+    // AJOUT ANNONCE
+    // ------------
 
     public function addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES)
     
@@ -39,30 +41,41 @@ class AddManager extends Manager
     }
 
 
-    // recupere toutes les annonces 
+    // --------------------------------------
+    // RECUPERE TOUTES LES ANNONCES PAR VILLE
+    // -------------------------------------- 
 
     public function getAnnonces($starter,$parPage)
     {
         $db = $this->dbConnect();
 
-        $annonces = $db->query("SELECT * FROM annonces ORDER BY annonces.titre ASC  LIMIT $starter, $parPage")->fetchAll();
+        $annonces = $db->query("SELECT * FROM annonces WHERE ville = 'vannes' ORDER BY annonces.titre ASC LIMIT $starter, $parPage")->fetchAll();
+
         return $annonces;
     }
 
-    // public function countPages()
-    // {
-    //     $db = $this->dbConnect();
-    //     $nbDePage= $db->query('SELECT COUNT(*) FROM annonces')->fetchAll()[0][0];
+    // -----------------------
+    // CALCUL NBRE DE PAGES
+    // -----------------------
 
-    //     return $nbDePage;
-    // }
+    public function countAnnonces()
+    {
+        $db = $this->dbConnect();
+        $nbDePage= $db->query('SELECT COUNT(*) FROM annonces')->fetchAll()[0][0];
 
-    // recupere une annonce precise
+        return $nbDePage;
+    }
+
+
+    // -----------------------
+    // AFFICHAGE D UNE ANNONCE
+    // -----------------------
+
 
     public function getAnnonce($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, contact, jaime, jaimepas, photo1, pseudo
+        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, contact, jaime, jaimepas, photo1 ,photo2 , photo3, pseudo
         FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE annonces.id = ? ');
         $req->execute(array($id));
         $annonce = $req->fetch();
@@ -70,6 +83,11 @@ class AddManager extends Manager
 
         return $annonce;
     }
+
+
+    // --------------------
+    // COMPTE TOTAL ANNONCE
+    // --------------------
 
     public function countAnnonce()
     {   
@@ -82,8 +100,12 @@ class AddManager extends Manager
          return $total;
 
        
-
     }
+
+
+    // ------------------
+    // BARRE DE RECHERCHE
+    // ------------------
 
     public function searchBar($search)
     {
@@ -96,6 +118,13 @@ class AddManager extends Manager
         return $result;
 
     }
+
+
+    // -------------
+    // LIKE ANNNONCE
+    // -------------
+
+
     public function incrementJaime($id) {
         $db = $this->dbConnect();
 
@@ -106,6 +135,11 @@ class AddManager extends Manager
                 
         return $success;
     }
+
+    // ---------------
+    // DISLIKE ANNONCE
+    // ---------------
+
 
     public function incrementJaimepas($id) {
         $db = $this->dbConnect();
@@ -121,8 +155,3 @@ class AddManager extends Manager
 
 }
 
-// $comments->execute(array($id));
-        
-// $allComments= $comments->fetchAll();
-
-// return $allComments;

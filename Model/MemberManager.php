@@ -10,6 +10,10 @@ use \PDO;
 
 class MemberManager extends Manager{
 
+    // -----------------------------
+    // ENREGISTREMENT NOUVEAU MEMBRE
+    // -----------------------------
+
 
     public function registerMember($pseudo,$email, $passHash,$picProfile){
 
@@ -22,10 +26,12 @@ class MemberManager extends Manager{
             "upic"=>$picProfile
             ));
 
-       
-
-
     }
+
+    // -------------------
+    // UPDATE INFOS MEMBRE
+    // -------------------
+
 
     public function updtMember($member_id,$pseudo,$email,$passHash){
 
@@ -37,12 +43,15 @@ class MemberManager extends Manager{
             "password" =>$passHash,
             "id"=>$member_id
 
-
             ));
        
         return $affectedLines;
 
     }
+
+    // ------------
+    // LOGIN MEMBRE
+    // ------------
 
 
     public function loginMember($pseudo) {

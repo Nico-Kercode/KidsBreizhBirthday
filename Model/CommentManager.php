@@ -11,6 +11,11 @@ use \PDO;
 class CommentManager extends Manager
 {
     
+
+    // -----------------
+    // AJOUT COMMENTAIRE
+    // -----------------
+
     public function addComment($comment,$id_ANNONCES, $id_MEMBRES )
     {
         $db = $this->dbConnect();
@@ -28,6 +33,10 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
+    // --------------------
+    // AFICHAGE COMMENTAIRE
+    // --------------------
+
     public function getComments($id)
     {
         $db = $this->dbConnect();
@@ -44,6 +53,11 @@ class CommentManager extends Manager
 
     }
 
+    // -----------------------
+    // SIGNALEMENT COMMENTAIRE
+    // -----------------------
+
+
     public function incrementAlert($id) {
         $db = $this->dbConnect();
 
@@ -55,12 +69,16 @@ class CommentManager extends Manager
         return $success;
     }
 
+    // -----------------------
+    // SUPPRESSION COMMENTAIRE
+    //    ---- ADMIN ----
+    // -----------------------
 
     public function deleteComment($id)
     {
 
         $db = $this->dbConnect();
-        $req = $db->query("DELETE FROM comment WHERE id ='$id' ");
+        $req = $db->query("DELETE FROM commentaires WHERE id ='$id' ");
        
 
         return $req;

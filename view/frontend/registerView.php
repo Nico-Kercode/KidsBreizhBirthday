@@ -14,14 +14,18 @@
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">Pseudo</label>
             <div class="col-sm-9">
-                <input type="text" name="pseudo" class="form-control" required>
-
-            </div>
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
-                <input type="text" name="email" class="form-control"  required>
+                <input type="text" name="pseudo" class="form-control" required minlength="4" maxlength="10">
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-sm-9">
+                <label for="inputEmail" class="control-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="" required>
+
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Mot de passe</label>
             <div class="col-sm-9">
@@ -44,24 +48,22 @@
 
 
         <div class="form-group">
-            <button type="submit" class="btn btn-dark" name="reg_user" >Envoyer</button>
+            <button type="submit" class="btn btn-dark" name="reg_user">Envoyer</button>
             <div class="col-sm-9">
             </div>
         </div> <!-- /.form-group -->
-</form>
-        <div class="row">
+    </form>
+    <div class="row">
 
-            <div class="container">
-                <p class="butform">
-                    <span>Déja enregistré ? :</span> <a href="index.php?action=formLogin" id="co">Connexion</a>
-                </p>
-            </div>
-    
-
-
-<!-- </div> ./container -->
+        <div class="container">
+            <p class="butform">
+                <span>Déja enregistré ? :</span> <a href="index.php?action=formLogin" id="co">Connexion</a>
+            </p>
+        </div>
 
 
+
+        <!-- </div> ./container -->
 
 
 
@@ -70,6 +72,8 @@
 
 
 
-<?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+
+        <?php $content = ob_get_clean(); ?>
+
+        <?php require('template.php'); ?>

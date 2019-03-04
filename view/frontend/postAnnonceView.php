@@ -10,7 +10,7 @@
         <div class="col-sm-12">
 
             <form class="form-horizontal" role="form" method="POST" action="index.php?action=addannonce"
-                enctype="multipart/form-data">
+                enctype="multipart/form-data" id="postannonce">
 
                 <h3>Deposez votre annonce</h3>
                 <div class="form-group col-md-2">
@@ -24,7 +24,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="formControl" class="col-sm-510">LOGO</label>
+                    <label for="formControl" class="col-sm-510">LOGO (max. 1 Mo)</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                     <input type="file" name="logo" required class="form-control-file my-2">
                 </div>
                 <div class="form-group">
@@ -42,18 +43,22 @@
                     <textarea class="form-control" rows="5" required name="contentB"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="formControl" class="col-sm-510">Photo 1</label>
+
+                    <label for="formControl" class="col-sm-510">Photo 1 (max. 1 Mo)</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                     <input type="file" name="photo1" required class="form-control-file my-2">
                 </div>
                 <div class="form-group">
-                    <label for="formControl" class="col-sm-510">Photo 2</label>
-                    <input type="file" name="photo2" required class="form-control-file my-2"> 
+                    <label for="formControl" class="col-sm-510">Photo 2 (max. 1 Mo)</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+                    <input type="file" name="photo2" required class="form-control-file my-2">
                 </div>
                 <div class="form-group">
-                    <label for="formControl" class="col-sm-510">Photo 3</label>
+                    <label for="formControl" class="col-sm-510">Photo 3 (max. 1 Mo)</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                     <input type="file" name="photo3" required class="form-control-file my-2 ">
                 </div>
-                
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-dark" name="ajoutAnnonce">Envoyer</button>
 
@@ -66,6 +71,8 @@
 
     </div>
 </div> <!-- ./container -->
+
+
 
 
 

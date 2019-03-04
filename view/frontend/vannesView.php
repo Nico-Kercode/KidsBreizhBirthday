@@ -14,11 +14,11 @@ foreach ($annonces as $data) { ?>
 <div class="container">
     <div class="col-sm-12" id="mainAnnonces">
         <!-- boucle affichage des annonces -->
-        <div class=" row " id="annonceHaut">
+        <div class="row" id="annonceHaut">
 
             <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
 
-                <img class="img-fluid  img-thumbnail" src="<?= $data['logo']?>" alt="logo">
+                <img class="img-fluid img-thumbnail my-2" src="<?= $data['logo']?>" alt="logo">
             </div>
 
             <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
@@ -49,13 +49,14 @@ foreach ($annonces as $data) { ?>
 ?>
 <!--  -->
 
+
+<!--  PAGINATION -->
+
 <div class="row">
     <div class="col-sm-12 fixed-bottom">
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-
-
 
                 <?php 
                     $page=$_GET['page'];
@@ -68,21 +69,17 @@ foreach ($annonces as $data) { ?>
                              $pageprecedent= 1 ;
                              };                            
                              ?>
+                <?php 
+                for($i=1; $i <= $nbDePage; $i++){
+                    if( $page ==$i){
 
-                <li class="page-item ">
-                    <a class="page-link" href="index.php?action=vannes&page=<?= $pageprecedent ?>">Precedent</a>
-                </li>
+                    echo'<li class="page-item"><a class="page-link" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
+                }else{
+                    echo '<li class="page-item"><a class="page-link" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
+                }
 
-
-
-
-
-                <li class="page-item"><a class="page-link" href="index.php?action=vannes&page=1">1</a></li>
-                <li class="page-item"><a class="page-link" href="index.php?action=vannes&page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="index.php?action=vannes&page=3">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="index.php?action=vannes&page=<?=$pagesuivante ?>">Suivant</a>
-                </li>
+                }                
+                ?>
             </ul>
         </nav>
 

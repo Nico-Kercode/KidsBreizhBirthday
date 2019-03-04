@@ -37,10 +37,9 @@ class App
                 } elseif($_GET['action'] =='vannes') {
 
                     if (isset($_GET['page'])){
-                  
                         $numeroPage= $_GET['page'];      
                         $annonceParPage =5;
-                    
+                        
 
                     $this->controller->listAnnonces($numeroPage,$annonceParPage);}
                     else {
@@ -76,10 +75,7 @@ class App
                      else {
                             throw new Exception('Aucun identifiant de billet envoyé');
                     }
-
-
-                
-                
+        
                 // LIEN VERS FORMULAIRE LOGIN //
 
                 } elseif($_GET['action'] == 'formLogin'){
@@ -160,7 +156,7 @@ class App
                 } elseif ($_GET['action'] == 'ajoutAnnonce'){
 
                     
-                    require('view\postAnnonceView.php');
+                    require('view\frontend\postAnnonceView.php');
 
                 // AJOUT D UNE ANNONCE //
 

@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 
 
-<a class="article" href="index.php?action=vannes">Retour aux annonces</a>
+<a class="article" href="index.php?action=vannes&page=1">Retour aux annonces</a>
 <div class="container">
 
 
@@ -17,8 +17,8 @@
 
             </div>
 
-            <div class="col-lg-8 d-flex">
-                <h2 class=" text-center font-weight-bold ">
+            <div class="col-lg-8 ">
+                <h2 class="font-weight-bold p-2">
                     <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
                 <div class="col-sm-4 lg-4 offset-lg-7 mb-6">
@@ -36,7 +36,7 @@
 
         <div class="row my-4">
 
-            <div class=" offset-md-3 offset-lg-3">
+            <div class=" mx-auto ">
 
                 <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
 
@@ -101,11 +101,11 @@
             <div class=" text-right">
                 <span class="pouce"> Conseillé
                     <span id="<?= $annonce['id']?>" class=" js-like-annonce far fa-thumbs-up "> :
-                          <?=$annonce['jaime'] ?></span>
+                        <?=$annonce['jaime'] ?></span>
                 </span>
                 <span class="pouce"> Désonseillé
                     <span id="<?= $annonce['id']?>" class=" js-dontlike-annonce far fa-thumbs-down "> :
-                      <?=$annonce['jaimepas'] ?></span>
+                        <?=$annonce['jaimepas'] ?></span>
                 </span>
 
             </div>
