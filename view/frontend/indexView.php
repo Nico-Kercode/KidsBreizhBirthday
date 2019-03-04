@@ -5,21 +5,32 @@
 
 
 <div class="container">
+    <!-- <div class="row">
+        <div class="d-flex mx-auto" id="choixAccueil">
+            <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
+            <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
+            <a class="ml-4" href="index.php?action=lorient&page=1">Les mieux notés</a>
+        </div>
+    </div> -->
     <div class="row">
+        <div class="mx-auto" id="gateau">
+        <img class="img-fluid"src="assets\img\artworkIMG\logoGateau.png" alt="">
+        </div>
+        
+
         <div class=" d-sm-none d-md-block col-lg-10 " id="anim">
             <div class="text"></div>
         </div>
     </div>
+
+
 </div>
 
 
 <div class="container" id="indexView">
     <div class="row">
         <div class="col-sm-12 col-lg-10 offset-lg-2 " id="accueil">
-            <div class="d-flex mx-auto">
-                <img class="img-fluid" src="assets\img\artworkIMG\logoGateau.png" alt="logo Gateaux">
-                <h1 id="degemer">Kid's Breizh birthday</h1>
-            </div>
+
 
             <p id="texteAccueil"> <span class="tabulation">Nous</span> avons regroupé pour vous tous les professionnels
                 du

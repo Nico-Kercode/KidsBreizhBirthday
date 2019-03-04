@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'action_jacksonregular';
+    src: url('../font/actionj-webfont.woff2') format('woff2'),
+         url('../font/actionj-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gooddog_plainregular';
+    src: url('../font/gooddp__-webfont.woff2') format('woff2'),
+         url('../font/gooddp__-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body {
     margin: 0;
     padding: 0;
@@ -68,13 +84,47 @@ img {
 }
 
 #navbar {
-    background-color: #1995ad!important;
+   
+    height: 150px;
+    background-image: linear-gradient(rgb(25, 149, 173), rgb(34, 187, 218));
+                  
+    /* background-color: #1995ad!important; */
 }
 
 #navbar a {
-    font-size: 1.1em !important;
+    font-family: "action_jacksonregular";
+    font-size: 1.6em !important;
 }
+#navbar a.home{
+    font-family: "action_jacksonregular";
+    color: #E6EEB2 !important;
+}
+#navbar a.villes{
+    color:rgb(26, 255, 19) !important;
+}
+#choixAccueil{
+    font-family: "action_jacksonregular";
+    font-size: 1.4em !important;
+   
+}
+.Back{
+    font-family: "action_jacksonregular";
+    font-size: 1.4em !important;
+   
 
+}
+#choixAccueil a{
+    
+    padding: .3rem .2rem;
+    background-color:#E6EEB2;
+    border-radius: 15px;
+}
+#gateau{
+    margin-top: 30px;
+}
+#moncompte{
+    color:#ABBCBA !important;
+}
 .btn-floating {
     background-color: whitesmoke !important;
 }
@@ -105,9 +155,16 @@ img {
 }
 
 #degemer {
-    margin-top: 6%;
+    margin-left:50%;  
     color: rgb(0, 0, 0) !important;
-    font-size: 2.1em;
+   
+}
+.bandeau{
+    
+    margin-left: 10px !important;
+}
+.logoH2{
+    font-size: 3em;
     text-shadow: 3px 2px #16aeeb;
 }
 
@@ -175,21 +232,31 @@ img {
 /*  annonces view */
 
 #mainAnnonces {
-    border: 1px solid rgb(216, 216, 216);
+    border: 1px solid rgb(154, 226, 255);
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
 }
 
 #annonceHaut {
-    background-color: rgb(218, 216, 216);
-    border-bottom: 2px solid #6374B6;
+    background-color: white;
+    border-bottom: 3px solid #E6EEB2;
     max-height: 100px;
 }
 
 .titreAnnonce span {
     color: rgb(38, 60, 158);
 }
+.h2annonces{
+    font-family: "action_jacksonregular";
+    font-size:2em;
+    color: rgb(41, 97, 250) !important;
+    text-transform: uppercase;
+}
 
+.h2annonces:nth-child(0n+2){
+    color: rgb(187, 203, 233) !important;
+
+}
 #plusdinfos {
     text-decoration: none;
     font-size: 1em;
@@ -202,14 +269,15 @@ img {
 #comBtn:hover {
     background-color: #67f1e8!important;
 }
+.h1annonces{
+    font-family: "action_jacksonregular";
 
+}
 .h1annonces span {
-    background-color: #bcbabe;
+    font-family: "action_jacksonregular";
+    color: #09ff99;
     border-radius: 150px;
-    font-size: 1.4em;
-    width: 12%;
-    margin: 0 auto;
-    text-shadow: 2px 2px #adaaaa;
+    font-size: 1.4em;   
 }
 
 #Mainlogo a {
@@ -229,9 +297,11 @@ img {
 }
 
 #annonceContent {
+
     margin: 0 auto !important;
+    font-weight: normal !important;
     font-size: 1em;
-    line-height: 40px;
+    
 }
 
 #rgpd {
@@ -313,4 +383,8 @@ img {
 .pouce {
     font-size: 1.1em !important;
     margin-left: 2% !important;
+}
+
+#pageAnnonce{
+    background-color:#a8e6ff !important;
 }

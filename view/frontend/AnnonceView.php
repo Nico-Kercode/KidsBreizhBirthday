@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 
 
-<a class="article" href="index.php?action=vannes&page=1">Retour aux annonces</a>
+<a class="Back" href="index.php?action=vannes&page=1">   RETOUR <br>aux AnnonCeS</a>
 <div class="container">
 
 
@@ -18,16 +18,16 @@
             </div>
 
             <div class="col-lg-8 ">
-                <h2 class="font-weight-bold p-2">
+                <h2 class="text-left p-2 h2annonces">
                     <?= htmlspecialchars($annonce['titre']) ?>
                 </h2>
                 <div class="col-sm-4 lg-4 offset-lg-7 mb-6">
 
 
-                    <p class="mt-4"> <em> publié par <span>
+                    <!-- <p class="mt-4"> <em> publié par <span>
                                 <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?>
                             </span> </em>
-                    </p>
+                    </p> -->
                 </div>
 
 
@@ -46,7 +46,7 @@
 
         <div class="row">
 
-            <p class="p-4 text-center" id="annonceContent">
+            <p class="p-4 " id="annonceContent">
                 <?= nl2br(ucfirst(htmlspecialchars($annonce['contenu']))) ?>
             </p>
 

@@ -65,4 +65,3 @@
 
 </footer>
 <!-- Footer -->
-</div>

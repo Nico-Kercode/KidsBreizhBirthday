@@ -32,7 +32,7 @@
             </li>
             <?php } ?>
 
-        <!-- Menu administration rang 2 uniquement -->
+            <!-- Menu administration rang 2 uniquement -->
 
             <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '2') { ?>
             <li class="d-block"> <a href="index.php?action=admin" class="article my-2">Menu
@@ -40,8 +40,8 @@
             </li>
             <?php } ?>
         </ul>
-     
-        <!-- Liste bas sidebar --> 
+
+        <!-- Liste bas sidebar -->
 
 
         <ul class="list-unstyled CTAs ">
@@ -51,8 +51,8 @@
             <li>
                 <a href="#">Contact</a>
             </li>
-        
-        <!-- bouton Deconnexion si Session -->
+
+            <!-- bouton Deconnexion si Session -->
 
             <li>
                 <?php if(isset($_SESSION['pseudo'])) { ?>
@@ -60,16 +60,16 @@
                 <?php } ?>
             </li>
         </ul> <!-- fin liste bas -->
-    </nav> <!-- fin sidebar --> 
+    </nav> <!-- fin sidebar -->
 
-        <!-- Page Content Holder \ fin sur template !!!  -->
+    <!-- Page Content Holder \ fin sur template !!!  -->
     <div class="content">
         <!-- menu navbar -->
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
             <div class="container-fluid">
 
-            <!-- Collapse  bouton active & !active --> 
+                <!-- Collapse  bouton active & !active -->
 
                 <button type="button" id="sidebarCollapse" class="navbar-btn active">
                     <span></span>
@@ -83,24 +83,35 @@
                     <i class="fas fa-align-justify"></i>
                 </button>
 
-            <!-- # fin -->
+                <!-- # fin -->
+
+
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.php?action=home">Accueil</a>
-                        </li>
+                    <div class=" mx-auto">
+                        <a href="index.php?action=home"><img class="img-fluid  bandeau"
+                                src="assets\img\artworkIMG\lettrage.png" alt="backHome"></a>
+                        <p></p>
+                    </div>
+                    <ul class="nav navbar-nav mc-auto">
+                        <!-- <li class="nav-item active">
+                            <a class="nav-link home" href="index.php?action=home">ACCUEIL</a>
+                        </li> -->
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link villes" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                Villes
-                            </a>
-                            <div class=" dropdown-menu-left dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="index.php?action=vannes&page=1">Vannes</a>
-                                <a class="dropdown-item" href="index.php?action=lorient&page=1">Lorient</a>
+                               VILLES
+                            </a> -->
 
+
+
+
+                        <div class=" dropdown-menu-left dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="index.php?action=vannes&page=1">Vannes</a>
+                            <a class="dropdown-item" href="index.php?action=lorient&page=1">Lorient</a>
+                        </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 Activités
@@ -111,19 +122,19 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Les mieux notés</a>
                             </div>
-                        </li>
-            <!-- si pas de session : bouton connexion -->
+                        </li> -->
+                        <!-- si pas de session : bouton connexion -->
 
                         <?php if(empty($_SESSION)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=formLogin" class="article">Connexion</a>
+                            <a class="nav-link" href="index.php?action=formLogin" class="article">CONNEXION</a>
                         </li>
                         <?php } ?>
-            <!-- si session : ouverture side bar "mon compte" + script sur template  --> 
+                        <!-- si session : ouverture side bar "mon compte" + script sur template  -->
 
                         <?php if(!empty($_SESSION)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" class="article" id="moncompte">Mon compte</a>
+                            <a class="nav-link villes" href="#" id="moncompte">MON.COMPTE</a>
                         </li>
 
                         <?php } ?>
@@ -132,6 +143,8 @@
 
             </div>
         </nav> <!-- # Fin navbar -->
+
+        
 
         <!-- BARRE DE RECHERCHE  -->
 
@@ -145,3 +158,11 @@
             </span>
 
         </form>
+
+        <div class="row">
+            <div class="d-flex mx-auto" id="choixAccueil">
+                <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
+                <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
+                <a class="ml-4" href="index.php?action=lorient&page=1">Les mieux notés</a>
+            </div>
+        </div>

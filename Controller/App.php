@@ -42,7 +42,7 @@ class App
 
                     if (isset($_GET['page'])){
                         $numeroPage= $_GET['page'];      
-                        $annonceParPage =5;
+                        $annonceParPage =8;
                         
 
                     $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
