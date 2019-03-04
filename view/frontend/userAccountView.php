@@ -18,27 +18,27 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid" id="avatar" src="<?= $_SESSION['avatar']?>"
+            <img class="img-fluid img-thumbnail" id="avatar" src="<?= $_SESSION['avatar']?>"
                 alt="<?= $_SESSION['avatar']?>">
 
             <?php } ?>
 
 
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data"
-                action="index.php?action=register">
+                action="index.php?action=updavatar">
                 <?php include('view\errorView.php'); ?>
 
-                <!-- <div class="form-group">
+                <div class="form-group">
 
                     
 
-                    <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
-                    <input type="file" name="image" class="form-control-file my-2">
-                </div> -->
+                    <label for="formControl" class="col-sm-10 my-2">Modifiez votre image de profil <br> ( Le changement sera effectif lors de la prochaine connexion )</label>
+                    <input type="file" name="imageProfil" class="form-control-file my-2">
+                </div>
 
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-dark" name="reg_user">Envoyer</button>
+                    <button type="submit" class="btn btn-dark" name="updateAvatar">Envoyer</button>
                     <div class="col-sm-9">
                     </div>
                 </div> <!-- /.form-group -->
@@ -59,12 +59,13 @@
 
             <form class="form-horizontal my-4" role="form" method="POST" action="index.php?action=update">
                 <?php include('view\errorView.php'); ?>
+
+
                 <div class="form-group">
-
                     <!-- image -->
-
-                    <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
-                    <input type="file" name="image" class="form-control-file my-2">
+                    <!-- <label for="formControl" class="col-lg-4 offset-lg-1 col-sm-10">Changement avatar</label>
+                    <input type="file" name="image" class="form-control-file my-2"> -->
+                    
                 </div>
 
 

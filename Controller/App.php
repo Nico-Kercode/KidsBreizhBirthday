@@ -25,39 +25,44 @@ class App
 
            if (isset($_GET['action'])) {
 
-                // LIEN VERS L INDEX //
+                // -------------------
+                // VERS INDEX
+                // -------------------
 
                 if($_GET['action'] == 'home') { 
                                         
                     $this->controller->indexView();
                     
-                // LIENS VERS VANNES VIEW
+                // -------------------
+                // VERS VILLES VIEW
+                // -------------------
 
               
-                } elseif($_GET['action'] =='vannes') {
+                } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {
 
                     if (isset($_GET['page'])){
                         $numeroPage= $_GET['page'];      
                         $annonceParPage =5;
                         
 
-                    $this->controller->listAnnonces($numeroPage,$annonceParPage);}
+                    $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
                     else {
                         throw new Exception('Aucun numéro de page récupéré');
                     }
                    
-                    
 
-                
-                // AFFICHAGE VERS RGPD 
+                // -------------------
+                // VERS RGPD
+                // ------------------- 
 
-                
                 } elseif($_GET['action'] =='rgpd') {
 
                     require('view\frontend\mentionsView.php');
 
                 
-                // AFFICHAGE D'une ANNONCE 
+                // -------------------
+                // AFFICHAGE ANNONCE
+                // -------------------
  
                 
                 } elseif ($_GET['action'] == 'annonce'){
@@ -76,7 +81,9 @@ class App
                             throw new Exception('Aucun identifiant de billet envoyé');
                     }
         
-                // LIEN VERS FORMULAIRE LOGIN //
+                // ---------------------
+                // VERS FORMULAIRE LOGIN
+                // ---------------------
 
                 } elseif($_GET['action'] == 'formLogin'){
 
@@ -92,7 +99,9 @@ class App
                         $this->controller->Login($pseudo, $password);
                     }    
                 
-                // LIEN VERS MON COMPTE //
+                // -------------------
+                // VERS GESTION PROFIL
+                // -------------------
 
                 } elseif($_GET['action'] == 'moncompte'){
             
@@ -106,7 +115,9 @@ class App
                         $this->controller->indexView();
                     } 
                   
-                // LIEN DECONNEXION //
+                // ------------
+                // DECONNEXION
+                // ------------
 
                 } elseif ($_GET['action'] == 'deco') {    
                     
@@ -116,7 +127,9 @@ class App
                     $this->controller->indexView();   
 
                 
-                // LIEN ENREGISTREMENT UTILISATEUR //
+                // -------------------------
+                // ENREGISTREMENT UTILISATEUR
+                // -------------------------
 
                 } elseif ($_GET['action'] == 'formRegister'){
 
@@ -130,7 +143,9 @@ class App
                         $this->controller->addMember();
                     }
                  
-                //  MISE A JOUR INFOS DU COMPTE //
+                // -------------------
+                // MISE A JOUR PROFIL
+                // -------------------
 
                 } elseif ($_GET['action'] == 'update'){
 
@@ -149,16 +164,34 @@ class App
                                 }                         
                         $this->controller->updateMember($member_id,$pseudo, $email, $password_1);
                     }
+
+               
         
+                // ------------------------
+                // MISE A JOUR IMAGE PROFIL
+                // ------------------------
+              
 
-                // VUE FORMULAIRE AJOUT ANNONCE 
+                } elseif ($_GET['action'] == 'updavatar'){
 
+                    if (isset($_POST['updateAvatar'])) {
+                        $member_id = $_SESSION['id'];
+                                             
+                        $this->controller->updatePicProfile($member_id) ;
+                    }
+
+                // ------------------------
+                // FORMULAIRE AJOUT ANNONCE
+                // ------------------------ 
+                
                 } elseif ($_GET['action'] == 'ajoutAnnonce'){
 
                     
                     require('view\frontend\postAnnonceView.php');
 
-                // AJOUT D UNE ANNONCE //
+                // -------------
+                // AJOUT ANNONCE
+                // -------------
 
                 } elseif ($_GET['action'] == 'addannonce'){
 
@@ -166,8 +199,9 @@ class App
                     
                         $this->controller->addAnnonce();
                     }
-
-                // AJOUT D UN COMMENTAIRE           
+                // ----------------------
+                // AJOUT D UN COMMENTAIRE
+                // ----------------------           
                  
                 } elseif ($_GET['action'] == 'addComment') {
 
@@ -184,7 +218,10 @@ class App
                         }
                     }
 
-                // ALERT COMMENTAIRES 
+                // ------------------
+                // ALERT COMMENTAIRES
+                // ------------------
+
 
                 } elseif ($_GET['action'] == 'alert') {
                     // Incrément du nb d'alert sur un commentaire
@@ -198,8 +235,9 @@ class App
                     // Incrément du nb de like sur une annonce
                     $this->controller->incrementdontLike($_GET); 
 
-                    
-                    // SEARCH BAR 
+                // -------------    
+                // SEARCH BAR 
+                // -------------
 
 
                 } elseif ($_GET['action'] == 'search') {
@@ -211,8 +249,9 @@ class App
 
                     }
                 }
-
-                // FIN INSTRUCTION ROUTEUR 
+                // -------------------------------------------------------------------------------------------------
+                // ************************************   FIN INSTRUCTION ROUTEUR **********************************
+                // ------------------------------------------------------------------------------------------------- 
 
                 else {
                     $this->controller->indexView();

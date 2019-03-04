@@ -12,7 +12,7 @@
 foreach ($annonces as $data) { ?>
 
 <div class="container">
-    <div class="col-sm-12" id="mainAnnonces">
+    <div class="col-sm-12  my-4" id="mainAnnonces">
         <!-- boucle affichage des annonces -->
         <div class="row" id="annonceHaut">
 
@@ -53,7 +53,7 @@ foreach ($annonces as $data) { ?>
 <!--  PAGINATION -->
 
 <div class="row">
-    <div class="col-sm-12 fixed-bottom">
+    <div class="col-sm-12 mt-4 fixed-bottom">
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
@@ -78,7 +78,7 @@ foreach ($annonces as $data) { ?>
                     echo '<li class="page-item"><a class="page-link" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
                 }
 
-                }                
+                } // END FOR PAGINATION              
                 ?>
             </ul>
         </nav>

@@ -28,7 +28,7 @@
             <li class="d-block"><a href="index.php?action=ajoutAnnonce" class="article my-2 ">Ajouter une
                     annonce</a></li>
             <li class="d-block">
-                <a href="mesinfos" class="article">Gérer mes infomations</a>
+                <a href="index.php?action=moncompte" class="article">Gérer mes infomations</a>
             </li>
             <?php } ?>
 
@@ -97,7 +97,7 @@
                             </a>
                             <div class=" dropdown-menu-left dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="index.php?action=vannes&page=1">Vannes</a>
-                                <a class="dropdown-item" href="#">Lorient</a>
+                                <a class="dropdown-item" href="index.php?action=lorient&page=1">Lorient</a>
 
                         </li>
                         <li class="nav-item dropdown">

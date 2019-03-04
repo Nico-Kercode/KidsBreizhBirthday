@@ -127,6 +127,16 @@ class Controller
         
     }
 
+    public function updatePicProfile($member_id) {
+
+
+        $newAvatar= $this->manageFile($_FILES['imageProfil'],400,400);
+        $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+        
+        header('Location: index.php?action=moncompte');
+        
+    }
+
     // ------------------
     // AJOUT ANNONCE
     // ------------------
@@ -154,15 +164,16 @@ class Controller
     // TOUTES LES ANNONCES
     // -------------------
 
-    public function listAnnonces($numeroPage,$annonceParPage) {
+    public function listAnnonces($numeroPage,$annonceParPage,$ville) {
 
         $starter = ($numeroPage-1 )*$annonceParPage;
 
-        $nbDePage = ceil(intval($this->addManager->countAnnonces())/$annonceParPage);
-        $annonces = $this->addManager->getAnnonces($starter,$annonceParPage);
-      
+        $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
+        $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
 
-        require('view\frontend\vannesView.php');
+        $path = "view\\frontend\\{$ville}View.php";
+
+        require($path);
 
         return $nbDePage;
     }

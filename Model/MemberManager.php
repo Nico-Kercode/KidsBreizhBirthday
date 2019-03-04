@@ -49,6 +49,20 @@ class MemberManager extends Manager{
 
     }
 
+    public function upAvatar($member_id,$newAvatar){
+
+        $db = $this->dbConnect();
+        $updatemember = $db->prepare('UPDATE  membres SET avatar=(:avatar) WHERE membres.id=(:id)');
+        $affectedLines = $updatemember->execute(array(
+            "avatar" => $newAvatar,
+            "id"=>$member_id
+
+            ));
+       
+        return $affectedLines;
+
+    }
+
     // ------------
     // LOGIN MEMBRE
     // ------------

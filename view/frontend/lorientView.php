@@ -50,12 +50,10 @@ foreach ($annonces as $data) { ?>
 <!--  -->
 
 <div class="row">
-    <div class="col-sm-12 fixed-bottom">
+    <div class="col-sm-12 mt-4 fixed-bottom">
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-
-
 
                 <?php 
                     $page=$_GET['page'];
@@ -68,27 +66,22 @@ foreach ($annonces as $data) { ?>
                              $pageprecedent= 1 ;
                              };                            
                              ?>
+                <?php 
+                for($i=1; $i <= $nbDePage; $i++){
+                    if( $page ==$i){
 
-                <li class="page-item ">
-                    <a class="page-link" href="index.php?action=vannes&page=<?= $pageprecedent ?>">Precedent</a>
-                </li>
+                    echo'<li class="page-item"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
+                }else{
+                    echo '<li class="page-item"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
+                }
 
-
-
-
-
-                <li class="page-item"><a class="page-link" href="index.php?action=vannes&page=1">1</a></li>
-                <li class="page-item"><a class="page-link" href="index.php?action=vannes&page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="index.php?action=vannes&page=3">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="index.php?action=vannes&page=<?=$pagesuivante ?>">Suivant</a>
-                </li>
+                } // END FOR PAGINATION              
+                ?>
             </ul>
         </nav>
 
     </div>
 </div>
-
 
 <?php $content = ob_get_clean(); ?>
 

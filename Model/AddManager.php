@@ -45,12 +45,17 @@ class AddManager extends Manager
     // RECUPERE TOUTES LES ANNONCES PAR VILLE
     // -------------------------------------- 
 
-    public function getAnnonces($starter,$parPage)
+    public function getAnnonces($starter,$parPage,$ville)
     {
+       
         $db = $this->dbConnect();
 
-        $annonces = $db->query("SELECT * FROM annonces WHERE ville = 'vannes' ORDER BY annonces.titre ASC LIMIT $starter, $parPage")->fetchAll();
-
+        $req = $db->prepare("SELECT * FROM annonces WHERE ville = ? ORDER BY annonces.titre ASC LIMIT $starter, $parPage");
+        $req->execute(array($ville)); 
+       
+        $annonces = $req->fetchAll();
+        $req->closeCursor();
+        
         return $annonces;
     }
 
@@ -58,10 +63,13 @@ class AddManager extends Manager
     // CALCUL NBRE DE PAGES
     // -----------------------
 
-    public function countAnnonces()
+    public function countAnnonces($ville)
     {
         $db = $this->dbConnect();
-        $nbDePage= $db->query('SELECT COUNT(*) FROM annonces')->fetchAll()[0][0];
+        $req= $db->prepare('SELECT COUNT(*) FROM annonces WHERE ville = ? ');
+        $req->execute(array($ville));
+        $nbDePage=$req->fetchAll()[0][0];
+        $req->closeCursor();
 
         return $nbDePage;
     }
