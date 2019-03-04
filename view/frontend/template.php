@@ -57,13 +57,6 @@
     <!-- jQuery CDN - -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    
-
-
-    <!-- jQuery Pagination -->
-    <script type="text/javascript" src="assets\js\jquery.simplePagination.js"></script>
-
-
 
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
