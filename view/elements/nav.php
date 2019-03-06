@@ -35,7 +35,7 @@
             <!-- Menu administration rang 2 uniquement -->
 
             <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '2') { ?>
-            <li class="d-block"> <a href="index.php?action=admin" class="article my-2">Menu
+            <li class="d-block"> <a href="index.php?action=admin&page=1" class="article my-2">Menu
                     d'administration</a>
             </li>
             <?php } ?>
@@ -49,7 +49,7 @@
                 <a href="#">A Propos</a>
             </li>
             <li>
-                <a href="#">Contact</a>
+            <a href="mailto:contact@kidsbreizhbirthday.fr">Contactez nous</A>
             </li>
 
             <!-- bouton Deconnexion si Session -->
@@ -127,14 +127,14 @@
 
                         <?php if(empty($_SESSION)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=formLogin" class="article">CONNEXION</a>
+                            <a class="nav-link" href="index.php?action=formLogin"><span id="connexion">Connexion</span></a>
                         </li>
                         <?php } ?>
                         <!-- si session : ouverture side bar "mon compte" + script sur template  -->
 
                         <?php if(!empty($_SESSION)) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link villes" href="#" id="moncompte">MON.COMPTE</a>
+                        <li class="nav-item" id="menuCompte">
+                            <a class="nav-link villes" href="#" id="moncompte"> <span id="onglet">MON</span> COMPTE</a>
                         </li>
 
                         <?php } ?>
@@ -163,6 +163,6 @@
             <div class="d-flex mx-auto" id="choixAccueil">
                 <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
                 <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-                <a class="ml-4" href="index.php?action=lorient&page=1">Les mieux notés</a>
+                <a class="ml-4" href="index.php?action=meilleurNote&page=1">Les mieux notés</a>
             </div>
         </div>

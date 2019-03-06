@@ -93,31 +93,78 @@ img {
 
 #navbar a {
     font-family: "action_jacksonregular";
-    font-size: 1.6em !important;
+    font-size: 1.4em !important;
+    text-shadow: none !important;
+    padding: .5rem !important;
 }
 #navbar a.home{
     font-family: "action_jacksonregular";
     color: #E6EEB2 !important;
+    text-shadow: none !important;
 }
 #navbar a.villes{
-    color:rgb(26, 255, 19) !important;
+    color:rgb(255, 209, 6) !important;
+    text-shadow: none !important;
 }
 #choixAccueil{
     font-family: "action_jacksonregular";
     font-size: 1.4em !important;
    
 }
+#menuCompte a{
+    border:1px solid #E6EEB2;
+    border-radius: 20px;
+}
+#menuCompte a:hover{
+    color: blue !important;
+    border:1px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color:rgb(236, 255, 113)!important;
+}
 .Back{
+    
+    min-width: 25%;
+    margin-left: 10%;
+    padding: .5rem;
+    border-radius: 20px;
     font-family: "action_jacksonregular";
-    font-size: 1.4em !important;
+    font-size: 1.1em !important;
+    text-shadow: none !important;
+    background-color:#E6EEB2;
+    border:1px solid rgb(9, 198, 245);
+    color:rgb(0, 0, 0)!important;
    
 
+}
+
+.Back:hover{
+    background-color:rgb(236, 255, 113);
+    color:rgb(72, 21, 255)!important;
+}
+
+#retourAnnonce{
+    padding-top: 2%;
+    margin-top:2%;
+    max-width:20%;
+}
+#headerAnnonce{
+ 
+    max-width:60%;
+}
+.Back:hover{
+    color: red !important;
+    border:1px solid orange;
 }
 #choixAccueil a{
     
     padding: .3rem .2rem;
     background-color:#E6EEB2;
     border-radius: 15px;
+    text-shadow: none !important;
+}
+#choixAccueil a:hover{
+    color: blue!important;
+    background-color:rgb(236, 255, 113);
 }
 #gateau{
     margin-top: 30px;
@@ -132,6 +179,7 @@ img {
 #accueil {
     margin-top: 2%;
     margin-bottom: 15%;
+    text-shadow: none !important;
 }
 
 .inactiveLink {
@@ -157,6 +205,7 @@ img {
 #degemer {
     margin-left:50%;  
     color: rgb(0, 0, 0) !important;
+    text-shadow: none !important;
    
 }
 .bandeau{
@@ -173,13 +222,28 @@ img {
     margin-right: -1px;
     margin-left: 50px;
 }
-
+#onglet{
+    margin-right: -18px !important;
+    color:rgb(141, 49, 226)!important;
+}
+#connexion{
+    color:rgb(141, 49, 226)!important;
+    padding: .5rem;
+    font-size:1.1em;
+}
+#connexion:hover{
+    color: blue!important;
+    border-radius: 20px;
+    background-color:rgb(236, 255, 113);
+}
 #texteAccueil {
     font-size: 1em;
+    text-shadow: none !important;
 }
 
 #indexView {
     height: 1.2vh !important;
+    text-shadow: none !important;
 }
 
 .fas.fa-bars {
@@ -199,6 +263,7 @@ img {
     font-size: 1em;
     font-weight: 600;
     color: white !important;
+    text-shadow: none !important;
 }
 
 #membre a {
@@ -218,6 +283,7 @@ img {
     font-weight: 300 !important;
     font-size: 1em !important;
     text-align: center !important;
+    text-shadow: none !important;
 }
 
 #avatar {
@@ -235,24 +301,27 @@ img {
     border: 1px solid rgb(154, 226, 255);
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
+    text-shadow: none !important;
 }
 
 #annonceHaut {
-    background-color: white;
-    border-bottom: 3px solid #E6EEB2;
+    
+    
+    border-bottom: 2px solid rgb(132, 205, 253);
     max-height: 100px;
 }
 
-.titreAnnonce span {
-    color: rgb(38, 60, 158);
-}
 .h2annonces{
     font-family: "action_jacksonregular";
     font-size:2em;
-    color: rgb(41, 97, 250) !important;
+    color: rgb(141, 49, 226) !important;
     text-transform: uppercase;
+    text-shadow: none !important;
 }
+.titreAnnonce a h2:hover{
 
+    color: blue !important;
+}
 .h2annonces:nth-child(0n+2){
     color: rgb(187, 203, 233) !important;
 
@@ -271,6 +340,7 @@ img {
 }
 .h1annonces{
     font-family: "action_jacksonregular";
+    text-shadow: none !important;
 
 }
 .h1annonces span {
@@ -296,11 +366,12 @@ img {
     margin-left: 16px;
 }
 
-#annonceContent {
-
+.annonceContent {
+    font-family: 'Neucha', cursive!important;
     margin: 0 auto !important;
     font-weight: normal !important;
     font-size: 1em;
+    text-shadow: none;
     
 }
 
@@ -353,8 +424,7 @@ img {
 }
 
 #contact {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 5%;
     background: whitesmoke;
 }
 
@@ -365,7 +435,7 @@ img {
 
 .result {
     border: 1px solid rgb(201, 201, 201);
-    line-height: 30px !important;
+
 }
 
 #report {
@@ -377,7 +447,8 @@ img {
 }
 
 .js-dislike-comment:hover {
-    background: red !important;
+    border-radius: 20px;
+    background: rgb(253, 67, 67) !important;
 }
 
 .pouce {
@@ -387,4 +458,14 @@ img {
 
 #pageAnnonce{
     background-color:#a8e6ff !important;
+}
+
+.admin{
+    margin-top: 30px;
+    border: 1px solid black;
+    min-height : 200px;
+}
+.list{
+    background-color: rgb(185, 185, 185);
+    padding: .5rem;
 }

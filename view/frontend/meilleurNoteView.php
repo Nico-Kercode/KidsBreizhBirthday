@@ -1,23 +1,22 @@
-<?php $title = 'Lorient'; ?>
+<?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
 
 
 
 
-<h1 class="text-center my-4 h1annonces"> <span>L</span>ORIENT</h1>
+<h1 class="text-center my-4 h1annonces"> <span>L</span>es mieux notés</h1>
+
 
 
 <div class="container">
     <div class="row">
 
         <?php
-foreach ($annonces as $data) { ?>
+foreach ($bestAnnonces as $data) { ?>
 
         <div class="col-sm-6 " id="mainAnnonces">
             <!-- boucle affichage des annonces -->
             <div class="row" id="annonceHaut">
-
-
 
                 <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
                     <a class=" text-left font-weight-bold p-4 "
@@ -26,14 +25,17 @@ foreach ($annonces as $data) { ?>
                             <?= htmlspecialchars($data['titre']) ?>
                         </h2>
                     </a>
+                    <p class="text-left">nombre de j'aime :  <?=$data['jaime'] ?>
+
+                    </p>
 
                 </div>
                 <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
 
-                    <img class="img-fluid  my-2" src="assets\img\artworkIMG\garcon.png" alt="logo">
+                    <img class="img-fluid img-thumbnail my-2" src="<?= $data['logo']?>" alt="logo">
                 </div>
             </div>
-            <!-- <?= $data['logo']?> -->
+            <!--  -->
 
             <div class="row my-4">
 
@@ -55,8 +57,10 @@ foreach ($annonces as $data) { ?>
 <!--  -->
 
 
+<!--  PAGINATION -->
+
 <div class="row">
-    <div class="col-sm-12 fixed-bottom">
+    <div class="col-sm-12 mt-4 fixed-bottom">
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
@@ -73,12 +77,12 @@ foreach ($annonces as $data) { ?>
                              };                            
                              ?>
                 <?php 
-                for($i=1; $i <= $nbDePage; $i++){
+                for($i=1; $i <= $nbDePageJaime; $i++){
                     if( $page ==$i){
 
-                    echo'<li class="page-item"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
+                    echo'<li class="page-item"><a class="page-link" href="index.php?action=meilleurNote&page='.$i.'">'.$i."</a></li>";
                 }else{
-                    echo '<li class="page-item"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
+                    echo '<li class="page-item"><a class="page-link" href="index.php?action=meilleurNote&page='.$i.'">'.$i."</a></li>";
                 }
 
                 } // END FOR PAGINATION              
@@ -88,6 +92,7 @@ foreach ($annonces as $data) { ?>
 
     </div>
 </div>
+
 
 <?php $content = ob_get_clean(); ?>
 

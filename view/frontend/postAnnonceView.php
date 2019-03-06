@@ -35,8 +35,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="contenu">Descriptif</label>
-                    <textarea class="form-control" rows="5" required name="contentA"></textarea>
+                    <label for="contenu">Presentation du lieu (maxi 500 caracters) </label>
+                    <textarea class="form-control" rows="5"  maxlength="500"required name="contentA"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contenu">Descriptif des activités proposées (maxi 500 caracters)</label>
+                    <textarea class="form-control" rows="5" maxlength="500" required name="contentC"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="contenu">Contact / adresses </label>
@@ -53,12 +57,6 @@
                     <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                     <input type="file" name="photo2" required class="form-control-file my-2">
                 </div>
-                <div class="form-group">
-                    <label for="formControl" class="col-sm-510">Photo 3 (max. 1 Mo)</label>
-                    <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                    <input type="file" name="photo3" required class="form-control-file my-2 ">
-                </div>
-
                 <div class="form-group">
                     <button type="submit" class="btn btn-dark" name="ajoutAnnonce">Envoyer</button>
 

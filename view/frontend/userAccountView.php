@@ -26,13 +26,14 @@
 
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data"
                 action="index.php?action=updavatar">
-                <?php include('view\errorView.php'); ?>
+              
 
                 <div class="form-group">
 
-                    
 
-                    <label for="formControl" class="col-sm-10 my-2">Modifiez votre image de profil <br> ( Le changement sera effectif lors de la prochaine connexion )</label>
+
+                    <label for="formControl" class="col-sm-10 my-2">Modifiez votre image de profil <br> ( Le changement
+                        sera effectif lors de la prochaine connexion )</label>
                     <input type="file" name="imageProfil" class="form-control-file my-2">
                 </div>
 
@@ -58,29 +59,14 @@
         <div class="col-sm-8 col-md-8 col-lg-8">
 
             <form class="form-horizontal my-4" role="form" method="POST" action="index.php?action=update">
-                <?php include('view\errorView.php'); ?>
-
-
-                <div class="form-group">
-                    <!-- image -->
-                    <!-- <label for="formControl" class="col-lg-4 offset-lg-1 col-sm-10">Changement avatar</label>
-                    <input type="file" name="image" class="form-control-file my-2"> -->
-                    
-                </div>
-
-
+              
 
                 <div class="form-group">
-                    <label for="username" class="col-sm-3 control-label">Pseudo</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="pseudo"  class="form-control" disabled="disabled"  placeholder="<?= $_SESSION['pseudo']?>" value="<?= $_SESSION['pseudo']?>">
-
-                    </div>
-
-
+                   
                     <label for="email" class="col-sm-6 control-label">Saisissez votre nouvel Email </label>
                     <div class="col-sm-9">
-                        <input type="text" name="email" pattern="regex" class="form-control" placeholder="<?= $_SESSION['email']?>">
+                        <input type="text" name="email" class="form-control"
+                            placeholder="<?= $_SESSION['email']?>" value="<?= $_SESSION['email']?>"> 
                     </div>
                 </div>
                 <div class="form-group">

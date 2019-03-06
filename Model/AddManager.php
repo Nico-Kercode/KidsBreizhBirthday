@@ -12,14 +12,14 @@ class AddManager extends Manager
     // AJOUT ANNONCE
     // ------------
 
-    public function addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES)
+    public function addNewAnnonce($ville,$logo,$titreA,$presentation,$descriptif,$contact,$photo1,$photo2,$id_MEMBRES)
     
     {
             $db = $this-> dbConnect(); 
-            $addAnnonce = $db->prepare('INSERT INTO annonces (ville, logo, titre, contenu, contact, photo1, photo2, photo3, id_MEMBRES)   
+            $addAnnonce = $db->prepare('INSERT INTO annonces (ville, logo, titre ,presentation, descriptif, contact, photo1, photo2, id_MEMBRES)   
                    
             
-            VALUES (:ville, :logo, :titre, :contenu, :contact ,:photo1, :photo2, :photo3, :id_MEMBRES)');
+            VALUES (:ville, :logo, :titre, :presentation, :descriptif, :contact , :photo1, :photo2, :id_MEMBRES)');
             
             
             $affectedLines = $addAnnonce->execute(array(
@@ -27,11 +27,11 @@ class AddManager extends Manager
                 "ville" => $ville,
                 "logo" => $logo,
                 "titre" => $titreA,
-                "contenu" => $descriptif,
+                "presentation"=> $presentation,
+                "descriptif" => $descriptif,
                 "contact" => $contact,
                 "photo1" => $photo1, 
-                "photo2" => $photo2,
-                "photo3" => $photo3,         
+                "photo2" => $photo2,        
                 "id_MEMBRES"=> $id_MEMBRES
  
                 
@@ -58,10 +58,9 @@ class AddManager extends Manager
         
         return $annonces;
     }
-
-    // -----------------------
-    // CALCUL NBRE DE PAGES
-    // -----------------------
+    // ----------------------------
+    // CALCUL NBRE DE PAGES / VILLE
+    // ----------------------------
 
     public function countAnnonces($ville)
     {
@@ -74,6 +73,37 @@ class AddManager extends Manager
         return $nbDePage;
     }
 
+    // -------------------------------------------
+    // RECUPERE TOUTES LES ANNONCES PAR CLASSEMENT
+    // ------------------------------------------- 
+
+    public function getBestAnnonces($starter,$parPage)
+    {
+       
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT * FROM annonces ORDER BY annonces.jaime DESC LIMIT $starter, $parPage");
+        $req->execute(array()); 
+        $bestAnnonces = $req->fetchAll();
+        $req->closeCursor();
+        
+        return $bestAnnonces;
+    }
+
+    
+    // -----------------------------------------
+    // CALCUL NBRE DE PAGES / MEILLEURS NOTES 
+    // -----------------------------------------
+    
+    public function countAnnoncesJaime()
+    {
+        $db = $this->dbConnect();
+        $req= $db->prepare('SELECT COUNT(*) FROM annonces ');
+        $req->execute(array());
+        $nbDePageJaime=$req->fetchAll()[0][0];
+        $req->closeCursor();
+
+        return $nbDePageJaime;
+    }
 
     // -----------------------
     // AFFICHAGE D UNE ANNONCE
@@ -83,7 +113,7 @@ class AddManager extends Manager
     public function getAnnonce($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, contenu, contact, jaime, jaimepas, photo1 ,photo2 , photo3, pseudo
+        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, presentation, descriptif, contact, jaime, jaimepas, photo1 ,photo2 ,pseudo
         FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE annonces.id = ? ');
         $req->execute(array($id));
         $annonce = $req->fetch();

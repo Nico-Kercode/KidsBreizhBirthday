@@ -127,6 +127,10 @@ class Controller
         
     }
 
+    // -------------------------
+    // EDITON INFOS AVATAR *****
+    // ------------------------- 
+
     public function updatePicProfile($member_id) {
 
 
@@ -135,6 +139,33 @@ class Controller
         
         header('Location: index.php?action=moncompte');
         
+    }
+
+    // ------------------
+    // ADMIN INFOS ******
+    // ------------------
+
+
+    public function getAllMembres($numeroPage,$membresParPage) {
+
+        $starter = ($numeroPage-1 )*$membresParPage;
+        $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
+        $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
+        
+        require('view\frontend\membreAdminView.php');
+        
+
+  
+    }
+
+    public function getComReports($numeroPage,$alertsParPage){
+
+        $starter = ($numeroPage-1 )*$alertsParPage;
+        $nbDePageAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
+        $getReports = $this->commentManager->getReports($starter,$alertsParPage);
+
+        require('view\frontend\administrationView.php');
+
     }
 
     // ------------------
@@ -147,14 +178,14 @@ class Controller
         $ville=$_POST['commune'];
         $logo=$this->manageFile($_FILES['logo'],160,80);
         $titreA=htmlspecialchars($_POST['titreA']);
-        $descriptif= htmlspecialchars($_POST['contentA']);
+        $presentation= htmlspecialchars($_POST['contentA']);
+        $descriptif= htmlspecialchars($_POST['contentC']);
         $contact= htmlspecialchars($_POST['contentB']);
-        $photo1=$this->manageFile($_FILES['photo1'],1000,400);
-        $photo2=$this->manageFile($_FILES['photo2'],1000,400);
-        $photo3=$this->manageFile($_FILES['photo3'],1000,400);
+        $photo1=$this->manageFile($_FILES['photo1'],600,400);
+        $photo2=$this->manageFile($_FILES['photo2'],600,400);
         $id_MEMBRES = $_SESSION['id'];
 
-        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$contact,$photo1,$photo2,$photo3,$id_MEMBRES);
+        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$presentation,$descriptif,$contact,$photo1,$photo2,$id_MEMBRES);
 
         header('Location: index.php?action=vannes&page=1');
 
@@ -171,6 +202,7 @@ class Controller
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
 
+
         $path = "view\\frontend\\{$ville}View.php";
 
         require($path);
@@ -178,14 +210,28 @@ class Controller
         return $nbDePage;
     }
 
-    public function nbPages() {
+    // -------------------
+    // CLASSEMENT PAR NOTE
+    // -------------------
 
-        $nbDePage = $this->addManager->countPages();
-        require('view\frontend\addView1.php');
+    public function classementAnnonces($numeroPage,$annonceParPage) {
 
-        return $nbDePage;
+        $starter = ($numeroPage-1 )*$annonceParPage;
+        $nbDePageJaime = ceil(intval($this->addManager->countAnnoncesJaime())/$annonceParPage);
+        $bestAnnonces = $this->addManager->getBestAnnonces($starter,$annonceParPage);
+
+        require('view\frontend\meilleurNoteView.php');
 
     }
+
+    // public function nbPages() {
+
+    //     $nbDePage = $this->addManager->countPages();
+    //     require('view\frontend\addView1.php');
+
+    //     return $nbDePage;
+
+    // }
     // ------------------
     // ANNONCE SUR 1 PAGE
     // ------------------
@@ -359,11 +405,12 @@ class Controller
             $ary = explode('\\',$tempPath);
             $srcFile = array_pop($ary);
             $srcPath = join('\\', $ary) . '\\';
-            $folder ="assets/img/"; 
+            $folder ="assets/img/webFiles/"; 
             $image = rand(1000, 10000000).$file['name']; 
             $path = $folder . $image ; 
 
             $this->fctredimimage($width,$height,$folder,$image,$srcPath,$srcFile);
+            unlink($tempPath); // supprime le fichier temporaire
 
             return $path;
         } 

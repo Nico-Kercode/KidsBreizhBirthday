@@ -85,4 +85,28 @@ class CommentManager extends Manager
 
     }
 
+    public function getReports($starter,$alertsParPage)
+    {
+    $db = $this->dbConnect();
+    $req= $db->prepare("SELECT * 
+    FROM commentaires INNER JOIN membres ON id_MEMBRES =id_MEMBRES WHERE alert > 0 ORDER BY alert DESC LIMIT $starter, $alertsParPage ");
+    $req->execute(array());
+    $getReports = $req->fetchAll();
+    $req->closeCursor();
+        
+
+    return $getReports;
+
+    }
+
+    public function CountAlerts() 
+    {
+        $db = $this->dbConnect();
+        $req= $db->prepare('SELECT COUNT(alert) FROM commentaires ');
+        $req->execute(array());
+        $nbDePageAlert=$req->fetchAll()[0][0];
+        $req->closeCursor();
+
+        return $nbDePageAlert;
+    }
 }

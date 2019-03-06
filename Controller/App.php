@@ -49,22 +49,51 @@ class App
                     else {
                         throw new Exception('Aucun numéro de page récupéré');
                     }
-                   
+
+                // ---------------------------
+                // VERS meilleur annonces VIEW
+                // ---------------------------
+
+                } elseif($_GET['action'] =='meilleurNote'){
+
+                    $numeroPage= $_GET['page'];      
+                    $annonceParPage =6;
+                    
+
+                    $this->controller->classementAnnonces($numeroPage,$annonceParPage);
 
                 // -------------------
-                // VERS RGPD
+                // VERS ADMIN
                 // ------------------- 
 
-                } elseif($_GET['action'] =='rgpd') {
+                }
+                elseif($_GET['action'] =='admin'){
 
-                    require('view\frontend\mentionsView.php');
+                    $numeroPage= $_GET['page'];
+                    $alertsParPage= 6;
 
+                    $this->controller->getComReports($numeroPage,$alertsParPage);
+
+                    
+
+                } elseif($_GET['action'] == 'adminmembres') {
+
+
+                    $numeroPage= $_GET['page'];
+                    $membresParPage= 8;
+
+                    $this->controller->getAllMembres($numeroPage,$membresParPage);
+
+                    
+               
                 
+                }  elseif($_GET['action'] =='rgpd') {
+
+                    require('view\frontend\mentionsView.php');               
                 // -------------------
                 // AFFICHAGE ANNONCE
                 // -------------------
- 
-                
+                 
                 } elseif ($_GET['action'] == 'annonce'){
                   
 

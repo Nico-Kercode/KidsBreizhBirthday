@@ -76,8 +76,8 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: rgb(10, 88, 255)!important;
+    background-color:rgb(236, 255, 113) !important;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
