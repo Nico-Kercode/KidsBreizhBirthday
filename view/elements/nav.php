@@ -49,7 +49,7 @@
                 <a href="#">A Propos</a>
             </li>
             <li>
-            <a href="mailto:contact@kidsbreizhbirthday.fr">Contactez nous</A>
+                <a href="mailto:contact@kidsbreizhbirthday.fr">Contactez nous</A>
             </li>
 
             <!-- bouton Deconnexion si Session -->
@@ -127,7 +127,8 @@
 
                         <?php if(empty($_SESSION)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=formLogin"><span id="connexion">Connexion</span></a>
+                            <a class="nav-link" href="index.php?action=formLogin"><span
+                                    id="connexion">Connexion</span></a>
                         </li>
                         <?php } ?>
                         <!-- si session : ouverture side bar "mon compte" + script sur template  -->
@@ -144,7 +145,7 @@
             </div>
         </nav> <!-- # Fin navbar -->
 
-        
+
 
         <!-- BARRE DE RECHERCHE  -->
 
@@ -164,5 +165,8 @@
                 <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
                 <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
                 <a class="ml-4" href="index.php?action=meilleurNote&page=1">Les mieux notés</a>
+
+                
             </div>
+
         </div>

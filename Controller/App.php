@@ -26,99 +26,32 @@ class App
 
            if (isset($_GET['action'])) {
 
-                // -------------------
-                // VERS INDEX
-                // -------------------
+
+
+                            // -------------------------------------//
+                            //           VERS INDEX ACCUEIL 
+                            // -------------------------------------//
 
                 if($_GET['action'] == 'home') { 
                                         
                     $this->controller->indexView();
-                    
-                // -------------------
-                // VERS VILLES VIEW
-                // -------------------
-
-              
-                } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {
-
-                    if (isset($_GET['page'])){
-                        $numeroPage= $_GET['page'];      
-                        $annonceParPage =6;
-                        
-
-                    $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
-                    else {
-                        throw new Exception('Aucun numéro de page récupéré');
-                    }
-
-                // ---------------------------
-                // VERS meilleur annonces VIEW
-                // ---------------------------
-
-                } elseif($_GET['action'] =='meilleurNote'){
-
-                    $numeroPage= $_GET['page'];      
-                    $annonceParPage =6;
-                    
-
-                    $this->controller->classementAnnonces($numeroPage,$annonceParPage);
-
-                // -------------------
-                // VERS ADMIN
-                // ------------------- 
-
-                }
-                elseif($_GET['action'] =='admin'){
-
-                    $numeroPage= $_GET['page'];
-                    $alertsParPage= 6;
-
-                    $this->controller->getComReports($numeroPage,$alertsParPage);
-
-                    
-
-                } elseif($_GET['action'] == 'adminmembres') {
 
 
-                    $numeroPage= $_GET['page'];
-                    $membresParPage= 8;
+        // ******************************************************************************************//
 
-                    $this->controller->getAllMembres($numeroPage,$membresParPage);
+        //                           GESTION DES MEMBRES
 
-                    
-               
+        // ******************************************************************************************// 
+                  
                 
-                }  elseif($_GET['action'] =='rgpd') {
-
-                    require('view\frontend\mentionsView.php');               
-                // -------------------
-                // AFFICHAGE ANNONCE
-                // -------------------
-                 
-                } elseif ($_GET['action'] == 'annonce'){
-                  
-
-                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {
-                  
-                        $id = $_GET['id'];
-                        
-    
-                    
-                        $this->controller->annonce($id);
-
-                    }
-                     else {
-                            throw new Exception('Aucun identifiant de billet envoyé');
-                    }
-        
-                // ---------------------
-                // VERS FORMULAIRE LOGIN
-                // ---------------------
+                            // -----------------------------------------//
+                            //          VERS FORMULAIRE LOGIN
+                            // -----------------------------------------//
 
                 } elseif($_GET['action'] == 'formLogin'){
 
                     $this->controller->loginView();
-    
+
                 } elseif ($_GET['action'] == 'login'){
 
                     if (isset($_POST['login_user'])){
@@ -129,25 +62,25 @@ class App
                         $this->controller->Login($pseudo, $password);
                     }    
                 
-                // -------------------
-                // VERS GESTION PROFIL
-                // -------------------
+                            // -----------------------------------------//
+                            //           VERS GESTION PROFIL
+                            // -----------------------------------------//
 
                 } elseif($_GET['action'] == 'moncompte'){
             
 
                     if (!empty($_SESSION['pseudo'])) {
-                       
+                    
                         $this->controller->userAccountmngt();
 
                     }
                     else {
                         $this->controller->indexView();
                     } 
-                  
-                // ------------
-                // DECONNEXION
-                // ------------
+                
+                            // ----------------------------------------//
+                            //              DECONNEXION
+                            // ----------------------------------------//
 
                 } elseif ($_GET['action'] == 'deco') {    
                     
@@ -157,9 +90,9 @@ class App
                     $this->controller->indexView();   
 
                 
-                // -------------------------
-                // ENREGISTREMENT UTILISATEUR
-                // -------------------------
+                            // ----------------------------------------//
+                            //        ENREGISTREMENT UTILISATEUR
+                            // ----------------------------------------//
 
                 } elseif ($_GET['action'] == 'formRegister'){
 
@@ -172,10 +105,10 @@ class App
                                             
                         $this->controller->addMember();
                     }
-                 
-                // -------------------
-                // MISE A JOUR PROFIL
-                // -------------------
+                
+                            // ----------------------------------------//
+                            //          MISE A JOUR PROFIL
+                            // ----------------------------------------//
 
                 } elseif ($_GET['action'] == 'update'){
 
@@ -195,33 +128,114 @@ class App
                         $this->controller->updateMember($member_id,$pseudo, $email, $password_1);
                     }
 
-               
-        
-                // ------------------------
-                // MISE A JOUR IMAGE PROFIL
-                // ------------------------
-              
+            
+                    
+                            // ---------------------------------------//
+                            //      MISE A JOUR IMAGE PROFIL
+                            // ---------------------------------------//
+                        
 
                 } elseif ($_GET['action'] == 'updavatar'){
 
                     if (isset($_POST['updateAvatar'])) {
                         $member_id = $_SESSION['id'];
-                                             
+                                            
                         $this->controller->updatePicProfile($member_id) ;
                     }
+        // ******************************************************************************************//
 
-                // ------------------------
-                // FORMULAIRE AJOUT ANNONCE
-                // ------------------------ 
+        //                          FIN GESTION DES MEMBRES
+
+        // ******************************************************************************************// 
+                            
+                            // ---------------------------------------//
+                            //     MENU ADMIN gestion des MEMBRES
+                            // ---------------------------------------//
+
+                
+                } elseif($_GET['action'] == 'adminmembres') {
+
+
+                    $numeroPage= $_GET['page'];
+                    $membresParPage= 8;
+
+                    $this->controller->getAllMembres($numeroPage,$membresParPage);
+ 
+                            // ---------------------------------------//
+                            //     MENU ADMIN gestion des SIGNALEMENTS
+                            // ---------------------------------------//
+
+
+                } elseif($_GET['action'] =='admin'){
+
+                    $numeroPage= $_GET['page'];
+                    $alertsParPage = 6;
+
+                    $this->controller->getComReports($numeroPage,$alertsParPage);             
+
+
+                            // ---------------------------------------//
+                            //     AFFICHAGE PAGES PAR VILLES 
+                            // ---------------------------------------//
+                                
+                } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {
+
+                    if (isset($_GET['page'])){
+                        $numeroPage= $_GET['page'];      
+                        $annonceParPage =6;
+                        
+
+                    $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
+                    else {
+                        throw new Exception('Aucun numéro de page récupéré');
+                    }
+
+                            // ---------------------------------------//
+                            //     AFFICHAGE PAGES PAR CLASSEMENT
+                            // ---------------------------------------//
+
+                } elseif($_GET['action'] =='meilleurNote'){
+
+                    $numeroPage= $_GET['page'];      
+                    $annonceParPage =6;
+                    
+
+                    $this->controller->classementAnnonces($numeroPage,$annonceParPage);
+
+        
+                
+                            // -------------------------------------//
+                            //          AFFICHAGE ANNONCE
+                            // -------------------------------------//
+                 
+                } elseif ($_GET['action'] == 'annonce'){
+                  
+
+                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {
+                  
+                        $id = $_GET['id'];
+                        
+    
+                    
+                        $this->controller->annonce($id);
+
+                    }
+                     else {
+                            throw new Exception('Aucun identifiant de billet envoyé');
+                    }
+        
+                            // -----------------------------------//
+                            //      FORMULAIRE AJOUT ANNONCE
+                            // -----------------------------------// 
                 
                 } elseif ($_GET['action'] == 'ajoutAnnonce'){
 
                     
                     require('view\frontend\postAnnonceView.php');
 
-                // -------------
-                // AJOUT ANNONCE
-                // -------------
+                            // -------------------------------//
+                            //          AJOUT ANNONCE
+                            // ------------------------------//
 
                 } elseif ($_GET['action'] == 'addannonce'){
 
@@ -229,9 +243,9 @@ class App
                     
                         $this->controller->addAnnonce();
                     }
-                // ----------------------
-                // AJOUT D UN COMMENTAIRE
-                // ----------------------           
+                            // ---------------------------------//
+                            //      AJOUT D UN COMMENTAIRE
+                            // ---------------------------------//           
                  
                 } elseif ($_GET['action'] == 'addComment') {
 
@@ -248,10 +262,10 @@ class App
                         }
                     }
 
-                // ------------------
-                // ALERT COMMENTAIRES
-                // + LIKE + DISLIKE 
-                // ------------------
+                            // ----------------------------------//
+                            //       ALERT COMMENTAIRES
+                            //      +LIKE + DISLIKE ANNONCE 
+                            // ----------------------------------//
 
 
                 } elseif ($_GET['action'] == 'alert') {
@@ -268,9 +282,9 @@ class App
 
                
 
-                // -------------    
-                // FORM EDIT COM 
-                // -------------
+                            // -----------------------------//    
+                            //     VERS FORM EDITION COMM
+                            // -----------------------------//
 
                 } elseif ($_GET['action'] == 'editForm' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
 
@@ -288,9 +302,9 @@ class App
                     }
                 
 
-                // -------------    
-                // EDIT COMM 
-                // -------------
+                            // ----------------------------//    
+                            //          EDITION COMM 
+                            // ----------------------------//
 
 
                 } elseif ($_GET['action'] == 'editComment' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
@@ -307,9 +321,9 @@ class App
                     }
 
 
-                // -------------    
-                // DELETE COMM 
-                // -------------
+                            // ---------------------------//    
+                            //      SUPPRESSION COMM 
+                            // ---------------------------//
 
 
                 } elseif ($_GET['action'] == 'delete' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
@@ -323,13 +337,11 @@ class App
                         throw new Exception('Aucun identifiant de commentaire envoyé');
                     }
                         
-                // -------------    
-                // SEARCH BAR 
-                // -------------
+                            // -------------------------------//    
+                            //          SEARCH BAR 
+                            // -------------------------------//
       
-                
-                
-                
+  
                 } elseif ($_GET['action'] == 'search') {
                    
 
@@ -338,12 +350,24 @@ class App
                         $this->controller->mySearch($search);
 
                     }
-                }
+
+                            // -------------------------------//
+                            //          VERS RGPD
+                            // -------------------------------// 
+
+
+
+                }  elseif($_GET['action'] =='rgpd') {
+
+                    require('view\frontend\mentionsView.php'); 
+
+                
+                
                 // -------------------------------------------------------------------------------------------------
                 // ************************************   FIN INSTRUCTION ROUTEUR **********************************
                 // ------------------------------------------------------------------------------------------------- 
 
-                else {
+                } else {
                     $this->controller->indexView();
                 }
 

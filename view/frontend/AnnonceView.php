@@ -62,7 +62,8 @@
                     <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
 
                 </div>
-            </div> 
+            </div>
+         
 
             <!-- END annonce haut -->
 

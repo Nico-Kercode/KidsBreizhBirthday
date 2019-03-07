@@ -37,17 +37,17 @@
                             <a href="index.php?action=rgpd" class=" article mr-4">Protection des données</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a  href="https://www.facebook.com/developpeur.web.vannes?ref=bookmarks" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a  href="https://twitter.com/HubertNicolas9" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://www.linkedin.com/in/nicolashubert56/"" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>

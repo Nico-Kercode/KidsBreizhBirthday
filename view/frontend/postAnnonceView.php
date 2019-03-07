@@ -36,11 +36,11 @@
                 </div>
                 <div class="form-group">
                     <label for="contenu">Presentation du lieu (maxi 500 caracters) </label>
-                    <textarea class="form-control" rows="5"  maxlength="500"required name="contentA"></textarea>
+                    <textarea class="form-control" rows="5"  maxlength="600"required name="contentA"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="contenu">Descriptif des activités proposées (maxi 500 caracters)</label>
-                    <textarea class="form-control" rows="5" maxlength="500" required name="contentC"></textarea>
+                    <textarea class="form-control" rows="5" maxlength="600" required name="contentC"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="contenu">Contact / adresses </label>
