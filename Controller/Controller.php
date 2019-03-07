@@ -5,6 +5,7 @@ namespace Kbb\Controller;
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
 use \Kbb\Model\CommentManager;
+use \Exception;
 
 
 
@@ -30,6 +31,7 @@ class Controller
     // ----------------
 
     public function indexView() {
+
         require('view/frontend/indexView.php'); 
     }
     
@@ -167,6 +169,15 @@ class Controller
         require('view\frontend\administrationView.php');
 
     }
+
+    function delComment($commentID){
+    
+       
+         $delComment= $this->commentManager->deleteCommentaire($commentID);
+    
+        require('view\frontend\administrationView.php');
+    }
+    
 
     // ------------------
     // AJOUT ANNONCE
@@ -337,6 +348,30 @@ class Controller
         }
 
     }
+
+
+    function editForm($commentID,$annonceID){
+        
+        $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
+
+        require('view\frontend\editCommentView.php');
+        
+    }
+    
+    
+    function editComment($id,$editCommentaire,$id_ANNONCES){
+       
+    
+        $affectedLines = $this->commentManager->editCommentaire($id, $editCommentaire);
+    
+    
+            header('Location: index.php?action=admin&page=1');
+            
+        // }
+    }
+    
+    
+  
 
     // -----------------------
     // SIGNALEMENT COMMENTAIRE

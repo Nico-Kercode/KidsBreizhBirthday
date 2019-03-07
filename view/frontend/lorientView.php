@@ -10,8 +10,8 @@
 <div class="container">
     <div class="row">
 
-        <?php
-foreach ($annonces as $data) { ?>
+        <?php foreach ($annonces as $data) { ?>
+
 
         <div class="col-sm-6 " id="mainAnnonces">
             <!-- boucle affichage des annonces -->

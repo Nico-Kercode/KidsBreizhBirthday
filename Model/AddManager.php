@@ -2,6 +2,7 @@
 namespace Kbb\Model;
 
 use \kbb\model\Manager;
+use \Exception;
 use \PDO;
 
 

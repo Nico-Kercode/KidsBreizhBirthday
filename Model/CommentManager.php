@@ -4,6 +4,7 @@
 namespace Kbb\Model;
 
 use \Kbb\Model\Manager;
+use \Exception;
 use \PDO;
 
 
@@ -74,22 +75,52 @@ class CommentManager extends Manager
     //    ---- ADMIN ----
     // -----------------------
 
-    public function deleteComment($id)
+    public function deleteCommentaire($commentID)
     {
 
         $db = $this->dbConnect();
-        $req = $db->query("DELETE FROM commentaires WHERE id ='$id' ");
-       
+        $req = $db->prepare("DELETE FROM commentaires WHERE id =? ");
+        $req->execute(array($commentID));
 
         return $req;
 
     }
+    public function getCommentaire($commentID,$annonceID)
+    {
+        
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT contenu, date_commentaire, pseudo , id_ANNONCES , titre 
+        FROM commentaires 
+        INNER JOIN membres ON id_MEMBRES =membres.id 
+        INNER JOIN annonces ON id_ANNONCES =annonces.id 
+        WHERE commentaires.id = ? AND annonces.id =?');
+        $req->execute(array($commentID,$annonceID));
+        $editCommentaire = $req->fetch();
+
+        return $editCommentaire;
+    }
+
+
+    public function editCommentaire($id, $editCommentaire){
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE commentaires 
+        SET contenu=(:contenu) 
+        WHERE commentaires.id= (:id)');
+        $affectedLines = $comments->execute(array(
+            "contenu" => $editCommentaire,
+            "id" => $id
+        ));
+
+        return $affectedLines;
+    }
+
+
 
     public function getReports($starter,$alertsParPage)
     {
     $db = $this->dbConnect();
-    $req= $db->prepare("SELECT * 
-    FROM commentaires INNER JOIN membres ON id_MEMBRES =id_MEMBRES WHERE alert > 0 ORDER BY alert DESC LIMIT $starter, $alertsParPage ");
+    $req= $db->prepare("SELECT commentaires.id, pseudo, titre, contenu, alert , id_ANNONCES
+    FROM commentaires INNER JOIN membres ON id_MEMBRES =id_MEMBRES INNER JOIN annonces ON id_ANNONCES= id_ANNONCES  WHERE alert > 0 ORDER BY alert DESC LIMIT $starter, $alertsParPage ");
     $req->execute(array());
     $getReports = $req->fetchAll();
     $req->closeCursor();

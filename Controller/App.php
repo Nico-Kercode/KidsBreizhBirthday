@@ -5,6 +5,7 @@ session_start();
 setcookie( 'id','pseudo', 'email', 'rang', 'avatar', time() + 365*24*3600, null, null, false, true);  
 
 use \Kbb\Controller\Controller;
+use \Exception;
 
 
 class App
@@ -42,7 +43,7 @@ class App
 
                     if (isset($_GET['page'])){
                         $numeroPage= $_GET['page'];      
-                        $annonceParPage =8;
+                        $annonceParPage =6;
                         
 
                     $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
@@ -249,6 +250,7 @@ class App
 
                 // ------------------
                 // ALERT COMMENTAIRES
+                // + LIKE + DISLIKE 
                 // ------------------
 
 
@@ -264,11 +266,70 @@ class App
                     // Incrément du nb de like sur une annonce
                     $this->controller->incrementdontLike($_GET); 
 
+               
+
                 // -------------    
-                // SEARCH BAR 
+                // FORM EDIT COM 
+                // -------------
+
+                } elseif ($_GET['action'] == 'editForm' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
+
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                        
+                        $commentID = $_GET['id'];
+                        $annonceID = $_GET['id_ANNONCES'];
+  
+                        $this->controller->editForm($commentID,$annonceID);
+
+                    } else {
+
+                        throw new Exception('Erreur aucun id envoyer !');
+                    }
+                
+
+                // -------------    
+                // EDIT COMM 
                 // -------------
 
 
+                } elseif ($_GET['action'] == 'editComment' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        if (!empty($_POST['comment'])) {
+                            $this->controller->editComment($_GET['id'], $_POST['comment'], $_GET['id_ANNONCES']);
+                        }
+                        else {
+                            throw new Exception('Tous les champs ne sont pas remplis !');
+                        }
+                    }
+                    else {
+                        throw new Exception('Aucun identifiant de commentaire envoyé');
+                    }
+
+
+                // -------------    
+                // DELETE COMM 
+                // -------------
+
+
+                } elseif ($_GET['action'] == 'delete' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                        $commentID = $_GET['id']; 
+                        
+                        $this->controller->delComment($commentID);
+
+                    }else {
+                        throw new Exception('Aucun identifiant de commentaire envoyé');
+                    }
+                        
+                // -------------    
+                // SEARCH BAR 
+                // -------------
+      
+                
+                
+                
                 } elseif ($_GET['action'] == 'search') {
                    
 
@@ -289,7 +350,7 @@ class App
             }
 
         } catch (Exception $e) {
-            $errorMessage = $e->getMessage();
+            $errors = $e->getMessage();
             require('view\errorView.php');
         }
     }

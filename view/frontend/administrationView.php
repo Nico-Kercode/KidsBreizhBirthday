@@ -12,36 +12,44 @@
         <h2 class="text-center my-4">Messages Signalés : </h2>
         <div class="row">
 
-            <?php 
 
-foreach ($getReports as $rep) {
-  
-?>
+
+            <?php foreach ($getReports as $rep) { ?>
+
+
             <div class="col-sm-6">
                 <p class="list">
 
                     id du commentaire : <?= $rep['id']?> <br>
+                    id de l'annonce : <?= $rep['id_ANNONCES']?> <br>
+                    Titre de l'annonce : <a
+                        href="index.php?action=annonce&id=<?= $rep['id_ANNONCES']?> "><?= $rep['titre']?></a> <br>
                     Auteur : <?= $rep['pseudo']?> <br>
                     Commentaire : <?= $rep['contenu']?> <br>
                     signalé : <?= $rep['alert']?> fois
                     <br> <br>
+
+                    <a href="index.php?action=editForm&id=<?= $rep['id'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
+                        class="btn-dark">EDITER</a>
+
+                    <a href="index.php?action=delete&id=<?= $rep['id'] ?>" class="btn-dark">SUPPRIMER</a> </h3>
                 </p>
             </div>
-            <?php
+            <?php } ?>
 
-}
 
-?>
+
             <!-- END FOREACH -->
+
+
+            <!-- ROW -->
+
 
         </div>
 
 
+        <!--  -->
     </div>
-
-
-    <!--  -->
-
 
     <!--  PAGINATION -->
 

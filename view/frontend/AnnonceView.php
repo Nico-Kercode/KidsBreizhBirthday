@@ -1,5 +1,8 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
+
+
+
 <div class="container-fluid mb-2">
     <div class="row d-flex">
         <div class="col-sm-12 col-lg-4" id="retourAnnonce">
@@ -165,21 +168,9 @@
 
     </div>
 
-<!-- 
-    <p id="edition">
-
-
-        <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2') { ?>
-
-        <a href="index.php?action=editForm&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
-            class="btn-dark">EDITER</a>
-
-        <a href="index.php?action=deleteC&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
-            class="btn-dark">SUPPRIMER</a> </h3>
-    </p> -->
     <?php
     }
-    }
+
     ?>
 
 
