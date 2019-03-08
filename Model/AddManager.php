@@ -82,10 +82,10 @@ class AddManager extends Manager
     {
        
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id_ANNONCES, COUNT(*)
-        FROM votes
+        $req = $db->prepare('SELECT id_ANNONCES , titre, logo, photo1, COUNT(*) as nbrlike
+        FROM votes INNER JOIN annonces ON annonces.id= votes.id_ANNONCES
         GROUP BY id_ANNONCES
-        ORDER BY COUNT(*) DESC
+        ORDER BY nbrlike DESC
         LIMIT 10
         ');
         $req->execute(array());
@@ -95,43 +95,6 @@ class AddManager extends Manager
         return $bestAnnonces;
     }
 
-
-    // public function getBestAnnonces()
-    // {
-       
-    //     $db = $this->dbConnect();
-    //     $req = $db->prepare('SELECT id_ANNONCES, COUNT(*)
-    //     FROM votes
-    //     GROUP BY id_ANNONCES
-    //     ORDER BY COUNT(*) DESC
-    //     LIMIT 10
-    //     ');
-    //     $req->execute(array());
-    //     $bestAnnonces=$req->fetchAll();
-    //     $req->closeCursor();
-        
-    //     return $bestAnnonces;
-    // }
-
-    
-    // -----------------------------------------
-    // CALCUL NBRE DE PAGES / MEILLEURS NOTES 
-    // -----------------------------------------
-    
-    // public function countAnnoncesJaime()
-    // {
-    //     $db = $this->dbConnect();
-    //     $req= $db->prepare('SELECT COUNT(*) FROM annonces ');
-    //     $req->execute(array());
-    //     $nbDePageJaime=$req->fetchAll()[0][0];
-    //     $req->closeCursor();
-
-    //     return $nbDePageJaime;
-    // }
-
-    // -----------------------
-    // AFFICHAGE D UNE ANNONCE
-    // -----------------------
 
 
     public function getAnnonce($id)
@@ -173,7 +136,7 @@ class AddManager extends Manager
     {
 
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT * FROM annonces WHERE upper(titre) LIKE ? OR upper(ville) LIKE  ? OR upper (contenu) LIKE ?  ");
+        $req = $db->prepare("SELECT * FROM annonces WHERE upper(titre) LIKE ? OR upper(ville) LIKE  ? OR upper (descriptif) LIKE ?  ");
         $req->execute(array('%'.$search.'%' , '%'.$search.'%' , '%'.$search.'%'  ));
         $result = $req->fetchAll();
     
