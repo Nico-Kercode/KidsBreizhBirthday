@@ -4,7 +4,9 @@ namespace Kbb\Controller;
 
 use \Kbb\Model\MemberManager;
 use \Kbb\Model\AddManager;
-use \kbb\Model\CommentManager;
+use \Kbb\Model\CommentManager;
+use \Exception;
+
 
 
 class Controller
@@ -16,28 +18,54 @@ class Controller
 
 
     public function __construct() {
-   
+
         $this->memberManager = new MemberManager();
         $this->addManager = new AddManager();
-        // $this->commentManager = new CommentManager();
-       
+        $this->commentManager = new CommentManager();   
        
     }
 
+    
+    // -----------------
+    // -> ACCUEIL  
+    // ----------------
+
     public function indexView() {
+
         require('view/frontend/indexView.php'); 
     }
+    
+    // --------------------------------
+    // -> MISE A JOUR INFOS UTILISATEUR
+    // --------------------------------
 
     public function userAccountmngt() {
         require('view/frontend/userAccountView.php'); 
 
     }
+    
+    // --------------------
+    // -> FORMULAIRE LOGIN 
+    // --------------------
+
     public function loginView() {
         require('view\frontend\loginView.php');
     }
+    
+    // ---------------------------
+    // -> FORMULAIRE AJOUT ANNONCE
+    // ---------------------------
+
+
     public function addView() {
         require('view\frontend\postAdd.php');
     }
+
+    
+    // -----------------------
+    // REGISTER NOUVEAU MEMBRE 
+    // -----------------------
+
 
     public function addMember() {
 
@@ -53,46 +81,23 @@ class Controller
             else {
                     throw new Exception('les mots de passe ne correspondent pas');
                 }     
-
-        $picProfile= $this->manageFile($_FILES['image']);
-
+        $picProfile= $this->manageFile($_FILES['image'],400,400);
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile);
         
     
         header('Location: index.php');
-    }
+    }  
 
-    private function manageFile($file) {
-
-        $folder ="assets\img/"; 
-        $image = rand(1000, 10000000).$file['name']; 
-        $path = $folder . $image ; 
-        $target_file=$folder.basename($file["name"]);
-        $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
-        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); $filename=$file['name']; 
-        $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
-        { 
-
-            throw new Exception('mauvais format de fichier');
-
-        }
-        else{ 
-        move_uploaded_file($file ['tmp_name'], $path); 
-
-        return $path;
-        } 
-
-    }
-
+    // ------------------
+    // LOGIN
+    // ------------------
 
     public function Login($pseudo, $password){
 
         $member = $this->memberManager->loginMember($pseudo,$password);
 
         if (password_verify($password,$member['password'])) {
-    
-           
     
             $_SESSION['id']=$member['id'];
             $_SESSION['pseudo']=$member['pseudo'];
@@ -109,6 +114,9 @@ class Controller
     
     }
 
+    // -------------------------
+    // EDITON INFOS UTILISATEURS
+    // -------------------------
 
 
     public function updateMember($member_id,$pseudo,$email,$password_1) {
@@ -121,55 +129,209 @@ class Controller
         
     }
 
+    // -------------------------
+    // EDITON INFOS AVATAR *****
+    // ------------------------- 
+
+    public function updatePicProfile($member_id) {
+
+
+        $newAvatar= $this->manageFile($_FILES['imageProfil'],400,400);
+        $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+        
+        header('Location: index.php?action=moncompte');
+        
+    }
+
+    // ------------------
+    // ADMIN INFOS ******
+    // ------------------
+
+
+    public function getAllMembres($numeroPage,$membresParPage) {
+
+        $starter = ($numeroPage-1 )*$membresParPage;
+        $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
+        $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
+        
+        require('view\frontend\membreAdminView.php');
+        
+
+  
+    }
+
+    public function getComReports($numeroPage,$alertsParPage){
+
+        $starter = ($numeroPage-1 )*$alertsParPage;
+        $nbDePageAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
+        $getReports = $this->commentManager->getReports($starter,$alertsParPage);
+
+        require('view\frontend\administrationView.php');
+
+    }
+
+    function delComment($commentID){
+    
+       
+         $delComment= $this->commentManager->deleteCommentaire($commentID);
+    
+        require('view\frontend\administrationView.php');
+    }
+    
+
+    // ------------------
+    // AJOUT ANNONCE
+    // ------------------
+
     public function addAnnonce() {
 
       
         $ville=$_POST['commune'];
-        $logo=$this->manageFile($_FILES['logo']);
+        $logo=$this->manageFile($_FILES['logo'],160,80);
         $titreA=htmlspecialchars($_POST['titreA']);
-        $descriptif= htmlspecialchars($_POST['contentA']);
-        $photo1=$this->manageFile($_FILES['photo1']);
-        $photo2=$this->manageFile($_FILES['photo2']);
-        $photo3=$this->manageFile($_FILES['photo3']);
+        $presentation= htmlspecialchars($_POST['contentA']);
+        $descriptif= htmlspecialchars($_POST['contentC']);
+        $contact= htmlspecialchars($_POST['contentB']);
+        $photo1=$this->manageFile($_FILES['photo1'],600,400);
+        $photo2=$this->manageFile($_FILES['photo2'],600,400);
         $id_MEMBRES = $_SESSION['id'];
 
-        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$descriptif,$photo1,$photo2, $photo3,$id_MEMBRES);
+        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$presentation,$descriptif,$contact,$photo1,$photo2,$id_MEMBRES);
 
-        header('Location: index.php?action=vannes');
+        header('Location: index.php?action=vannes&page=1');
 
     }
 
-    public function listAnnonces() {
-                                        
-    
-        $annonces = $this->addManager->getAnnonces();
+    // -------------------
+    // TOUTES LES ANNONCES
+    // -------------------
 
-        require('view\frontend\addView1.php');
+    public function listAnnonces($numeroPage,$annonceParPage,$ville) {
 
-        return $annonces;
+        $starter = ($numeroPage-1 )*$annonceParPage;
+
+        $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
+        $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
+
+
+        $path = "view\\frontend\\{$ville}View.php";
+
+        require($path);
+
+        return $nbDePage;
     }
 
-    public function annonce($id, $id_MEMBRES) {
+    // -------------------
+    // CLASSEMENT PAR NOTE
+    // -------------------
 
-        $annonce = $this->addManager->getAnnonce($id, $id_MEMBRES);
+    public function classementAnnonces($numeroPage,$annonceParPage) {
+
+        $starter = ($numeroPage-1 )*$annonceParPage;
+        $nbDePageJaime = ceil(intval($this->addManager->countAnnoncesJaime())/$annonceParPage);
+        $bestAnnonces = $this->addManager->getBestAnnonces($starter,$annonceParPage);
+
+        require('view\frontend\meilleurNoteView.php');
+
+    }
+
+    // public function nbPages() {
+
+    //     $nbDePage = $this->addManager->countPages();
+    //     require('view\frontend\addView1.php');
+
+    //     return $nbDePage;
+
+    // }
+    // ------------------
+    // ANNONCE SUR 1 PAGE
+    // ------------------
+
+    public function annonce($id) {
+
+        $annonce = $this->addManager->getAnnonce($id);
+        $allComments = $this->commentManager->getComments($id);
+       
 
         require('view\frontend\AnnonceView.php');
         
 
     }
+    // ------------------
+    // J AIME +1
+    // ------------------
+
+
+    public function incrementLike($arr) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arr['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arr['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update 
+            $success = $this->addManager->incrementJaime($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/likeView.php');
+    }
+
+    // ------------------
+    // AIME PAS +1
+    // ------------------
+
+    public function incrementdontLike($arry) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arry['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arry['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update 
+            $success = $this->addManager->incrementJaimepas($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/dontlikeView.php');
+    }
+
+    // ------------------
+    // TOTAL ANNONCES
+    // ------------------
 
     public function count(){
 
-        $nbannonces = $this->addManager->countAnnonces();
+        $total = $this->addManager->countAnnonces();
 
-        return $nbannonces;
+        require('view\frontend\indexView.php');
 
-        
+        return $total['total'];
 
 
     }
 
-
+    // ------------------
+    // AJOUT COMMENTAIRES
+    // ------------------
     public function postComment($comment,$id_ANNONCES, $id_MEMBRES )
     {
         
@@ -180,9 +342,242 @@ class Controller
             throw new Exception('Impossible d\'ajouter le commentaire !');
         }
         else {
-            header('Location: index.php?action=comment&id=' . $id_ANNONCES);
+ 
+        header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
+
         }
+
     }
-   
+
+
+    function editForm($commentID,$annonceID){
+        
+        $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
+
+        require('view\frontend\editCommentView.php');
+        
+    }
+    
+    
+    function editComment($id,$editCommentaire,$id_ANNONCES){
+       
+    
+        $affectedLines = $this->commentManager->editCommentaire($id, $editCommentaire);
+    
+    
+            header('Location: index.php?action=admin&page=1');
+            
+        // }
+    }
+    
+    
+  
+
+    // -----------------------
+    // SIGNALEMENT COMMENTAIRE
+    // -----------------------
+
+    public function incrementAlert($arr) {
+        $returnedValue = 'ok';
+        try {
+            // Control given data
+            if (! isset($arr['id'])) {
+                throw new Exception("Numéro de commentaire obligatoire");
+            }
+            $id = intval($arr['id']);
+            if (! $id > 0) {
+                throw new Exception("Numéro de commentaire inconnu");
+            }
+            // Update comment
+            $success = $this->commentManager->incrementAlert($id);
+            if (!$success) {
+                $returnedValue = 'ko : sql error or no raw updated';
+            }
+        }
+        catch (Exception $e) {
+            $returnedValue = 'ko : '. $e->getMessage();
+        }
+        // Return $returnedValue in json format
+        require('view/frontend/alertView.php');
+    }
+
+    // ------------------
+    // BARRE DE RECHERCHE
+    // ------------------
+
+    public function mySearch($search) {
+
+        $result = $this->addManager->searchBar($search);
+
+        require('view\frontend\searchResultView.php');
+        
+                 
+        return $result;
+
+    }
+
+    
+    // -----------------
+    // ENVOI IMAGES
+    // ----------------
+
+    private function manageFile($file,$width,$height) {
+
+        $tempPath = 'assets\img\tmp/' . $file['name'];
+        $target_file=$folder.basename($file["name"]);
+        $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
+        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); 
+        $filename=$file['name']; 
+        $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
+        { 
+
+            throw new Exception('mauvais format de fichier');
+
+        }
+        else{ 
+            move_uploaded_file($file ['tmp_name'], $tempPath); 
+
+            $ary = explode('\\',$tempPath);
+            $srcFile = array_pop($ary);
+            $srcPath = join('\\', $ary) . '\\';
+            $folder ="assets/img/webFiles/"; 
+            $image = rand(1000, 10000000).$file['name']; 
+            $path = $folder . $image ; 
+
+            $this->fctredimimage($width,$height,$folder,$image,$srcPath,$srcFile);
+            unlink($tempPath); // supprime le fichier temporaire
+
+            return $path;
+        } 
+
+    }
+    
+    // -----------------
+    // RESIZE IMAGES !!! 
+    // ----------------
+
+    private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
+
+        $condition = 0;
+        // Si certains paramètres ont pour valeur '' :
+        if ($rep_Dst=='') { $rep_Dst = $rep_Src; } // (même répertoire)
+        if ($img_Dst=='') { $img_Dst = $img_Src; } // (même nom)
+        // ---------------------
+        // si le fichier existe dans le répertoire, on continue...
+
+        if (file_exists($rep_Src.$img_Src) && ($W_max!=0 || $H_max!=0)) { 
+          // ----------------------
+          // extensions acceptées : 
+           $extension_Allowed = 'jpg,jpeg,png,JPEG,JPG,PNG,gif,GIF';	// (sans espaces)
+          // extension fichier Source
+           $extension_Src = strtolower(pathinfo($img_Src,PATHINFO_EXTENSION));
+          // ----------------------
+          // extension OK ? on continue ...
+          if(in_array($extension_Src, explode(',', $extension_Allowed))) {
+            // ------------------------
+             // récupération des dimensions de l'image Src
+             $img_size = getimagesize($rep_Src.$img_Src);
+             $W_Src = $img_size[0]; // largeur
+             $H_Src = $img_size[1]; // hauteur
+             // ------------------------
+             // condition de redimensionnement et dimensions de l'image finale
+             // ------------------------
+             // A- LARGEUR ET HAUTEUR maxi fixes
+             if ($W_max!=0 && $H_max!=0) {
+                $ratiox = $W_Src / $W_max; // ratio en largeur
+                $ratioy = $H_Src / $H_max; // ratio en hauteur
+                $ratio = max($ratiox,$ratioy); // le plus grand
+                $W = $W_Src/$ratio;
+                $H = $H_Src/$ratio;   
+                $condition = ($W_Src>$W) || ($W_Src>$H); // 1 si vrai (true)
+             }
+             // ------------------------
+             // B- HAUTEUR maxi fixe
+             if ($W_max==0 && $H_max!=0) {
+                $H = $H_max;
+                $W = $H * ($W_Src / $H_Src);
+                $condition = ($H_Src > $H_max); // 1 si vrai (true)
+             }
+             // ------------------------
+             // C- LARGEUR maxi fixe
+             if ($W_max!=0 && $H_max==0) {
+                $W = $W_max;
+                $H = $W * ($H_Src / $W_Src);         
+                $condition = ($W_Src > $W_max); // 1 si vrai (true)
+             }
+             // ---------------------------------------------
+             // REDIMENSIONNEMENT si la condition est vraie
+             // ---------------------------------------------
+             // - Si l'image Source est plus petite que les dimensions indiquées :
+             // Par defaut : PAS de redimensionnement.
+             // - Mais on peut "forcer" le redimensionnement en ajoutant ici :
+                 $condition = 1; 
+             if ($condition==1) {
+
+                // ---------------------
+                // creation de la ressource-image "Src" en fonction de l extension
+                switch($extension_Src) {
+                case 'jpg':
+                case 'jpeg':
+                case 'JPG':
+                case 'JPEG':
+                  $Ress_Src = imagecreatefromjpeg($rep_Src.$img_Src);
+                  break;
+                case 'png':
+                case 'PNG':
+                  $Ress_Src = imagecreatefrompng($rep_Src.$img_Src);
+                  break;
+                }
+                // ---------------------
+                // creation d une ressource-image "Dst" aux dimensions finales
+                // fond noir (par defaut)
+                switch($extension_Src) {
+                  case 'jpg':
+                  case 'jpeg':
+                  case 'JPG':
+                  case 'JPEG':
+                  $Ress_Dst = imagecreatetruecolor($W,$H);
+                  break;
+                  case 'png':
+                  case 'PNG':
+                  $Ress_Dst = imagecreatetruecolor($W,$H);
+                  // fond transparent (pour les png avec transparence)
+                  imagesavealpha($Ress_Dst, true);
+                  $trans_color = imagecolorallocatealpha($Ress_Dst, 0, 0, 0, 127);
+                  imagefill($Ress_Dst, 0, 0, $trans_color);
+                  break;
+                }
+                // ---------------------
+                // REDIMENSIONNEMENT (copie, redimensionne, re-echantillonne)
+                imagecopyresampled($Ress_Dst, $Ress_Src, 0, 0, 0, 0, $W, $H, $W_Src, $H_Src); 
+                // ---------------------
+                // ENREGISTREMENT dans le repertoire (avec la fonction appropriee)
+                switch ($extension_Src) { 
+                  case 'jpg':
+                  case 'jpeg':
+                  case 'JPG':
+                  case 'JPEG':
+                  imagejpeg ($Ress_Dst, $rep_Dst.$img_Dst);
+                  break;
+                  case 'png':
+                  case 'PNG':
+                  imagepng ($Ress_Dst, $rep_Dst.$img_Dst);
+                  break;
+                }
+                // ------------------------
+                // liberation des ressources-image
+                imagedestroy ($Ress_Src);
+                imagedestroy ($Ress_Dst);
+             }
+             // ------------------------
+          }
+        }
+        // ---------------------------------------------------
+        // retourne : true si le redimensionnement et l'enregistrement ont bien eu lieu, sinon false
+        if ($condition==1 && file_exists($rep_Dst.$img_Dst)) { return true; }
+        else { return false; }
+        // ---------------------------------------------------
+       }
+
 
 }

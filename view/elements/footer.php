@@ -1,6 +1,6 @@
 <!-- Footer -->
 
-<footer class="page-footer font-small mdb-color  pt-4 " id="footer">
+<footer class="page-footer font-small" id="footer">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -20,7 +20,7 @@
                 <!--Copyright-->
                 <p class="text-center text-md-left">© 2019 Copyright :
                     <a href="#">
-                        <strong>Nicolas HUBERT</strong>
+                        TraouaWeb 
                     </a>
                 </p>
 
@@ -29,6 +29,7 @@
             <!-- Grid column -->
             <div class="col-md-5 col-lg-4 ml-lg-0">
 
+
                 <!-- Social buttons -->
                 <div class="text-center text-md-right">
                     <ul class="list-unstyled list-inline">
@@ -36,17 +37,17 @@
                             <a href="index.php?action=rgpd" class=" article mr-4">Protection des données</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a  href="https://www.facebook.com/developpeur.web.vannes?ref=bookmarks" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a  href="https://twitter.com/HubertNicolas9" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://www.linkedin.com/in/nicolashubert56/"" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>
@@ -64,4 +65,3 @@
 
 </footer>
 <!-- Footer -->
-</div>

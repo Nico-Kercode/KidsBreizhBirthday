@@ -5,7 +5,7 @@
 class TextScramble {
     constructor(el) {
       this.el = el
-      this.chars = '!<>-_\\/[]{}—=+*^?#________'
+      this.chars = '.'
       this.update = this.update.bind(this)
     }
     setText(newText) {
@@ -97,21 +97,5 @@ class TextScramble {
   
   next()
 
-  // ——————————————————————————————————————————————————
-  // BARRE DE RECHERCHE
-  // ———
 
-  let liste = [
-
-    "Vannes",
-
-    "Lorient",
-
-    "Ploemel",
-
-    "Selectable",
-
-    "Sortable"
-
-];
-
+  

@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<?php include('view\elements\nav.php')?>
+
 
 
 <div class="news container">

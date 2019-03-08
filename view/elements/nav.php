@@ -1,189 +1,150 @@
-<div>
-    <div class="wrapper ">
-        <!-- Sidebar Holder -->
+<div class="wrapper">
+    <!-- fermeture Wrapper -> template -->
+    <!-- Sidebar Holder -->
+
+    <nav id="sidebar" class="active">
+        <div class="sidebar-header" id="Mainlogo">
+
+            <a href="index.php?action=home"> <img src="assets\img\artworkIMG\logoGateau.png" class="img-fluid"
+                    alt="logo Gateau"></a>
+        </div>
+
+        <!-- affichage de l avatar et du pseudo si session -->
 
         <?php if(isset($_SESSION['pseudo'])) { ?>
-        <nav id="sidebar" class="">
+        <img class="img-fluid img-thumbnail " src="<?= htmlspecialchars($_SESSION['avatar'])?>"
+            alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
+        <div class="d-block my-2" id="mbrNav">
+            <h4> Bienvenue <em> <span><?=  ucfirst($_SESSION['pseudo'])?></span> </em>
+            </h4>
+        </div>
+        <?php } ?>
+
+
+        <!-- Affichage menu ajout annonce si rang = 1 'professionels' ou 2 'admin' + gestion infos utilisateurs -->
+
+        <ul class="list-unstyled CTAs">
+            <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2' ) { ?>
+            <li class="d-block"><a href="index.php?action=ajoutAnnonce" class="article my-2 ">Ajouter une
+                    annonce</a></li>
+            <li class="d-block">
+                <a href="index.php?action=moncompte" class="article">Gérer mes infomations</a>
+            </li>
             <?php } ?>
-            <?php if(empty($_SESSION)) { ?>
-            <nav id="sidebar" class="active">
-                <?php } ?>
 
-                <div class="sidebar-header" id="Mainlogo">
+            <!-- Menu administration rang 2 uniquement -->
 
-                    <a href="index.php?action=home">Kid's <br> <span class="tabulation2">BreiZH </span>
-                        <span class="tabulation">Birthday </span></a>
-                </div>
+            <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '2') { ?>
+            <li class="d-block"> <a href="index.php?action=admin&page=1" class="article my-2">Menu
+                    d'administration</a>
+            </li>
+            <?php } ?>
+        </ul>
+
+        <!-- Liste bas sidebar -->
 
 
+        <ul class="list-unstyled CTAs ">
+            <li>
+                <a href="#">A Propos</a>
+            </li>
+            <li>
+                <a href="mailto:contact@kidsbreizhbirthday.fr">Contactez nous</A>
+            </li>
 
+            <!-- bouton Deconnexion si Session -->
 
+            <li>
                 <?php if(isset($_SESSION['pseudo'])) { ?>
-
-                <img class="img-fluid " id="avatarMenu" src="<?= htmlspecialchars($_SESSION['avatar'])?>"
-                    alt="<?= htmlspecialchars($_SESSION['avatar'])?>">
-
-
-                <div class="d-block my-2" id="mbrNav">
-                    <h4> Bienvenue <em> <span><?=  ucfirst($_SESSION['pseudo'])?></span> </em>
-                    </h4>
-                </div>
-                <!-- <li class="d-block"><a href="index.php?action=moncompte">Mon compte</a></li> -->
-                <!-- <li class="d-block"><a href="index.php?action=deco">Deconnexion</a></li> -->
+                <a href="index.php?action=deco" class="article">Deconnexion</a>
                 <?php } ?>
+            </li>
+        </ul> <!-- fin liste bas -->
+    </nav> <!-- fin sidebar -->
 
+    <!-- Page Content Holder \ fin sur template !!!  -->
+    <div class="content">
+        <!-- menu navbar -->
 
-                <!-- Affichage gestion des annonces si rang = 1 (professionels) ou 2 (admin)-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+            <div class="container-fluid">
 
-                <ul class="list-unstyled CTAs">
-                    <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2' ) { ?>
-                    <li class="d-block"><a href="index.php?action=ajoutAnnonce" class="article my-2 ">Ajouter une
-                            annonce</a></li>
-                    <li class="d-block"> <a href="index.php?action=annonce" class="article my-2">Gerer mes annonces</a>
-                    </li>
-                    <li class="d-block">
-                        <a href="index.php?action=moncompte" class="article">Mon compte</a>
-                       
-                    </li>
+                <!-- Collapse  bouton active & !active -->
 
-                    <?php } ?>
+                <button type="button" id="sidebarCollapse" class="navbar-btn active">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-                </ul>
-                <ul class="list-unstyled components">
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
 
+                <!-- # fin -->
 
-
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Villes</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="index.php?action=vannes">Vannes</a>
-                            </li>
-                            <li>
-                                <a href="#">Lorient</a>
-                            </li>
-                            <li>
-                                <a href="#">Autres</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Activités</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">A Propos</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-
-
-                <ul class="list-unstyled CTAs ">
-
-
-                    <li>
-
-                        <?php if(empty($_SESSION)) { ?>
-                        <a href="index.php?action=formLogin" class="article">CONNEXION</a>
-                        <?php } ?>
-                        <!-- deconnection -->
-
-                        <?php if(isset($_SESSION['pseudo'])) { ?>
-
-                        <a href="index.php?action=deco" class="article">Deconnexion</a>
-
-                        <?php } ?>
-                    </li>
-
-
-                </ul>
-
-            </nav>
-
-            <!-- Page Content Holder -->
-
-
-            <div class="content">
-
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-                    <div class="container-fluid">
-                        <?php 
-            if(isset($_SESSION['pseudo'])) {
-            ?>
-                        <button type="button" id="sidebarCollapse" class="navbar-btn">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                        <?php } ?>
-
-
-                        <?php if(empty($_SESSION)) { ?>
-
-
-                        <button type="button" id="sidebarCollapse" class="navbar-btn active">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-
-                        <?php } ?>
-
-
-
-
-
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button"
-                            data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-align-justify"></i>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php?action=home">ACCUEIL</a>
-                                </li>
-                                <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Page</a>
-                        </li> -->
-                            </ul>
-                        </div>
-
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <div class=" mx-auto">
+                        <a href="index.php?action=home"><img class="img-fluid  bandeau"
+                                src="assets\img\artworkIMG\lettrage.png" alt="backHome"></a>
+                        <p></p>
                     </div>
-                </nav>
+                    <ul class="nav navbar-nav mc-auto">
+
+                        <div class=" dropdown-menu-left dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="index.php?action=vannes&page=1">Vannes</a>
+                            <a class="dropdown-item" href="index.php?action=lorient&page=1">Lorient</a>
+                        </div>
+                        </li>
+
+                        <!-- si pas de session : bouton connexion -->
+
+                        <?php if(empty($_SESSION)) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=formLogin"><span
+                                    id="connexion">Connexion</span></a>
+                        </li>
+                        <?php } ?>
+
+                        <!-- si session : ouverture side bar "mon compte" + script sur template  -->
+
+                        <?php if(!empty($_SESSION)) { ?>
+                        <li class="nav-item" id="menuCompte">
+                            <a class="nav-link villes" href="#" id="moncompte"> <span id="onglet">MON</span> COMPTE</a>
+                        </li>
+
+                        <?php } ?>
+                    </ul>
+                </div>
+
+            </div>
+        </nav> 
+        <!-- # Fin navbar -->
+
+
 
         <!-- BARRE DE RECHERCHE  -->
 
-                <div class="input-group  my-4">
-                    <input class="form-control py-2 border-right-0 border" type="search"
-                        value="Recherchez un lieu , un theme ... " id="search">
-                    <span class="input-group-append">
-                        <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
+        <form method="POST" action="index.php?action=search" class="input-group  my-2">
+            <input class="form-control py-2 border-right-0 border" type="search" value="" name="searchbar" id="search"
+                required>
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary border-left-0 border" name="submitSearch" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
 
+        </form>
 
+        <div class="row">
+            <div class="d-flex mx-auto" id="choixAccueil">
+                <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
+                <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
+                <a class="ml-4" href="index.php?action=meilleurNote&page=1">Les mieux notés</a>
+
+                
+            </div>
+
+        </div>

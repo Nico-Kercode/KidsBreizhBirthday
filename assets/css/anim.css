@@ -1,11 +1,14 @@
-
-
-
+/* ---------------------------------
+// CSS ANIMATION ACCUEIL 
+// ---------------------------------
+*/
 #anim
     {
-      margin-top:4% !important;
-  height :150px;
-  max-width :1200px;
+  margin-top:10% !important;
+  margin-right:20%;
+  padding:2%;
+  height :180px;
+  max-width :1250px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -14,13 +17,15 @@
 .text{
   display: block;
   font-weight : 200;
-  font-size :2em !important;
+  font-size :2.2em !important;
   color :rgb(0, 0, 0);
+  text-shadow: 3px 2px  #16aeeb!important;
   text-align: center !important;
   margin-left: 20% !important;
   }
 .dud{
-color: #6374B6;
+color: whitesmoke;
+text-shadow: none !important;
 
 }
 

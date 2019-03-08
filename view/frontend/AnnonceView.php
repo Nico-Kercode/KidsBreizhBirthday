@@ -1,137 +1,193 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-<?php include('view\elements\nav.php')?>
 
 
-<div class="container">
 
-    <a href="index.php?action=vannes">Retour aux annonces</a>
-
-    <div class="col-sm-12" id="mainAnnonces">
-
-        <div class=" row d-flex" id="annonceHaut">
-
-            <div class="col-sm-12 col-lg-4 ">
-
-                <img class="img-fluid logoA" src="<?= $annonce['logo']?>" alt="logo">
-
-            </div>
-
-            <div class="col-sm-12 col-lg-8 titreAnnonce">
-                <h2 class="font-weight-bold">
-                    <?= htmlspecialchars($annonce['titre']) ?>
-                </h2>
-                <p> <em> publié par <span> <?= ucfirst(htmlspecialchars($annonce['pseudo'])) ?> </span> </em> </p>
-
-
-            </div>
-        </div>
-
-        <div class="row my-4">
-
-            <div class="offset-lg-2">
-
-                <img class="img-fluid photosadd" src="<?= $annonce['photo1']?>" alt="Photo1">
-
-            </div>
+<div class="container-fluid mb-2">
+    <div class="row d-flex">
+        <div class="col-sm-12 col-lg-4" id="retourAnnonce">
+            <a class="Back" href="index.php?action=vannes&page=1"> RETOUR </a>
 
         </div>
+        <div class="col-sm-12 col-lg-8 d-flex" id="headerAnnonce">
+            <div class="justify-content-left mr-auto">
+                <img class="img-fluid" src="assets\img\artworkIMG\fille.png" alt="fillette">
+            </div>
+            <div class="justify-content-left ml-auto">
+                <img class="img-fluid" src="assets\img\artworkIMG\garcon.png" alt="garcon">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row d-flex">
+<div class="col-sm-2 col-lg-2 my-auto"> <img class="d-none d-sm-block img-fluid " src="assets\img\artworkIMG\imageCadeau1.png" alt=""></div>
+    <div class="col-sm-8 col-lg-8 ">
+
+        <!-- Bloc principal annonce -->
 
         <div class="row">
 
-            <p class="p-4 text-center" id="annonceContent">
-                <?= nl2br(ucfirst(htmlspecialchars($annonce['contenu']))) ?>
+            <div class="col-sm-12" id="mainAnnonces">
+
+                <!-- HEADER ANNONCE -->
+
+                <div class=" row d-flex" id="annonceHaut">
+
+                    <div class="col-lg-4 col d-none d-lg-block ">
+
+                        <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
+
+                    </div>
+
+                    <div class="col-lg-8 ">
+                        <h2 class="text-left p-4 h2annonces">
+                            <?= htmlspecialchars($annonce['titre']) ?>
+                        </h2>
+
+                    </div>
+                </div>
+                <!-- END HEADER -->
+
+                <!-- annonce haut -->
+
+                <div class="row my-4 d-flex">
+
+                    <div class="col-sm-12 col-lg-6">
+                        <p class="p-4  annonceContent">
+                            <?= nl2br(ucfirst(htmlspecialchars($annonce['presentation']))) ?>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 mx-auto">
+
+                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
+
+                    </div>
+                </div>
+
+
+                <!-- END annonce haut -->
+
+                <!-- annonce bas -->
+                <div class="row d-flex">
+
+                    <div class="col-sm-12 col-lg-6 mx-auto">
+
+                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
+
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6">
+                        <p class="p-4  annonceContent">
+                            <?= nl2br(ucfirst(htmlspecialchars($annonce['descriptif']))) ?>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- END annonce bas -->
+
+                <!-- Contact + formulaire commentaire -->
+
+                <div class="row text-center d-flex" id="basAdd">
+
+                    <div class="col-sm-12 col-lg-6 annonceContent" id="contact">
+
+                        <h6 class="mt-4">CONTACT :</h6>
+
+                        <p class="p-2">
+                            <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
+                        </p>
+
+                    </div>
+                    <div class="col-lg-6 ">
+                        <?php if(!empty($_SESSION['pseudo'])) { ?>
+                        <!-- autorise les comm si enregistré -->
+
+                        <h6 class="mb-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire ! </em>
+                        </h6>
+
+                        <form
+                            action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
+                            method="post">
+                            <div>
+                                <textarea class="form-control" id="comment" name="comment" rows="5"
+                                    cols="50"></textarea>
+                            </div>
+                            <div>
+                                <input class="mt-2" type="submit" />
+                            </div>
+                        </form>
+
+                        <?php } ?>
+                        <!-- fin autorisation -->
+                    </div>
+                </div>
+
+                <!-- Fin contact + formulaire -->
+            </div>
+
+        </div>
+        <!-- END Bloc principal annonce -->
+
+        <!-- HEADER COMMENTAIRES -->
+
+        <div class="row d-flex annonceContent">
+
+            <div class="col-sm-12 col-lg-6 my-2">
+
+                <h4 class="text-left"> <em>Les derniers avis :</em></h4>
+            </div>
+
+            <div class="col-sm-12 col-lg-6 my-2 ">
+
+                <div class=" text-right">
+                    <span class="pouce"> Conseillé
+                        <span id="<?= $annonce['id']?>" class=" js-like-annonce far fa-thumbs-up "> :
+                            <?=$annonce['jaime'] ?></span>
+                    </span>
+                    <span class="pouce"> Désonseillé
+                        <span id="<?= $annonce['id']?>" class=" js-dontlike-annonce far fa-thumbs-down "> :
+                            <?=$annonce['jaimepas'] ?></span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- END HEADER COMMENTAIRES -->
+        <!-- COMMENTAIRES -->
+
+        <?php foreach ($allComments as $comment) { ?>
+
+        <div class="col-sm-12 col-lg-12 result annonceContent ">
+
+            <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
+                        <em></strong> le
+                <?= $comment['date_commentaire'] ?>
+
+                <span id="report">Signaler :
+                    <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
+                </span></h6>
+
+            <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
             </p>
 
-
         </div>
 
-    </div>
-
-
-
-    <div class="row">
-
-        <!-- COMMENTAIRES -->
-        <?php if(!empty($_SESSION['pseudo'])) { ?>
-        <div class="col-sm-12">
-            <h2> <em>Utilisez le formulaire pour laisser un commentaire ! </em></h2>
-
-            <form action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
-                method="post">
-                <div>
-                    <label for="comment">Commentaire</label><br />
-                    <textarea id="comment" name="comment" rows="5" cols="50"></textarea>
-                </div>
-                <div>
-                    <input type="submit" />
-                </div>
-            </form>
-        </div>
-        <?php } ?>
-
-
-        <div class="news">
-            <h2> <em>Les dernieres commentaires :</em></h2>
-            <?php
-            // foreach va recuperer toutes le contenu du tableau $comments -> controller
-foreach ($allComments as $comment)
-
-{
+        <?php
+    }
 
     ?>
-            <p id="commentaire"><strong>Commentaire de <?= htmlspecialchars($comment['pseudo']) ?></strong> le
-                <?= $comment['creation_date'] ?>
-                <br><br>
-                <?= nl2br(htmlspecialchars($comment['content'])) ?>
-
-                <?php if(!empty($_SESSION['pseudo'])) { ?>
-
-                <form method="post" id="formABC"
-                    action="index.php?action=click&id=<?= $comment['id']?>&id_chapter=<?= $_GET['id']?>">
-                    <button type="submit" id="btnSubmit">Signaler</button>
-
-                </form>
-
-                <?php }?>
-
-            </p>
-
-            <p id="edition">
-
-
-                <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] ==  '1') { ?>
-
-                <a href="index.php?action=editForm&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
-                    class="btn-dark">EDITER</a>
-
-                <a href="index.php?action=deleteC&id=<?= $comment['id'] ?>&id_chapter=<?= $_GET['id']?>"
-                    class="btn-dark">SUPPRIMER</a> </h3>
-            </p>
-            <?php
-    }
-}
-?>
-        </div>
 
     </div>
 
 </div> <!-- annonces -->
+</div>
+
 <?php
 // }  
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

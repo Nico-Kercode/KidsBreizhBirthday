@@ -1,264 +1,470 @@
-*{
-    margin:0 ;
-    padding: 0;
-}
+@font-face {
+    font-family: 'action_jacksonregular';
+    src: url('../font/actionj-webfont.woff2') format('woff2'),
+         url('../font/actionj-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
+}
+@font-face {
+    font-family: 'gooddog_plainregular';
+    src: url('../font/gooddp__-webfont.woff2') format('woff2'),
+         url('../font/gooddp__-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body {
     margin: 0;
     padding: 0;
     color: #021c1e;
-    background-color: whitesmoke; 
+    background-color: #f1f1f2 !important;
     font-family: 'Acme', sans-serif !important;
-  }
-  a{
+}
+
+a {
     font-size: 1em;
     color: rgb(70, 69, 69) !important;
-  }
-  a:hover{
+}
+
+a:hover {
     color: #4bbeb7!important;
-  }
-  li{
-      list-style: none;
-  }
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
 
 /* NAV */
-#sidebar a{
+
+#sidebar a {
     color: white !important;
 }
-#sidebar a:hover{
-    color: #4bbeb7!important;
-  }
-#navbarSupportedContent a{
+
+#sidebar a:hover {
+    color: #a1d6e2!important;
+}
+
+#navbarSupportedContent a {
     color: whitesmoke !important;
-
-}
-#sidebarCollapse{
-    background:rgb(218, 216, 216) !important;
-}
-.btn-outline-secondary{
-    background: #DAD8D8!important;
 }
 
-.btn-outline-secondary:hover{
-    background: #52dad0!important;
+#sidebarCollapse {
+    background: #a1d6e2!important;
 }
 
-
-#mbrNav span{
-
-    color:rgb(38, 60, 158);
+.btn-outline-secondary {
+    background: #a1d6e2!important;
 }
-.btn-dark{
-    background-color: whitesmoke !important;
-    color: black !important;
+
+.btn-outline-secondary:hover {
+    background: #a1d6e2!important;
 }
-#navbarSupportedContent a:hover{
+
+#mbrNav span {
+    color: rgb(38, 60, 158);
+}
+
+.dropdown-menu {
+    background-color: #1995ad!important;
+}
+
+.btn-dark {
+    background-color: #a1d6e2!important;
+    color: rgb(71, 71, 71) !important;
+}
+
+#navbarSupportedContent a:hover {
     color: #52dad0!important;
 }
-#navbar{
-background-color: rgb(99, 116, 182) !important;
+
+#navbar {
+   
+    height: 150px;
+    background-image: linear-gradient(rgb(25, 149, 173), rgb(34, 187, 218));
+                  
+    /* background-color: #1995ad!important; */
 }
-#navbar a{
+
+#navbar a {
+    font-family: "action_jacksonregular";
+    font-size: 1.4em !important;
+    text-shadow: none !important;
+    padding: .5rem !important;
+}
+#navbar a.home{
+    font-family: "action_jacksonregular";
+    color: #E6EEB2 !important;
+    text-shadow: none !important;
+}
+#navbar a.villes{
+    color:rgb(255, 209, 6) !important;
+    text-shadow: none !important;
+}
+#choixAccueil{
+    font-family: "action_jacksonregular";
+    font-size: 1.4em !important;
+   
+}
+#menuCompte a{
+    border:1px solid #E6EEB2;
+    border-radius: 20px;
+}
+#menuCompte a:hover{
+    color: blue !important;
+    border:1px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color:rgb(236, 255, 113)!important;
+}
+.Back{
+    
+    min-width: 25%;
+    margin-left: 10%;
+    padding: .5rem;
+    border-radius: 20px;
+    font-family: "action_jacksonregular";
     font-size: 1.1em !important;
+    text-shadow: none !important;
+    background-color:#E6EEB2;
+    border:1px solid rgb(9, 198, 245);
+    color:rgb(0, 0, 0)!important;
+   
+
 }
 
+.Back:hover{
+    background-color:rgb(236, 255, 113);
+    color:rgb(72, 21, 255)!important;
+}
 
+#retourAnnonce{
+    padding-top: 2%;
+    margin-top:2%;
+    max-width:20%;
+}
+#headerAnnonce{
+ 
+    max-width:60%;
+}
+.Back:hover{
+    color: red !important;
+    border:1px solid orange;
+}
+#choixAccueil a{
+    
+    padding: .3rem .2rem;
+    background-color:#E6EEB2;
+    border-radius: 15px;
+    text-shadow: none !important;
+}
+#choixAccueil a:hover{
+    color: blue!important;
+    background-color:rgb(236, 255, 113);
+}
+#gateau{
+    margin-top: 30px;
+}
+#moncompte{
+    color:#ABBCBA !important;
+}
 .btn-floating {
     background-color: whitesmoke !important;
 }
-#accueil{
 
-    margin-top: 10%;
+#accueil {
+    margin-top: 2%;
+    margin-bottom: 15%;
+    text-shadow: none !important;
 }
 
-#degemer{
+.inactiveLink {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+#compteur {
+    height: 5%;
+    padding: 5px;
+}
+
+#count {
+    text-align: right;
+    font-weight: normal !important;
+    font-style: italic;
+}
+
+#count span {
+    color: #1995ad!important;
+}
+
+#degemer {
+    margin-left:50%;  
     color: rgb(0, 0, 0) !important;
-    font-size: 2em;
-    text-shadow: 2px 2px #adaaaa;
-
+    text-shadow: none !important;
+   
 }
-.tabulation{
-    font-size:1.4em;
+.bandeau{
+    
+    margin-left: 10px !important;
+}
+.logoH2{
+    font-size: 3em;
+    text-shadow: 3px 2px #16aeeb;
+}
+
+.tabulation {
+    font-size: 1.4em;
     margin-right: -1px;
     margin-left: 50px;
 }
-
-#texteAccueil{
-    font-size: 1em;
+#onglet{
+    margin-right: -18px !important;
+    color:rgb(141, 49, 226)!important;
 }
-#indexView{
+#connexion{
+    color:rgb(141, 49, 226)!important;
+    padding: .5rem;
+    font-size:1.1em;
+}
+#connexion:hover{
+    color: blue!important;
+    border-radius: 20px;
+    background-color:rgb(236, 255, 113);
+}
+#texteAccueil {
+    font-size: 1em;
+    text-shadow: none !important;
+}
+
+#indexView {
     height: 1.2vh !important;
+    text-shadow: none !important;
 }
 
 .fas.fa-bars {
-    
- font-size: 1.5em !important;
+    font-size: 1.5em !important;
 }
 
-#avatarMenu{
-    min-width: 120px;
-    max-width: 160px;
-    min-height:160px;
-    max-height: 220px;
-    margin: 0 10% 2% 10% !important;
+#sousmenu a:hover {
+    color: #a1d6e2!important;
 }
 
-#sousmenu a:hover{
-    color: #52dad0!important;
-
-}
-.choix a:hover{
-    
-    color: #57e7de!important;
+.choix a:hover {
+    color: #a1d6e2!important;
 }
 
-#membre{
-    /* margin-left: 2%; */
-    background-color:whitesmoke;
+#membre {
+    background-color: #f1f1f2 !important;
     font-size: 1em;
     font-weight: 600;
     color: white !important;
-
+    text-shadow: none !important;
 }
-#membre a{
+
+#membre a {
     font-size: 1em;
     color: white!important;
-
 }
 
-
-#sidebar{
-    background-color:whitesmoke; 
+#sidebar {
     padding: 1%;
 }
-#sidebar a{
+
+#sidebar a {
     text-align: center !important;
 }
-#sidebar .d-block{
+
+#sidebar .d-block {
     font-weight: 300 !important;
-    font-size: 1em !important; 
-    text-align: center !important;  
+    font-size: 1em !important;
+    text-align: center !important;
+    text-shadow: none !important;
 }
-#avatar{
+
+#avatar {
     display: block;
     width: 70%;
 }
-.main{
-    background-color: #f1f1f1;
+
+.main {
+    background-color: #f1f1f2 !important;
 }
 
-/*  annonces view */ 
-#mainAnnonces{
-    border: 1px solid rgb(216, 216, 216);
+/*  annonces view */
+
+#mainAnnonces {
+    border: 1px solid rgb(154, 226, 255);
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
- 
-    
-   
+    text-shadow: none !important;
 }
-#annonceHaut{
-    background-color:rgb(218, 216, 216);
-    border-bottom: 2px solid #6374B6;
+
+#annonceHaut {
+    
+    
+    border-bottom: 2px solid rgb(132, 205, 253);
     max-height: 100px;
 }
 
-.titreAnnonce {
-
-    margin: 3% auto  !important;
+.h2annonces{
+    font-family: "action_jacksonregular";
+    font-size:2em;
+    color: rgb(141, 49, 226) !important;
+    text-transform: uppercase;
+    text-shadow: none !important;
 }
+.titreAnnonce a h2:hover{
 
-.titreAnnonce span{
-
-    color:rgb(38, 60, 158);
+    color: blue !important;
 }
+.h2annonces:nth-child(0n+2){
+    color: rgb(187, 203, 233) !important;
 
-.logoA{
-    margin: 5% 0 5% 0  !important;
-    min-height: 60px;
-    min-width: 120px;
-    max-height: 80px;
-    max-width: 220px;
 }
-#plusdinfos{
+#plusdinfos {
     text-decoration: none;
-    font-size: 1.2em;
-    background-color: whitesmoke;
+    font-size: 1em;
+    background-color: #f1f1f2 !important;
     margin: 0 0 0 83%;
     text-transform: uppercase;
     border: none !important;
+}
 
+#comBtn:hover {
+    background-color: #67f1e8!important;
+}
+.h1annonces{
+    font-family: "action_jacksonregular";
+    text-shadow: none !important;
 
 }
-#plusdinfos a:hover{
-    color: #52dad0!important;
-}
-.photosadd{
-    min-width:700px;
-    min-height: 350px;
-    max-width: 800px;
-    max-height: 400px;
-}
-.h1annonces span{
-    background-color: rgb(218, 216, 216);
+.h1annonces span {
+    font-family: "action_jacksonregular";
+    color: #09ff99;
     border-radius: 150px;
-    font-size:1.4em;
-    width: 12%;
-    margin: 0 auto;
-    text-shadow: 2px 2px #adaaaa;
+    font-size: 1.4em;   
 }
 
-#Mainlogo a{
-    
-    font-size:2em !important;
+#Mainlogo a {
+    font-size: 2em !important;
     text-align: justify;
-    line-height:30px;
+    line-height: 30px;
     text-shadow: 2px 2px #0f0f0f;
     text-align: center;
-
 }
-.tabulation2{
- 
+
+.tabulation2 {
     margin-left: 15px;
 }
-.tabulation3{
+
+.tabulation3 {
     margin-left: 16px;
-
 }
-#annonceContent{
 
+.annonceContent {
+    font-family: 'Neucha', cursive!important;
     margin: 0 auto !important;
+    font-weight: normal !important;
     font-size: 1em;
-    line-height: 40px;
-}
-
-
-#rgpd{
-    color: black !important;
-}
-#rgpd ul li{
-    color: black !important;
-}
-#rgpd a{
-    color: rgb(88, 162, 196) !important;
-
-}
-#mbrNav h4{
-    font-size: 1.4em !important;
-
-} 
-
-
-#footer{
-    background-color: rgb(99, 116, 182) !important;
+    text-shadow: none;
     
 }
-#footer a:hover{
+
+#rgpd {
+    color: black !important;
+}
+
+#rgpd ul li {
+    color: black !important;
+}
+
+#rgpd a {
+    color: #3553fd !important;
+}
+
+#mbrNav h4 {
+    font-size: 1.4em !important;
+}
+
+#footer {
+    background-color: #1995ad!important;
+    border-top: 1px solid #bcbabe;
+}
+
+#footer a:hover {
     color: #5efff4!important;
 }
-#footer strong{
-    color:white !important;
-    -webkit-text-stroke: 1px;
-    -webkit-text-stroke-color: rgb(68, 126, 202);
-    margin-left: 1%;
 
+#footer strong {
+    color: white !important;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #bcbabe;
+    margin-left: 1%;
+}
+
+#deja2 {
+    margin-top: 5%;
+}
+
+#register {
+    margin-left: 5px;
+    font-size: 1.1em !important;
+    color: blue !important;
+}
+
+#basAdd {
+    margin-top: 15px;
+    padding: 1%;
+    border-top: 1px solid rgb(201, 201, 201);
+}
+
+#contact {
+    margin-top: 5%;
+    background: whitesmoke;
+}
+
+#result h1 {
+    background-color: rgb(230, 230, 230);
+    margin-bottom: 10% !important;
+}
+
+.result {
+    border: 1px solid rgb(201, 201, 201);
+
+}
+
+#report {
+    text-align: right !important;
+}
+
+.js-dislike-comment {
+    font-size: 1.4em;
+}
+
+.js-dislike-comment:hover {
+    border-radius: 20px;
+    background: rgb(253, 67, 67) !important;
+}
+
+.pouce {
+    font-size: 1.1em !important;
+    margin-left: 2% !important;
+}
+
+#pageAnnonce{
+    background-color:#a8e6ff !important;
+}
+
+.admin{
+    margin-top: 30px;
+    border: 1px solid black;
+    min-height : 200px;
+}
+.list{
+    background-color: rgb(185, 185, 185);
+    padding: .5rem;
 }

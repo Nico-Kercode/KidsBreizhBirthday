@@ -4,6 +4,7 @@
 namespace Kbb\Model;
 
 use \Kbb\Model\Manager;
+use \Exception;
 use \PDO;
 
 
@@ -11,6 +12,11 @@ use \PDO;
 class CommentManager extends Manager
 {
     
+
+    // -----------------
+    // AJOUT COMMENTAIRE
+    // -----------------
+
     public function addComment($comment,$id_ANNONCES, $id_MEMBRES )
     {
         $db = $this->dbConnect();
@@ -28,32 +34,110 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    // public function getComments($id)
-    // {
-    //     $db = $this->dbConnect();
+    // --------------------
+    // AFICHAGE COMMENTAIRE
+    // --------------------
+
+    public function getComments($id)
+    {
+        $db = $this->dbConnect();
         
-    //     $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
-    //     FROM commentaires INNER JOIN membres ON id_MEMBRES =member.id WHERE id_ANNONCES = ?  
-    //     ORDER BY creation_date DESC');
+        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
+        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
+        ORDER BY date_commentaire DESC');
 
-    //     $comments->execute(array($id));
+        $comments->execute(array($id));
         
-    //      $allComments= $comments->fetchAll();
+        $allComments= $comments->fetchAll();
        
-    //     return $allComments;
+        return $allComments;
 
-    // }
+    }
+
+    // -----------------------
+    // SIGNALEMENT COMMENTAIRE
+    // -----------------------
 
 
-    // public function deleteComment($id)
-    // {
+    public function incrementAlert($id) {
+        $db = $this->dbConnect();
 
-    //     $db = $this->dbConnect();
-    //     $req = $db->query("DELETE FROM comment WHERE id ='$id' ");
-       
+        $req = $db->prepare('UPDATE commentaires SET alert = alert + 1 WHERE id = :id');
+        $success = $req->execute(array(
+            "id" => $id
+        ));
+                
+        return $success;
+    }
 
-    //     return $req;
+    // -----------------------
+    // SUPPRESSION COMMENTAIRE
+    //    ---- ADMIN ----
+    // -----------------------
 
-    // }
+    public function deleteCommentaire($commentID)
+    {
 
+        $db = $this->dbConnect();
+        $req = $db->prepare("DELETE FROM commentaires WHERE id =? ");
+        $req->execute(array($commentID));
+
+        return $req;
+
+    }
+    public function getCommentaire($commentID,$annonceID)
+    {
+        
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT contenu, date_commentaire, pseudo , id_ANNONCES , titre 
+        FROM commentaires 
+        INNER JOIN membres ON id_MEMBRES =membres.id 
+        INNER JOIN annonces ON id_ANNONCES =annonces.id 
+        WHERE commentaires.id = ? AND annonces.id =?');
+        $req->execute(array($commentID,$annonceID));
+        $editCommentaire = $req->fetch();
+
+        return $editCommentaire;
+    }
+
+
+    public function editCommentaire($id, $editCommentaire){
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE commentaires 
+        SET contenu=(:contenu) 
+        WHERE commentaires.id= (:id)');
+        $affectedLines = $comments->execute(array(
+            "contenu" => $editCommentaire,
+            "id" => $id
+        ));
+
+        return $affectedLines;
+    }
+
+
+
+    public function getReports($starter,$alertsParPage)
+    {
+    $db = $this->dbConnect();
+    $req= $db->prepare("SELECT commentaires.id, pseudo, titre, contenu, alert , id_ANNONCES
+    FROM commentaires INNER JOIN membres ON id_MEMBRES =id_MEMBRES INNER JOIN annonces ON id_ANNONCES= id_ANNONCES  WHERE alert > 0 ORDER BY alert DESC LIMIT $starter, $alertsParPage ");
+    $req->execute(array());
+    $getReports = $req->fetchAll();
+    $req->closeCursor();
+        
+
+    return $getReports;
+
+    }
+
+    public function CountAlerts() 
+    {
+        $db = $this->dbConnect();
+        $req= $db->prepare('SELECT COUNT(alert) FROM commentaires ');
+        $req->execute(array());
+        $nbDePageAlert=$req->fetchAll()[0][0];
+        $req->closeCursor();
+
+        return $nbDePageAlert;
+    }
 }

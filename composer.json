@@ -3,5 +3,10 @@
       "psr-4": {
         "Kbb\\":"./"
       }
+    },
+    "require": {
+        "calcinai/php-imagick": "^0.1.2",
+        "orbitale/imagemagick-php": "^2.0",
+        "psy/psysh": "^0.9.9"
     }
 }
