@@ -182,7 +182,7 @@ class App
 
                     if (isset($_GET['page'])){
                         $numeroPage= $_GET['page'];      
-                        $annonceParPage =6;
+                        $annonceParPage =4;
                         
 
                     $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
@@ -197,7 +197,7 @@ class App
                 } elseif($_GET['action'] =='meilleurNote'){
 
                     $numeroPage= $_GET['page'];      
-                    $annonceParPage =6;
+                    $annonceParPage =4;
                     
 
                     $this->controller->classementAnnonces($numeroPage,$annonceParPage);
@@ -235,7 +235,7 @@ class App
 
                             // -------------------------------//
                             //          AJOUT ANNONCE
-                            // ------------------------------//
+                            // -------------------------------//
 
                 } elseif ($_GET['action'] == 'addannonce'){
 
@@ -294,7 +294,8 @@ class App
                         $commentID = $_GET['id'];
                         $annonceID = $_GET['id_ANNONCES'];
   
-                        $this->controller->editForm($commentID,$annonceID);
+                            $this->controller->editForm($commentID, $annonceID);
+
 
                     } else {
 

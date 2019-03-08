@@ -4,49 +4,55 @@
 
 
 
-<div class="container">
-    <!-- <div class="row">
-        <div class="d-flex mx-auto" id="choixAccueil">
-            <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
-            <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-            <a class="ml-4" href="index.php?action=lorient&page=1">Les mieux notés</a>
-        </div>
-    </div> -->
-    <div class="row">
-        <div class="mx-auto" id="gateau">
-            <img class="img-fluid" src="assets\img\artworkIMG\logoGateau.png" alt="">
+<div class="container-fluid">
+
+    <div class="row d-flex">
+
+        <div class="col-lg-2 d-none d-lg-block  ">
+
+            <img class="img-fluid my-auto mx-4 " src="assets\img\artworkIMG\used\ballon3.png" alt="BallonRose">
         </div>
 
+        <div class="col-lg-8">
 
-        <div class=" d-sm-none d-md-block col-lg-10 " id="anim">
-            <div class="text"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div id="indexView">
-
-            <div class="col-sm-12 col-lg-10 offset-lg-2 " id="accueil">
+            <div class="d-sm-none d-md-block" id="anim">
+                <div class="text"></div>
+            </div>
 
 
-                <p id="texteAccueil"> <span class="tabulation">Nous</span> avons regroupé pour vous tous les
-                    professionnels
-                    du
-                    Morbihan
-                    qui proposent des presations, afin que votre enfant puisse passer une journée d'anniversaire
-                    inoubliable.
-                    Parc, restaurant, circuit de karting, piscine ou cinéma ... <br>
+            <div id="indexView">
 
-                    Il existe une multitude d'endroits qui propose ce genre de service ...
+                <div class="col-sm-12 col-lg-10 mx-auto " id="accueil">
 
 
-                </p>
+                    <p id="texteAccueil" class="my-auto"> <span class="tabulation">Nous</span> avons regroupé pour vous
+                        tous les
+                        professionnels
+                        du
+                        Morbihan
+                        qui proposent des presations, afin que votre enfant puisse passer une journée d'anniversaire
+                        inoubliable.
+                        Parc, restaurant, circuit de karting, piscine ou cinéma ... <br>
+
+                        Il existe une multitude d'endroits qui propose ce genre de service ...
+                    </p>
+
+
+                </div>
 
             </div>
 
-        </div><!-- row -->
+        </div> <!-- end lg8 -->
+
+        <div class="col-lg-2 d-none d-lg-block  my-auto ">
+            <img class="img-fluid " src="assets\img\artworkIMG\cadeauJaune.png" alt="cadeauJaune">
+        </div>
 
 
-    </div> 
+        <!-- row -->
+
+
+    </div>
 
 </div><!-- container -->
 

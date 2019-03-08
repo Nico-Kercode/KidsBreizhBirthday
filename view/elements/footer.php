@@ -20,7 +20,7 @@
                 <!--Copyright-->
                 <p class="text-center text-md-left">© 2019 Copyright :
                     <a href="#">
-                        Nico Kercode
+                        TraouaWeb 
                     </a>
                 </p>
 

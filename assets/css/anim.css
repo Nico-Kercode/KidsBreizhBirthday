@@ -4,9 +4,11 @@
 */
 #anim
     {
-  margin-top:6% !important;
-  height :150px;
-  max-width :1200px;
+  margin-top:10% !important;
+  margin-right:20%;
+  padding:2%;
+  height :180px;
+  max-width :1250px;
   justify-content: center;
   align-items: center;
   display: flex;

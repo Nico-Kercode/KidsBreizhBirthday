@@ -7,53 +7,69 @@
 <h1 class="text-center my-4 h1annonces"> <span>L</span>ORIENT</h1>
 
 
-<div class="container">
-    <div class="row">
+<div class="container-fluid d-flex">
 
-        <?php foreach ($annonces as $data) { ?>
+    <div class=" d-none d-md-block col-lg-2">
+        <img class=" img-fluid  w-75" src="assets\img\artworkIMG\imageCadeau1.png" alt="Garcon">
+        
 
-
-        <div class="col-sm-6 " id="mainAnnonces">
-            <!-- boucle affichage des annonces -->
-            <div class="row" id="annonceHaut">
-
-
-
-                <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
-                    <a class=" text-left font-weight-bold p-4 "
-                        href="index.php?action=annonce&id=<?= $data['id'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
-                        <h2 class="text-center h2annonces">
-                            <?= htmlspecialchars($data['titre']) ?>
-                        </h2>
-                    </a>
-
-                </div>
-                <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
-
-                    <img class="img-fluid  my-2" src="assets\img\artworkIMG\garcon.png" alt="logo">
-                </div>
-            </div>
-            <!-- <?= $data['logo']?> -->
-
-            <div class="row my-4">
-
-                <div class="mx-auto ">
-
-                    <img class="img-fluid  img-thumbnail" src="<?= $data['photo1']?>" alt="Photo1">
-
-                </div>
-            </div>
-        </div>
-
-
-        <!-- END FOREACH -->
-        <?php
-}
-?>
     </div>
-</div>
-<!--  -->
 
+
+    <div class="col-sm-12 col-lg-8">
+        <div class="row">
+
+            <?php foreach ($annonces as $data) { ?>
+
+
+            <div class="col-sm-6 " id="mainAnnonces">
+                <!-- boucle affichage des annonces -->
+                <div class="row" id="annonceHaut">
+
+
+
+                    <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
+                        <a class=" text-left font-weight-bold p-4 "
+                            href="index.php?action=annonce&id=<?= $data['id'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
+                            <h2 class="text-center h2annonces">
+                                <?= htmlspecialchars($data['titre']) ?>
+                            </h2>
+                        </a>
+
+                    </div>
+                    <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
+
+                        <img class="img-fluid  my-2" src="assets\img\artworkIMG\garcon.png" alt="logo">
+                    </div>
+                </div>
+                <!-- <?= $data['logo']?> -->
+
+                <div class="row my-4">
+
+                    <div class="mx-auto ">
+
+                        <img class="img-fluid  img-thumbnail" src="<?= $data['photo1']?>" alt="Photo1">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- END FOREACH -->
+            <?php
+}
+?> </div>
+    </div>
+    <!--  -->
+
+    <div class=" d-none d-md-block col-lg-2 my-auto">
+        <img class=" img-fluid w-75 " src="assets\img\artworkIMG\chenille.png" alt="chenille">
+
+    </div>
+
+
+
+</div>
 
 <div class="row">
     <div class="col-sm-12 fixed-bottom">

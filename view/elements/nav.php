@@ -85,7 +85,6 @@
 
                 <!-- # fin -->
 
-
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <div class=" mx-auto">
                         <a href="index.php?action=home"><img class="img-fluid  bandeau"
@@ -93,36 +92,13 @@
                         <p></p>
                     </div>
                     <ul class="nav navbar-nav mc-auto">
-                        <!-- <li class="nav-item active">
-                            <a class="nav-link home" href="index.php?action=home">ACCUEIL</a>
-                        </li> -->
-
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link villes" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                               VILLES
-                            </a> -->
-
-
-
 
                         <div class=" dropdown-menu-left dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="index.php?action=vannes&page=1">Vannes</a>
                             <a class="dropdown-item" href="index.php?action=lorient&page=1">Lorient</a>
                         </div>
                         </li>
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Activités
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Interieur</a>
-                                <a class="dropdown-item" href="#">Exterieur</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Les mieux notés</a>
-                            </div>
-                        </li> -->
+
                         <!-- si pas de session : bouton connexion -->
 
                         <?php if(empty($_SESSION)) { ?>
@@ -131,6 +107,7 @@
                                     id="connexion">Connexion</span></a>
                         </li>
                         <?php } ?>
+
                         <!-- si session : ouverture side bar "mon compte" + script sur template  -->
 
                         <?php if(!empty($_SESSION)) { ?>
@@ -143,7 +120,8 @@
                 </div>
 
             </div>
-        </nav> <!-- # Fin navbar -->
+        </nav> 
+        <!-- # Fin navbar -->
 
 
 
