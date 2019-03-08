@@ -142,14 +142,13 @@
             <div class="col-sm-12 col-lg-6 my-2 ">
 
                 <div class=" text-right">
-                    <span class="pouce"> Conseillé
-                        <span id="<?= $annonce['id']?>" class=" js-like-annonce far fa-thumbs-up "> :
-                            <?=$annonce['jaime'] ?></span>
-                    </span>
-                    <span class="pouce"> Désonseillé
-                        <span id="<?= $annonce['id']?>" class=" js-dontlike-annonce far fa-thumbs-down "> :
-                            <?=$annonce['jaimepas'] ?></span>
-                    </span>
+                    <?php if(isset($_SESSION)){
+
+                     ?>
+                   <a href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
+
+                   <a href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je n'aime pas</a>
+                <?php }?>
 
                 </div>
             </div>

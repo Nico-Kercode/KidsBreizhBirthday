@@ -55,16 +55,15 @@ class MemberManager extends Manager{
     // -------------------
 
 
-    public function updtMember($member_id,$pseudo,$email,$passHash){
+    public function updtMember($email,$passHash,$member_id){
 
         $db = $this->dbConnect();
-        $updatemember = $db->prepare('UPDATE  membres SET pseudo=(:pseudo), email=(:email), password=(:password) WHERE membres.id=(:id)');
+        $updatemember = $db->prepare('UPDATE  membres SET  email=(:email), password=(:password) WHERE membres.id=(:id)');
         $affectedLines = $updatemember->execute(array(
-            "pseudo" => $pseudo,
             "email" => $email,
             "password" =>$passHash,
             "id"=>$member_id
-
+ 
             ));
        
         return $affectedLines;

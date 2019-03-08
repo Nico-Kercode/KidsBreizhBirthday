@@ -17,7 +17,7 @@ $('.js-dislike-comment').one('click', function(e) {
 
 $('.js-like-annonce').one('click', function(e) {        
     let span = $(e.currentTarget);        
-    let url = "index.php?action=like&id=" + span.attr('id');
+    let url = "index.php?action=like&id=" + span.attr('id')+"&idmembres="+ span.attr('id_MEMBRES');
 
     $.getJSON(url)
     .done((data)=>{

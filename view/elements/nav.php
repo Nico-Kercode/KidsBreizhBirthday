@@ -142,7 +142,7 @@
             <div class="d-flex mx-auto" id="choixAccueil">
                 <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
                 <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-                <a class="ml-4" href="index.php?action=meilleurNote&page=1">Les mieux notés</a>
+                <a class="ml-4" href="index.php?action=meilleurNote">Les mieux notés</a>
 
                 
             </div>

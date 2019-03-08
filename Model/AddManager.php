@@ -78,33 +78,56 @@ class AddManager extends Manager
     // RECUPERE TOUTES LES ANNONCES PAR CLASSEMENT
     // ------------------------------------------- 
 
-    public function getBestAnnonces($starter,$parPage)
+    public function getBestAnnonces()
     {
        
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT * FROM annonces ORDER BY annonces.jaime DESC LIMIT $starter, $parPage");
-        $req->execute(array()); 
-        $bestAnnonces = $req->fetchAll();
+        $req = $db->prepare('SELECT id_ANNONCES, COUNT(*)
+        FROM votes
+        GROUP BY id_ANNONCES
+        ORDER BY COUNT(*) DESC
+        LIMIT 10
+        ');
+        $req->execute(array());
+        $bestAnnonces=$req->fetchAll();
         $req->closeCursor();
         
         return $bestAnnonces;
     }
+
+
+    // public function getBestAnnonces()
+    // {
+       
+    //     $db = $this->dbConnect();
+    //     $req = $db->prepare('SELECT id_ANNONCES, COUNT(*)
+    //     FROM votes
+    //     GROUP BY id_ANNONCES
+    //     ORDER BY COUNT(*) DESC
+    //     LIMIT 10
+    //     ');
+    //     $req->execute(array());
+    //     $bestAnnonces=$req->fetchAll();
+    //     $req->closeCursor();
+        
+    //     return $bestAnnonces;
+    // }
 
     
     // -----------------------------------------
     // CALCUL NBRE DE PAGES / MEILLEURS NOTES 
     // -----------------------------------------
     
-    public function countAnnoncesJaime()
-    {
-        $db = $this->dbConnect();
-        $req= $db->prepare('SELECT COUNT(*) FROM annonces ');
-        $req->execute(array());
-        $nbDePageJaime=$req->fetchAll()[0][0];
-        $req->closeCursor();
+    // public function countAnnoncesJaime()
+    // {
+    //     $db = $this->dbConnect();
+    //     $req= $db->prepare('SELECT COUNT(*) FROM annonces ');
+    //     $req->execute(array());
+    //     $nbDePageJaime=$req->fetchAll()[0][0];
+    //     $req->closeCursor();
 
-        return $nbDePageJaime;
-    }
+    //     return $nbDePageJaime;
+    // }
 
     // -----------------------
     // AFFICHAGE D UNE ANNONCE
@@ -114,7 +137,7 @@ class AddManager extends Manager
     public function getAnnonce($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, presentation, descriptif, contact, jaime, jaimepas, photo1 ,photo2 ,pseudo
+        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, presentation, descriptif, contact,  photo1 ,photo2 ,pseudo
         FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE annonces.id = ? ');
         $req->execute(array($id));
         $annonce = $req->fetch();
@@ -159,38 +182,24 @@ class AddManager extends Manager
     }
 
 
-    // -------------
+    // ----------------
     // LIKE ANNNONCE
     // -------------
 
 
-    public function incrementJaime($id) {
+    public function incrementJaime($id_ANNONCES,$id_MEMBRES,$type) {
         $db = $this->dbConnect();
-
-        $req = $db->prepare('UPDATE annonces SET jaime = jaime + 1 WHERE id = :id');
-        $success = $req->execute(array(
-            "id" => $id
+        $req = $db->prepare('INSERT INTO votes (id_ANNONCES, id_MEMBRES, type) VALUES(:id_ANNONCES,:id_MEMBRES,:type) ');
+        $like= $req->execute(array(
+            "id_ANNONCES"=>$id_ANNONCES,
+            "id_MEMBRES"=>$id_MEMBRES,
+            "type" =>$type
         ));
                 
-        return $success;
+        return $like;
     }
 
-    // ---------------
-    // DISLIKE ANNONCE
-    // ---------------
 
-
-    public function incrementJaimepas($id) {
-        $db = $this->dbConnect();
-
-        $req = $db->prepare('UPDATE annonces SET jaimepas = jaimepas + 1 WHERE id = :id');
-        $success = $req->execute(array(
-            "id" => $id
-        ));
-                
-        return $success;
-    }
-    
 
 }
 

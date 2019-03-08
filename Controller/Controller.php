@@ -119,11 +119,11 @@ class Controller
     // -------------------------
 
 
-    public function updateMember($member_id,$pseudo,$email,$password_1) {
+    public function updateMember($email,$password_1,$member_id) {
 
 
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->updtMember($member_id,$pseudo,$email,$passHash);
+        $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         
         header('Location: index.php?action=accounttmnagement');
         
@@ -225,14 +225,13 @@ class Controller
     // CLASSEMENT PAR NOTE
     // -------------------
 
-    public function classementAnnonces($numeroPage,$annonceParPage) {
+    public function classementAnnonces() {
 
-        $starter = ($numeroPage-1 )*$annonceParPage;
-        $nbDePageJaime = ceil(intval($this->addManager->countAnnoncesJaime())/$annonceParPage);
-        $bestAnnonces = $this->addManager->getBestAnnonces($starter,$annonceParPage);
+        $bestAnnonces = $this->addManager->getBestAnnonces();
 
         require('view\frontend\meilleurNoteView.php');
 
+        return $bestAnnonces;
     }
 
     // public function nbPages() {
@@ -257,62 +256,22 @@ class Controller
         
 
     }
-    // ------------------
-    // J AIME +1
-    // ------------------
+    // ---------------------
+    // J AIME / J AIME PAS
+    // ---------------------
 
+    
+    public function incrementLike($id_ANNONCES,$id_MEMBRES,$type) {
+        
+           
+            
+        $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
 
-    public function incrementLike($arr) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arr['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arr['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            // Update 
-            $success = $this->addManager->incrementJaime($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
-        // Return $returnedValue in json format
-        require('view/frontend/likeView.php');
+        header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
+       
     }
 
-    // ------------------
-    // AIME PAS +1
-    // ------------------
-
-    public function incrementdontLike($arry) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arry['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arry['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            // Update 
-            $success = $this->addManager->incrementJaimepas($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
-        // Return $returnedValue in json format
-        require('view/frontend/dontlikeView.php');
-    }
+  
 
     // ------------------
     // TOTAL ANNONCES

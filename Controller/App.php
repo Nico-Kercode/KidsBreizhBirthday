@@ -114,7 +114,6 @@ class App
 
                     if (isset($_POST['update_user'])) {
                         $member_id = $_SESSION['id'];
-
                         $email= htmlspecialchars($_POST['email']);
                         $password = htmlspecialchars($_POST['password_1']);
                         $password_2 = htmlspecialchars($_POST['password_2']);
@@ -125,7 +124,7 @@ class App
                                 else {
                                     throw new Exception('les mots de passe ne correspondent pas');
                                 }                         
-                        $this->controller->updateMember($member_id,$pseudo, $email, $password_1);
+                        $this->controller->updateMember($email, $password_1,$member_id );
                     }
 
             
@@ -195,12 +194,9 @@ class App
                             // ---------------------------------------//
 
                 } elseif($_GET['action'] =='meilleurNote'){
-
-                    $numeroPage= $_GET['page'];      
-                    $annonceParPage =4;
                     
 
-                    $this->controller->classementAnnonces($numeroPage,$annonceParPage);
+                    $this->controller->classementAnnonces();
 
         
                 
@@ -272,11 +268,36 @@ class App
                     // Incrément du nb d'alert sur un commentaire
                     $this->controller->incrementAlert($_GET);
 
+
+
+
+
+
                 } elseif ($_GET['action'] == 'like') {
-                    // Incrément du nb de like sur une annonce
-                    $this->controller->incrementLike($_GET); 
+
+                    if (isset($_GET['id']) && $_GET['id'] > 0)
+                    {
+                            $id_ANNONCES = $_GET['id'];
+                            $id_MEMBRES= $_SESSION['id'];
+                            $type=$_GET['type'];
+                                           
+        
+                        $this->controller->incrementLike($id_ANNONCES,$id_MEMBRES,$type);
+                      
+                    }
+
+
+
+                }
+
+                // } elseif ($_GET['action'] == 'like') {
+
+                //     $idAnnonce=$_GET['id'];
+                //     $idMembre= $_SESSION['id'];
+                //     // Incrément du nb de like sur une annonce
+                //     $this->controller->incrementLike($idAnnonce,$idMembre); 
                 
-                } elseif ($_GET['action'] == 'dontlike') {
+                 elseif ($_GET['action'] == 'dontlike') {
                     // Incrément du nb de like sur une annonce
                     $this->controller->incrementdontLike($_GET); 
 
