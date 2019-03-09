@@ -120,7 +120,7 @@
                 </div>
 
             </div>
-        </nav> 
+        </nav>
         <!-- # Fin navbar -->
 
 
@@ -142,9 +142,12 @@
             <div class="d-flex mx-auto" id="choixAccueil">
                 <a class="ml-4" href="index.php?action=vannes&page=1">Secteur de Vannes</a>
                 <a class="ml-4" href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-                <a class="ml-4" href="index.php?action=meilleurNote">Les mieux notés</a>
+                <a class="ml-4" href="index.php?action=meilleurNote">Les 10 mieux notés</a>
 
-                
+                <?php if(!empty($_SESSION)) { ?>
+                <a class="ml-4" href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id'] ?>">Ma selection</a>
+                <?php } ?>
+
             </div>
 
         </div>

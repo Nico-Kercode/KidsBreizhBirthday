@@ -86,8 +86,7 @@ img {
    
     height: 150px;
     background-image: linear-gradient(rgb(25, 149, 173), rgb(34, 187, 218));
-                  
-    /* background-color: #1995ad!important; */
+
 }
 
 #navbar a {
@@ -129,7 +128,7 @@ img {
     font-family: "action_jacksonregular";
     font-size: 1.1em !important;
     text-shadow: none !important;
-    background-color:#E6EEB2;
+    background-color:#E6EEB2 !important;
     border:1px solid rgb(9, 198, 245);
     color:rgb(0, 0, 0)!important;
    
@@ -144,7 +143,7 @@ img {
 #retourAnnonce{
     padding-top: 2%;
     margin-top:2%;
-    max-width:20%;
+    max-width:25%;
 }
 #headerAnnonce{
  
@@ -468,3 +467,16 @@ img {
     background-color: rgb(185, 185, 185);
     padding: .5rem;
 }
+.select{
+    font-family: "action_jacksonregular";
+    background-color:#E6EEB2!important;
+    border-radius: 20px;
+    padding: .5rem;
+
+}
+.select:hover{
+    background-color:#ECFF71!important;
+    color: blue !important;
+
+}
+

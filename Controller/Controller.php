@@ -93,7 +93,11 @@ class Controller
     // LOGIN
     // ------------------
 
-    public function Login($pseudo, $password){
+    public function Login(){
+
+        $pseudo = htmlspecialchars($_POST['username']);
+        $password = htmlspecialchars($_POST['password']);
+
 
         $member = $this->memberManager->loginMember($pseudo,$password);
 
@@ -119,9 +123,15 @@ class Controller
     // -------------------------
 
 
-    public function updateMember($email,$password_1,$member_id) {
+    public function updateMember() {
 
-
+        $member_id = $_SESSION['id'];
+        $email= htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password_1']);
+        $password_2 = htmlspecialchars($_POST['password_2']);
+        if($password == $password_2) {
+            $password_1 = $password_2;
+        } 
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         
@@ -138,6 +148,7 @@ class Controller
 
         $newAvatar= $this->manageFile($_FILES['imageProfil'],400,400);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+        $_SESSION['avatar'] = $newAvatar;
         
         header('Location: index.php?action=moncompte');
         
@@ -148,8 +159,10 @@ class Controller
     // ------------------
 
 
-    public function getAllMembres($numeroPage,$membresParPage) {
+    public function getAllMembres() {
 
+        $numeroPage= $_GET['page'];
+        $membresParPage= 8;
         $starter = ($numeroPage-1 )*$membresParPage;
         $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
         $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
@@ -160,8 +173,10 @@ class Controller
   
     }
 
-    public function getComReports($numeroPage,$alertsParPage){
+    public function getComReports(){
 
+        $numeroPage= $_GET['page'];
+        $alertsParPage = 6;
         $starter = ($numeroPage-1 )*$alertsParPage;
         $nbDePageAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
         $getReports = $this->commentManager->getReports($starter,$alertsParPage);
@@ -234,14 +249,50 @@ class Controller
         return $bestAnnonces;
     }
 
-    // public function nbPages() {
+    // -------------------
+    // AJOUT SELECTION
+    // -------------------
 
-    //     $nbDePage = $this->addManager->countPages();
-    //     require('view\frontend\addView1.php');
+    public function selection() {
 
-    //     return $nbDePage;
+        $id_ANNONCES = $_GET['id'];
+        $id_MEMBRES = $_SESSION['id']; 
+        $selection = $this->addManager->addSelection($id_ANNONCES, $id_MEMBRES);
 
-    // }
+        header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
+
+
+    }
+
+    // -------------------
+    // AFFICHAGE SELECTION
+    // -------------------
+
+    public function maSelection() {
+        
+        $id_MEMBRES = $_SESSION['id'];
+        $getSelection = $this->addManager->getSelection($id_MEMBRES);
+
+        require('view\frontend\maSelectionView.php');
+
+        return $getSelection;
+
+    }
+    // ----------------------
+    // SUPPRESSION SELECTION
+    // ----------------------
+
+    public function viderSelection(){
+        
+        
+        $id_ANNONCES= $_GET['id_ANNONCES'];
+        
+
+        $viderSelection= $this->addManager->suppSelection($id_ANNONCES);
+        
+        header("Location:index.php?action=monPanier&id_MEMBRES={$id_MEMBRES}");
+
+    }
     // ------------------
     // ANNONCE SUR 1 PAGE
     // ------------------
@@ -261,10 +312,13 @@ class Controller
     // ---------------------
 
     
-    public function incrementLike($id_ANNONCES,$id_MEMBRES,$type) {
-        
-           
-            
+    public function incrementLike() {
+
+
+        $id_ANNONCES = $_GET['id'];
+        $id_MEMBRES= $_SESSION['id'];
+        $type=$_GET['type'];
+                   
         $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
 
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");

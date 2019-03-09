@@ -127,7 +127,6 @@ class AddManager extends Manager
        
     }
 
-
     // ------------------
     // BARRE DE RECHERCHE
     // ------------------
@@ -136,8 +135,9 @@ class AddManager extends Manager
     {
 
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT * FROM annonces WHERE upper(titre) LIKE ? OR upper(ville) LIKE  ? OR upper (descriptif) LIKE ?  ");
-        $req->execute(array('%'.$search.'%' , '%'.$search.'%' , '%'.$search.'%'  ));
+        $req = $db->prepare("SELECT * FROM annonces WHERE upper(titre) LIKE ? OR upper(ville) LIKE  ? OR upper (descriptif) LIKE ?
+        OR upper (presentation) LIKE ?  ");
+        $req->execute(array('%'.$search.'%' , '%'.$search.'%' , '%'.$search.'%', '%'.$search.'%'  ));
         $result = $req->fetchAll();
     
         return $result;
@@ -162,6 +162,54 @@ class AddManager extends Manager
         return $like;
     }
 
+    // ----------------
+    // AJOUT SELECTION
+    // ----------------
+
+    public function addSelection($id_ANNONCES, $id_MEMBRES) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare('INSERT INTO selection (id_ANNONCES, id_MEMBRES) VALUES(:id_ANNONCES,:id_MEMBRES) ');
+        $selection= $req->execute(array(
+            "id_ANNONCES"=>$id_ANNONCES,
+            "id_MEMBRES"=>$id_MEMBRES
+        ));
+                
+        return $selection;
+
+
+
+    }
+
+    public function getSelection($id_MEMBRES) {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id_ANNONCES , titre, logo, photo1, COUNT(*) as nbrSelection
+        FROM selection INNER JOIN annonces ON annonces.id= selection.id_ANNONCES WHERE selection.id_MEMBRES= :id_MEMBRES
+        GROUP BY id_ANNONCES');
+        $req->execute(array(
+
+            "id_MEMBRES"=>$id_MEMBRES
+        )); 
+        $getSelection = $req->fetchAll();
+        $req->closeCursor();
+       
+        return $getSelection;
+
+
+    }
+    
+    public function suppSelection($id_ANNONCES) {
+
+        $db = $this->dbConnect();
+        $viderSelection = $db->prepare("DELETE FROM selection WHERE id_ANNONCES =? ");
+        $viderSelection->execute(array($id_ANNONCES));
+
+        return $viderSelection;
+
+
+    }
+    
 
 
 }

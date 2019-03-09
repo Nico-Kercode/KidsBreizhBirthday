@@ -7,7 +7,6 @@ setcookie( 'id','pseudo', 'email', 'rang', 'avatar', time() + 365*24*3600, null,
 use \Kbb\Controller\Controller;
 use \Exception;
 
-
 class App
 {
     private $controller;
@@ -26,224 +25,152 @@ class App
 
            if (isset($_GET['action'])) {
 
-
-
-                            // -------------------------------------//
-                            //           VERS INDEX ACCUEIL 
-                            // -------------------------------------//
+        //           VERS INDEX ACCUEIL 
 
                 if($_GET['action'] == 'home') { 
                                         
                     $this->controller->indexView();
-
-
         // ******************************************************************************************//
-
         //                           GESTION DES MEMBRES
-
         // ******************************************************************************************// 
-                  
-                
-                            // -----------------------------------------//
-                            //          VERS FORMULAIRE LOGIN
-                            // -----------------------------------------//
 
-                } elseif($_GET['action'] == 'formLogin'){
+
+                } elseif($_GET['action'] == 'formLogin'){      // ->  Vers formulaire login
 
                     $this->controller->loginView();
 
-                } elseif ($_GET['action'] == 'login'){
+                } elseif ($_GET['action'] == 'login'){         //  ->  Fonction login
 
                     if (isset($_POST['login_user'])){
                         
-                        $pseudo = htmlspecialchars($_POST['username']);
-                        $password = htmlspecialchars($_POST['password']);
-
-                        $this->controller->Login($pseudo, $password);
+                     
+                        $this->controller->Login();
                     }    
-                
-                            // -----------------------------------------//
-                            //           VERS GESTION PROFIL
-                            // -----------------------------------------//
 
-                } elseif($_GET['action'] == 'moncompte'){
+                } elseif($_GET['action'] == 'moncompte'){       // ->  Gestion du compte
             
-
-                    if (!empty($_SESSION['pseudo'])) {
-                    
+                    if (!empty($_SESSION['pseudo'])) {                   
                         $this->controller->userAccountmngt();
-
                     }
                     else {
                         $this->controller->indexView();
-                    } 
-                
-                            // ----------------------------------------//
-                            //              DECONNEXION
-                            // ----------------------------------------//
+                    }                
 
-                } elseif ($_GET['action'] == 'deco') {    
+                } elseif ($_GET['action'] == 'deco') {          // ->  Deconnexion
                     
-
                     session_unset();
                     session_destroy();
                     $this->controller->indexView();   
 
-                
-                            // ----------------------------------------//
-                            //        ENREGISTREMENT UTILISATEUR
-                            // ----------------------------------------//
-
-                } elseif ($_GET['action'] == 'formRegister'){
+                } elseif ($_GET['action'] == 'formRegister'){       //  -> Formulaire Enregistrement
 
                     require('view\frontend\registerView.php');
         
-                } elseif ($_GET['action'] == 'register'){
+                } elseif ($_GET['action'] == 'register'){           // ->  Fonction Enregistrement 
 
                     if (isset($_POST['reg_user'])) {
 
                                             
                         $this->controller->addMember();
-                    }
-                
-                            // ----------------------------------------//
-                            //          MISE A JOUR PROFIL
-                            // ----------------------------------------//
+                    }                
 
-                } elseif ($_GET['action'] == 'update'){
+                } elseif ($_GET['action'] == 'update'){         // ->  Fonction Mise a jour infos
 
                     if (isset($_POST['update_user'])) {
-                        $member_id = $_SESSION['id'];
-                        $email= htmlspecialchars($_POST['email']);
-                        $password = htmlspecialchars($_POST['password_1']);
-                        $password_2 = htmlspecialchars($_POST['password_2']);
-        
-                        if($password == $password_2) {
-                            $password_1 = $password_2;
-                        }           
+
+                        $this->controller->updateMember(); }        
                                 else {
                                     throw new Exception('les mots de passe ne correspondent pas');
                                 }                         
-                        $this->controller->updateMember($email, $password_1,$member_id );
-                    }
 
-            
-                    
-                            // ---------------------------------------//
-                            //      MISE A JOUR IMAGE PROFIL
-                            // ---------------------------------------//
-                        
-
-                } elseif ($_GET['action'] == 'updavatar'){
+                } elseif ($_GET['action'] == 'updavatar'){       //  -> Fonction mise a jour avatar
 
                     if (isset($_POST['updateAvatar'])) {
                         $member_id = $_SESSION['id'];
                                             
                         $this->controller->updatePicProfile($member_id) ;
                     }
+
+                    //  FIN GESTION DES MEMBRES
+
         // ******************************************************************************************//
 
-        //                          FIN GESTION DES MEMBRES
-
-        // ******************************************************************************************// 
-                            
-                            // ---------------------------------------//
-                            //     MENU ADMIN gestion des MEMBRES
-                            // ---------------------------------------//
-
+            //             MENU ADMIN                  //
                 
-                } elseif($_GET['action'] == 'adminmembres') {
+                } elseif($_GET['action'] == 'adminmembres') {   // ->  Fonction affichage tout les membres
+                   
+                    $this->controller->getAllMembres();
 
-
-                    $numeroPage= $_GET['page'];
-                    $membresParPage= 8;
-
-                    $this->controller->getAllMembres($numeroPage,$membresParPage);
- 
-                            // ---------------------------------------//
-                            //     MENU ADMIN gestion des SIGNALEMENTS
-                            // ---------------------------------------//
-
-
-                } elseif($_GET['action'] =='admin'){
-
-                    $numeroPage= $_GET['page'];
-                    $alertsParPage = 6;
-
-                    $this->controller->getComReports($numeroPage,$alertsParPage);             
-
-
-                            // ---------------------------------------//
-                            //     AFFICHAGE PAGES PAR VILLES 
-                            // ---------------------------------------//
+                } elseif($_GET['action'] =='admin'){            // -> Fonction affichage des signalements
+                   
+                    $this->controller->getComReports(); 
+                    
+                    
+            // -------------------------------------- //  
+            
+            
                                 
-                } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {
+                } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {   // -> Fonction affichage résumé annonces par Ville
 
                     if (isset($_GET['page'])){
+
                         $numeroPage= $_GET['page'];      
                         $annonceParPage =4;
                         
-
                     $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
                     else {
                         throw new Exception('Aucun numéro de page récupéré');
                     }
 
-                            // ---------------------------------------//
-                            //     AFFICHAGE PAGES PAR CLASSEMENT
-                            // ---------------------------------------//
-
-                } elseif($_GET['action'] =='meilleurNote'){
+                } elseif($_GET['action'] =='meilleurNote'){         // ->  Fonction affichage des 10 meilleurs notes (résumé)
                     
 
                     $this->controller->classementAnnonces();
 
-        
-                
-                            // -------------------------------------//
-                            //          AFFICHAGE ANNONCE
-                            // -------------------------------------//
-                 
-                } elseif ($_GET['action'] == 'annonce'){
+                } elseif ($_GET['action'] == 'annonce'){        // -> Fonction  affichage d'une annonce 
                   
-
-                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {
-                  
+                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {                 
                         $id = $_GET['id'];
-                        
-    
-                    
+                                           
                         $this->controller->annonce($id);
 
                     }
                      else {
                             throw new Exception('Aucun identifiant de billet envoyé');
                     }
-        
-                            // -----------------------------------//
-                            //      FORMULAIRE AJOUT ANNONCE
-                            // -----------------------------------// 
                 
-                } elseif ($_GET['action'] == 'ajoutAnnonce'){
+                } elseif ($_GET['action'] == 'panier'){      // -> Fonction ajout annonce a ma selection
+                  
 
+                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {
+                                                         
+                        $this->controller->selection();
+                    }
+                     else {
+                            throw new Exception('Aucun identifiant de billet envoyé');
+                    }
+     
+                } elseif($_GET['action'] == 'monPanier'){           // -> Fonction Consultation selection
+
+                $this->controller->maSelection(); 
+
+                } elseif($_GET['action'] == 'viderSelection'){
+                    if ((isset($_GET['id_ANNONCES'])) && $_GET['id_ANNONCES'] > 0 ) {  // -> Fonction SUPPRIMER SELECTION
                     
+                    $this->controller->viderSelection();}
+                
+                }   elseif ($_GET['action'] == 'ajoutAnnonce'){           // -> Fonction vers formulaire Ajout d une anonnce
+                   
                     require('view\frontend\postAnnonceView.php');
 
-                            // -------------------------------//
-                            //          AJOUT ANNONCE
-                            // -------------------------------//
 
-                } elseif ($_GET['action'] == 'addannonce'){
+                } elseif ($_GET['action'] == 'addannonce'){             // -> Fonction ajout d une annonce
 
-                    if (isset($_POST['ajoutAnnonce'])){
-                    
+                    if (isset($_POST['ajoutAnnonce'])){                   
                         $this->controller->addAnnonce();
                     }
-                            // ---------------------------------//
-                            //      AJOUT D UN COMMENTAIRE
-                            // ---------------------------------//           
-                 
-                } elseif ($_GET['action'] == 'addComment') {
+                        
+                } elseif ($_GET['action'] == 'addComment') {            // -> Fonction ajout d un commentaire
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
@@ -258,79 +185,35 @@ class App
                         }
                     }
 
-                            // ----------------------------------//
-                            //       ALERT COMMENTAIRES
-                            //      +LIKE + DISLIKE ANNONCE 
-                            // ----------------------------------//
-
-
-                } elseif ($_GET['action'] == 'alert') {
+                } elseif ($_GET['action'] == 'alert') {                 // -> Fonction signalement commentaire
                     // Incrément du nb d'alert sur un commentaire
                     $this->controller->incrementAlert($_GET);
 
 
-
-
-
-
-                } elseif ($_GET['action'] == 'like') {
+                } elseif ($_GET['action'] == 'like') {              // -> Fonction Vote : "j'aime" "J'aime pas"
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
-                    {
-                            $id_ANNONCES = $_GET['id'];
-                            $id_MEMBRES= $_SESSION['id'];
-                            $type=$_GET['type'];
-                                           
-        
-                        $this->controller->incrementLike($id_ANNONCES,$id_MEMBRES,$type);
+                    {      
+                        $this->controller->incrementLike();
                       
                     }
 
 
+                } elseif ($_GET['action'] == 'editForm' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){    // -> Fonction
 
-                }
-
-                // } elseif ($_GET['action'] == 'like') {
-
-                //     $idAnnonce=$_GET['id'];
-                //     $idMembre= $_SESSION['id'];
-                //     // Incrément du nb de like sur une annonce
-                //     $this->controller->incrementLike($idAnnonce,$idMembre); 
-                
-                 elseif ($_GET['action'] == 'dontlike') {
-                    // Incrément du nb de like sur une annonce
-                    $this->controller->incrementdontLike($_GET); 
-
-               
-
-                            // -----------------------------//    
-                            //     VERS FORM EDITION COMM
-                            // -----------------------------//
-
-                } elseif ($_GET['action'] == 'editForm' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
-
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
-
-                        
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {                // -> Vers formulaire Edition commentaire (admin)
+                       
                         $commentID = $_GET['id'];
                         $annonceID = $_GET['id_ANNONCES'];
   
                             $this->controller->editForm($commentID, $annonceID);
-
-
                     } else {
 
                         throw new Exception('Erreur aucun id envoyer !');
                     }
-                
-
-                            // ----------------------------//    
-                            //          EDITION COMM 
-                            // ----------------------------//
-
 
                 } elseif ($_GET['action'] == 'editComment' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {                           // -> Fonction EDITION COMMENTAIRE
                         if (!empty($_POST['comment'])) {
                             $this->controller->editComment($_GET['id'], $_POST['comment'], $_GET['id_ANNONCES']);
                         }
@@ -342,14 +225,8 @@ class App
                         throw new Exception('Aucun identifiant de commentaire envoyé');
                     }
 
-
-                            // ---------------------------//    
-                            //      SUPPRESSION COMM 
-                            // ---------------------------//
-
-
                 } elseif ($_GET['action'] == 'delete' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {                        // -> Fonction SUPPRESSION COMMENTAIRE 
 
                         $commentID = $_GET['id']; 
                         
@@ -358,13 +235,8 @@ class App
                     }else {
                         throw new Exception('Aucun identifiant de commentaire envoyé');
                     }
-                        
-                            // -------------------------------//    
-                            //          SEARCH BAR 
-                            // -------------------------------//
-      
-  
-                } elseif ($_GET['action'] == 'search') {
+
+                } elseif ($_GET['action'] == 'search') {            // -> Fonction BARRE DE RECHERCHE
                    
 
                     if (isset(($_POST ['submitSearch']))) {                       
@@ -373,13 +245,7 @@ class App
 
                     }
 
-                            // -------------------------------//
-                            //          VERS RGPD
-                            // -------------------------------// 
-
-
-
-                }  elseif($_GET['action'] =='rgpd') {
+                }  elseif($_GET['action'] =='rgpd') {    // ->  VERS RGPD
 
                     require('view\frontend\mentionsView.php'); 
 

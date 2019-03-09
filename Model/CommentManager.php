@@ -133,7 +133,7 @@ class CommentManager extends Manager
     public function CountAlerts() 
     {
         $db = $this->dbConnect();
-        $req= $db->prepare('SELECT COUNT(alert) FROM alert ');
+        $req= $db->prepare('SELECT COUNT(alert) FROM commentaires ');
         $req->execute(array());
         $nbDePageAlert=$req->fetchAll()[0][0];
         $req->closeCursor();
