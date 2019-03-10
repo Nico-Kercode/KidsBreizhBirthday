@@ -8,6 +8,7 @@
 
 .response--site-menu {
 	display: flex;
+	height: 50px;
 	justify-content: space-around;
 	background: #FFDB5C;
 }
