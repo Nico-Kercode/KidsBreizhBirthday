@@ -30,9 +30,9 @@
                     <br> <br>
 
                     <a href="index.php?action=editForm&id=<?= $rep['id'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
-                        class="btn-dark">EDITER</a>
+                        class="btn-light mx-4">EDITER</a>
 
-                    <a href="index.php?action=delete&id=<?= $rep['id'] ?>" class="btn-dark">SUPPRIMER</a> </h3>
+                    <a href="index.php?action=delete&id=<?= $rep['id'] ?>" class="btn-danger">SUPPRIMER</a> </h3>
                 </p>
             </div>
             <?php } ?>

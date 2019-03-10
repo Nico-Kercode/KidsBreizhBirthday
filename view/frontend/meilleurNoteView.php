@@ -10,18 +10,18 @@
 
 
 
-<div class="container">
+<div class="container" id="best">
     <div class="row">
 
         <?php
 foreach ($bestAnnonces as $data) { ?>
 
-        <div class="col-sm-6 " id="mainAnnonces">
+        <div class="col-sm-5 offset-sm-1 mainAnnonces">
             <!-- boucle affichage des annonces -->
-            <div class="row" id="annonceHaut">
+            <div class="row annonceHaut" >
 
                 <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
-                <?=$data['nbrlike'] ?> personnes ont aimés
+                    <?=$data['nbrlike'] ?> personnes ont aimés
                     <a class=" text-left  p-4 w-75"
                         href="index.php?action=annonce&id=<?= $data['id_ANNONCES'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
                         <h2 class="text-center h2annonces">
@@ -56,42 +56,6 @@ foreach ($bestAnnonces as $data) { ?>
 </div>
 <!--  -->
 
-
-<!--  PAGINATION -->
-
-<div class="row">
-    <div class="col-sm-12 mt-4 fixed-bottom">
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-
-                <?php 
-                    $page=$_GET['page'];
-                    $pagesuivante=($_GET['page']+1);
-
-                        if ($page !=1) { 
-                         $pageprecedent = ($_GET['page']-1);
-
-                         } else {
-                             $pageprecedent= 1 ;
-                             };                            
-                             ?>
-                <?php 
-                for($i=1; $i <= $nbDePageJaime; $i++){
-                    if( $page ==$i){
-
-                    echo'<li class="page-item"><a class="page-link" href="index.php?action=meilleurNote&page='.$i.'">'.$i."</a></li>";
-                }else{
-                    echo '<li class="page-item"><a class="page-link" href="index.php?action=meilleurNote&page='.$i.'">'.$i."</a></li>";
-                }
-
-                } // END FOR PAGINATION              
-                ?>
-            </ul>
-        </nav>
-
-    </div>
-</div>
 
 
 <?php $content = ob_get_clean(); ?>
