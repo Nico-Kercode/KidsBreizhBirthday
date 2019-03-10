@@ -9,19 +9,13 @@
             <a class="Back" href="index.php?action=vannes&page=1"> RETOUR </a>
 
         </div>
-        <div class="col-sm-12 col-lg-8 d-flex" id="headerAnnonce">
-            <div class="justify-content-left mr-auto">
-                <img class="img-fluid" src="assets\img\artworkIMG\fille.png" alt="fillette">
-            </div>
-            <div class="justify-content-left ml-auto">
-                <img class="img-fluid" src="assets\img\artworkIMG\garcon.png" alt="garcon">
-            </div>
-        </div>
+
     </div>
 
 </div>
 <div class="row d-flex">
-<div class="col-sm-2 col-lg-2 my-auto"> <img class="d-none d-sm-block img-fluid " src="assets\img\artworkIMG\imageCadeau1.png" alt=""></div>
+    <div class="col-sm-2 col-lg-2 my-auto"> <img class="d-none d-sm-block img-fluid "
+            src="assets\img\artworkIMG\imageCadeau1.png" alt=""></div>
     <div class="col-sm-8 col-lg-8 ">
 
         <!-- Bloc principal annonce -->
@@ -34,17 +28,22 @@
 
                 <div class=" row d-flex" id="annonceHaut">
 
-                    <div class="col-lg-4 col d-none d-lg-block ">
+                    <div class="col-lg-2 col d-none d-lg-block ">
 
                         <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
 
                     </div>
 
-                    <div class="col-lg-8 ">
-                        <h2 class="text-left p-4 h2annonces">
+                    <div class="col-lg-6 ">
+                        <h2 class="text-center p-4 h2annonces">
                             <?= htmlspecialchars($annonce['titre']) ?>
                         </h2>
 
+                    </div>
+                    <div class="col-lg-4 p-4">
+                        <a class="p-2 select"
+                            href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
+                            a ma selection</a>
                     </div>
                 </div>
                 <!-- END HEADER -->
@@ -83,6 +82,8 @@
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['descriptif']))) ?>
                         </p>
                     </div>
+
+
                 </div>
 
                 <!-- END annonce bas -->
@@ -142,14 +143,15 @@
             <div class="col-sm-12 col-lg-6 my-2 ">
 
                 <div class=" text-right">
-                    <span class="pouce"> Conseillé
-                        <span id="<?= $annonce['id']?>" class=" js-like-annonce far fa-thumbs-up "> :
-                            <?=$annonce['jaime'] ?></span>
-                    </span>
-                    <span class="pouce"> Désonseillé
-                        <span id="<?= $annonce['id']?>" class=" js-dontlike-annonce far fa-thumbs-down "> :
-                            <?=$annonce['jaimepas'] ?></span>
-                    </span>
+                    <?php if(isset($_SESSION)){
+
+                     ?>
+                    <a
+                        href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
+
+                    <a href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
+                        n'aime pas</a>
+                    <?php }?>
 
                 </div>
             </div>
@@ -182,8 +184,10 @@
 
     </div>
 
+
+
 </div> <!-- annonces -->
-</div>
+
 
 <?php
 // }  

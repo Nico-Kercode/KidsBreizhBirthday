@@ -23,7 +23,7 @@
 
                     <label for="password" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input type="password" required id="password" name="password" placeholder="Mot de passe"
+                        <input type="password"  id="password" name="password" placeholder="Mot de passe"
                             class="form-control mb-4">
                     </div>
                 </div>

@@ -93,7 +93,11 @@ class Controller
     // LOGIN
     // ------------------
 
-    public function Login($pseudo, $password){
+    public function Login(){
+
+        $pseudo = htmlspecialchars($_POST['username']);
+        $password = htmlspecialchars($_POST['password']);
+
 
         $member = $this->memberManager->loginMember($pseudo,$password);
 
@@ -119,11 +123,17 @@ class Controller
     // -------------------------
 
 
-    public function updateMember($member_id,$pseudo,$email,$password_1) {
+    public function updateMember() {
 
-
+        $member_id = $_SESSION['id'];
+        $email= htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password_1']);
+        $password_2 = htmlspecialchars($_POST['password_2']);
+        if($password == $password_2) {
+            $password_1 = $password_2;
+        } 
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->updtMember($member_id,$pseudo,$email,$passHash);
+        $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         
         header('Location: index.php?action=accounttmnagement');
         
@@ -136,8 +146,10 @@ class Controller
     public function updatePicProfile($member_id) {
 
 
-        $newAvatar= $this->manageFile($_FILES['imageProfil'],400,400);
+        $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+
+        $_SESSION['avatar'] = $newAvatar;
         
         header('Location: index.php?action=moncompte');
         
@@ -148,8 +160,10 @@ class Controller
     // ------------------
 
 
-    public function getAllMembres($numeroPage,$membresParPage) {
+    public function getAllMembres() {
 
+        $numeroPage= $_GET['page'];
+        $membresParPage= 8;
         $starter = ($numeroPage-1 )*$membresParPage;
         $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
         $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
@@ -160,10 +174,12 @@ class Controller
   
     }
 
-    public function getComReports($numeroPage,$alertsParPage){
+    public function getComReports(){
 
+        $numeroPage= $_GET['page'];
+        $alertsParPage = 6;
         $starter = ($numeroPage-1 )*$alertsParPage;
-        $nbDePageAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
+        $nbAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
         $getReports = $this->commentManager->getReports($starter,$alertsParPage);
 
         require('view\frontend\administrationView.php');
@@ -225,24 +241,59 @@ class Controller
     // CLASSEMENT PAR NOTE
     // -------------------
 
-    public function classementAnnonces($numeroPage,$annonceParPage) {
+    public function classementAnnonces() {
 
-        $starter = ($numeroPage-1 )*$annonceParPage;
-        $nbDePageJaime = ceil(intval($this->addManager->countAnnoncesJaime())/$annonceParPage);
-        $bestAnnonces = $this->addManager->getBestAnnonces($starter,$annonceParPage);
+        $bestAnnonces = $this->addManager->getBestAnnonces();
 
         require('view\frontend\meilleurNoteView.php');
 
+        return $bestAnnonces;
     }
 
-    // public function nbPages() {
+    // -------------------
+    // AJOUT SELECTION
+    // -------------------
 
-    //     $nbDePage = $this->addManager->countPages();
-    //     require('view\frontend\addView1.php');
+    public function selection() {
 
-    //     return $nbDePage;
+        $id_ANNONCES = $_GET['id'];
+        $id_MEMBRES = $_SESSION['id']; 
+        $selection = $this->addManager->addSelection($id_ANNONCES, $id_MEMBRES);
 
-    // }
+        header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
+
+
+    }
+
+    // -------------------
+    // AFFICHAGE SELECTION
+    // -------------------
+
+    public function maSelection() {
+        
+        $id_MEMBRES = $_SESSION['id'];
+        $getSelection = $this->addManager->getSelection($id_MEMBRES);
+
+        require('view\frontend\maSelectionView.php');
+
+        return $getSelection;
+
+    }
+    // ----------------------
+    // SUPPRESSION SELECTION
+    // ----------------------
+
+    public function viderSelection(){
+        
+        
+        $id_ANNONCES= $_GET['id_ANNONCES'];
+        
+
+        $viderSelection= $this->addManager->suppSelection($id_ANNONCES);
+        
+        header("Location:index.php?action=monPanier&id_MEMBRES={$id_MEMBRES}");
+
+    }
     // ------------------
     // ANNONCE SUR 1 PAGE
     // ------------------
@@ -257,62 +308,25 @@ class Controller
         
 
     }
-    // ------------------
-    // J AIME +1
-    // ------------------
+    // ---------------------
+    // J AIME / J AIME PAS
+    // ---------------------
+
+    
+    public function incrementLike() {
 
 
-    public function incrementLike($arr) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arr['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arr['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            // Update 
-            $success = $this->addManager->incrementJaime($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
-        // Return $returnedValue in json format
-        require('view/frontend/likeView.php');
+        $id_ANNONCES = $_GET['id'];
+        $id_MEMBRES= $_SESSION['id'];
+        $type=$_GET['type'];
+                   
+        $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
+
+        header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
+       
     }
 
-    // ------------------
-    // AIME PAS +1
-    // ------------------
-
-    public function incrementdontLike($arry) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arry['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arry['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            // Update 
-            $success = $this->addManager->incrementJaimepas($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
-        // Return $returnedValue in json format
-        require('view/frontend/dontlikeView.php');
-    }
+  
 
     // ------------------
     // TOTAL ANNONCES
@@ -458,7 +472,7 @@ class Controller
 
     private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
 
-        $condition = 0;
+        $condition = 1;
         // Si certains paramètres ont pour valeur '' :
         if ($rep_Dst=='') { $rep_Dst = $rep_Src; } // (même répertoire)
         if ($img_Dst=='') { $img_Dst = $img_Src; } // (même nom)

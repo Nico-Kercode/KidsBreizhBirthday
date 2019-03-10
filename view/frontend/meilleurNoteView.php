@@ -8,6 +8,8 @@
 
 
 
+
+
 <div class="container">
     <div class="row">
 
@@ -19,15 +21,13 @@ foreach ($bestAnnonces as $data) { ?>
             <div class="row" id="annonceHaut">
 
                 <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
-                    <a class=" text-left font-weight-bold p-4 "
-                        href="index.php?action=annonce&id=<?= $data['id'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
+                <?=$data['nbrlike'] ?> personnes ont aimés
+                    <a class=" text-left  p-4 w-75"
+                        href="index.php?action=annonce&id=<?= $data['id_ANNONCES'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
                         <h2 class="text-center h2annonces">
                             <?= htmlspecialchars($data['titre']) ?>
                         </h2>
                     </a>
-                    <p class="text-left">nombre de j'aime :  <?=$data['jaime'] ?>
-
-                    </p>
 
                 </div>
                 <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
