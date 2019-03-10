@@ -1,6 +1,6 @@
 <!-- Footer -->
 
-<footer class="page-footer font-small" id="footer">
+<footer class="page-footer font-small fixed-bottom" id="footer">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">

@@ -18,7 +18,7 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid img-thumbnail" id="avatar" src="<?= $_SESSION['avatar']?>"
+            <img class="img-fluid " id="avatar" src="<?= $_SESSION['avatar']?>"
                 alt="<?= $_SESSION['avatar']?>">
 
             <?php } ?>
@@ -32,15 +32,14 @@
 
 
 
-                    <label for="formControl" class="col-sm-10 my-2">Modifiez votre image de profil <br> ( Le changement
-                        sera effectif lors de la prochaine connexion )</label>
+                    <label for="formControl" class="col-sm-10 my-2">Modifiez votre image de profil </label>
                     <input type="file" name="imageProfil" class="form-control-file my-2">
                 </div>
 
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-dark" name="updateAvatar">Envoyer</button>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 my-4">
                     </div>
                 </div> <!-- /.form-group -->
 
