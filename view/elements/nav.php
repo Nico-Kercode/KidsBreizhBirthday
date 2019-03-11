@@ -1,38 +1,39 @@
   <div class="col-sm-12 header d-flex">
       <div class="mx-auto my-auto">
-          <a href="index.php?action=home"><img class="img-fluid" src="assets\img\artworkIMG\lettrage3.png"
+          <a href="index.php?action=home"><img class="img-fluid" src="assets\img\artworkIMG\lettrage.png"
                   alt="backHome"></a>
       </div>
   </div>
 
+<div class="row">
+  <nav class="response--main-navigation col-sm-12 d-flex ">
+    
+      <ul class="response--site-menu mx-auto p-2 ">
 
-  <nav class="response--main-navigation">
-      <ul class="response--site-menu">
-
-          <li><a href="index.php?action=home">Accueil</a></li>
+          <li class="mx-4"><a href="index.php?action=home">ACCUEIL</a></li>
 
           <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '2') { ?>
-          <li><a href="index.php?action=admin&page=1">Menu d'administration</a></li>
+          <li class="mx-4"><a href="index.php?action=admin&page=1">MENU D'ADMINISTRATION</a></li>
           <?php } ?>
 
           <?php if(isset($_SESSION['pseudo'])){?>
-          <li><a href="index.php?action=moncompte">Mon compte</a></li>
+          <li class="mx-4"><a href="index.php?action=moncompte">MON COMPTE</a></li>
           <?php }?>
 
-
-          <li><a href="index.php?action=ajoutAnnonce">Ajouter une annonce</a></li>
-
+          <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2') { ?>
+          <li class="mx-4"><a href="index.php?action=ajoutAnnonce">AJOUTER UNE ANNONCE</a></li>
+          <?php } ?>
 
           <?php if(empty($_SESSION)) { ?>
-          <li><a href="index.php?action=formLogin">Connexion</a></li>
+          <li class="mx-4"><a href="index.php?action=formLogin">CONNEXION</a></li>
           <?php } ?>
           <?php if(isset($_SESSION['pseudo'])) { ?>
-          <li><a href="index.php?action=deco">Deconnexion</a></li>
+          <li class="mx-4"><a href="index.php?action=deco">DECONNEXION</a></li>
           <?php } ?>
 
       </ul>
   </nav>
-
+  </div>
   <div class="row">
       <div class="col-sm-8 offset-sm-2 my-4">
 

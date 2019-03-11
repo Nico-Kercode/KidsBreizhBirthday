@@ -56,13 +56,6 @@ img {
 }
 
 
-.response--site-menu a:hover{
-
- background-color:#FED100; 
- border-radius: 20px;
- color: #7289FD!important;
- border-bottom: 1px solid #ffc039;  
-}
 
 
 .btn{
@@ -106,12 +99,15 @@ img {
     margin-top: .5rem;
     padding: .3rem .5rem;
     background-color:#FED100;
+    border: 1px solid #FED100;
     border-radius: 15px;
     text-shadow: none !important;
 }
 #choixAccueil a:hover{
-    color: #7289FD!important;
-    background-color:#FFDB5C;
+    background-color: rgb(255, 225, 92);
+	border-radius: 20px;
+	color: #7289FD!important;
+	border: 1px solid #ffc039;
 }
 
 #moncompte{

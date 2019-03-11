@@ -16,10 +16,20 @@
 .response--site-menu a {
 	display: block;
 	color: #fff;
+	background-color: #FED100;
+	border-radius: 20px;
+}
+
+.response--site-menu a:hover {
+	background-color: rgb(255, 225, 92);
+	border-radius: 20px;
+	color: #7289FD!important;
+	border: 1px solid #ffc039;
 }
 
 .response--main-navigation {
 	margin: 0;
+	background: #FFDB5C;
 }
 
 .response--main-navigation a {
@@ -29,7 +39,6 @@
 }
 
 .response--main-navigation ul {
-	margin: 0;
 	padding: 0;
 }
 
@@ -37,11 +46,19 @@
 	list-style-type: none;
 }
 
-.response--site-menu {
+.barre {
+	background: #FFDB5C;
 	display: flex;
 	justify-content: space-around;
+}
+
+.response--site-menu {
+	/* display: flex;
+	justify-content: space-around; */
 	background: #FFDB5C;
 }
+
+.response--site-menu li {}
 
 /* Responsive! */
 
