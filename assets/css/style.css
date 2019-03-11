@@ -49,7 +49,7 @@ img {
 }
 
 .header{
-    /* background-color: #FED100; */
+
     background-color: #FFDB5C;
     height: 25vh;
     border-bottom: 2px solid #ffc039;
@@ -59,6 +59,7 @@ img {
 .response--site-menu a:hover{
 
  background-color:#FED100; 
+ border-radius: 20px;
  color: #7289FD!important;
  border-bottom: 1px solid #ffc039;  
 }
@@ -102,8 +103,8 @@ img {
     border:2px solid #ffc039;;
 }
 #choixAccueil a{
-    
-    padding: .3rem .2rem;
+    margin-top: .5rem;
+    padding: .3rem .5rem;
     background-color:#FED100;
     border-radius: 15px;
     text-shadow: none !important;
