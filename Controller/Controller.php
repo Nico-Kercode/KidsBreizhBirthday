@@ -146,8 +146,9 @@ class Controller
     public function updatePicProfile($member_id) {
 
 
-        $newAvatar= $this->manageFile($_FILES['imageProfil'],400,400);
+        $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+
         $_SESSION['avatar'] = $newAvatar;
         
         header('Location: index.php?action=moncompte');
@@ -178,7 +179,7 @@ class Controller
         $numeroPage= $_GET['page'];
         $alertsParPage = 6;
         $starter = ($numeroPage-1 )*$alertsParPage;
-        $nbDePageAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
+        $nbAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
         $getReports = $this->commentManager->getReports($starter,$alertsParPage);
 
         require('view\frontend\administrationView.php');
@@ -471,7 +472,7 @@ class Controller
 
     private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
 
-        $condition = 0;
+        $condition = 1;
         // Si certains paramètres ont pour valeur '' :
         if ($rep_Dst=='') { $rep_Dst = $rep_Src; } // (même répertoire)
         if ($img_Dst=='') { $img_Dst = $img_Src; } // (même nom)

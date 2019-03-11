@@ -14,9 +14,17 @@
     font-style: normal;
 
 }
+@font-face {
+    font-family: 'groboldregular';
+    src: url('../font/grobold-webfont.woff2') format('woff2'),
+         url('../font/grobold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     color: #021c1e;
     background-color: #f1f1f2 !important;
     font-family: 'Acme', sans-serif !important;
@@ -24,11 +32,12 @@ body {
 
 a {
     font-size: 1em;
-    color: rgb(70, 69, 69) !important;
+    color: #4897d8!important;
+    text-decoration: none !important;
 }
 
 a:hover {
-    color: #4bbeb7!important;
+    color: #7289FD!important;
 }
 
 li {
@@ -39,85 +48,24 @@ img {
     display: block;
 }
 
-/* NAV */
-
-#sidebar a {
-    color: white !important;
+.header{
+    /* background-color: #FED100; */
+    background-color: #FFDB5C;
+    height: 25vh;
+    border-bottom: 2px solid #ffc039;
 }
 
-#sidebar a:hover {
-    color: #a1d6e2!important;
+
+.response--site-menu a:hover{
+
+ background-color:#FED100; 
+ color: #7289FD!important;
+ border-bottom: 1px solid #ffc039;  
 }
 
-#navbarSupportedContent a {
-    color: whitesmoke !important;
-}
 
-#sidebarCollapse {
-    background: #a1d6e2!important;
-}
-
-.btn-outline-secondary {
-    background: #a1d6e2!important;
-}
-
-.btn-outline-secondary:hover {
-    background: #a1d6e2!important;
-}
-
-#mbrNav span {
-    color: rgb(38, 60, 158);
-}
-
-.dropdown-menu {
-    background-color: #1995ad!important;
-}
-
-.btn-dark {
-    background-color: #a1d6e2!important;
-    color: rgb(71, 71, 71) !important;
-}
-
-#navbarSupportedContent a:hover {
-    color: #52dad0!important;
-}
-
-#navbar {
-   
-    height: 150px;
-    background-image: linear-gradient(rgb(25, 149, 173), rgb(34, 187, 218));
-
-}
-
-#navbar a {
-    font-family: "action_jacksonregular";
-    font-size: 1.4em !important;
-    text-shadow: none !important;
-    padding: .5rem !important;
-}
-#navbar a.home{
-    font-family: "action_jacksonregular";
-    color: #E6EEB2 !important;
-    text-shadow: none !important;
-}
-#navbar a.villes{
-    color:rgb(255, 209, 6) !important;
-    text-shadow: none !important;
-}
-#choixAccueil{
-    font-family: "action_jacksonregular";
-    font-size: 1.4em !important;
-   
-}
-#menuCompte a{
-    border:1px solid #E6EEB2;
-    border-radius: 20px;
-}
-#menuCompte a:hover{
-    color: blue !important;
-    border:1px solid rgb(0, 0, 0);
-    border-radius: 20px;
-    background-color:rgb(236, 255, 113)!important;
+.btn{
+    color:#E46DCB;
 }
 .Back{
     
@@ -125,19 +73,19 @@ img {
     margin-left: 10%;
     padding: .5rem;
     border-radius: 20px;
-    font-family: "action_jacksonregular";
+    font-family: "groboldregular";
     font-size: 1.1em !important;
     text-shadow: none !important;
     background-color:#E6EEB2 !important;
     border:1px solid rgb(9, 198, 245);
-    color:rgb(0, 0, 0)!important;
+    color:rgb(83, 134, 243)!important;
    
 
 }
 
 .Back:hover{
-    background-color:rgb(236, 255, 113);
-    color:rgb(72, 21, 255)!important;
+    background-color:#FED100;
+    color:#7289FD!important;
 }
 
 #retourAnnonce{
@@ -151,27 +99,22 @@ img {
 }
 .Back:hover{
     color: red !important;
-    border:1px solid orange;
+    border:2px solid #ffc039;;
 }
 #choixAccueil a{
     
     padding: .3rem .2rem;
-    background-color:#E6EEB2;
+    background-color:#FED100;
     border-radius: 15px;
     text-shadow: none !important;
 }
 #choixAccueil a:hover{
-    color: blue!important;
-    background-color:rgb(236, 255, 113);
+    color: #7289FD!important;
+    background-color:#FFDB5C;
 }
-#gateau{
-    margin-top: 30px;
-}
+
 #moncompte{
     color:#ABBCBA !important;
-}
-.btn-floating {
-    background-color: whitesmoke !important;
 }
 
 #accueil {
@@ -180,39 +123,13 @@ img {
     text-shadow: none !important;
 }
 
-.inactiveLink {
-    pointer-events: none !important;
-    cursor: default !important;
-}
-
-#compteur {
-    height: 5%;
-    padding: 5px;
-}
-
-#count {
-    text-align: right;
-    font-weight: normal !important;
-    font-style: italic;
-}
-
-#count span {
-    color: #1995ad!important;
-}
-
-#degemer {
-    margin-left:50%;  
-    color: rgb(0, 0, 0) !important;
-    text-shadow: none !important;
-   
-}
 .bandeau{
     
     margin-left: 10px !important;
 }
 .logoH2{
     font-size: 3em;
-    text-shadow: 3px 2px #16aeeb;
+    text-shadow: 3px 2px #fa6e59;
 }
 
 .tabulation {
@@ -230,7 +147,7 @@ img {
     font-size:1.1em;
 }
 #connexion:hover{
-    color: blue!important;
+    color: #7289FD!important;
     border-radius: 20px;
     background-color:rgb(236, 255, 113);
 }
@@ -269,21 +186,6 @@ img {
     color: white!important;
 }
 
-#sidebar {
-    padding: 1%;
-}
-
-#sidebar a {
-    text-align: center !important;
-}
-
-#sidebar .d-block {
-    font-weight: 300 !important;
-    font-size: 1em !important;
-    text-align: center !important;
-    text-shadow: none !important;
-}
-
 #avatar {
     display: block;
     width: 70%;
@@ -295,30 +197,32 @@ img {
 
 /*  annonces view */
 
-#mainAnnonces {
-    border: 1px solid rgb(154, 226, 255);
+.mainAnnonces {
+    background-color: #FFDB5C; 
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
+    margin-bottom: 15px;
     text-shadow: none !important;
 }
 
-#annonceHaut {
+
+.annonceHaut {
     
-    
-    border-bottom: 2px solid rgb(132, 205, 253);
     max-height: 100px;
 }
-
+#best{
+    margin-bottom: 4%;
+}
 .h2annonces{
-    font-family: "action_jacksonregular";
-    font-size:2em;
-    color: rgb(141, 49, 226) !important;
+    font-family: "groboldregular";
+    font-size:1.7em;
+    color: #738BFE !important;
     text-transform: uppercase;
     text-shadow: none !important;
 }
 .titreAnnonce a h2:hover{
 
-    color: blue !important;
+    color: rgb(146, 56, 127) !important;
 }
 .h2annonces:nth-child(0n+2){
     color: rgb(187, 203, 233) !important;
@@ -334,16 +238,17 @@ img {
 }
 
 #comBtn:hover {
-    background-color: #67f1e8!important;
+    background-color: #7289FD!important;
 }
 .h1annonces{
-    font-family: "action_jacksonregular";
+    margin: 2% 0 3% 0 !important;
+    font-family: "groboldregular";
     text-shadow: none !important;
 
 }
 .h1annonces span {
-    font-family: "action_jacksonregular";
-    color: #09ff99;
+    font-family: "groboldregular";
+    color: #fa6e59;
     border-radius: 150px;
     font-size: 1.4em;   
 }
@@ -388,14 +293,28 @@ img {
 #mbrNav h4 {
     font-size: 1.4em !important;
 }
-
+.page{
+    width: 2%;
+    margin: 3% 0 6% 0 ;
+    
+ 
+}
+.page-link{
+    color:#BE34FE !important;
+    font-size: 1.2rem;
+    background-color: #CEF968!important;
+    border-radius: 15px;
+}
 #footer {
-    background-color: #1995ad!important;
-    border-top: 1px solid #bcbabe;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFDB5C!important;
+    border-top: 2px solid #ffc039;
 }
 
 #footer a:hover {
-    color: #5efff4!important;
+    color: #7289FD!important;
 }
 
 #footer strong {
@@ -418,23 +337,23 @@ img {
 #basAdd {
     margin-top: 15px;
     padding: 1%;
-    border-top: 1px solid rgb(201, 201, 201);
+    border-top: 1px solid #fa6e59;
 }
 
 #contact {
     margin-top: 5%;
     background: whitesmoke;
 }
-
-#result h1 {
-    background-color: rgb(230, 230, 230);
+.result{
+    background: white;
+}
+.result h1 {
+    background-color: rgb(255, 217, 45);
+    color: rgb(91, 20, 223) !important;
     margin-bottom: 10% !important;
 }
 
-.result {
-    border: 1px solid rgb(201, 201, 201);
 
-}
 
 #report {
     text-align: right !important;
@@ -446,7 +365,7 @@ img {
 
 .js-dislike-comment:hover {
     border-radius: 20px;
-    background: rgb(253, 67, 67) !important;
+    background: #7289FD !important;
 }
 
 .pouce {
@@ -454,21 +373,23 @@ img {
     margin-left: 2% !important;
 }
 
-#pageAnnonce{
-    background-color:#a8e6ff !important;
-}
 
 .admin{
     margin-top: 30px;
     border: 1px solid black;
-    min-height : 200px;
+    min-height : 300px;
+    margin-bottom: 10%;
+}
+.admin a{
+    color: rgb(81, 11, 194) !important;  
 }
 .list{
-    background-color: rgb(185, 185, 185);
+    background-color: #FFDB5C;
     padding: .5rem;
+    margin-bottom: 4%;
 }
 .select{
-    font-family: "action_jacksonregular";
+    
     background-color:#E6EEB2!important;
     border-radius: 20px;
     padding: .5rem;
@@ -476,7 +397,7 @@ img {
 }
 .select:hover{
     background-color:#ECFF71!important;
-    color: blue !important;
+    color: #7289FD!important;
 
 }
 

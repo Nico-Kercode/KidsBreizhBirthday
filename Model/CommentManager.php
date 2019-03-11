@@ -119,8 +119,11 @@ class CommentManager extends Manager
     public function getReports($starter,$alertsParPage)
     {
     $db = $this->dbConnect();
-    $req= $db->prepare("SELECT commentaires.id, pseudo, titre, contenu, alert , id_ANNONCES
-    FROM commentaires INNER JOIN membres ON id_MEMBRES =id_MEMBRES INNER JOIN annonces ON id_ANNONCES= id_ANNONCES  WHERE alert > 0 ORDER BY alert DESC LIMIT $starter, $alertsParPage ");
+    $req= $db->prepare("SELECT commentaires.id, pseudo, titre, contenu, alert, id_ANNONCES
+    FROM commentaires 
+    INNER JOIN membres ON id_MEMBRES =id_MEMBRES 
+    INNER JOIN annonces ON id_ANNONCES= id_ANNONCES  
+    WHERE alert > 0 ORDER BY alert DESC LIMIT $starter, $alertsParPage ");
     $req->execute(array());
     $getReports = $req->fetchAll();
     $req->closeCursor();
@@ -133,11 +136,11 @@ class CommentManager extends Manager
     public function CountAlerts() 
     {
         $db = $this->dbConnect();
-        $req= $db->prepare('SELECT COUNT(alert) FROM commentaires ');
+        $req= $db->prepare('SELECT COUNT(alert) as nbreAlerts FROM commentaires ');
         $req->execute(array());
-        $nbDePageAlert=$req->fetchAll()[0][0];
+        $nbAlert=$req->fetchAll()[0][0];
         $req->closeCursor();
 
-        return $nbDePageAlert;
+        return $nbAlert;
     }
 }
