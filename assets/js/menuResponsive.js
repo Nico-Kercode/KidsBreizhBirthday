@@ -42,11 +42,11 @@ $.fn.basicResponsiveMenu = function (options) {
 		// if buttons with a class of show-nav and hide-nav don't exist, add them
 		let showNav = $('.response--main-navigation').children('button.show-nav');
 		if (showNav.length === 0) {
-			$('.response--main-navigation').append('<button class="show-nav">Menu</button>');
+			$('.response--main-navigation').append('<button class="show-nav">  Menu </button>');
 		}
 		let hideNav = $('.response--site-menu').children('button.hide-nav');
 		if (hideNav.length === 0) {
-			$('.response--site-menu').prepend('<button class="hide-nav">Close</button>');
+			$('.response--site-menu').prepend('<button class="hide-nav">  Fermer </button>');
 		}
 	}
 
