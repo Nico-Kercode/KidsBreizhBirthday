@@ -1,6 +1,6 @@
   <div class="col-sm-12 header d-flex">
       <div class="mx-auto my-auto">
-          <a href="index.php?action=home"><img class="img-fluid" src="assets\img\artworkIMG\lettrage.png"
+          <a href="index.php?action=home"><img class="img-fluid" src="assets\img\artworkIMG\lettrage2.png"
                   alt="backHome"></a>
       </div>
   </div>

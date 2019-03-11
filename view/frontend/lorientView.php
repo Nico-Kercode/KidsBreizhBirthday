@@ -39,7 +39,7 @@
                     </div>
                     <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
 
-                        <img class="img-fluid  my-2" src="assets\img\artworkIMG\garcon.png" alt="logo">
+                        <img class="img-fluid  my-2" src="<?= $data['logo'] ?>" alt="logo">
                     </div>
                 </div>
                 <!-- <?= $data['logo']?> -->

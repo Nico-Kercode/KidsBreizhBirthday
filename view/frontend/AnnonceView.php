@@ -28,7 +28,7 @@
 
                 <div class=" row d-flex" id="annonceHaut">
 
-                    <div class="col-lg-2 col d-none d-lg-block ">
+                    <div class="col-lg-2 d-none d-md-block ">
 
                         <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
 
