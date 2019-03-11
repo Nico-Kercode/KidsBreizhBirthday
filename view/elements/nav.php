@@ -20,7 +20,7 @@
           <?php }?>
 
 
-          <li><a href="#">Contact</a></li>
+          <li><a href="index.php?action=ajoutAnnonce">Ajouter une annonce</a></li>
 
 
           <?php if(empty($_SESSION)) { ?>
