@@ -4,7 +4,9 @@
 
 
 <div class="container-fluid mb-2">
-    <div class="row d-flex">
+
+
+    <div class="row d-flex ">
         <div class="col-sm-12 col-lg-4" id="retourAnnonce">
             <a class="Back" href="index.php?action=vannes&page=1"> RETOUR </a>
 
@@ -14,214 +16,239 @@
 
 </div>
 <div class="row d-flex">
-    <div class="col-sm-2 col-lg-2 my-auto"> <img class="d-none d-sm-block img-fluid "
-            src="assets\img\artworkIMG\imageCadeau1.png" alt=""></div>
-    <div class="col-sm-8 col-lg-8 ">
+    <div class="col-sm-2 my-4 mx-2">
 
-        <!-- Bloc principal annonce -->
+    <img class="img-fluid w-75 " src="assets\img\artworkIMG\imageCadeau1.png" alt="garcon">
 
-        <div class="row">
-
-            <div class="col-sm-12" id="mainAnnonceContent">
-                <div class="row my-2">
-                    <div class="col-sm-8 p-2">
-                        <a class=" likeBtn"
-                            href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
-                            a ma selection</a>
-                    </div>
-
-
-                    <div class="col-sm-4 text-right p-2">
-
-                        <a class="likeBtn"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
-
-                        <a class="likeBtn"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
-                            n'aime pas</a>
-
-
-                    </div>
-
-
-                </div>
-
-                <!-- HEADER ANNONCE -->
-
-                <div class=" row d-flex" class="annonceHaut">
-
-                    <div class="col-lg-2 d-none d-md-block ">
-
-                        <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
-
-                    </div>
-
-                    <div class="col-lg-7">
-                        <h2 class="text-center p-4 h2annonces">
-                            <?= htmlspecialchars($annonce['titre']) ?>
-                        </h2>
-
-                    </div>
-                    <div class="col-lg-3 p-4">
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-                <!-- END HEADER -->
-
-                <!-- annonce haut -->
-
-                <div class="row my-4 d-flex">
-
-                    <div class="col-sm-12 col-lg-6">
-                        <p class="p-4  annonceContent">
-                            <?= nl2br(ucfirst(htmlspecialchars($annonce['presentation']))) ?>
-                        </p>
-                    </div>
-
-                    <div class="col-lg-6 mx-auto">
-
-                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
-
-                    </div>
-                </div>
-
-
-                <!-- END annonce haut -->
-
-                <!-- annonce bas -->
-                <div class="row d-flex">
-
-                    <div class="col-sm-12 col-lg-6 mx-auto">
-
-                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
-
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6">
-                        <p class="p-4  annonceContent">
-                            <?= nl2br(ucfirst(htmlspecialchars($annonce['descriptif']))) ?>
-                        </p>
-
-
-
-
-                    </div>
-
-
-
-
-
-                </div>
-
-                <!-- END annonce bas -->
-
-                <!-- Contact + formulaire commentaire -->
-
-                <div class="row text-center d-flex" id="basAdd">
-
-                    <div class="col-sm-12 col-lg-6 annonceContent" id="contact">
-
-                        <h6 class="mt-4">CONTACT :</h6>
-
-                        <p class="p-2">
-                            <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
-                        </p>
-
-
-
-
-                    </div>
-                    <div class="col-lg-6 ">
-
-
-                        <?php if(!empty($_SESSION['pseudo'])) { ?>
-                        <!-- autorise les comm si enregistré -->
-
-                        <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire ! </em>
-                        </h6>
-
-                        <form
-                            action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
-                            method="post">
-                            <div>
-                                <textarea class="form-control" id="comment" name="comment" rows="5"
-                                    cols="50"></textarea>
-                            </div>
-                            <div>
-                                <input class="mt-2" type="submit" />
-                            </div>
-                        </form>
-
-                        <?php } ?>
-                        <!-- fin autorisation -->
-                    </div>
-                </div>
-
-                <!-- Fin contact + formulaire -->
-            </div>
-
-        </div>
-        <!-- END Bloc principal annonce -->
-
-        <!-- HEADER COMMENTAIRES -->
-
-        <div class="row d-flex annonceContent">
-
-            <div class="col-sm-12 col-lg-6 my-2">
-
-                <h4 class="text-left"> <em>Les derniers avis :</em></h4>
-            </div>
-
-            <div class="col-sm-12 col-lg-6 my-2 ">
-
-
-            </div>
-        </div>
-
-        <!-- END HEADER COMMENTAIRES -->
-        <!-- COMMENTAIRES -->
-
-        <?php foreach ($allComments as $comment) { ?>
-
-        <div class="col-sm-12 col-lg-12 result annonceContent ">
-
-            <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
-                        <em></strong> le
-                <?= $comment['date_commentaire'] ?>
-
-                <span id="report">Signaler :
-                    <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
-                </span></h6>
-
-            <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
-            </p>
-
-        </div>
-
-        <?php
-    }
-
-    ?>
 
     </div>
 
 
 
-</div> <!-- annonces -->
+        <div class="col-sm-8 col-lg-8 ">
+
+            <!-- Bloc principal annonce -->
+
+            <div class="row">
+
+                <div class="col-sm-12" id="mainAnnonceContent">
+                    <div class="row my-2">
+                        <div class="col-sm-8 p-2">
+                            <a class=" likeBtn"
+                                href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
+                                a ma selection</a>
+                        </div>
+
+
+                        <div class="col-sm-4 text-right p-2">
+
+                            <a class="likeBtn"
+                                href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
+                            <?= $like?>
+
+                            <a class="likeBtn"
+                                href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
+                                n'aime pas</a> <?=$disLike?>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- HEADER ANNONCE -->
+
+                    <div class=" row d-flex" class="annonceHaut">
+
+                        <div class="col-lg-2 d-none d-md-block ">
+
+                            <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
+
+                        </div>
+
+                        <div class="col-lg-7">
+                            <h2 class="text-center p-4 h2annonces">
+                                <?= htmlspecialchars($annonce['titre']) ?>
+                            </h2>
+
+                        </div>
+                        <div class="col-lg-3 p-4">
+
+                        </div>
+                    </div>
+                    <!-- END HEADER -->
+
+                    <!-- annonce haut -->
+
+                    <div class="row my-4 d-flex">
+
+                        <div class="col-sm-12 col-lg-6">
+                            <p class="p-4  annonceContent">
+                                <?= nl2br(ucfirst(htmlspecialchars($annonce['presentation']))) ?>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 mx-auto">
+
+                            <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
+
+                        </div>
+                    </div>
+
+
+                    <!-- END annonce haut -->
+
+                    <!-- annonce bas -->
+                    <div class="row d-flex">
+
+                        <div class="col-sm-12 col-lg-6 mx-auto">
+
+                            <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
+
+                        </div>
+
+                        <div class="col-sm-12 col-lg-6">
+                            <p class="p-4  annonceContent">
+                                <?= nl2br(ucfirst(htmlspecialchars($annonce['descriptif']))) ?>
+                            </p>
 
 
 
 
-<?php $content = ob_get_clean(); ?>
+                        </div>
 
 
-<?php require('template.php'); ?>
+
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        test
+
+                    </div>
+                    <!-- END annonce bas -->
+
+                    <!-- Contact + formulaire commentaire -->
+
+                    <div class="row text-center d-flex" id="basAdd">
+
+                        <div class="col-sm-12 col-lg-6 annonceContent" id="contact">
+
+                            <h6 class="mt-4">CONTACT :</h6>
+
+                            <p class="p-2">
+                                <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
+                            </p>
+
+
+
+
+                        </div>
+                        <div class="col-lg-6 ">
+
+
+                            <?php if(!empty($_SESSION['pseudo'])) { ?>
+                            <!-- autorise les comm si enregistré -->
+
+                            <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire !
+                                </em>
+                            </h6>
+
+                            <form
+                                action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
+                                method="post">
+                                <div>
+                                    <textarea class="form-control" id="comment" name="comment" rows="5"
+                                        cols="50"></textarea>
+                                </div>
+                                <div>
+                                    <input class="mt-2" type="submit" />
+                                </div>
+                            </form>
+
+                            <?php } ?>
+                            <!-- fin autorisation -->
+                        </div>
+                    </div>
+
+                    <!-- Fin contact + formulaire -->
+                </div>
+
+            </div>
+            <!-- END Bloc principal annonce -->
+
+            <!-- HEADER COMMENTAIRES -->
+
+            <div class="row d-flex annonceContent">
+
+                <div class="col-sm-12 col-lg-6 my-2">
+
+                    <h4 class="text-left"> <em>Les derniers avis :</em></h4>
+                </div>
+
+                <div class="col-sm-12 col-lg-6 my-2 ">
+
+
+                </div>
+            </div>
+
+            <!-- END HEADER COMMENTAIRES -->
+            <!-- COMMENTAIRES -->
+
+            <?php foreach ($allComments as $comment) { ?>
+
+            <div class="col-sm-12 col-lg-12 result annonceContent ">
+
+                <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
+                            <em></strong> le
+                    <?= $comment['date_commentaire'] ?>
+
+                    <span id="report">Signaler :
+                        <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
+                    </span></h6>
+
+                <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+                </p>
+
+            </div>
+
+            <?php
+    }
+
+    ?>
+    </div>
+       <div class="col-sm-2">
+
+       
+        <!-- widget API meteo -->
+        <div class="d-none d-sm-block mx-auto" id="widget_4f2fdfad140809744f0aeb691f2d709c">
+            <span id="t_4f2fdfad140809744f0aeb691f2d709c">Météo Vannes</span>
+            <span id="l_4f2fdfad140809744f0aeb691f2d709c"><a
+                    href="http://www.mymeteo.info/r/vannes_j">M&eacute;t&eacute;o &agrave; Vannes</a></span>
+            <script type="text/javascript">
+            (function() {
+                var my = document.createElement("script");
+                my.type = "text/javascript";
+                my.async = true;
+                my.src =
+                    "https://services.my-meteo.com/widget/js?ville=20854&format=vertical&nb_jours=5&temps&icones&vent&coins&c1=393939&c2=a9a9a9&c3=e6e6e6&c4=ffdb5c&c5=00d2ff&c6=d21515&police=1&t_icones=1&x=160&y=537.5&d=0&id=4f2fdfad140809744f0aeb691f2d709c";
+                var z = document.getElementsByTagName("script")[0];
+                z.parentNode.insertBefore(my, z);
+            })();
+            </script>
+        </div>
+        <!-- widget meteo -->
+
+       </div>
+
+
+
+    </div> <!-- annonces -->
+
+
+
+
+    <?php $content = ob_get_clean(); ?>
+
+
+    <?php require('template.php'); ?>

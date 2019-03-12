@@ -54,8 +54,25 @@ foreach ($annonces as $data) { ?>
         </div>
     </div>
     <!--  -->
-    <div class=" d-none d-md-block col-lg-2 ">
-        <img class="img-fluid w-75 " src="assets\img\artworkIMG\imageCadeau1.png" alt="garcon">
+    <div class=" d-none d-md-block col-sm-2 ">
+        <!-- widget API meteo -->
+        <div class="d-none d-sm-block mx-auto" id="widget_4f2fdfad140809744f0aeb691f2d709c">
+            <span id="t_4f2fdfad140809744f0aeb691f2d709c">Météo Vannes</span>
+            <span id="l_4f2fdfad140809744f0aeb691f2d709c"><a
+                    href="http://www.mymeteo.info/r/vannes_j">M&eacute;t&eacute;o &agrave; Vannes</a></span>
+            <script type="text/javascript">
+            (function() {
+                var my = document.createElement("script");
+                my.type = "text/javascript";
+                my.async = true;
+                my.src =
+                    "https://services.my-meteo.com/widget/js?ville=20854&format=vertical&nb_jours=5&temps&icones&vent&coins&c1=393939&c2=a9a9a9&c3=e6e6e6&c4=ffdb5c&c5=00d2ff&c6=d21515&police=1&t_icones=1&x=160&y=537.5&d=0&id=4f2fdfad140809744f0aeb691f2d709c";
+                var z = document.getElementsByTagName("script")[0];
+                z.parentNode.insertBefore(my, z);
+            })();
+            </script>
+        </div>
+        <!-- widget meteo -->
     </div>
 
 </div>

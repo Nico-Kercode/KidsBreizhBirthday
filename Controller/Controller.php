@@ -33,6 +33,7 @@ class Controller
     public function indexView() {
 
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         require('view/frontend/indexView.php');
         
        
@@ -45,6 +46,8 @@ class Controller
     // --------------------------------
 
     public function userAccountmngt() {
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         require('view/frontend/userAccountView.php'); 
 
     }
@@ -55,6 +58,7 @@ class Controller
 
     public function loginView() {
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         require('view\frontend\loginView.php');
     }
     
@@ -64,8 +68,10 @@ class Controller
 
 
     public function addView() {
+
         $total = $this->addManager->countAnnonce();
-        require('view\frontend\postAdd.php');
+        $totalMembres = $this->memberManager->countTotalMembres();
+        require('view\frontend\postAnnonceView.php'); 
     }
 
     
@@ -142,6 +148,7 @@ class Controller
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         
         header('Location: index.php?action=accounttmnagement');
         
@@ -157,6 +164,7 @@ class Controller
         $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         $_SESSION['avatar'] = $newAvatar;
         
@@ -174,13 +182,14 @@ class Controller
         $numeroPage= $_GET['page'];
         $membresParPage= 8;
         $starter = ($numeroPage-1 )*$membresParPage;
-        $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
+        $nbDeMembres = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
         $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         
         require('view\frontend\membreAdminView.php');
         
-
+        
   
     }
 
@@ -188,6 +197,7 @@ class Controller
 
         $getReports = $this->commentManager->getReports();
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         require('view\frontend\administrationView.php');
 
@@ -221,6 +231,8 @@ class Controller
 
         $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$presentation,$descriptif,$contact,$photo1,$photo2,$id_MEMBRES);
 
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         header('Location: index.php?action=vannes&page=1');
 
     }
@@ -236,6 +248,7 @@ class Controller
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
 
         $path = "view\\frontend\\{$ville}View.php";
@@ -253,6 +266,7 @@ class Controller
 
         $bestAnnonces = $this->addManager->getBestAnnonces();
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         require('view\frontend\meilleurNoteView.php');
 
@@ -268,6 +282,7 @@ class Controller
         $id_ANNONCES = $_GET['id'];
         $id_MEMBRES = $_SESSION['id']; 
         $selection = $this->addManager->addSelection($id_ANNONCES, $id_MEMBRES);
+        $getLike = $this->addManager->getLike();
 
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
 
@@ -283,6 +298,7 @@ class Controller
         $id_MEMBRES = $_SESSION['id'];
         $getSelection = $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         require('view\frontend\maSelectionView.php');
 
@@ -313,12 +329,18 @@ class Controller
         $annonce = $this->addManager->getAnnonce($id);
         $allComments = $this->commentManager->getComments($id);
         $total = $this->addManager->countAnnonce();
-       
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $like= $this->addManager->getLikes($id);
+        $disLike= $this->addManager->getDisLikes($id);
+
+    
+        
 
         require('view\frontend\AnnonceView.php');
         
 
     }
+
     // ---------------------
     // J AIME / J AIME PAS
     // ---------------------
@@ -364,6 +386,7 @@ class Controller
         
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         require('view\frontend\editCommentView.php');
         
@@ -420,6 +443,7 @@ class Controller
 
         $result = $this->addManager->searchBar($search);
         $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         require('view\frontend\searchResultView.php');
         
         

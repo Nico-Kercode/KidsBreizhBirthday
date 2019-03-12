@@ -49,15 +49,15 @@
     <div class="row">
         <!-- BARRE DE RECHERCHE  -->
 
-        <div class="col-sm-6 offset-sm-4 d-flex">
+        <div class="col-sm-8 offset-sm-2 d-flex">
 
             <?php
             $date = date("d-m-Y");
             $heure = date("H:i");
             ?>
             <?php if(isset($_SESSION['pseudo'])){?>
-            <h6 id="bienvenue"> <em> Bienvenue <?=  ucfirst($_SESSION['pseudo'])?>, merci de vous être connecté, nous sommes le
-                    <?=$date?> et il est <?=$heure?>. Il y a actuellement <?= $total ?> annonces . </em></h6>
+            <h6 id="bienvenue"> <em> Bienvenue <span><?=  ucfirst($_SESSION['pseudo'])?></span>, merci de vous être connecté.  Nous sommes le
+                    <?=$date?>,  il est <?=$heure?>. Il y a actuellement <?= $total ?> activités référencées et un total de <?= $totalMembres ?> membres enregistrés . </em></h6>
             <?php } ?>
         </div> 
     </div>

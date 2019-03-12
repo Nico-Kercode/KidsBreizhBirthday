@@ -119,12 +119,24 @@ class MemberManager extends Manager{
         $db = $this->dbConnect();
         $req= $db->prepare('SELECT COUNT(*) FROM membres ');
         $req->execute(array());
-        $nbDePageMembre=$req->fetchAll()[0][0];
+        $nbDeMembres=$req->fetchAll()[0][0];
         $req->closeCursor();
 
-        return $nbDePageMembre;
+        return $nbDeMembres;
     }
 
+    public function countTotalMembres()
+    {   
+        $db = $this->dbConnect();
+        $resultat = $db->query('SELECT COUNT(*) AS total FROM membres');
+        $count = $resultat->fetch();
+        $totalMembres=$count['total'];
+        $resultat->closeCursor();
+        
+         return $totalMembres;
+
+       
+    }
 
 
 }

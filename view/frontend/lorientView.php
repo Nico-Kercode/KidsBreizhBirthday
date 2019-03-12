@@ -62,8 +62,25 @@
     </div>
     <!--  -->
 
-    <div class=" d-none d-md-block col-lg-2 my-auto">
-        <img class=" img-fluid w-75 " src="assets\img\artworkIMG\chenille.png" alt="chenille">
+    <div class=" d-none d-md-block col-lg-2 ">
+        <!-- widget meteo -->
+        <div id="widget_0d51ba51f3af50ac240bf89b2f00adbb">
+            <span id="t_0d51ba51f3af50ac240bf89b2f00adbb">Météo Lorient</span>
+            <span id="l_0d51ba51f3af50ac240bf89b2f00adbb"><a href="http://www.mymeteo.info/r/lorient_h">quel temps
+                    &agrave; Lorient</a></span>
+            <script type="text/javascript">
+            (function() {
+                var my = document.createElement("script");
+                my.type = "text/javascript";
+                my.async = true;
+                my.src =
+                    "https://services.my-meteo.com/widget/js?ville=20731&format=vertical&nb_jours=5&temps&icones&vent&coins&c1=393939&c2=a9a9a9&c3=e6e6e6&c4=ffdb5c&c5=00d2ff&c6=d21515&police=1&t_icones=1&x=160&y=537.5&d=0&id=0d51ba51f3af50ac240bf89b2f00adbb";
+                var z = document.getElementsByTagName("script")[0];
+                z.parentNode.insertBefore(my, z);
+            })();
+            </script>
+        </div>
+        <!-- widget meteo -->
 
     </div>
 

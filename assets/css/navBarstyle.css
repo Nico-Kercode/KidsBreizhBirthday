@@ -20,11 +20,9 @@
 .response--site-menu li a:hover {
 
 
-	/* color: #fff;
-	background-color: rgb(224, 236, 53);
-	border-radius: 20px; */
-	
-
+	color: #fff;
+	background-color:#FFDB5C;
+	border-radius: 20px;
 
 }
 
@@ -75,6 +73,10 @@
 	word-spacing: 3px; 
 }
 
+#bienvenue span{
+	color: blue;
+}
+
 /* Responsive! */
 
 .show-nav, .hide-nav {
@@ -111,4 +113,6 @@
 	right: 0;
 	transform: translateX(0);
 }
-
+#widget_4f2fdfad140809744f0aeb691f2d709c{
+	margin-top:5%;
+}

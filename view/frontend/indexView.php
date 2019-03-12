@@ -7,7 +7,9 @@
 <div class="container-fluid ">
 
     <div class="row d-flex" id="accueil">
-    
+
+
+        <?php include('view\frontend\meteo.php')?>
 
         <div class="col-lg-2 d-none d-lg-block ">
 

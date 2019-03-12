@@ -46,7 +46,7 @@ foreach ($getMembres as $data) { ?>
     <!--  PAGINATION -->
 
     <div class="row">
-        <div class="col-sm-12 mt-4 fixed-bottom">
+        <div class="col-sm-12 mt-4 ">
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
@@ -63,7 +63,7 @@ foreach ($getMembres as $data) { ?>
                              };                            
                              ?>
                     <?php 
-                for($i=1; $i <= $nbDePageMembre; $i++){
+                for($i=1; $i <= $nbDeMembres; $i++){
                     if( $page ==$i){
 
                     echo'<li class="page-item"><a class="page-link" href="index.php?action=adminmembres&page='.$i.'">'.$i."</a></li>";
