@@ -11,7 +11,7 @@
 
     <div class=" d-none d-md-block col-lg-2">
         <img class=" img-fluid  w-75" src="assets\img\artworkIMG\imageCadeau1.png" alt="Garcon">
-        
+
 
     </div>
 
@@ -22,7 +22,7 @@
             <?php foreach ($annonces as $data) { ?>
 
 
-            <div class="col-sm-5 offset-sm-1 mainAnnonces" >
+            <div class="col-sm-5 offset-sm-1 mainAnnonces">
                 <!-- boucle affichage des annonces -->
                 <div class="row annonceHaut">
 

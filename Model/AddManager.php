@@ -117,7 +117,7 @@ class AddManager extends Manager
     public function countAnnonce()
     {   
         $db = $this->dbConnect();
-        $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces WHERE id');
+        $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces');
         $count = $resultat->fetch();
         $total=$count['total'];
         $resultat->closeCursor();
@@ -126,7 +126,6 @@ class AddManager extends Manager
 
        
     }
-
     // ------------------
     // BARRE DE RECHERCHE
     // ------------------

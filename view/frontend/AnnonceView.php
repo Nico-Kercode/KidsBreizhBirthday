@@ -23,6 +23,28 @@
         <div class="row">
 
             <div class="col-sm-12" id="mainAnnonceContent">
+                <div class="row my-2">
+                    <div class="col-sm-8 p-2">
+                        <a class=" likeBtn"
+                            href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
+                            a ma selection</a>
+                    </div>
+
+
+                    <div class="col-sm-4 text-right p-2">
+
+                        <a class="likeBtn"
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
+
+                        <a class="likeBtn"
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
+                            n'aime pas</a>
+
+
+                    </div>
+
+
+                </div>
 
                 <!-- HEADER ANNONCE -->
 
@@ -44,17 +66,12 @@
 
 
 
-                        <?php if(isset($_SESSION) && $_SESSION['id']['jaime']<=1 ){?>
 
 
 
-                        <a class="select"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a> 
 
-                        <a class="select"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
-                            n'aime pas</a>
-                        <?php }?>
+
+
 
                     </div>
                 </div>
@@ -96,9 +113,7 @@
 
 
 
-                        <a class="p-2 select"
-                            href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
-                            a ma selection</a>
+
                     </div>
 
 
@@ -203,10 +218,6 @@
 
 </div> <!-- annonces -->
 
-<div class="baspost">
-
-
-</div>
 
 
 

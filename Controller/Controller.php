@@ -32,7 +32,12 @@ class Controller
 
     public function indexView() {
 
-        require('view/frontend/indexView.php'); 
+        $total = $this->addManager->countAnnonce();
+        require('view/frontend/indexView.php');
+        
+       
+        
+        
     }
     
     // --------------------------------
@@ -49,6 +54,7 @@ class Controller
     // --------------------
 
     public function loginView() {
+        $total = $this->addManager->countAnnonce();
         require('view\frontend\loginView.php');
     }
     
@@ -58,6 +64,7 @@ class Controller
 
 
     public function addView() {
+        $total = $this->addManager->countAnnonce();
         require('view\frontend\postAdd.php');
     }
 
@@ -134,6 +141,7 @@ class Controller
         } 
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
+        $total = $this->addManager->countAnnonce();
         
         header('Location: index.php?action=accounttmnagement');
         
@@ -148,6 +156,7 @@ class Controller
 
         $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+        $total = $this->addManager->countAnnonce();
 
         $_SESSION['avatar'] = $newAvatar;
         
@@ -167,6 +176,7 @@ class Controller
         $starter = ($numeroPage-1 )*$membresParPage;
         $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
         $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
+        $total = $this->addManager->countAnnonce();
         
         require('view\frontend\membreAdminView.php');
         
@@ -177,6 +187,7 @@ class Controller
     public function getComReports(){
 
         $getReports = $this->commentManager->getReports();
+        $total = $this->addManager->countAnnonce();
 
         require('view\frontend\administrationView.php');
 
@@ -187,7 +198,7 @@ class Controller
        
          $delComment= $this->commentManager->deleteCommentaire($commentID);
     
-        require('view\frontend\administrationView.php');
+        header('Location:index.php?action=admin&page=1');
     }
     
 
@@ -224,6 +235,7 @@ class Controller
 
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
+        $total = $this->addManager->countAnnonce();
 
 
         $path = "view\\frontend\\{$ville}View.php";
@@ -240,6 +252,7 @@ class Controller
     public function classementAnnonces() {
 
         $bestAnnonces = $this->addManager->getBestAnnonces();
+        $total = $this->addManager->countAnnonce();
 
         require('view\frontend\meilleurNoteView.php');
 
@@ -269,6 +282,7 @@ class Controller
         
         $id_MEMBRES = $_SESSION['id'];
         $getSelection = $this->addManager->getSelection($id_MEMBRES);
+        $total = $this->addManager->countAnnonce();
 
         require('view\frontend\maSelectionView.php');
 
@@ -298,6 +312,7 @@ class Controller
 
         $annonce = $this->addManager->getAnnonce($id);
         $allComments = $this->commentManager->getComments($id);
+        $total = $this->addManager->countAnnonce();
        
 
         require('view\frontend\AnnonceView.php');
@@ -324,22 +339,6 @@ class Controller
     }
 
   
-
-    // ------------------
-    // TOTAL ANNONCES
-    // ------------------
-
-    public function count(){
-
-        $total = $this->addManager->countAnnonces();
-
-        require('view\frontend\indexView.php');
-
-        return $total['total'];
-
-
-    }
-
     // ------------------
     // AJOUT COMMENTAIRES
     // ------------------
@@ -364,6 +363,7 @@ class Controller
     function editForm($commentID,$annonceID){
         
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
+        $total = $this->addManager->countAnnonce();
 
         require('view\frontend\editCommentView.php');
         
@@ -419,8 +419,9 @@ class Controller
     public function mySearch($search) {
 
         $result = $this->addManager->searchBar($search);
-
+        $total = $this->addManager->countAnnonce();
         require('view\frontend\searchResultView.php');
+        
         
                  
         return $result;

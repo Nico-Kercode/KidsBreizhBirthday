@@ -20,8 +20,13 @@ foreach ($bestAnnonces as $data) { ?>
             <!-- boucle affichage des annonces -->
             <div class="row annonceHaut" >
 
+
+                <div class="col-xs-8 text-center">
+                    Recommandé par : <?=$data['nbrlike'] ?>  personne(s)
+
+                </div> 
+                
                 <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
-                    <?=$data['nbrlike'] ?> personnes ont aimés
                     <a class=" text-left  p-4 w-75"
                         href="index.php?action=annonce&id=<?= $data['id_ANNONCES'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
                         <h2 class="text-center h2annonces">
@@ -32,7 +37,7 @@ foreach ($bestAnnonces as $data) { ?>
                 </div>
                 <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
 
-                    <img class="img-fluid  my-2" src="<?= $data['logo']?>" alt="logo">
+                    <img class="img-fluid " src="<?= $data['logo']?>" alt="logo">
                 </div>
             </div>
             <!--  -->
