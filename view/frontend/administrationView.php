@@ -6,7 +6,7 @@
 <div class="container">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
 
-    <a href="index.php?action=adminmembres&page=1">Gestion des membres</a>
+    <a class="reportBtn" href="index.php?action=adminmembres&page=1">Gestion des membres</a>
 
     <div class="col-sm-12 admin">
         <h2 class="text-center my-4">Messages Signalés : </h2>
@@ -28,11 +28,13 @@
                     Commentaire : <?= $rep['contenu']?> <br>
                     signalé : <?= $rep['alert']?> fois
                     <br> <br>
+                  
+                        <a href="index.php?action=editForm&id=<?= $rep['id'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
+                            class="reportBtn mx-4">EDITER</a>
 
-                    <a href="index.php?action=editForm&id=<?= $rep['id'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
-                        class="btn-light mx-4">EDITER</a>
-
-                    <a href="index.php?action=delete&id=<?= $rep['id'] ?>" class="btn-danger">SUPPRIMER</a> </h3>
+                        <a href="index.php?action=delete&id=<?= $rep['id'] ?>" class="reportBtn mx-4">SUPPRIMER</a>
+                        </h3>
+    
                 </p>
             </div>
             <?php } ?>

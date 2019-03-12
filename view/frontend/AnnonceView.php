@@ -22,11 +22,11 @@
 
         <div class="row">
 
-            <div class="col-sm-12" id="mainAnnonces">
+            <div class="col-sm-12" id="mainAnnonceContent">
 
                 <!-- HEADER ANNONCE -->
 
-                <div class=" row d-flex" id="annonceHaut">
+                <div class=" row d-flex" class="annonceHaut">
 
                     <div class="col-lg-2 d-none d-md-block ">
 
@@ -34,16 +34,28 @@
 
                     </div>
 
-                    <div class="col-lg-6 ">
+                    <div class="col-lg-7">
                         <h2 class="text-center p-4 h2annonces">
                             <?= htmlspecialchars($annonce['titre']) ?>
                         </h2>
 
                     </div>
-                    <div class="col-lg-4 p-4">
-                        <a class="p-2 select"
-                            href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
-                            a ma selection</a>
+                    <div class="col-lg-3 p-4">
+
+
+
+                        <?php if(isset($_SESSION) && $_SESSION['id']['jaime']<=1 ){?>
+
+
+
+                        <a class="select"
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a> 
+
+                        <a class="select"
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
+                            n'aime pas</a>
+                        <?php }?>
+
                     </div>
                 </div>
                 <!-- END HEADER -->
@@ -81,7 +93,16 @@
                         <p class="p-4  annonceContent">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['descriptif']))) ?>
                         </p>
+
+
+
+                        <a class="p-2 select"
+                            href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
+                            a ma selection</a>
                     </div>
+
+
+
 
 
                 </div>
@@ -100,12 +121,17 @@
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
                         </p>
 
+
+
+
                     </div>
                     <div class="col-lg-6 ">
+
+
                         <?php if(!empty($_SESSION['pseudo'])) { ?>
                         <!-- autorise les comm si enregistré -->
 
-                        <h6 class="mb-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire ! </em>
+                        <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire ! </em>
                         </h6>
 
                         <form
@@ -142,18 +168,7 @@
 
             <div class="col-sm-12 col-lg-6 my-2 ">
 
-                <div class=" text-right">
-                    <?php if(isset($_SESSION)){
 
-                     ?>
-                    <a
-                        href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
-
-                    <a href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
-                        n'aime pas</a>
-                    <?php }?>
-
-                </div>
             </div>
         </div>
 
@@ -188,10 +203,10 @@
 
 </div> <!-- annonces -->
 
+<div class="baspost">
 
-<?php
-// }  
-?>
+
+</div>
 
 
 

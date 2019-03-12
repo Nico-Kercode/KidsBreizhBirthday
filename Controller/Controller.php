@@ -176,11 +176,7 @@ class Controller
 
     public function getComReports(){
 
-        $numeroPage= $_GET['page'];
-        $alertsParPage = 6;
-        $starter = ($numeroPage-1 )*$alertsParPage;
-        $nbAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
-        $getReports = $this->commentManager->getReports($starter,$alertsParPage);
+        $getReports = $this->commentManager->getReports();
 
         require('view\frontend\administrationView.php');
 
@@ -319,6 +315,7 @@ class Controller
         $id_ANNONCES = $_GET['id'];
         $id_MEMBRES= $_SESSION['id'];
         $type=$_GET['type'];
+        
                    
         $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
 

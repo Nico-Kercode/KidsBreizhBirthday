@@ -18,7 +18,7 @@
 
             <?php if(isset($_SESSION['pseudo'])) { ?>
 
-            <img class="img-fluid " id="avatar" src="<?= $_SESSION['avatar']?>"
+            <img class="img-fluid" src="<?= $_SESSION['avatar']?>"
                 alt="<?= $_SESSION['avatar']?>">
 
             <?php } ?>

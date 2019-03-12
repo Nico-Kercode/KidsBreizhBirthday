@@ -5,7 +5,7 @@
 
 <div class="container">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
-<a href="index.php?action=admin&page=1">Retour</a>
+<a class="reportBtn" href="index.php?action=admin&page=1">Retour</a>
     <div class="col-sm-12 admin">
 
         <h2 class="text-center">Liste des Membres Inscrits</h2>

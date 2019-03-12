@@ -5,7 +5,7 @@
 
 <div class="container">
 
-<a href="http://localhost:3000/index.php?action=admin&page=1">Retour</a>
+<a class="reportBtn" href="http://localhost:3000/index.php?action=admin&page=1">Retour</a>
     <h2 class="text-center my-4">Edition du commentaire de <?= $editCommentaire['pseudo'] ?></h2>
 
     <div class="col-sm-8 mx-auto">

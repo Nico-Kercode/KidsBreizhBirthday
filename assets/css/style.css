@@ -65,21 +65,23 @@ img {
     
     min-width: 25%;
     margin-left: 10%;
-    padding: .5rem;
-    border-radius: 20px;
-    font-family: "groboldregular";
-    font-size: 1.1em !important;
+    font-family: "groboldregular";  
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    background-color: rgb(255, 225, 92);
+	border-radius: 20px;
     text-shadow: none !important;
-    background-color:#E6EEB2 !important;
-    border:1px solid rgb(9, 198, 245);
-    color:rgb(83, 134, 243)!important;
-   
+    color: rgb(46, 78, 236)!important;
 
 }
 
 .Back:hover{
     background-color:#FED100;
     color:#7289FD!important;
+    border-right: 1px solid rgb(170, 114, 29);
+	border-bottom: 1px solid rgb(204, 142, 26);
+	border-left: 1px solid rgb(170, 114, 29);
+	border-top: 1px solid rgb(204, 142, 26);
 }
 
 #retourAnnonce{
@@ -91,10 +93,7 @@ img {
  
     max-width:60%;
 }
-.Back:hover{
-    color: red !important;
-    border:2px solid #ffc039;;
-}
+
 #choixAccueil a{
     margin-top: .5rem;
     padding: .3rem .5rem;
@@ -103,6 +102,20 @@ img {
     border-radius: 15px;
     text-shadow: none !important;
 }
+
+#choixAccueil a.active{
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    background-color: rgb(255, 225, 92);
+	border-right: 1px solid rgb(170, 114, 29);
+	border-bottom: 1px solid rgb(204, 142, 26);
+	border-left: 1px solid rgb(170, 114, 29);
+	border-top: 1px solid rgb(204, 142, 26);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
+}
+
 #choixAccueil a:hover{
     background-color: rgb(255, 225, 92);
 	border-radius: 20px;
@@ -183,11 +196,6 @@ img {
     color: white!important;
 }
 
-#avatar {
-    display: block;
-    width: 70%;
-}
-
 .main {
     background-color: #f1f1f2 !important;
 }
@@ -195,14 +203,21 @@ img {
 /*  annonces view */
 
 .mainAnnonces {
-    background-color: #FFDB5C; 
+    background-color: #FFDB5C !important; 
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
     margin-bottom: 15px;
     text-shadow: none !important;
+    /* border: 1px solid orange !important; */
 }
 
+#mainAnnonceContent{
+      border: 1px solid orange !important;
+      background-color: rgb(255, 229, 137);
+      
 
+
+}
 .annonceHaut {
     
     max-height: 100px;
@@ -238,7 +253,7 @@ img {
     background-color: #7289FD!important;
 }
 .h1annonces{
-    margin: 2% 0 3% 0 !important;
+    margin: 5% 0 5% 0 !important;
     font-family: "groboldregular";
     text-shadow: none !important;
 
@@ -294,13 +309,6 @@ img {
     width: 2%;
     margin: 3% 0 6% 0 ;
     
- 
-}
-.page-link{
-    color:#BE34FE !important;
-    font-size: 1.2rem;
-    background-color: #CEF968!important;
-    border-radius: 15px;
 }
 #footer {
     position: fixed;
@@ -356,6 +364,7 @@ img {
     text-align: right !important;
 }
 
+
 .js-dislike-comment {
     font-size: 1.4em;
 }
@@ -383,13 +392,21 @@ img {
 .list{
     background-color: #FFDB5C;
     padding: .5rem;
-    margin-bottom: 4%;
+    margin-bottom: 5%;
 }
 .select{
     
-    background-color:#E6EEB2!important;
-    border-radius: 20px;
-    padding: .5rem;
+    margin-top: .5rem;
+    margin-right : 3%;
+    padding: .3rem .5rem;
+    background-color: rgb(255, 225, 92);
+	border-right: 1px solid rgb(170, 114, 29);
+	border-bottom: 1px solid rgb(204, 142, 26);
+	border-left: 1px solid rgb(170, 114, 29);
+	border-top: 1px solid rgb(204, 142, 26);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
 
 }
 .select:hover{
@@ -397,4 +414,29 @@ img {
     color: #7289FD!important;
 
 }
+.baspost{
+    margin-bottom: 10%;
+}
 
+.reportBtn{
+
+    padding: .2rem;
+    background-color: rgb(248, 191, 4);
+	border: 1px solid rgb(131, 15, 141);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
+
+}
+
+.reportBtn:hover{
+
+    padding: .2rem;
+    background-color: rgb(255, 213, 73);
+	border: 1px solid rgb(131, 15, 141);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
+
+
+}

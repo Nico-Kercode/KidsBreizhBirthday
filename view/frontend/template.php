@@ -44,6 +44,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
+    
     <script src="assets\js\menuResponsive.js"></script>
 
     <script>
@@ -70,6 +71,7 @@
     <!-- Scripts -->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/alert&like.js"></script>
+
 
     <!-- FOOTER -->
     <?php include('view\elements\footer.php');?>

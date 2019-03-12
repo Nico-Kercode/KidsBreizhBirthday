@@ -55,7 +55,10 @@ foreach ($bestAnnonces as $data) { ?>
     </div>
 </div>
 <!--  -->
+<div class="baspost">
 
+
+</div>
 
 
 <?php $content = ob_get_clean(); ?>
