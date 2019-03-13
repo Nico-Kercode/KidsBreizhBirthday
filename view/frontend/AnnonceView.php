@@ -13,6 +13,8 @@
             <!-- main -->
             <div class="col-sm-12" id="mainAnnonceContent">
                 <div class="row my-2">
+
+                <?php if(isset($_SESSION['pseudo'])){ ?>
                     <div class="col-sm-8 p-2">
                         <a class=" likeBtn"
                             href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
@@ -26,6 +28,7 @@
                             href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
                             n'aime pas</a> <?=$disLike?>
                     </div>
+                <?php } ?>
                 </div>
                 <!-- HEADER ANNONCE -->
                 <div class=" row d-flex" class="annonceHaut">

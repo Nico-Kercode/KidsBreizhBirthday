@@ -78,22 +78,11 @@ foreach ($annonces as $data) { ?>
 </div>
 <!--  PAGINATION -->
 <div class="row">
-    <div class="col-sm-12 my-4 ">
+    <div class="col-sm-12 ">
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
 
-                <?php 
-                    $page=$_GET['page'];
-                    $pagesuivante=($_GET['page']+1);
-
-                        if ($page !=1) { 
-                         $pageprecedent = ($_GET['page']-1);
-
-                         } else {
-                             $pageprecedent= 1 ;
-                             };                            
-                             ?>
                 <?php 
                 for($i=1; $i <= $nbDePage; $i++){
                     if( $page ==$i){
