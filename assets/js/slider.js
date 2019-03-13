@@ -1,14 +1,18 @@
+$(function() {
 $(window).load(function() {
    
     $("#slider").slider({
-        visibleItems: 6,
-        itemsToScroll: 2,         
+        visibleItems: 8,
+        itemsToScroll: 1,         
         autoPlay: {
             enable: true,
-            interval: 3000,
+            interval: 1500,
             pauseOnHover: true
         }        
     });
   
     
 });
+});
+
+

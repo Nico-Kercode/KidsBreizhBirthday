@@ -2,9 +2,10 @@
 <?php ob_start(); ?>
 
 
-<div class="container-fluid mb-4">
 
     <h1 class="text-center my-4 h1annonces">MA <span>S</span>ELECTION</h1>
+
+<div class="container-fluid mb-4">
     <div class="row d-flex">
 
         <div class="col-sm-12 col-lg-4 my-4">

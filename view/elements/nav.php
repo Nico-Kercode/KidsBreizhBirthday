@@ -49,17 +49,26 @@
     <div class="row">
         <!-- BARRE DE RECHERCHE  -->
 
-        <div class="col-sm-8 offset-sm-2 d-flex">
+        <div class="col-sm-8 offset-sm-3 d-flex">
 
-            <?php
-            $date = date("d-m-Y");
-            $heure = date("H:i");
-            ?>
-            <?php if(isset($_SESSION['pseudo'])){?>
-            <h6 id="bienvenue"> <em> Bienvenue <span><?=  ucfirst($_SESSION['pseudo'])?></span>, merci de vous être connecté.  Nous sommes le
-                    <?=$date?>,  il est <?=$heure?>. Il y a actuellement <?= $total ?> activités référencées et un total de <?= $totalMembres ?> membres enregistrés . </em></h6>
+
+            <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '2'){?>
+            <h6 id="bienvenue"> <em> Bienvenue chez toi <span><?=  ucfirst($_SESSION['pseudo'])?></span>. Il y a actuellement <?= $total ?> activités référencées, un total de
+                    <?= $totalMembres ?> membres enregistrés. Nos membres nous on signalés <?=$nbAlert?> messages </em></h6>
             <?php } ?>
-        </div> 
+
+            <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '0' || $_SESSION['rang'] =='1'){?>
+            <h6 id="bienvenue"> <em> Bienvenue <span><?=  ucfirst($_SESSION['pseudo'])?></span>, merci de vous être
+                    connecté. Il y a actuellement <?= $total ?> activités référencées et un total de
+                    <?= $totalMembres ?> membres enregistrés . </em></h6>
+            <?php } ?>
+
+            <?php if(empty($_SESSION)){?>
+            <h6 id="bienvenue"> <em> Pour plus de contenu, <a href="index.php?action=formRegister">Enregistrez vous
+                        !</a> Il y a actuellement <?= $total ?> activités référencées et un total de
+                    <?= $totalMembres ?> membres enregistrés . </em></h6>
+            <?php } ?>
+        </div>
     </div>
 
     <div class="row">

@@ -161,8 +161,7 @@ class App
                 
                 }   elseif ($_GET['action'] == 'ajoutAnnonce'){           // -> Fonction vers formulaire Ajout d une anonnce
                    
-                    $this->controller->addView();
-                   
+                    require('view\frontend\postAnnonceView.php');
 
 
                 } elseif ($_GET['action'] == 'addannonce'){             // -> Fonction ajout d une annonce

@@ -38,6 +38,15 @@
                             maxlength="10">
                     </div>
                 </div>
+                <div class="form-group col-md-2">
+                    <label for="rang">Rang</label>
+                    <select name="rang" class="form-control">
+                        <option selected value="0">Particulier</option>
+                        <option value="1">Professionnel</option>
+                    </select>
+                </div>
+
+
                 <div class="form-group">
 
                     <!-- image -->

@@ -89,7 +89,7 @@ text-shadow: none !important;
   
   /*** Navigation ***/
   
-  .nbs-slider-nav-left,
+  /* .nbs-slider-nav-left,
   .nbs-slider-nav-right {
       padding:5px 10px;
       border-radius:15px;
@@ -127,7 +127,7 @@ text-shadow: none !important;
   .nbs-slider-nav-right.disabled {
       opacity: 0.4;
   }
-
+ */
 
 
 

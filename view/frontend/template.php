@@ -41,12 +41,13 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/navBarstyle.css">
     <link rel="stylesheet" href="assets/css/anim.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="assets\js\jquery.slider.js"></script>
     <script src="assets\js\slider.js"></script>
 
-    
+
     <script src="assets\js\menuResponsive.js"></script>
 
     <script>
@@ -61,26 +62,27 @@
 </head>
 
 <body>
-    
+
     <!-- Include Nav Bar + Sidebar -->
     <?php include('view\elements\nav.php');?>
 
     <div class="container-fluid" id="main">
 
-    <?= $content ?>
+        <?= $content ?>
 
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <!-- Scripts -->
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/alert&like.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+        <!-- Scripts -->
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/alert&like.js"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
     </div>
     <!-- FOOTER -->
     <?php include('view\elements\footer.php');?>
-    
+
 </body>
 
 </html>

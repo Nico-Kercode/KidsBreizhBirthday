@@ -100,6 +100,7 @@ img {
 
 #choixAccueil a{
     margin-top: .5rem;
+    margin-bottom: 1%;
     padding: .3rem .5rem;
     background-color:#FAC32D;
     border: 1px solid #FED100;
@@ -218,9 +219,8 @@ img {
 
 #mainAnnonceContent{
       border: 1px solid orange !important;
+      border-bottom: 6px solid orange !important;
       background-color: rgb(255, 229, 137);
-      
-
 
 }
 .annonceHaut {
@@ -261,7 +261,7 @@ img {
     background-color: #7289FD!important;
 }
 .h1annonces{
-    margin: 5% 0 5% 0 !important;
+    margin: 2% 0 5% 0 !important;
     font-family: "groboldregular";
     text-shadow: none !important;
 
@@ -297,7 +297,16 @@ img {
     text-shadow: none;
     
 }
+.CommContent{
+    font-family: 'Neucha', cursive!important;
+    font-weight: normal !important;
+    font-size: 1em;
+    text-shadow: none;
+    /* background-color: #FAC32D; */
+    min-height: 50px;
 
+
+}
 #rgpd {
     color: black !important;
 }
@@ -465,4 +474,21 @@ img {
 #supBtn{
     color: red !important;
 
+}
+.h4color{
+    border-bottom : 4px solid #FFDB5C !important; 
+    width: 14%;
+}
+
+.blue{
+    background-color: #3553fd;
+    min-height: 500px;
+}
+.red{
+    background-color: red;
+    min-height: 500px;
+}
+.orange{
+    background-color: orange;
+    min-height: 500px;
 }

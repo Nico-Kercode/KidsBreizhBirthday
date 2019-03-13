@@ -113,6 +113,12 @@
 	right: 0;
 	transform: translateX(0);
 }
-#widget_4f2fdfad140809744f0aeb691f2d709c{
-	margin-top:5%;
+/* #widget_4f2fdfad140809744f0aeb691f2d709c{
+	margin: 2% auto;
+	
+} */
+
+#hrAnnonce{
+	height: 55px;
+	background : #FFDB5C;
 }

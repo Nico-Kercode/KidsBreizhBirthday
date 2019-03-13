@@ -7,7 +7,7 @@
 <h1 class="text-center my-4 h1annonces"> <span>V</span>ANNES</h1>
 <div class="container-fluid d-flex">
 
-    <div class=" d-none d-md-block col-lg-2 my-auto">
+    <div class=" d-none d-md-block col-lg-2 ">
         <img class="w-75 img-fluid " src="assets\img\artworkIMG\chenille.png" alt="Chenille">
 
     </div>
