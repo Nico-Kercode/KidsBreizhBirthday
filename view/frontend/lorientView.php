@@ -4,14 +4,14 @@
 
 
 
-<h1 class="text-center my-4 h1annonces"> <span>L</span>ORIENT</h1>
+<h1 class="text-center  h1annonces"> <span>L</span>ORIENT</h1>
 
 
 <div class="container-fluid d-flex">
 
     <div class=" d-none d-md-block col-lg-2">
         <img class=" img-fluid  w-75" src="assets\img\artworkIMG\imageCadeau1.png" alt="Garcon">
-        
+
 
     </div>
 
@@ -22,7 +22,7 @@
             <?php foreach ($annonces as $data) { ?>
 
 
-            <div class="col-sm-5 offset-sm-1 mainAnnonces" >
+            <div class="col-sm-5 offset-sm-1 mainAnnonces">
                 <!-- boucle affichage des annonces -->
                 <div class="row annonceHaut">
 
@@ -39,7 +39,7 @@
                     </div>
                     <div class="d-none d-sm-block col-sm-4 col-lg-4 ">
 
-                        <img class="img-fluid  my-2" src="assets\img\artworkIMG\garcon.png" alt="logo">
+                        <img class="img-fluid  my-2" src="<?= $data['logo'] ?>" alt="logo">
                     </div>
                 </div>
                 <!-- <?= $data['logo']?> -->
@@ -62,8 +62,25 @@
     </div>
     <!--  -->
 
-    <div class=" d-none d-md-block col-lg-2 my-auto">
-        <img class=" img-fluid w-75 " src="assets\img\artworkIMG\chenille.png" alt="chenille">
+    <div class=" d-none d-md-block col-lg-2 ">
+        <!-- widget meteo -->
+        <div id="widget_0d51ba51f3af50ac240bf89b2f00adbb">
+            <span id="t_0d51ba51f3af50ac240bf89b2f00adbb">Météo Lorient</span>
+            <span id="l_0d51ba51f3af50ac240bf89b2f00adbb"><a href="http://www.mymeteo.info/r/lorient_h">quel temps
+                    &agrave; Lorient</a></span>
+            <script type="text/javascript">
+            (function() {
+                var my = document.createElement("script");
+                my.type = "text/javascript";
+                my.async = true;
+                my.src =
+                    "https://services.my-meteo.com/widget/js?ville=20731&format=vertical&nb_jours=5&temps&icones&vent&coins&c1=393939&c2=a9a9a9&c3=e6e6e6&c4=ffdb5c&c5=00d2ff&c6=d21515&police=1&t_icones=1&x=160&y=537.5&d=0&id=0d51ba51f3af50ac240bf89b2f00adbb";
+                var z = document.getElementsByTagName("script")[0];
+                z.parentNode.insertBefore(my, z);
+            })();
+            </script>
+        </div>
+        <!-- widget meteo -->
 
     </div>
 
@@ -72,22 +89,12 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-12 my-4">
+    <div class="col-sm-12">
 
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
 
-                <?php 
-                    $page=$_GET['page'];
-                    $pagesuivante=($_GET['page']+1);
-
-                        if ($page !=1) { 
-                         $pageprecedent = ($_GET['page']-1);
-
-                         } else {
-                             $pageprecedent= 1 ;
-                             };                            
-                             ?>
+                
                 <?php 
                 for($i=1; $i <= $nbDePage; $i++){
                     if( $page ==$i){

@@ -16,7 +16,7 @@ class MemberManager extends Manager{
     // -----------------------------
 
 
-    public function registerMember($pseudo,$email, $passHash,$picProfile){
+    public function registerMember($pseudo,$email, $passHash,$picProfile,$rang){
 
         $db = $this->dbConnect();
 
@@ -39,12 +39,13 @@ class MemberManager extends Manager{
 
 
 
-        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , avatar, date_inscription) VALUES(:pseudo,:email, :password, :upic,now())');
+        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , avatar, rang, date_inscription) VALUES(:pseudo,:email,:password,:upic,:rang ,now())');
         $addNewMember = $addmember->execute(array(
             "pseudo" => $pseudo,
             "email" => $email,
             "password" =>$passHash,
-            "upic"=>$picProfile
+            "upic"=>$picProfile,
+            "rang" =>$rang
             ));
         }
 
@@ -119,12 +120,24 @@ class MemberManager extends Manager{
         $db = $this->dbConnect();
         $req= $db->prepare('SELECT COUNT(*) FROM membres ');
         $req->execute(array());
-        $nbDePageMembre=$req->fetchAll()[0][0];
+        $nbDeMembres=$req->fetchAll()[0][0];
         $req->closeCursor();
 
-        return $nbDePageMembre;
+        return $nbDeMembres;
     }
 
+    public function countTotalMembres()
+    {   
+        $db = $this->dbConnect();
+        $resultat = $db->query('SELECT COUNT(*) AS total FROM membres');
+        $count = $resultat->fetch();
+        $totalMembres=$count['total'];
+        $resultat->closeCursor();
+        
+         return $totalMembres;
+
+       
+    }
 
 
 }

@@ -32,7 +32,12 @@ class Controller
 
     public function indexView() {
 
-        require('view/frontend/indexView.php'); 
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+        require('view/frontend/indexView.php');
+          
+        
     }
     
     // --------------------------------
@@ -40,6 +45,9 @@ class Controller
     // --------------------------------
 
     public function userAccountmngt() {
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
         require('view/frontend/userAccountView.php'); 
 
     }
@@ -49,6 +57,9 @@ class Controller
     // --------------------
 
     public function loginView() {
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
         require('view\frontend\loginView.php');
     }
     
@@ -58,7 +69,11 @@ class Controller
 
 
     public function addView() {
-        require('view\frontend\postAdd.php');
+
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+        require('view\frontend\postAnnonceView.php'); 
     }
 
     
@@ -73,6 +88,7 @@ class Controller
         $email= htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password_1']);
         $password_2 = htmlspecialchars($_POST['password_2']);
+        $rang=$_POST['rang'];
 
             if($password == $password_2) {
                 $password_1 = $password_2;
@@ -83,7 +99,7 @@ class Controller
                 }     
         $picProfile= $this->manageFile($_FILES['image'],400,400);
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile);
+        $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile,$rang);
         
     
         header('Location: index.php');
@@ -134,6 +150,9 @@ class Controller
         } 
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
+        $total = $this->addManager->countAnnonce();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $totalMembres = $this->memberManager->countTotalMembres();
         
         header('Location: index.php?action=accounttmnagement');
         
@@ -148,6 +167,9 @@ class Controller
 
         $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
+        $total = $this->addManager->countAnnonce();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         $_SESSION['avatar'] = $newAvatar;
         
@@ -165,23 +187,24 @@ class Controller
         $numeroPage= $_GET['page'];
         $membresParPage= 8;
         $starter = ($numeroPage-1 )*$membresParPage;
-        $nbDePageMembre = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
+        $nbDeMembres = ceil(intval($this->memberManager->CountMembers())/$membresParPage);
         $getMembres = $this->memberManager->getMembers($starter,$membresParPage);
+        $total = $this->addManager->countAnnonce();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $totalMembres = $this->memberManager->countTotalMembres();
         
         require('view\frontend\membreAdminView.php');
         
-
+        
   
     }
 
     public function getComReports(){
 
-        $numeroPage= $_GET['page'];
-        $alertsParPage = 6;
-        $starter = ($numeroPage-1 )*$alertsParPage;
-        $nbAlert = ceil(intval($this->commentManager->CountAlerts())/$alertsParPage);
-        $getReports = $this->commentManager->getReports($starter,$alertsParPage);
-
+        $getReports = $this->commentManager->getReports();
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts(); 
         require('view\frontend\administrationView.php');
 
     }
@@ -190,8 +213,9 @@ class Controller
     
        
          $delComment= $this->commentManager->deleteCommentaire($commentID);
+       
     
-        require('view\frontend\administrationView.php');
+        header('Location:index.php?action=admin&page=1');
     }
     
 
@@ -211,9 +235,8 @@ class Controller
         $photo1=$this->manageFile($_FILES['photo1'],600,400);
         $photo2=$this->manageFile($_FILES['photo2'],600,400);
         $id_MEMBRES = $_SESSION['id'];
-
-        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$presentation,$descriptif,$contact,$photo1,$photo2,$id_MEMBRES);
-
+        $addNewAnnonce = $this->addManager->addNewAnnonce($ville,$logo,$titreA,$presentation,$descriptif,$contact,$photo1,$photo2,$id_MEMBRES);      
+        
         header('Location: index.php?action=vannes&page=1');
 
     }
@@ -228,6 +251,9 @@ class Controller
 
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
+        $total = $this->addManager->countAnnonce();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
 
         $path = "view\\frontend\\{$ville}View.php";
@@ -244,6 +270,9 @@ class Controller
     public function classementAnnonces() {
 
         $bestAnnonces = $this->addManager->getBestAnnonces();
+        $total = $this->addManager->countAnnonce();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         require('view\frontend\meilleurNoteView.php');
 
@@ -257,9 +286,9 @@ class Controller
     public function selection() {
 
         $id_ANNONCES = $_GET['id'];
-        $id_MEMBRES = $_SESSION['id']; 
+        $id_MEMBRES = $_SESSION['id'];       
         $selection = $this->addManager->addSelection($id_ANNONCES, $id_MEMBRES);
-
+        
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
 
 
@@ -273,6 +302,9 @@ class Controller
         
         $id_MEMBRES = $_SESSION['id'];
         $getSelection = $this->addManager->getSelection($id_MEMBRES);
+        $total = $this->addManager->countAnnonce();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $totalMembres = $this->memberManager->countTotalMembres();
 
         require('view\frontend\maSelectionView.php');
 
@@ -302,12 +334,21 @@ class Controller
 
         $annonce = $this->addManager->getAnnonce($id);
         $allComments = $this->commentManager->getComments($id);
-       
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+        $like= $this->addManager->getLikes($id);
+        $disLike= $this->addManager->getDisLikes($id);
+        
 
-        require('view\frontend\AnnonceView.php');
+    
+        
+
+        require('view\frontend\annonceView.php');
         
 
     }
+
     // ---------------------
     // J AIME / J AIME PAS
     // ---------------------
@@ -319,6 +360,7 @@ class Controller
         $id_ANNONCES = $_GET['id'];
         $id_MEMBRES= $_SESSION['id'];
         $type=$_GET['type'];
+        
                    
         $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
 
@@ -327,22 +369,6 @@ class Controller
     }
 
   
-
-    // ------------------
-    // TOTAL ANNONCES
-    // ------------------
-
-    public function count(){
-
-        $total = $this->addManager->countAnnonces();
-
-        require('view\frontend\indexView.php');
-
-        return $total['total'];
-
-
-    }
-
     // ------------------
     // AJOUT COMMENTAIRES
     // ------------------
@@ -367,6 +393,9 @@ class Controller
     function editForm($commentID,$annonceID){
         
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
 
         require('view\frontend\editCommentView.php');
         
@@ -378,12 +407,11 @@ class Controller
     
         $affectedLines = $this->commentManager->editCommentaire($id, $editCommentaire);
     
-    
-            header('Location: index.php?action=admin&page=1');
+               header('Location: index.php?action=admin&page=1');
             
         // }
     }
-    
+        
     
   
 
@@ -402,7 +430,6 @@ class Controller
             if (! $id > 0) {
                 throw new Exception("Numéro de commentaire inconnu");
             }
-            // Update comment
             $success = $this->commentManager->incrementAlert($id);
             if (!$success) {
                 $returnedValue = 'ko : sql error or no raw updated';
@@ -411,7 +438,7 @@ class Controller
         catch (Exception $e) {
             $returnedValue = 'ko : '. $e->getMessage();
         }
-        // Return $returnedValue in json format
+    
         require('view/frontend/alertView.php');
     }
 
@@ -422,8 +449,10 @@ class Controller
     public function mySearch($search) {
 
         $result = $this->addManager->searchBar($search);
-
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
         require('view\frontend\searchResultView.php');
+        
         
                  
         return $result;
@@ -467,12 +496,12 @@ class Controller
     }
     
     // -----------------
-    // RESIZE IMAGES !!! 
+    // REDIMENSIONNEMENT IMAGES !!! 
     // ----------------
 
     private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
 
-        $condition = 1;
+        $condition = 0;
         // Si certains paramètres ont pour valeur '' :
         if ($rep_Dst=='') { $rep_Dst = $rep_Src; } // (même répertoire)
         if ($img_Dst=='') { $img_Dst = $img_Src; } // (même nom)

@@ -23,7 +23,7 @@ class App
                 $this->controller->indexView();
             }
 
-           if (isset($_GET['action'])) {
+            if (isset($_GET['action'])) {
 
         //           VERS INDEX ACCUEIL 
 
@@ -97,11 +97,11 @@ class App
 
             //             MENU ADMIN                  //
                 
-                } elseif($_GET['action'] == 'adminmembres') {   // ->  Fonction affichage tout les membres
+                } elseif($_GET['action'] == 'adminmembres' && $_SESSION['rang'] =='2') {   // ->  Fonction affichage tout les membres
                    
                     $this->controller->getAllMembres();
 
-                } elseif($_GET['action'] =='admin'){            // -> Fonction affichage des signalements
+                } elseif($_GET['action'] =='admin' && $_SESSION['rang'] =='2'){            // -> Fonction affichage des signalements
                    
                     $this->controller->getComReports(); 
                     
@@ -147,7 +147,7 @@ class App
                         $this->controller->selection();
                     }
                      else {
-                            throw new Exception('Aucun identifiant de billet envoyé');
+                            throw new Exception('vous ne pouvez pas utiliser cette fonction ');
                     }
      
                 } elseif($_GET['action'] == 'monPanier'){           // -> Fonction Consultation selection
@@ -159,7 +159,7 @@ class App
                     
                     $this->controller->viderSelection();}
                 
-                }   elseif ($_GET['action'] == 'ajoutAnnonce'){           // -> Fonction vers formulaire Ajout d une anonnce
+                }  elseif ($_GET['action'] == 'ajoutAnnonce' && $_SESSION['rang'] > 0){           // -> Fonction vers formulaire Ajout d une anonnce
                    
                     require('view\frontend\postAnnonceView.php');
 
@@ -170,7 +170,7 @@ class App
                         $this->controller->addAnnonce();
                     }
                         
-                } elseif ($_GET['action'] == 'addComment') {            // -> Fonction ajout d un commentaire
+                } elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
@@ -199,7 +199,7 @@ class App
                     }
 
 
-                } elseif ($_GET['action'] == 'editForm' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){    // -> Fonction
+                } elseif ($_GET['action'] == 'editForm' && $_SESSION['rang'] ==  '2'){    // -> Fonction
 
                     if (isset($_GET['id']) && $_GET['id'] > 0) {                // -> Vers formulaire Edition commentaire (admin)
                        
@@ -212,7 +212,7 @@ class App
                         throw new Exception('Erreur aucun id envoyer !');
                     }
 
-                } elseif ($_GET['action'] == 'editComment' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
+                } elseif ($_GET['action'] == 'editComment'  && $_SESSION['rang'] ==  '2'){
                     if (isset($_GET['id']) && $_GET['id'] > 0) {                           // -> Fonction EDITION COMMENTAIRE
                         if (!empty($_POST['comment'])) {
                             $this->controller->editComment($_GET['id'], $_POST['comment'], $_GET['id_ANNONCES']);
@@ -225,7 +225,7 @@ class App
                         throw new Exception('Aucun identifiant de commentaire envoyé');
                     }
 
-                } elseif ($_GET['action'] == 'delete' && isset($_SESSION['rang']) && $_SESSION['rang'] ==  '2'){
+                } elseif ($_GET['action'] == 'delete'  && $_SESSION['rang'] ==  '2'){
                     if (isset($_GET['id']) && $_GET['id'] > 0) {                        // -> Fonction SUPPRESSION COMMENTAIRE 
 
                         $commentID = $_GET['id']; 

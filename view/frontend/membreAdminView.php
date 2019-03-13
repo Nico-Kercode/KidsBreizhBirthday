@@ -5,7 +5,7 @@
 
 <div class="container">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
-<a href="index.php?action=admin&page=1">Retour</a>
+<a class="reportBtn" href="index.php?action=admin&page=1">Retour</a>
     <div class="col-sm-12 admin">
 
         <h2 class="text-center">Liste des Membres Inscrits</h2>
@@ -46,7 +46,7 @@ foreach ($getMembres as $data) { ?>
     <!--  PAGINATION -->
 
     <div class="row">
-        <div class="col-sm-12 mt-4 fixed-bottom">
+        <div class="col-sm-12 mt-4 ">
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
@@ -63,7 +63,7 @@ foreach ($getMembres as $data) { ?>
                              };                            
                              ?>
                     <?php 
-                for($i=1; $i <= $nbDePageMembre; $i++){
+                for($i=1; $i <= $nbDeMembres; $i++){
                     if( $page ==$i){
 
                     echo'<li class="page-item"><a class="page-link" href="index.php?action=adminmembres&page='.$i.'">'.$i."</a></li>";

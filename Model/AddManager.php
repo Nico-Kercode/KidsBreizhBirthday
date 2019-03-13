@@ -95,6 +95,32 @@ class AddManager extends Manager
         return $bestAnnonces;
     }
 
+    public function getLikes($id)
+    {
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(type) as totalLike FROM votes 
+        WHERE votes.id_ANNONCES= $id AND type=1");
+        $count = $resultat->fetch();
+        $like=$count['totalLike'];
+        $resultat->closeCursor();
+
+        return $like;
+
+    }
+
+    public function getDisLikes($id)
+    {
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(type) as totalDisLike FROM votes 
+        WHERE votes.id_ANNONCES= $id AND type=2");
+        $count = $resultat->fetch();
+        $disLike=$count['totalDisLike'];
+        $resultat->closeCursor();
+
+        return $disLike;
+
+    }
+   
 
 
     public function getAnnonce($id)
@@ -117,7 +143,7 @@ class AddManager extends Manager
     public function countAnnonce()
     {   
         $db = $this->dbConnect();
-        $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces WHERE id');
+        $resultat = $db->query('SELECT COUNT(*) AS total FROM annonces');
         $count = $resultat->fetch();
         $total=$count['total'];
         $resultat->closeCursor();
@@ -126,7 +152,6 @@ class AddManager extends Manager
 
        
     }
-
     // ------------------
     // BARRE DE RECHERCHE
     // ------------------

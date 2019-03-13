@@ -29,7 +29,9 @@ body {
     background-color: #f1f1f2 !important;
     font-family: 'Acme', sans-serif !important;
 }
-
+#main{
+    min-height: 100vh !important; 
+}
 a {
     font-size: 1em;
     color: #4897d8!important;
@@ -54,7 +56,9 @@ img {
     height: 25vh;
     border-bottom: 2px solid #ffc039;
 }
-
+#accueil{
+    min-height: 55vh;
+}
 
 
 
@@ -65,21 +69,23 @@ img {
     
     min-width: 25%;
     margin-left: 10%;
-    padding: .5rem;
-    border-radius: 20px;
-    font-family: "groboldregular";
-    font-size: 1.1em !important;
+    font-family: "groboldregular";  
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    background-color: rgb(255, 225, 92);
+	border-radius: 20px;
     text-shadow: none !important;
-    background-color:#E6EEB2 !important;
-    border:1px solid rgb(9, 198, 245);
-    color:rgb(83, 134, 243)!important;
-   
+    color: rgb(46, 78, 236)!important;
 
 }
 
 .Back:hover{
     background-color:#FED100;
     color:#7289FD!important;
+    border-right: 1px solid rgb(170, 114, 29);
+	border-bottom: 1px solid rgb(204, 142, 26);
+	border-left: 1px solid rgb(170, 114, 29);
+	border-top: 1px solid rgb(204, 142, 26);
 }
 
 #retourAnnonce{
@@ -91,18 +97,30 @@ img {
  
     max-width:60%;
 }
-.Back:hover{
-    color: red !important;
-    border:2px solid #ffc039;;
-}
+
 #choixAccueil a{
     margin-top: .5rem;
+    margin-bottom: 1%;
     padding: .3rem .5rem;
-    background-color:#D6E68B;
+    background-color:#FAC32D;
     border: 1px solid #FED100;
     border-radius: 15px;
     text-shadow: none !important;
 }
+
+#choixAccueil a.active{
+    margin-top: .5rem;
+    padding: .3rem .5rem;
+    background-color: rgb(255, 225, 92);
+	border-right: 1px solid rgb(170, 114, 29);
+	border-bottom: 1px solid rgb(204, 142, 26);
+	border-left: 1px solid rgb(170, 114, 29);
+	border-top: 1px solid rgb(204, 142, 26);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
+}
+
 #choixAccueil a:hover{
     background-color: rgb(255, 225, 92);
 	border-radius: 20px;
@@ -115,7 +133,7 @@ img {
 }
 
 #accueil {
-    margin-top: 2%;
+    
     margin-bottom: 15%;
     text-shadow: none !important;
 }
@@ -151,6 +169,7 @@ img {
 #texteAccueil {
     font-size: 1em;
     text-shadow: none !important;
+    
 }
 
 #indexView {
@@ -183,11 +202,6 @@ img {
     color: white!important;
 }
 
-#avatar {
-    display: block;
-    width: 70%;
-}
-
 .main {
     background-color: #f1f1f2 !important;
 }
@@ -195,14 +209,20 @@ img {
 /*  annonces view */
 
 .mainAnnonces {
-    background-color: #FFDB5C; 
+    background-color: #FFDB5C !important; 
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
     margin-bottom: 15px;
     text-shadow: none !important;
+    /* border: 1px solid orange !important; */
 }
 
+#mainAnnonceContent{
+      border: 1px solid orange !important;
+      border-bottom: 6px solid orange !important;
+      background-color: rgb(255, 229, 137);
 
+}
 .annonceHaut {
     
     max-height: 100px;
@@ -211,9 +231,12 @@ img {
     margin-bottom: 4%;
 }
 .h2annonces{
+    background-color: #FAC32D;
+    
+    border-radius: 20px;
     font-family: "groboldregular";
     font-size:1.7em;
-    color: #738BFE !important;
+    color: #728BFF !important;
     text-transform: uppercase;
     text-shadow: none !important;
 }
@@ -221,8 +244,8 @@ img {
 
     color: rgb(146, 56, 127) !important;
 }
-.h2annonces:nth-child(0n+2){
-    color: rgb(187, 203, 233) !important;
+.h2annonces:nth-child(0n+1){
+    color: rgb(41, 116, 255) !important;
 
 }
 #plusdinfos {
@@ -238,7 +261,7 @@ img {
     background-color: #7289FD!important;
 }
 .h1annonces{
-    margin: 2% 0 3% 0 !important;
+    margin: 2% 0 5% 0 !important;
     font-family: "groboldregular";
     text-shadow: none !important;
 
@@ -274,7 +297,16 @@ img {
     text-shadow: none;
     
 }
+.CommContent{
+    font-family: 'Neucha', cursive!important;
+    font-weight: normal !important;
+    font-size: 1em;
+    text-shadow: none;
+    /* background-color: #FAC32D; */
+    min-height: 50px;
 
+
+}
 #rgpd {
     color: black !important;
 }
@@ -294,18 +326,9 @@ img {
     width: 2%;
     margin: 3% 0 6% 0 ;
     
- 
-}
-.page-link{
-    color:#BE34FE !important;
-    font-size: 1.2rem;
-    background-color: #CEF968!important;
-    border-radius: 15px;
 }
 #footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 1%;
     background-color: #FFDB5C!important;
     border-top: 2px solid #ffc039;
 }
@@ -356,6 +379,7 @@ img {
     text-align: right !important;
 }
 
+
 .js-dislike-comment {
     font-size: 1.4em;
 }
@@ -383,18 +407,88 @@ img {
 .list{
     background-color: #FFDB5C;
     padding: .5rem;
-    margin-bottom: 4%;
+    margin-bottom: 5%;
 }
-.select{
-    
-    background-color:#E6EEB2!important;
-    border-radius: 20px;
-    padding: .5rem;
+.likeBtn{
+
+    margin : 1%;
+    padding: .3rem;
+    background-color: rgb(255, 225, 92);
+	border: 1px solid rgb(170, 114, 29);
+
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
 
 }
-.select:hover{
-    background-color:#ECFF71!important;
+.likeBtn:hover{
+    background-color:rgb(255, 214, 34)!important;
     color: #7289FD!important;
 
 }
 
+
+.baspost{
+    margin-bottom: 3%;
+}
+
+.reportBtn{
+
+    padding: .2rem;
+    background-color: rgb(248, 191, 4);
+	border: 1px solid rgb(131, 15, 141);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
+
+}
+
+.reportBtn:hover{
+
+    padding: .2rem;
+    background-color: rgb(255, 213, 73);
+	border: 1px solid rgb(131, 15, 141);
+	border-radius: 20px;
+    text-shadow: none !important;
+    color: rgb(46, 78, 236)!important;
+
+
+}
+
+#selection{
+    border: 1px solid black;
+}
+
+.selection {
+    background-color: #FFDB5C !important; 
+    text-shadow: 1px 1px #adaaaa;
+    border-radius: 20px;
+    padding: .5rem;
+    margin-bottom: 15px;
+    text-shadow: none !important;
+    max-height: 90px;
+    display: flex;
+    /* border: 1px solid orange !important; */
+}
+
+#supBtn{
+    color: red !important;
+
+}
+.h4color{
+    border-bottom : 4px solid #FFDB5C !important; 
+    width: 14%;
+}
+
+.blue{
+    background-color: #3553fd;
+    min-height: 500px;
+}
+.red{
+    background-color: red;
+    min-height: 500px;
+}
+.orange{
+    background-color: orange;
+    min-height: 500px;
+}
