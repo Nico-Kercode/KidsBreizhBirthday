@@ -59,7 +59,7 @@
 
             <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '0' || $_SESSION['rang'] =='1'){?>
             <h6 id="bienvenue"> <em> Bienvenue <span><?=  ucfirst($_SESSION['pseudo'])?></span>, merci de vous être
-                    connecté. Il y a actuellement <?= $total ?> activités référencées et un total de
+                    connecté(e). Il y a actuellement <?= $total ?> activités référencées et un total de
                     <?= $totalMembres ?> membres enregistrés . </em></h6>
             <?php } ?>
 

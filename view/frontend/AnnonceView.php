@@ -147,9 +147,10 @@
                     <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
                                 <em></strong> le
                         <?= $comment['date_commentaire'] ?>
-                        <span id="report">Signaler :
+                        <?php if(isset($_SESSION['pseudo'])) { ?>  <span id="report">Signaler :
                             <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
                         </span></h6>
+                    <?php }?>
                     <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
                     </p>
                 </div>
