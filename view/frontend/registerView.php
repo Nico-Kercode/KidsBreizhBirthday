@@ -8,11 +8,15 @@
 
         <div class="col-sm-12 col-lg-10 offset-lg-2 my-4">
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data"
-                action="index.php?action=register">
+                action="index.php?action=register" id="formulaireEnregistrement">
+
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">Pseudo</label>
                     <div class="col-sm-9">
-                        <input type="text" name="pseudo" class="form-control" required minlength="4" maxlength="20">
+                        <input type="text" name="pseudo" class="form-control" required 
+                         data-validation-length="min4"
+                         data-validation="alphanumeric" data-validation-allowing="-_"
+                         data-validation-error-msg="Vous ne pouvez utiliser que des caractères alphanumériques, des chiffres et le tiret du 6(-) ou du 8(_)">
                     </div>
                 </div>
 
@@ -28,7 +32,7 @@
                     <label for="password" class="col-sm-3 control-label">Mot de passe</label>
                     <div class="col-sm-9">
                         <input type="password" name="password_1" class="form-control" required minlength="6"
-                            maxlength="10">
+                            maxlength="10" >
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,7 +56,9 @@
                     <!-- image -->
 
                     <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
-                    <input type="file" name="image" required class="form-control-file my-2">
+                    <input type="file" name="image" required class="form-control-file my-2"
+                    data-validation="size" data-validation-max-size="1M"
+                    >
                 </div>
 
 

@@ -38,10 +38,9 @@
     <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/navBarstyle.css">
-    <link rel="stylesheet" href="assets/css/anim.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/anim.css">  
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
 </head>
 
 <body>
@@ -63,6 +62,14 @@
     <script src="assets/js/alert&like.js"></script>
     <script src="assets/js/jquery.slider.js"></script>
     <script src="assets/js/menuResponsive.js"></script>
+   
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script>
+    $.validate({
+        lang: 'fr',
+        modules : 'file'
+    });
+    </script>
 
     <!-- FOOTER -->
     <?php include('elements/footer.php');?>

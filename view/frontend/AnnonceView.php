@@ -1,7 +1,5 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-
-
 <div class="container-fluid my-4">
     <div class="row d-flex">
         <div class="col-sm-2 ">
@@ -13,7 +11,6 @@
             <!-- main -->
             <div class="col-sm-12" id="mainAnnonceContent">
                 <div class="row my-2">
-
                 <?php if(isset($_SESSION['pseudo'])){ ?>
                     <div class="col-sm-8 p-2">
                         <a class=" likeBtn"
@@ -44,27 +41,19 @@
                 <!-- END HEADER -->
                 <!-- annonce haut -->
                 <div class="row my-4 d-flex">
-
                     <div class="col-sm-12 col-lg-6">
                         <p class="p-4  annonceContent">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['presentation']))) ?>
                         </p>
                     </div>
-
                     <div class="col-lg-6 mx-auto">
-
                         <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
-
                     </div>
                 </div>
-
                 <!-- END annonce haut -->
-
                 <!-- annonce bas -->
                 <div class="row d-flex">
-
                     <div class="col-sm-12 col-lg-6 mx-auto">
-
                         <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
                     </div>
                     <div class="col-sm-12 col-lg-6">
@@ -74,15 +63,10 @@
                     </div>
                 </div>
                 <!-- END annonce bas -->
-
                 <!-- Contact + formulaire commentaire -->
-
                 <div class="row " id="basAdd">
-
                     <div class="col-sm-12 col-lg-6 annonceContent" id="contact">
-
                         <h6 class="mt-4">CONTACT :</h6>
-
                         <p class="p-2">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
                         </p>
@@ -90,11 +74,9 @@
                     <div class="col-lg-6 ">
                         <?php if(!empty($_SESSION['pseudo'])) { ?>
                         <!-- autorise les comm si enregistré -->
-
                         <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire !
                             </em>
                         </h6>
-
                         <form
                             action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
                             method="post">
@@ -116,7 +98,6 @@
         </div> <!-- main -->
         <!-- sidebar right -->
         <div class="col-sm-2">
-
             <!-- widget API meteo -->
             <div class="d-none d-lg-block " id="widget_4f2fdfad140809744f0aeb691f2d709c">
                 <span id="t_4f2fdfad140809744f0aeb691f2d709c">Météo Vannes</span>

@@ -1,23 +1,14 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-
-
-
-
 <h1 class="text-center my-4 h1annonces"> <span>V</span>ANNES</h1>
 <div class="container-fluid d-flex">
     <div class="row">
         <div class=" d-none d-md-block col-md-2 ">
-
         </div>
-
-
         <div class="col-sm-12 col-lg-8">
             <div class="row">
-
                 <?php
 foreach ($annonces as $data) { ?>
-
                 <div class="col-sm-5 offset-sm-1 mainAnnonces">
                     <!-- boucle affichage des annonces -->
                     <div class="row annonceHaut">
@@ -35,16 +26,11 @@ foreach ($annonces as $data) { ?>
                     </div>
                     <!--  -->
                     <div class="row my-4 ">
-
                         <div class="mx-auto">
-
                             <img class="img-fluid img-thumbnail my-auto" src="<?= $data['photo1']?>" alt="Photo1">
-
                         </div>
                     </div>
                 </div>
-
-
                 <!-- END FOREACH -->
                 <?php
 }
@@ -78,10 +64,8 @@ foreach ($annonces as $data) { ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 ">
-
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-
                     <?php 
                 for($i=1; $i <= $nbDePage; $i++){
                     if( $page ==$i){
@@ -90,7 +74,6 @@ foreach ($annonces as $data) { ?>
                 }else{
                     echo '<li class="page"><a class="page-link" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
                 }
-
                 } // END FOR PAGINATION              
                 ?>
                 </ul>
@@ -98,9 +81,7 @@ foreach ($annonces as $data) { ?>
 
         </div>
     </div>
-
 </div>
 <?php $content = ob_get_clean(); ?>
-
 
 <?php require('template.php'); ?>
