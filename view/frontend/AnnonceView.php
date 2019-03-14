@@ -7,7 +7,7 @@
         <div class="col-sm-2 ">
             <!-- sidebar left -->
             <a class="Back my-4" href="index.php?action=vannes&page=1"> RETOUR </a>
-            <img class="img-fluid my-4" src="assets\img\artworkIMG\cadeauJaune.png" alt="cadeau">
+            <img class="img-fluid my-4 d-none d-lg-block " src="assets\img\artworkIMG\cadeauJaune.png" alt="cadeau">
         </div> <!-- sidebar left -->
         <div class="col-sm-8">
             <!-- main -->
@@ -118,7 +118,7 @@
         <div class="col-sm-2">
 
             <!-- widget API meteo -->
-            <div id="widget_4f2fdfad140809744f0aeb691f2d709c">
+            <div class="d-none d-lg-block " id="widget_4f2fdfad140809744f0aeb691f2d709c">
                 <span id="t_4f2fdfad140809744f0aeb691f2d709c">Météo Vannes</span>
                 <span id="l_4f2fdfad140809744f0aeb691f2d709c"><a
                         href="http://www.mymeteo.info/r/vannes_j">M&eacute;t&eacute;o &agrave; Vannes</a></span>

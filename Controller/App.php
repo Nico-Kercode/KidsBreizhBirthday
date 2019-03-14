@@ -64,7 +64,7 @@ class App
 
                 } elseif ($_GET['action'] == 'formRegister'){       //  -> Formulaire Enregistrement
 
-                    require('view\frontend\registerView.php');
+                    require('view/frontend/registerView.php');
         
                 } elseif ($_GET['action'] == 'register'){           // ->  Fonction Enregistrement 
 
@@ -161,7 +161,7 @@ class App
                 
                 }  elseif ($_GET['action'] == 'ajoutAnnonce' && $_SESSION['rang'] > 0){           // -> Fonction vers formulaire Ajout d une anonnce
                    
-                    require('view\frontend\postAnnonceView.php');
+                    require('view/frontend/postAnnonceView.php');
 
 
                 } elseif ($_GET['action'] == 'addannonce'){             // -> Fonction ajout d une annonce
@@ -247,7 +247,7 @@ class App
 
                 }  elseif($_GET['action'] =='rgpd') {    // ->  VERS RGPD
 
-                    require('view\frontend\mentionsView.php'); 
+                    require('view/frontend/mentionsView.php'); 
 
                 
                 
@@ -263,7 +263,7 @@ class App
 
         } catch (Exception $e) {
             $errors = $e->getMessage();
-            require('view\errorView.php');
+            require('view/errorView.php');
         }
     }
 }

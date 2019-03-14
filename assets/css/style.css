@@ -30,7 +30,7 @@ body {
     font-family: 'Acme', sans-serif !important;
 }
 #main{
-    min-height: 100vh !important; 
+    min-height: 60vh !important; 
 }
 a {
     font-size: 1em;
@@ -56,7 +56,7 @@ img {
     height: 25vh;
     border-bottom: 2px solid #ffc039;
 }
-#accueil{
+.accueil{
     min-height: 55vh;
 }
 
@@ -148,9 +148,9 @@ img {
 }
 
 .tabulation {
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin-right: -1px;
-    margin-left: 50px;
+    
 }
 #onglet{
     margin-right: -18px !important;
@@ -167,14 +167,23 @@ img {
     background-color:rgb(236, 255, 113);
 }
 #texteAccueil {
-    font-size: 1em;
+    font-size: 1.1rem;
     text-shadow: none !important;
+    text-align: justify !important;
+    
     
 }
-
+#pacc{
+    margin-top: 10%;
+    text-align: justify !important;
+}
+#vhmin{
+    min-height: 100px;
+}
 #indexView {
     height: 1.2vh !important;
     text-shadow: none !important;
+    min-height: 25vh;
 }
 
 .fas.fa-bars {
@@ -323,7 +332,7 @@ img {
     font-size: 1.4em !important;
 }
 .page{
-    width: 2%;
+    min-width: 2%;
     margin: 3% 0 6% 0 ;
     
 }

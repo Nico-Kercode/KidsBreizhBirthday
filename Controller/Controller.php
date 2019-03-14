@@ -60,7 +60,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
-        require('view\frontend\loginView.php');
+        require('view/frontend/loginView.php');
     }
     
     // ---------------------------
@@ -73,7 +73,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
-        require('view\frontend\postAnnonceView.php'); 
+        require('view/frontend/postAnnonceView.php'); 
     }
 
     
@@ -193,7 +193,7 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
         
-        require('view\frontend\membreAdminView.php');
+        require('view/frontend/membreAdminView.php');
         
         
   
@@ -205,7 +205,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts(); 
-        require('view\frontend\administrationView.php');
+        require('view/frontend/administrationView.php');
 
     }
 
@@ -256,7 +256,7 @@ class Controller
         $totalMembres = $this->memberManager->countTotalMembres();
 
 
-        $path = "view\\frontend\\{$ville}View.php";
+        $path = "view/frontend/{$ville}View.php";
 
         require($path);
 
@@ -274,7 +274,7 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
 
-        require('view\frontend\meilleurNoteView.php');
+        require('view/frontend/meilleurNoteView.php');
 
         return $bestAnnonces;
     }
@@ -306,7 +306,7 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
 
-        require('view\frontend\maSelectionView.php');
+        require('view/frontend/maSelectionView.php');
 
         return $getSelection;
 
@@ -344,7 +344,7 @@ class Controller
     
         
 
-        require('view\frontend\annonceView.php');
+        require('view/frontend/annonceView.php');
         
 
     }
@@ -397,7 +397,7 @@ class Controller
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
 
-        require('view\frontend\editCommentView.php');
+        require('view/frontend/editCommentView.php');
         
     }
     
@@ -451,7 +451,7 @@ class Controller
         $result = $this->addManager->searchBar($search);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
-        require('view\frontend\searchResultView.php');
+        require('view/frontend/searchResultView.php');
         
         
                  
@@ -461,12 +461,12 @@ class Controller
 
     
     // -----------------
-    // ENVOI IMAGES
+    // ENVOI IMAGES assets/img/webFiles/test
     // ----------------
 
     private function manageFile($file,$width,$height) {
 
-        $tempPath = 'assets\img\tmp/' . $file['name'];
+        $tempPath = 'assets/img/tmp' . $file['name'];
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
         $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); 
@@ -480,10 +480,10 @@ class Controller
         else{ 
             move_uploaded_file($file ['tmp_name'], $tempPath); 
 
-            $ary = explode('\\',$tempPath);
+            $ary = explode('/',$tempPath);
             $srcFile = array_pop($ary);
-            $srcPath = join('\\', $ary) . '\\';
-            $folder ="assets/img/webFiles/"; 
+            $srcPath = join('/', $ary) . '/';
+            $folder ="assets/img/webFiles/test"; 
             $image = rand(1000, 10000000).$file['name']; 
             $path = $folder . $image ; 
 

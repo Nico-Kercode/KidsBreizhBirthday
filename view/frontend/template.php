@@ -30,8 +30,6 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
     <!-- CSS + BOOTSTRAP + GOOGLE FONTS -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -41,47 +39,33 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/navBarstyle.css">
     <link rel="stylesheet" href="assets/css/anim.css">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="assets\js\jquery.slider.js"></script>
-    <script src="assets\js\slider.js"></script>
 
-
-    <script src="assets\js\menuResponsive.js"></script>
-
-    <script>
-    $(function() {
-        $('.response--main-navigation').basicResponsiveMenu({
-            browserWidth: 960,
-            slideDir: 'left',
-            slideSpeed: 400
-        });
-    });
-    </script>
 </head>
 
 <body>
 
     <!-- Include Nav Bar + Sidebar -->
-    <?php include('view\elements\nav.php');?>
+    <?php include('elements/nav.php');?>
 
-    <div class="container-fluid" id="main">
 
-        <?= $content ?>
 
-        <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
-        <!-- Scripts -->
-        <script src="assets/js/script.js"></script>
-        <script src="assets/js/alert&like.js"></script>
-        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <?= $content ?>
 
-    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/alert&like.js"></script>
+    <script src="assets/js/jquery.slider.js"></script>
+    <script src="assets/js/menuResponsive.js"></script>
+
     <!-- FOOTER -->
-    <?php include('view\elements\footer.php');?>
+    <?php include('elements/footer.php');?>
 
 </body>
 

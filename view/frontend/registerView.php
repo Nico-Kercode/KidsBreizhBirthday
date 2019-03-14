@@ -52,7 +52,7 @@
                     <!-- image -->
 
                     <label for="formControl" class="col-sm-510">Selectionnez un fichier</label>
-                    <input type="file" name="image" class="form-control-file my-2">
+                    <input type="file" name="image" required class="form-control-file my-2">
                 </div>
 
 
