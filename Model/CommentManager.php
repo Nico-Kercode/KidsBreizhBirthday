@@ -183,18 +183,20 @@ class CommentManager extends Manager
 
     }
 
-    // -----------------------
-    // COMPTE LES  
+       // COMPTE LES  
     //    ----SIGNALEMENTS ----
     // -----------------------
     public function CountAlerts() 
     {
         $db = $this->dbConnect();
-        $req= $db->prepare('SELECT sum(alert) as nbreAlerts FROM commentaires ');
+        $req= $db->prepare('SELECT COUNT(alert.id) as nbreAlerts FROM alert');
         $req->execute(array());
         $nbAlert=$req->fetchAll()[0][0];
         $req->closeCursor();
 
         return $nbAlert;
     }
+
+
+
 }

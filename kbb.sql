@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 13 mars 2019 à 15:48
+-- Généré le :  ven. 15 mars 2019 à 18:40
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.0
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `kbb_v1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `alert`
+--
+
+CREATE TABLE `alert` (
+  `id` int(11) NOT NULL,
+  `id_MEMBRES` int(11) NOT NULL,
+  `id_ANNONCES` int(11) NOT NULL,
+  `id_COMMENTAIRES` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -80,11 +93,17 @@ CREATE TABLE `commentaires` (
   `id` int(11) NOT NULL,
   `contenu` text NOT NULL,
   `date_commentaire` datetime NOT NULL,
-  `alert` int(11) NOT NULL DEFAULT '0',
   `id_parent` int(11) NOT NULL,
   `id_ANNONCES` int(11) NOT NULL,
   `id_MEMBRES` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `commentaires`
+--
+
+INSERT INTO `commentaires` (`id`, `contenu`, `date_commentaire`, `id_parent`, `id_ANNONCES`, `id_MEMBRES`) VALUES
+(1, 'Les montagnes russe sont trés sympa\r\n', '2019-03-15 09:02:15', 0, 123, 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +128,7 @@ CREATE TABLE `membres` (
 INSERT INTO `membres` (`id`, `pseudo`, `email`, `password`, `avatar`, `rang`, `date_inscription`) VALUES
 (1, 'admin', 'admin@kidsbreizhBirthday.fr', '$2y$10$aAKag5gKEkUGdN5ceijkK.5nXigHs2yUA/m4DomOCjvKEPcqII6xC', 'assets/img/webFiles/3838192lol.jpg', 2, '2019-02-21 16:06:23'),
 (2, 'soan', 'onsenfout', '$2y$10$mkw5nbWL1BB1T4yOCbIH0.CWclCx4W4kHwSsbhJhNL4DD4kv4zeD.', 'assets/img/webFiles/219322carte bzh.jpg', 1, '2019-02-24 17:53:16'),
-(40, 'luna', 'luna@kbb.fr', '$2y$10$ZFem2hAzm0y9xf8VNspDkOhnf6SVGRbHhyd1mBsPwLPZ4mfRq12da', 'assets/img/webFiles/3608939pokemon1.jpg', 0, '2019-03-13 11:46:48');
+(41, 'koni', 'koni@mail.com', '$2y$10$8RMW/5IBM8PEIxLnLgRPreerW8ksHe3.W577Pc29Dk3SdBV9xFTwy', 'assets/img/webFiles/test4129569myAvatar.png', 1, '2019-03-13 17:24:54');
 
 -- --------------------------------------------------------
 
@@ -137,8 +156,44 @@ CREATE TABLE `votes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Déchargement des données de la table `votes`
+--
+
+INSERT INTO `votes` (`id`, `id_MEMBRES`, `id_ANNONCES`, `type`) VALUES
+(135, 1, 133, 1),
+(136, 1, 133, 2),
+(137, 1, 133, 1),
+(138, 1, 133, 1),
+(139, 1, 133, 1),
+(140, 1, 133, 1),
+(141, 1, 133, 1),
+(142, 1, 133, 1),
+(143, 1, 133, 2),
+(144, 1, 133, 1),
+(145, 1, 131, 1),
+(146, 1, 131, 1),
+(147, 1, 131, 1),
+(148, 1, 131, 1),
+(149, 1, 131, 1),
+(150, 1, 131, 1),
+(151, 1, 131, 1),
+(152, 1, 136, 1),
+(153, 1, 136, 2),
+(154, 2, 131, 1),
+(155, 1, 119, 1);
+
+--
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `alert`
+--
+ALTER TABLE `alert`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ALERT_MEMBRES_FK` (`id_MEMBRES`),
+  ADD KEY `ALERT_ANNONCES_FK` (`id_ANNONCES`),
+  ADD KEY `ALERT_COMMENTAIRES_FK` (`id_COMMENTAIRES`);
 
 --
 -- Index pour la table `annonces`
@@ -182,38 +237,52 @@ ALTER TABLE `votes`
 --
 
 --
+-- AUTO_INCREMENT pour la table `alert`
+--
+ALTER TABLE `alert`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT pour la table `annonces`
 --
 ALTER TABLE `annonces`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT pour la table `selection`
 --
 ALTER TABLE `selection`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT pour la table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `alert`
+--
+ALTER TABLE `alert`
+  ADD CONSTRAINT `ALERT_ANNONCES_FK` FOREIGN KEY (`id_ANNONCES`) REFERENCES `annonces` (`id`),
+  ADD CONSTRAINT `ALERT_COMMENTAIRES_FK` FOREIGN KEY (`id_COMMENTAIRES`) REFERENCES `commentaires` (`id`),
+  ADD CONSTRAINT `ALERT_MEMBRES_FK` FOREIGN KEY (`id_MEMBRES`) REFERENCES `membres` (`id`);
 
 --
 -- Contraintes pour la table `annonces`

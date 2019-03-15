@@ -36,7 +36,9 @@ class Controller
         $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();    
         $totalMembres = $this->memberManager->countTotalMembres();
+        $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
+ 
         
         
         
@@ -55,6 +57,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+ 
         
         require('view/frontend/userAccountView.php'); 
 
@@ -68,6 +71,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+     
         
         require('view/frontend/loginView.php');
     }
@@ -83,6 +87,7 @@ class Controller
         $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
         
         require('view/frontend/postAnnonceView.php'); 
@@ -163,8 +168,8 @@ class Controller
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
         
         
         header('Location: index.php?action=accounttmnagement');
@@ -181,8 +186,8 @@ class Controller
         $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
         
 
         $_SESSION['avatar'] = $newAvatar;
@@ -223,6 +228,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+
         
         require('view/frontend/administrationView.php');
 
@@ -274,8 +280,8 @@ class Controller
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
        
 
 
@@ -297,8 +303,8 @@ class Controller
         $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $bestAnnonces = $this->addManager->getBestAnnonces();
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
         
 
         require('view/frontend/meilleurNoteView.php');
@@ -365,9 +371,9 @@ class Controller
         $allComments = $this->commentManager->getComments($id);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
-        $nbAlert= $this->commentManager->CountAlerts();
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
+        $nbAlert= $this->commentManager->CountAlerts();
     
 
         
@@ -408,7 +414,7 @@ class Controller
 
 
     }
-
+      // -----------------------
 
   
     // ------------------
@@ -437,6 +443,7 @@ class Controller
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
         
         require('view/frontend/editCommentView.php');
@@ -455,32 +462,6 @@ class Controller
     }
         
 
-
-
-    // public function incrementAlert($arr) {
-    //     $returnedValue = 'ok';
-    //     try {
-    //         // Control given data
-    //         if (! isset($arr['id'])) {
-    //             throw new Exception("Numéro de commentaire obligatoire");
-    //         }
-    //         $id = intval($arr['id']);
-    //         if (! $id > 0) {
-    //             throw new Exception("Numéro de commentaire inconnu");
-    //         }
-    //         $id_MEMBRES=$_SESSION['id'];
-    //         $success = $this->commentManager->incrementAlert($id, $id_MEMBRES);
-    //         if (!$success) {
-    //             $returnedValue = 'ko : sql error or no raw updated';
-    //         }
-    //     }
-    //     catch (Exception $e) {
-    //         $returnedValue = 'ko : '. $e->getMessage();
-    //     }
-    
-    //     require('view/frontend/alertView.php');
-    // }
-
     // ------------------
     // BARRE DE RECHERCHE
     // ------------------
@@ -490,6 +471,7 @@ class Controller
         $result = $this->addManager->searchBar($search);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
         
         require('view/frontend/searchResultView.php');
         

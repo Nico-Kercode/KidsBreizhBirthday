@@ -55,7 +55,7 @@
             <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '2'):?>
             <h6 id="bienvenue"> <em> Bienvenue chez toi <span><?=  ucfirst($_SESSION['pseudo'])?></span>. Il y a
                     actuellement <?= $total ?> activités référencées, un total de
-                    <?= $totalMembres ?> membres enregistrés. Nos membres nous on signalés <?=$nbAlert?> messages </em>
+                    <?= $totalMembres ?> membres enregistrés. Nos membres nous on signalés <?=$nbAlert['nbreAlerts']?> messages </em>
             </h6>
             <?php endif; ?>
 
