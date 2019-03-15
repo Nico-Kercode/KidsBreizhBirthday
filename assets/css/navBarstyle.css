@@ -122,3 +122,7 @@
 	height: 55px;
 	background : #FFDB5C;
 }
+
+.none{
+	display: none !important;
+}

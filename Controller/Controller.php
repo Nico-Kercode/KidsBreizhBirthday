@@ -32,9 +32,16 @@ class Controller
 
     public function indexView() {
 
-        $total = $this->addManager->countAnnonce();
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
+        $total = $this->addManager->countAnnonce();    
         $totalMembres = $this->memberManager->countTotalMembres();
+        $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
+ 
+        
+        
+        
         require('view/frontend/indexView.php');
           
         
@@ -45,9 +52,13 @@ class Controller
     // --------------------------------
 
     public function userAccountmngt() {
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+ 
+        
         require('view/frontend/userAccountView.php'); 
 
     }
@@ -60,7 +71,9 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
-        require('view\frontend\loginView.php');
+     
+        
+        require('view/frontend/loginView.php');
     }
     
     // ---------------------------
@@ -70,10 +83,14 @@ class Controller
 
     public function addView() {
 
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
-        require('view\frontend\postAnnonceView.php'); 
+        
+        require('view/frontend/postAnnonceView.php'); 
     }
 
     
@@ -151,8 +168,9 @@ class Controller
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+        
         
         header('Location: index.php?action=accounttmnagement');
         
@@ -168,8 +186,9 @@ class Controller
         $newAvatar= $this->manageFile($_FILES['imageProfil'] ,150,150);
         $registerMember = $this->memberManager->upAvatar($member_id,$newAvatar);
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+        
 
         $_SESSION['avatar'] = $newAvatar;
         
@@ -193,25 +212,33 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
         
-        require('view\frontend\membreAdminView.php');
+        
+        require('view/frontend/membreAdminView.php');
         
         
   
     }
+
+
+    // RECUPERATION DES SIGNALEMENTS DE COMMENTAIRES 
 
     public function getComReports(){
 
         $getReports = $this->commentManager->getReports();
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
-        $nbAlert= $this->commentManager->CountAlerts(); 
-        require('view\frontend\administrationView.php');
+        $nbAlert= $this->commentManager->CountAlerts();
+
+        
+        require('view/frontend/administrationView.php');
 
     }
 
+    // SUPPRESSION COMMENTAIRES
+
     function delComment($commentID){
     
-       
+         $delalert= $this->commentManager->deleteAlerts($commentID);
          $delComment= $this->commentManager->deleteCommentaire($commentID);
        
     
@@ -247,16 +274,18 @@ class Controller
 
     public function listAnnonces($numeroPage,$annonceParPage,$ville) {
 
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);  
         $starter = ($numeroPage-1 )*$annonceParPage;
-
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+       
 
 
-        $path = "view\\frontend\\{$ville}View.php";
+        $path = "view/frontend/{$ville}View.php";
 
         require($path);
 
@@ -269,12 +298,16 @@ class Controller
 
     public function classementAnnonces() {
 
+
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $bestAnnonces = $this->addManager->getBestAnnonces();
         $total = $this->addManager->countAnnonce();
-        $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $nbAlert= $this->commentManager->CountAlerts();
+        
 
-        require('view\frontend\meilleurNoteView.php');
+        require('view/frontend/meilleurNoteView.php');
 
         return $bestAnnonces;
     }
@@ -304,9 +337,9 @@ class Controller
         $getSelection = $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $nbAlert= $this->commentManager->CountAlerts();
-        $totalMembres = $this->memberManager->countTotalMembres();
 
-        require('view\frontend\maSelectionView.php');
+
+        require('view/frontend/maSelectionView.php');
 
         return $getSelection;
 
@@ -332,19 +365,19 @@ class Controller
 
     public function annonce($id) {
 
+        $id_MEMBRES= $_SESSION[id];  
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
         $annonce = $this->addManager->getAnnonce($id);
         $allComments = $this->commentManager->getComments($id);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
-        $nbAlert= $this->commentManager->CountAlerts();
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
-        
-
+        $nbAlert= $this->commentManager->CountAlerts();
     
-        
 
-        require('view\frontend\annonceView.php');
+        
+        require('view/frontend/annonceView.php');
         
 
     }
@@ -367,6 +400,21 @@ class Controller
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
        
     }
+     // -----------------------
+    // SIGNALEMENT COMMENTAIRE
+    // -----------------------
+    public function incrementAlert() {
+
+        $id_ANNONCES = $_GET['id'];
+        $id_MEMBRES= $_SESSION['id'];
+        $id_COMMENTAIRE= $_GET['id_COMMENTAIRE'];
+        $incrementAlert= $this->commentManager->incrementAlert($id_ANNONCES,$id_MEMBRES,$id_COMMENTAIRE);
+
+        header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
+
+
+    }
+      // -----------------------
 
   
     // ------------------
@@ -395,9 +443,10 @@ class Controller
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
+        $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
-
-        require('view\frontend\editCommentView.php');
+        
+        require('view/frontend/editCommentView.php');
         
     }
     
@@ -412,35 +461,6 @@ class Controller
         // }
     }
         
-    
-  
-
-    // -----------------------
-    // SIGNALEMENT COMMENTAIRE
-    // -----------------------
-
-    public function incrementAlert($arr) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arr['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arr['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            $success = $this->commentManager->incrementAlert($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
-    
-        require('view/frontend/alertView.php');
-    }
 
     // ------------------
     // BARRE DE RECHERCHE
@@ -451,7 +471,9 @@ class Controller
         $result = $this->addManager->searchBar($search);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
-        require('view\frontend\searchResultView.php');
+        $nbAlert= $this->commentManager->CountAlerts();
+        
+        require('view/frontend/searchResultView.php');
         
         
                  
@@ -461,12 +483,12 @@ class Controller
 
     
     // -----------------
-    // ENVOI IMAGES
+    // ENVOI IMAGES assets/img/webFiles/test
     // ----------------
 
     private function manageFile($file,$width,$height) {
 
-        $tempPath = 'assets\img\tmp/' . $file['name'];
+        $tempPath = 'assets/img/tmp' . $file['name'];
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
         $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); 
@@ -480,10 +502,10 @@ class Controller
         else{ 
             move_uploaded_file($file ['tmp_name'], $tempPath); 
 
-            $ary = explode('\\',$tempPath);
+            $ary = explode('/',$tempPath);
             $srcFile = array_pop($ary);
-            $srcPath = join('\\', $ary) . '\\';
-            $folder ="assets/img/webFiles/"; 
+            $srcPath = join('/', $ary) . '/';
+            $folder ="assets/img/webFiles/test"; 
             $image = rand(1000, 10000000).$file['name']; 
             $path = $folder . $image ; 
 

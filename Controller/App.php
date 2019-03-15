@@ -64,7 +64,7 @@ class App
 
                 } elseif ($_GET['action'] == 'formRegister'){       //  -> Formulaire Enregistrement
 
-                    require('view\frontend\registerView.php');
+                    require('view/frontend/registerView.php');
         
                 } elseif ($_GET['action'] == 'register'){           // ->  Fonction Enregistrement 
 
@@ -150,7 +150,7 @@ class App
                             throw new Exception('vous ne pouvez pas utiliser cette fonction ');
                     }
      
-                } elseif($_GET['action'] == 'monPanier'){           // -> Fonction Consultation selection
+                } elseif($_GET['action'] == 'monPanier' ){           // -> Fonction Consultation selection
 
                 $this->controller->maSelection(); 
 
@@ -161,14 +161,18 @@ class App
                 
                 }  elseif ($_GET['action'] == 'ajoutAnnonce' && $_SESSION['rang'] > 0){           // -> Fonction vers formulaire Ajout d une anonnce
                    
-                    require('view\frontend\postAnnonceView.php');
+                    require('view/frontend/postAnnonceView.php');
 
 
                 } elseif ($_GET['action'] == 'addannonce'){             // -> Fonction ajout d une annonce
 
-                    if (isset($_POST['ajoutAnnonce'])){                   
+                    if (isset($_POST['ajoutAnnonce'])){  
+
                         $this->controller->addAnnonce();
                     }
+                    else {
+                        $this->controller->indexView();
+                    } 
                         
                 } elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
 
@@ -184,10 +188,15 @@ class App
                     $this->controller->postComment($comment,$id_ANNONCES, $id_MEMBRES);
                         }
                     }
+                    else {
+                        $this->controller->indexView();
+                    } 
 
-                } elseif ($_GET['action'] == 'alert') {                 // -> Fonction signalement commentaire
-                    // Incrément du nb d'alert sur un commentaire
-                    $this->controller->incrementAlert($_GET);
+                } elseif ($_GET['action'] == 'alert') {         // -> fonction ALERT !
+                    
+                
+                   
+                        $this->controller->incrementAlert();
 
 
                 } elseif ($_GET['action'] == 'like') {              // -> Fonction Vote : "j'aime" "J'aime pas"
@@ -247,7 +256,7 @@ class App
 
                 }  elseif($_GET['action'] =='rgpd') {    // ->  VERS RGPD
 
-                    require('view\frontend\mentionsView.php'); 
+                    require('view/frontend/mentionsView.php'); 
 
                 
                 
@@ -263,7 +272,7 @@ class App
 
         } catch (Exception $e) {
             $errors = $e->getMessage();
-            require('view\errorView.php');
+            require('view/errorView.php');
         }
     }
 }

@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/nicolashubert56/"" class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://www.linkedin.com/in/nicolashubert56/" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>

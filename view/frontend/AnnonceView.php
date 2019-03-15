@@ -1,20 +1,17 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-
-
 <div class="container-fluid my-4">
     <div class="row d-flex">
         <div class="col-sm-2 ">
             <!-- sidebar left -->
             <a class="Back my-4" href="index.php?action=vannes&page=1"> RETOUR </a>
-            <img class="img-fluid my-4" src="assets\img\artworkIMG\cadeauJaune.png" alt="cadeau">
+            <img class="img-fluid my-4 d-none d-lg-block " src="assets\img\artworkIMG\cadeauJaune.png" alt="cadeau">
         </div> <!-- sidebar left -->
         <div class="col-sm-8">
             <!-- main -->
             <div class="col-sm-12" id="mainAnnonceContent">
                 <div class="row my-2">
-
-                <?php if(isset($_SESSION['pseudo'])){ ?>
+                    <?php if(isset($_SESSION['pseudo'])): ?>
                     <div class="col-sm-8 p-2">
                         <a class=" likeBtn"
                             href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
@@ -27,8 +24,9 @@
                         <a class="likeBtn"
                             href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
                             n'aime pas</a> <?=$disLike?>
+
                     </div>
-                <?php } ?>
+                    <?php endif; ?>
                 </div>
                 <!-- HEADER ANNONCE -->
                 <div class=" row d-flex" class="annonceHaut">
@@ -44,27 +42,19 @@
                 <!-- END HEADER -->
                 <!-- annonce haut -->
                 <div class="row my-4 d-flex">
-
                     <div class="col-sm-12 col-lg-6">
                         <p class="p-4  annonceContent">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['presentation']))) ?>
                         </p>
                     </div>
-
                     <div class="col-lg-6 mx-auto">
-
                         <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
-
                     </div>
                 </div>
-
                 <!-- END annonce haut -->
-
                 <!-- annonce bas -->
                 <div class="row d-flex">
-
                     <div class="col-sm-12 col-lg-6 mx-auto">
-
                         <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
                     </div>
                     <div class="col-sm-12 col-lg-6">
@@ -74,27 +64,20 @@
                     </div>
                 </div>
                 <!-- END annonce bas -->
-
                 <!-- Contact + formulaire commentaire -->
-
                 <div class="row " id="basAdd">
-
                     <div class="col-sm-12 col-lg-6 annonceContent" id="contact">
-
                         <h6 class="mt-4">CONTACT :</h6>
-
                         <p class="p-2">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
                         </p>
                     </div>
                     <div class="col-lg-6 ">
-                        <?php if(!empty($_SESSION['pseudo'])) { ?>
+                        <?php if(!empty($_SESSION['pseudo'])) : ?>
                         <!-- autorise les comm si enregistré -->
-
                         <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire !
                             </em>
                         </h6>
-
                         <form
                             action="index.php?action=addComment&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>"
                             method="post">
@@ -107,7 +90,7 @@
                             </div>
                         </form>
 
-                        <?php } ?>
+                        <?php endif; ?>
                         <!-- fin autorisation -->
                     </div>
                 </div>
@@ -116,9 +99,8 @@
         </div> <!-- main -->
         <!-- sidebar right -->
         <div class="col-sm-2">
-
             <!-- widget API meteo -->
-            <div id="widget_4f2fdfad140809744f0aeb691f2d709c">
+            <div class="d-none d-lg-block " id="widget_4f2fdfad140809744f0aeb691f2d709c">
                 <span id="t_4f2fdfad140809744f0aeb691f2d709c">Météo Vannes</span>
                 <span id="l_4f2fdfad140809744f0aeb691f2d709c"><a
                         href="http://www.mymeteo.info/r/vannes_j">M&eacute;t&eacute;o &agrave; Vannes</a></span>
@@ -145,21 +127,26 @@
             <div class="col-sm-12 my-4">
                 <h4 class="text-left my-2 h4color"> <em>Les derniers avis :</em></h4>
                 <!-- COMMENTAIRES -->
-                <?php foreach ($allComments as $comment) { ?>
+                <?php foreach ($allComments as $comment): ?>
                 <div class="col-sm-12 result annonceContent ">
                     <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
                                 <em></strong> le
                         <?= $comment['date_commentaire'] ?>
-                        <?php if(isset($_SESSION['pseudo'])) { ?>  <span id="report">Signaler :
-                            <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
-                        </span></h6>
-                    <?php }?>
-                    <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
-                    </p>
+
+                        <a class="likeBtn"
+                            
+                             href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a> 
+                        <?= $nbAlert?>
+
+
+
+
+                        <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+                        </p>
                 </div>
-                <?php
-    }
-    ?>
+
+                <?php endforeach;?>
+
             </div>
         </div>
     </div>

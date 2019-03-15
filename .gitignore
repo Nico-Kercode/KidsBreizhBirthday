@@ -2,4 +2,4 @@ vendor/*
 assets/img/*
 tmp/*
 node_modules/*
-addView1SAVE.php
+Model/Manager.php
