@@ -17,7 +17,7 @@
                         Vous êtes professionnel dans le Morbihan et vous souhaitez publier une annonce, enregistrez vous
                         ! <br>
                     </p>
-                    <!-- <div class="text "></div> -->
+                    <!-- <div class="text "></div> --> <?php var_dump($totalSelection);?>
                 </div>
             </div>
             <div id="indexView">

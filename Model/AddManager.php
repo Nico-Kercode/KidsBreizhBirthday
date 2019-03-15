@@ -223,6 +223,18 @@ class AddManager extends Manager
 
 
     }
+
+    public function countSelection($id_MEMBRES){
+
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(*) AS nbre FROM selection WHERE id_MEMBRES= $id_MEMBRES");
+        $count = $resultat->fetch();
+        $totalSelection=$count['nbre'];
+        $resultat->closeCursor();
+        return $totalSelection;
+    }
+
+       
     
     public function suppSelection($id_ANNONCES) {
 

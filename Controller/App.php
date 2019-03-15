@@ -150,7 +150,7 @@ class App
                             throw new Exception('vous ne pouvez pas utiliser cette fonction ');
                     }
      
-                } elseif($_GET['action'] == 'monPanier'){           // -> Fonction Consultation selection
+                } elseif($_GET['action'] == 'monPanier' ){           // -> Fonction Consultation selection
 
                 $this->controller->maSelection(); 
 
@@ -166,9 +166,13 @@ class App
 
                 } elseif ($_GET['action'] == 'addannonce'){             // -> Fonction ajout d une annonce
 
-                    if (isset($_POST['ajoutAnnonce'])){                   
+                    if (isset($_POST['ajoutAnnonce'])){  
+
                         $this->controller->addAnnonce();
                     }
+                    else {
+                        $this->controller->indexView();
+                    } 
                         
                 } elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
 
@@ -184,6 +188,9 @@ class App
                     $this->controller->postComment($comment,$id_ANNONCES, $id_MEMBRES);
                         }
                     }
+                    else {
+                        $this->controller->indexView();
+                    } 
 
                 } elseif ($_GET['action'] == 'alert') {                 // -> Fonction signalement commentaire
                     // Incrément du nb d'alert sur un commentaire

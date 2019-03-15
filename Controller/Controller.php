@@ -35,6 +35,8 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+        
+        
         require('view/frontend/indexView.php');
           
         
@@ -48,6 +50,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+        
         require('view/frontend/userAccountView.php'); 
 
     }
@@ -60,6 +63,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+        
         require('view/frontend/loginView.php');
     }
     
@@ -73,6 +77,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+        
         require('view/frontend/postAnnonceView.php'); 
     }
 
@@ -154,6 +159,7 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
         
+        
         header('Location: index.php?action=accounttmnagement');
         
     }
@@ -170,6 +176,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        
 
         $_SESSION['avatar'] = $newAvatar;
         
@@ -193,6 +200,7 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
         
+        
         require('view/frontend/membreAdminView.php');
         
         
@@ -204,7 +212,8 @@ class Controller
         $getReports = $this->commentManager->getReports();
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
-        $nbAlert= $this->commentManager->CountAlerts(); 
+        $nbAlert= $this->commentManager->CountAlerts();
+        
         require('view/frontend/administrationView.php');
 
     }
@@ -254,6 +263,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+       
 
 
         $path = "view/frontend/{$ville}View.php";
@@ -273,6 +283,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $nbAlert= $this->commentManager->CountAlerts();
         $totalMembres = $this->memberManager->countTotalMembres();
+        
 
         require('view/frontend/meilleurNoteView.php');
 
@@ -304,7 +315,7 @@ class Controller
         $getSelection = $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $nbAlert= $this->commentManager->CountAlerts();
-        $totalMembres = $this->memberManager->countTotalMembres();
+
 
         require('view/frontend/maSelectionView.php');
 
@@ -339,11 +350,8 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
-        
 
-    
         
-
         require('view/frontend/annonceView.php');
         
 
@@ -396,7 +404,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
-
+        
         require('view/frontend/editCommentView.php');
         
     }
@@ -451,6 +459,7 @@ class Controller
         $result = $this->addManager->searchBar($search);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
+        
         require('view/frontend/searchResultView.php');
         
         
