@@ -32,9 +32,12 @@ class Controller
 
     public function indexView() {
 
-        $total = $this->addManager->countAnnonce();
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
+        $total = $this->addManager->countAnnonce();    
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+        
         
         
         require('view/frontend/indexView.php');
@@ -47,6 +50,8 @@ class Controller
     // --------------------------------
 
     public function userAccountmngt() {
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
@@ -74,6 +79,8 @@ class Controller
 
     public function addView() {
 
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
@@ -207,6 +214,9 @@ class Controller
   
     }
 
+
+    // RECUPERATION DES SIGNALEMENTS DE COMMENTAIRES 
+
     public function getComReports(){
 
         $getReports = $this->commentManager->getReports();
@@ -218,9 +228,11 @@ class Controller
 
     }
 
+    // SUPPRESSION COMMENTAIRES
+
     function delComment($commentID){
     
-       
+         $delalert= $this->commentManager->deleteAlerts($commentID);
          $delComment= $this->commentManager->deleteCommentaire($commentID);
        
     
@@ -256,8 +268,9 @@ class Controller
 
     public function listAnnonces($numeroPage,$annonceParPage,$ville) {
 
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);  
         $starter = ($numeroPage-1 )*$annonceParPage;
-
         $nbDePage = ceil(intval($this->addManager->countAnnonces($ville))/$annonceParPage);
         $annonces = $this->addManager->getAnnonces($starter,$annonceParPage,$ville);
         $total = $this->addManager->countAnnonce();
@@ -279,6 +292,9 @@ class Controller
 
     public function classementAnnonces() {
 
+
+        $id_MEMBRES= $_SESSION[id];
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $bestAnnonces = $this->addManager->getBestAnnonces();
         $total = $this->addManager->countAnnonce();
         $nbAlert= $this->commentManager->CountAlerts();
@@ -343,6 +359,8 @@ class Controller
 
     public function annonce($id) {
 
+        $id_MEMBRES= $_SESSION[id];  
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
         $annonce = $this->addManager->getAnnonce($id);
         $allComments = $this->commentManager->getComments($id);
         $total = $this->addManager->countAnnonce();
@@ -350,6 +368,7 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
+    
 
         
         require('view/frontend/annonceView.php');
@@ -375,6 +394,21 @@ class Controller
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
        
     }
+     // -----------------------
+    // SIGNALEMENT COMMENTAIRE
+    // -----------------------
+    public function incrementAlert() {
+
+        $id_ANNONCES = $_GET['id'];
+        $id_MEMBRES= $_SESSION['id'];
+        $id_COMMENTAIRE= $_GET['id_COMMENTAIRE'];
+        $incrementAlert= $this->commentManager->incrementAlert($id_ANNONCES,$id_MEMBRES,$id_COMMENTAIRE);
+
+        header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
+
+
+    }
+
 
   
     // ------------------
@@ -420,35 +454,32 @@ class Controller
         // }
     }
         
-    
-  
 
-    // -----------------------
-    // SIGNALEMENT COMMENTAIRE
-    // -----------------------
 
-    public function incrementAlert($arr) {
-        $returnedValue = 'ok';
-        try {
-            // Control given data
-            if (! isset($arr['id'])) {
-                throw new Exception("Numéro de commentaire obligatoire");
-            }
-            $id = intval($arr['id']);
-            if (! $id > 0) {
-                throw new Exception("Numéro de commentaire inconnu");
-            }
-            $success = $this->commentManager->incrementAlert($id);
-            if (!$success) {
-                $returnedValue = 'ko : sql error or no raw updated';
-            }
-        }
-        catch (Exception $e) {
-            $returnedValue = 'ko : '. $e->getMessage();
-        }
+
+    // public function incrementAlert($arr) {
+    //     $returnedValue = 'ok';
+    //     try {
+    //         // Control given data
+    //         if (! isset($arr['id'])) {
+    //             throw new Exception("Numéro de commentaire obligatoire");
+    //         }
+    //         $id = intval($arr['id']);
+    //         if (! $id > 0) {
+    //             throw new Exception("Numéro de commentaire inconnu");
+    //         }
+    //         $id_MEMBRES=$_SESSION['id'];
+    //         $success = $this->commentManager->incrementAlert($id, $id_MEMBRES);
+    //         if (!$success) {
+    //             $returnedValue = 'ko : sql error or no raw updated';
+    //         }
+    //     }
+    //     catch (Exception $e) {
+    //         $returnedValue = 'ko : '. $e->getMessage();
+    //     }
     
-        require('view/frontend/alertView.php');
-    }
+    //     require('view/frontend/alertView.php');
+    // }
 
     // ------------------
     // BARRE DE RECHERCHE

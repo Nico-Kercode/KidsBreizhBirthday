@@ -11,7 +11,7 @@
             <!-- main -->
             <div class="col-sm-12" id="mainAnnonceContent">
                 <div class="row my-2">
-                <?php if(isset($_SESSION['pseudo'])){ ?>
+                    <?php if(isset($_SESSION['pseudo'])): ?>
                     <div class="col-sm-8 p-2">
                         <a class=" likeBtn"
                             href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
@@ -24,8 +24,9 @@
                         <a class="likeBtn"
                             href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
                             n'aime pas</a> <?=$disLike?>
+
                     </div>
-                <?php } ?>
+                    <?php endif; ?>
                 </div>
                 <!-- HEADER ANNONCE -->
                 <div class=" row d-flex" class="annonceHaut">
@@ -72,7 +73,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 ">
-                        <?php if(!empty($_SESSION['pseudo'])) { ?>
+                        <?php if(!empty($_SESSION['pseudo'])) : ?>
                         <!-- autorise les comm si enregistré -->
                         <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire !
                             </em>
@@ -89,7 +90,7 @@
                             </div>
                         </form>
 
-                        <?php } ?>
+                        <?php endif; ?>
                         <!-- fin autorisation -->
                     </div>
                 </div>
@@ -126,21 +127,26 @@
             <div class="col-sm-12 my-4">
                 <h4 class="text-left my-2 h4color"> <em>Les derniers avis :</em></h4>
                 <!-- COMMENTAIRES -->
-                <?php foreach ($allComments as $comment) { ?>
+                <?php foreach ($allComments as $comment): ?>
                 <div class="col-sm-12 result annonceContent ">
                     <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
                                 <em></strong> le
                         <?= $comment['date_commentaire'] ?>
-                        <?php if(isset($_SESSION['pseudo'])) { ?>  <span id="report">Signaler :
-                            <span id="<?= $comment['id']?>" class="p-2 js-dislike-comment far fa-bell "></span>
-                        </span></h6>
-                    <?php }?>
-                    <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
-                    </p>
+
+                        <a class="likeBtn"
+                            
+                             href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a> 
+                        <?= $nbAlert?>
+
+
+
+
+                        <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+                        </p>
                 </div>
-                <?php
-    }
-    ?>
+
+                <?php endforeach;?>
+
             </div>
         </div>
     </div>

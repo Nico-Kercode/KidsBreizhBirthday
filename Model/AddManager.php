@@ -99,7 +99,7 @@ class AddManager extends Manager
     {
         $db = $this->dbConnect();
         $resultat = $db->query("SELECT COUNT(type) as totalLike FROM votes 
-        WHERE votes.id_ANNONCES= $id AND type=1");
+        WHERE votes.id_ANNONCES= $id AND type=1 ");
         $count = $resultat->fetch();
         $like=$count['totalLike'];
         $resultat->closeCursor();
@@ -112,7 +112,7 @@ class AddManager extends Manager
     {
         $db = $this->dbConnect();
         $resultat = $db->query("SELECT COUNT(type) as totalDisLike FROM votes 
-        WHERE votes.id_ANNONCES= $id AND type=2");
+        WHERE votes.id_ANNONCES= $id AND type=2 ");
         $count = $resultat->fetch();
         $disLike=$count['totalDisLike'];
         $resultat->closeCursor();
@@ -120,6 +120,7 @@ class AddManager extends Manager
         return $disLike;
 
     }
+
    
 
 
@@ -176,15 +177,28 @@ class AddManager extends Manager
 
 
     public function incrementJaime($id_ANNONCES,$id_MEMBRES,$type) {
+
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO votes (id_ANNONCES, id_MEMBRES, type) VALUES(:id_ANNONCES,:id_MEMBRES,:type) ');
-        $like= $req->execute(array(
-            "id_ANNONCES"=>$id_ANNONCES,
-            "id_MEMBRES"=>$id_MEMBRES,
-            "type" =>$type
-        ));
-                
+        $total= $db->prepare('SELECT COUNT(*) as count FROM votes WHERE id_ANNONCES= :id_ANNONCES AND id_MEMBRES= :id_MEMBRES AND type= :type');
+        $total->execute(array(
+            "id_ANNONCES"=> $id_ANNONCES,
+            "id_MEMBRES" =>$id_MEMBRES,
+            "type" => $type
+        ));       
+        $count=$total->fetch();
+        $total->closeCursor();
+        
+        if($count['count'] == 0) :
+
+            $req = $db->prepare('INSERT INTO votes (id_ANNONCES, id_MEMBRES, type) VALUES(:id_ANNONCES,:id_MEMBRES,:type) ');
+            $like= $req->execute(array(
+                "id_ANNONCES"=>$id_ANNONCES,
+                "id_MEMBRES"=>$id_MEMBRES,
+                "type" =>$type
+            ));
+        endif;            
         return $like;
+        
     }
 
     // ----------------
@@ -224,17 +238,6 @@ class AddManager extends Manager
 
     }
 
-    public function countSelection($id_MEMBRES){
-
-        $db = $this->dbConnect();
-        $resultat = $db->query("SELECT COUNT(*) AS nbre FROM selection WHERE id_MEMBRES= $id_MEMBRES");
-        $count = $resultat->fetch();
-        $totalSelection=$count['nbre'];
-        $resultat->closeCursor();
-        return $totalSelection;
-    }
-
-       
     
     public function suppSelection($id_ANNONCES) {
 

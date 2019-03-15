@@ -20,19 +20,19 @@
             <div class="col-sm-6">
                 <p class="list">
 
-                    id du commentaire : <?= $rep['id']?> <br>
+                    id du commentaire : <?= $rep['id_COMMENTAIRES']?> <br>
                     id de l'annonce : <?= $rep['id_ANNONCES']?> <br>
                     Titre de l'annonce : <a
                         href="index.php?action=annonce&id=<?= $rep['id_ANNONCES']?> "><?= $rep['titre']?></a> <br>
                     Auteur : <?= $rep['pseudo']?> <br>
                     Commentaire : <?= $rep['contenu']?> <br>
-                    signalé : <?= $rep['alert']?> fois
+                    signalé : <?= $rep['report']?> fois
                     <br> <br>
                   
-                        <a href="index.php?action=editForm&id=<?= $rep['id'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
+                        <a href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
                             class="reportBtn mx-4">EDITER</a>
 
-                        <a href="index.php?action=delete&id=<?= $rep['id'] ?>" class="reportBtn mx-4">SUPPRIMER</a>
+                        <a href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>" class="reportBtn mx-4">SUPPRIMER</a>
                         </h3>
     
                 </p>

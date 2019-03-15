@@ -58,16 +58,33 @@ class CommentManager extends Manager
     // SIGNALEMENT COMMENTAIRE
     // -----------------------
 
+    public function incrementAlert($id_ANNONCES,$id_MEMBRES,$id_COMMENTAIRES) {
 
-    public function incrementAlert($id) {
         $db = $this->dbConnect();
+        $total= $db->prepare('SELECT COUNT(*) as signalements FROM alert 
+        WHERE id_ANNONCES= :id_ANNONCES AND id_MEMBRES= :id_MEMBRES AND id_COMMENTAIRES=:id_COMMENTAIRES ');
+        $total->execute(array(
 
-        $req = $db->prepare('UPDATE commentaires SET alert = alert + 1 WHERE id = :id');
-        $success = $req->execute(array(
-            "id" => $id
-        ));
+            "id_ANNONCES"=> $id_ANNONCES,
+            "id_MEMBRES" =>$id_MEMBRES,
+            "id_COMMENTAIRES" => $id_COMMENTAIRES
+            
+        ));       
+        $count=$total->fetch();
+        $total->closeCursor();
+        
+        if($count['signalements'] == 0) :
+
+            $req = $db->prepare('INSERT INTO alert (id_ANNONCES, id_MEMBRES,id_COMMENTAIRES) VALUES( :id_ANNONCES,:id_MEMBRES,:id_COMMENTAIRES) ');
+            $like= $req->execute(array(
+                "id_ANNONCES"=>$id_ANNONCES,
+                "id_MEMBRES"=>$id_MEMBRES,
+                "id_COMMENTAIRES" => $id_COMMENTAIRES
                 
-        return $success;
+            ));
+        endif;            
+        return $like;
+        
     }
 
     // -----------------------
@@ -75,16 +92,40 @@ class CommentManager extends Manager
     //    ---- ADMIN ----
     // -----------------------
 
-    public function deleteCommentaire($commentID)
-    {
+    //  suppression table alert en 1er
 
+    public function deleteAlerts($commentID){
         $db = $this->dbConnect();
-        $req = $db->prepare("DELETE FROM commentaires WHERE id =? ");
+        $req = $db->prepare("DELETE FROM alert        
+        WHERE alert.id_COMMENTAIRES = ?
+         ");
         $req->execute(array($commentID));
 
         return $req;
 
     }
+
+    // puis suppression du commentaire
+
+    public function deleteCommentaire($commentID)
+    {
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("DELETE FROM commentaires        
+        WHERE id =?
+         ");
+        $req->execute(array($commentID));
+
+        return $req;
+
+    }
+
+
+    // -----------------------
+    // RECUPERE TOUT LES  
+    //    ----COMMENTAIRES ----
+    // -----------------------
+
     public function getCommentaire($commentID,$annonceID)
     {
         
@@ -100,6 +141,10 @@ class CommentManager extends Manager
         return $editCommentaire;
     }
 
+    // -----------------------
+    // EDITION DES   
+    //    ----COMMENTAIRES ----
+    // -----------------------
 
     public function editCommentaire($id, $editCommentaire){
         $db = $this->dbConnect();
@@ -114,16 +159,21 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-
+    // -----------------------
+    // RECUPERE TOUT LES  
+    //    ----SIGNALEMENTS ----
+    // -----------------------
 
     public function getReports()
     {
     $db = $this->dbConnect();
-    $req= $db->prepare("SELECT commentaires.*
-    FROM commentaires 
-    INNER JOIN membres ON membres.id =commentaires.id_MEMBRES 
-    INNER JOIN annonces ON annonces.id= commentaires.id_ANNONCES  
-    WHERE alert > 0 ORDER BY alert DESC");
+    $req= $db->prepare("SELECT id_COMMENTAIRES, alert.id_ANNONCES, titre, pseudo, contenu , count(alert.id_COMMENTAIRES) as report
+    FROM alert
+    INNER JOIN membres ON alert.id_MEMBRES = membres.id AND pseudo =membres.pseudo
+    INNER JOIN annonces ON alert.id_ANNONCES= annonces.id AND titre =annonces.titre
+    INNER JOIN commentaires ON alert.id_COMMENTAIRES=commentaires.id AND contenu= commentaires.contenu
+    GROUP BY alert.id_COMMENTAIRES
+    ");
     $req->execute(array());
     $getReports = $req->fetchAll();
     $req->closeCursor();
@@ -133,6 +183,10 @@ class CommentManager extends Manager
 
     }
 
+    // -----------------------
+    // COMPTE LES  
+    //    ----SIGNALEMENTS ----
+    // -----------------------
     public function CountAlerts() 
     {
         $db = $this->dbConnect();

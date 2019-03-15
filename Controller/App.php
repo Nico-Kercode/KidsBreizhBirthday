@@ -192,9 +192,11 @@ class App
                         $this->controller->indexView();
                     } 
 
-                } elseif ($_GET['action'] == 'alert') {                 // -> Fonction signalement commentaire
-                    // Incrément du nb d'alert sur un commentaire
-                    $this->controller->incrementAlert($_GET);
+                } elseif ($_GET['action'] == 'alert') {         // -> fonction ALERT !
+                    
+                
+                   
+                        $this->controller->incrementAlert();
 
 
                 } elseif ($_GET['action'] == 'like') {              // -> Fonction Vote : "j'aime" "J'aime pas"
