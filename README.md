@@ -1,81 +1,42 @@
-# KidsBreizhBirthday
-Site de référencement de lieux ou fêter l'anniversaire d'un enfant en Bretagne
+***KIDS BREIZH BIRTHDAY***
+=========================
 
-## Getting Started
-
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
+*KIDS BREIZH BIRTHDAY* est un site qui référence les lieux et activités pour fêter l'anniversaire d'un enfant dans le Morbihan.
 
 
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **John Doe** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* les annonces sont regroupées par villes , actuellement Vannes et Lorient.
+* Ou les annonces sont classées par  like .
 
 
-## Acknowledgments
+***Qui peut publier ?***
+---------------------
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Seuls *l'administrateur* et les *professionnels* peuvent publier une annonce.
+
+Pour cela, ils doivent s'enregistrer en selectionnant "professionnel" dans le menu déroulant, ils pourront alors
+publier une annonce .
+
+les formats des images accepté sont jpg, gif et png , les images seront automatiquements redimmensionner, 
+la limite d upload de fichier est de 1Mo.
+
+**Systeme de votes, commentaires et signalements**
+-----------------------------------------------
+* Tout les utilisateurs enregistrés peuvent voter : "j'aime" ou "j'aime pas".
+* Les utilisateurs enregistrés peuvent laisser un commentaire sur une annonce.
+* Les utilisateurs enregistrés peuvent signaler un commentaire.
+
+**Specificités techniques**
+-------------------------
+
+Ce site utilise une architecture MVC 
+
+* PHP
+* BOOTSTRAP
+* JQUERY
+* PDO / mySQL
+
+**AUTEUR** 
+---------
+
+*Nicolas HUBERT* Projet de certification "titre professionnel Developpeur en application web (niv3)" Kercode 2019
 

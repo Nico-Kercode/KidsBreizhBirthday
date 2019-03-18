@@ -93,3 +93,13 @@ $.fn.basicResponsiveMenu = function (options) {
 	}); // end of resize function
 
 }
+
+
+// MENU ANNONCES 
+// ------------------------------------------------
+$(document).ready(function(){
+	$("#clic").click(function(){
+	  $("#navMain").toggleClass("none");
+	});
+  });
+  

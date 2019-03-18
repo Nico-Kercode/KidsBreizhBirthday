@@ -131,8 +131,9 @@ class App
                   
                     if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {                 
                         $id = $_GET['id'];
+                        $id_COMMENTAIRES=$_GET['id_COMMENTAIRE']; 
                                            
-                        $this->controller->annonce($id);
+                        $this->controller->annonce($id,$id_COMMENTAIRES);
 
                     }
                      else {
@@ -174,7 +175,27 @@ class App
                         $this->controller->indexView();
                     } 
                         
-                } elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
+                
+                } elseif ($_GET['action'] == 'gererAnnonces'){             // -> Toutes mes annonces
+
+                         $this->controller->mesAnnonces();
+                                
+                }elseif ($_GET['action'] == 'editerAnnonce'){ 
+                              
+                        $this->controller->gererMonAnnonce(); // -> vers edition de l'annonce
+                    
+                             
+                }elseif ($_GET['action'] == 'editThisAnnonce'){  // -> valide l edition de l annonce 
+
+                    if (isset($_POST['editionAnnonce'] )){
+
+                        $this->controller->editThisAnnonce();             
+
+                }
+
+                
+                
+                }elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {

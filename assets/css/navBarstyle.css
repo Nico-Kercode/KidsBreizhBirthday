@@ -126,3 +126,16 @@
 .none{
 	display: none !important;
 }
+
+#navMain{
+	position: absolute;
+	margin: 0 auto!important;
+	background-color: #FAC32D;
+	min-height: 100px;
+	z-index: 1000;
+}
+
+#navMain a:hover{
+	color:blue !important;
+	background : #FFDB5C;
+}

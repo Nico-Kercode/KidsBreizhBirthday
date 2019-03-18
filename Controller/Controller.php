@@ -94,32 +94,39 @@ class Controller
     }
 
     
-    // -----------------------
-    // REGISTER NOUVEAU MEMBRE 
-    // -----------------------
+    // -----------------------------
+    // ENREGISTREMENT NOUVEAU MEMBRE 
+    // -----------------------------
 
 
     public function addMember() {
 
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $email= htmlspecialchars($_POST['email']);
-        $password = htmlspecialchars($_POST['password_1']);
+        $password1 = htmlspecialchars($_POST['password_1']);
         $password_2 = htmlspecialchars($_POST['password_2']);
         $rang=$_POST['rang'];
 
-            if($password == $password_2) {
-                $password_1 = $password_2;
+            if($password1 == $password_2) {
+                $password = $password_2;
                         } 
 
             else {
                     throw new Exception('les mots de passe ne correspondent pas');
-                }     
+                }  
+                
+            if(!preg_match("/^[a-zA-Z\-\ \_\1-9]+$/",$pseudo)) { 
+                    die ("Merci de saisir un pseudo valide !!! ");
+                
+                }
+            if(!preg_match("/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/",$email)) { 
+                die ("Email non Valide !");}
+            
         $picProfile= $this->manageFile($_FILES['image'],400,400);
-        $passHash= password_hash($password_1, PASSWORD_DEFAULT );
+        $passHash= password_hash($password, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile,$rang);
-        
-    
-        header('Location: index.php');
+
+        $this->isLogged($pseudo,$password);
     }  
 
     // ------------------
@@ -131,11 +138,16 @@ class Controller
         $pseudo = htmlspecialchars($_POST['username']);
         $password = htmlspecialchars($_POST['password']);
 
+        $this->isLogged($pseudo,$password);
+  
+    }
+
+    private function isLogged($pseudo,$password) {
 
         $member = $this->memberManager->loginMember($pseudo,$password);
 
         if (password_verify($password,$member['password'])) {
-    
+
             $_SESSION['id']=$member['id'];
             $_SESSION['pseudo']=$member['pseudo'];
             $_SESSION['email']= $member['email'];
@@ -144,13 +156,12 @@ class Controller
             $_SESSION['password']= $member['password'];
 
             header('Location: index.php');
-         }    
-       else {
+        } 
+        else {
             throw new Exception('Mauvaise combinaison login/password');
-        }      
-    
+        }
+           
     }
-
     // -------------------------
     // EDITON INFOS UTILISATEURS
     // -------------------------
@@ -170,10 +181,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
-        
-        
-        header('Location: index.php?action=accounttmnagement');
-        
+               
     }
 
     // -------------------------
@@ -292,7 +300,88 @@ class Controller
         return $nbDePage;
     }
 
-    // -------------------
+
+    // ------------------
+    // ANNONCE SUR 1 PAGE
+    // ------------------
+
+    public function annonce($id) {
+
+        $id_MEMBRES= $_SESSION['id'];  
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
+        $annonce = $this->addManager->getAnnonce($id);
+        $allComments = $this->commentManager->getComments($id);
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $like= $this->addManager->getLikes($id);
+        $disLike= $this->addManager->getDisLikes($id);
+        $nbAlert= $this->commentManager->CountAlerts();
+    
+
+        
+        require('view/frontend/annonceView.php');
+        
+
+    }
+
+    // --------------------
+    // AFFICHE MES ANNONCES
+    // --------------------
+
+
+    public function mesAnnonces() {
+
+        $id_MEMBRES= $_SESSION['id']; 
+        $id_ANNONCES=$_GET['id_ANNONCES'];
+    
+        $myAnnonces= $this->addManager->getToutesMesAnnonces($id_MEMBRES,$id_ANNONCES);
+
+        require('view/frontend/mesAnnonces.php');
+
+        return $myAnnonces;
+    }
+
+    // ---------------------
+    //        VUE
+    // EDITION D UNE ANNONCE
+    // ---------------------
+
+
+    public function gererMonAnnonce(){
+
+       
+        $id_ANNONCES=$_GET['id_ANNONCES']; 
+          
+        $ann = $this->addManager->getThisAnnonce($id_ANNONCES);
+
+        require('view/frontend/editAnnonce.php');
+
+        return $ann;
+    }
+
+    // --------------------
+    // EDITION ANNONCE
+    // --------------------
+
+
+    public function editThisAnnonce(){       
+        
+        $ville=$_POST['commune'];
+        $newLogo=$this->manageFile($_FILES['newlogo'],160,80);
+        $titre=htmlspecialchars($_POST['titre']);
+        $presentation= htmlspecialchars($_POST['presentation']);
+        $descriptif= htmlspecialchars($_POST['descriptif']);
+        $contact= htmlspecialchars($_POST['contact']);
+        $newPhoto1=$this->manageFile($_FILES['newphoto1'],600,400);
+        $newPhoto2=$this->manageFile($_FILES['newphoto2'],600,400);
+        $id_ANNONCES=$_GET['id_ANNONCES']; 
+        $edit= $this->addManager->editAnnonces($id_ANNONCES,$ville,$newLogo,$titre,$presentation,$descriptif,$contact,$newPhoto1,$newPhoto2);
+
+        header("Location: index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
+    }
+
+
+        // -------------------
     // CLASSEMENT PAR NOTE
     // -------------------
 
@@ -359,29 +448,6 @@ class Controller
         header("Location:index.php?action=monPanier&id_MEMBRES={$id_MEMBRES}");
 
     }
-    // ------------------
-    // ANNONCE SUR 1 PAGE
-    // ------------------
-
-    public function annonce($id) {
-
-        $id_MEMBRES= $_SESSION[id];  
-        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
-        $annonce = $this->addManager->getAnnonce($id);
-        $allComments = $this->commentManager->getComments($id);
-        $total = $this->addManager->countAnnonce();
-        $totalMembres = $this->memberManager->countTotalMembres();
-        $like= $this->addManager->getLikes($id);
-        $disLike= $this->addManager->getDisLikes($id);
-        $nbAlert= $this->commentManager->CountAlerts();
-    
-
-        
-        require('view/frontend/annonceView.php');
-        
-
-    }
-
     // ---------------------
     // J AIME / J AIME PAS
     // ---------------------
@@ -438,7 +504,7 @@ class Controller
     }
 
 
-    function editForm($commentID,$annonceID){
+    public function editForm($commentID,$annonceID){
         
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
         $total = $this->addManager->countAnnonce();
@@ -451,7 +517,7 @@ class Controller
     }
     
     
-    function editComment($id,$editCommentaire,$id_ANNONCES){
+    public function editComment($id,$editCommentaire,$id_ANNONCES){
        
     
         $affectedLines = $this->commentManager->editCommentaire($id, $editCommentaire);
@@ -491,7 +557,7 @@ class Controller
         $tempPath = 'assets/img/tmp' . $file['name'];
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
-        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); 
+        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif','GIF'); 
         $filename=$file['name']; 
         $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
         { 
@@ -505,12 +571,12 @@ class Controller
             $ary = explode('/',$tempPath);
             $srcFile = array_pop($ary);
             $srcPath = join('/', $ary) . '/';
-            $folder ="assets/img/webFiles/test"; 
+            $folder ="assets/img/webFiles/"; 
             $image = rand(1000, 10000000).$file['name']; 
             $path = $folder . $image ; 
 
             $this->fctredimimage($width,$height,$folder,$image,$srcPath,$srcFile);
-            unlink($tempPath); // supprime le fichier temporaire
+            // unlink($tempPath); // supprime le fichier temporaire
 
             return $path;
         } 

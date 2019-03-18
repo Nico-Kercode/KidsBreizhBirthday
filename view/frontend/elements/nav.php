@@ -26,8 +26,17 @@
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2') : ?>
-                <li class="mx-4"><a class="<?= $_GET['action'] == 'ajoutAnnonce' ? 'activeMenu' : '' ?>"
-                        href="index.php?action=ajoutAnnonce">AJOUTER UNE ANNONCE</a></li>
+                <ul>
+                    <li class="mx-4" >     <a href="#" id="clic">MES ANNONCES</a>
+                        <ul id="navMain"class="none ">
+                            <li class="mx-4"><a class="<?= $_GET['action'] == 'ajoutAnnonce' ? 'activeMenu' : '' ?> id="
+                                    menuD" href="index.php?action=ajoutAnnonce">AJOUTER UNE ANNONCE</a></li>
+                            <li class="mx-4"><a class="<?= $_GET['action'] == 'gererAnnonce' ? 'activeMenu' : '' ?> id="
+                                    menuD" href="index.php?action=gererAnnonces">GERER MES ANNONCES</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
                 <?php endif; ?>
 
                 <?php if(empty($_SESSION)) : ?>
@@ -46,16 +55,17 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row ">
         <!-- BARRE DE RECHERCHE  -->
 
-        <div class="col-sm-8 offset-sm-3 d-flex">
+        <div class="col-sm-8 offset-sm-3 d-flex ">
 
 
             <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '2'):?>
             <h6 id="bienvenue"> <em> Bienvenue chez toi <span><?=  ucfirst($_SESSION['pseudo'])?></span>. Il y a
                     actuellement <?= $total ?> activités référencées, un total de
-                    <?= $totalMembres ?> membres enregistrés. Nos membres nous on signalés <?=$nbAlert['nbreAlerts']?> messages </em>
+                    <?= $totalMembres ?> membres enregistrés. Nos membres nous on signalés <?=$nbAlert['nbreAlerts']?>
+                    messages </em>
             </h6>
             <?php endif; ?>
 
@@ -66,14 +76,17 @@
             <?php endif; ?>
 
             <?php if(empty($_SESSION)):?>
-            <h6 id="bienvenue"> <em> Pour plus de contenu, <a href="index.php?action=formRegister">Enregistrez vous
-                        !</a> Il y a actuellement <?= $total ?> activités référencées et un total de
-                    <?= $totalMembres ?> membres enregistrés . </em></h6>
+            <h6 id="bienvenue"> <em> Pour plus de contenu,</em> <a class="text-primary  bg-warning rounded"
+                    href="index.php?action=formRegister">Enregistrez vous !
+                </a> <em> &nbsp; Il y a actuellement <?= $total ?> activités référencées et un total de
+                    <?= $totalMembres ?> membres enregistrés .</em> </h6>
             <?php endif; ?>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row <?= $_GET['action'] == 'rgpd' 
+    || $_GET['action'] == 'moncompte'
+    || $_GET['action'] == 'ajoutAnnonce' ? 'none' : '' ?>">
 
         <div class="col-sm-10 offset-sm-1">
             <form method="POST" action="index.php?action=search" class="input-group  input-lg my-2">
