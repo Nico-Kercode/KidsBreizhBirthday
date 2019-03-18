@@ -20,10 +20,7 @@
                   
                 </div>
             </div>
-            <div id="indexView">
-                <div class="col-sm-8 offset-sm-2 mx-auto accueil">
-                </div>
-            </div>
+          
         </div> <!-- end lg8 -->
         <div class="col-lg-2 d-none d-lg-block  my-auto ">
             <img class="img-fluid " src="assets/img/artworkIMG/cadeauJaune.png" alt="cadeauJaune">

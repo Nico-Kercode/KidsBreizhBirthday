@@ -170,10 +170,7 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
-        
-        
-        header('Location: index.php?action=accounttmnagement');
-        
+               
     }
 
     // -------------------------
@@ -292,7 +289,88 @@ class Controller
         return $nbDePage;
     }
 
-    // -------------------
+
+    // ------------------
+    // ANNONCE SUR 1 PAGE
+    // ------------------
+
+    public function annonce($id) {
+
+        $id_MEMBRES= $_SESSION['id'];  
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
+        $annonce = $this->addManager->getAnnonce($id);
+        $allComments = $this->commentManager->getComments($id);
+        $total = $this->addManager->countAnnonce();
+        $totalMembres = $this->memberManager->countTotalMembres();
+        $like= $this->addManager->getLikes($id);
+        $disLike= $this->addManager->getDisLikes($id);
+        $nbAlert= $this->commentManager->CountAlerts();
+    
+
+        
+        require('view/frontend/annonceView.php');
+        
+
+    }
+
+    // --------------------
+    // AFFICHE MES ANNONCES
+    // --------------------
+
+
+    public function mesAnnonces() {
+
+        $id_MEMBRES= $_SESSION['id']; 
+        $id_ANNONCES=$_GET['id_ANNONCES'];
+    
+        $myAnnonces= $this->addManager->getToutesMesAnnonces($id_MEMBRES,$id_ANNONCES);
+
+        require('view/frontend/mesAnnonces.php');
+
+        return $myAnnonces;
+    }
+
+    // ---------------------
+    //        VUE
+    // EDITION D UNE ANNONCE
+    // ---------------------
+
+
+    public function gererMonAnnonce(){
+
+       
+        $id_ANNONCES=$_GET['id_ANNONCES']; 
+          
+        $ann = $this->addManager->getThisAnnonce($id_ANNONCES);
+
+        require('view/frontend/editAnnonce.php');
+
+        return $ann;
+    }
+
+    // --------------------
+    // EDITION ANNONCE
+    // --------------------
+
+
+    public function editThisAnnonce(){       
+        
+        $ville=$_POST['commune'];
+        $newLogo=$this->manageFile($_FILES['newlogo'],160,80);
+        $titre=htmlspecialchars($_POST['titre']);
+        $presentation= htmlspecialchars($_POST['presentation']);
+        $descriptif= htmlspecialchars($_POST['descriptif']);
+        $contact= htmlspecialchars($_POST['contact']);
+        $newPhoto1=$this->manageFile($_FILES['newphoto1'],600,400);
+        $newPhoto2=$this->manageFile($_FILES['newphoto2'],600,400);
+        $id_ANNONCES=$_GET['id_ANNONCES']; 
+        $edit= $this->addManager->editAnnonces($id_ANNONCES,$ville,$newLogo,$titre,$presentation,$descriptif,$contact,$newPhoto1,$newPhoto2);
+
+        header("Location: index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
+    }
+
+
+        // -------------------
     // CLASSEMENT PAR NOTE
     // -------------------
 
@@ -359,29 +437,6 @@ class Controller
         header("Location:index.php?action=monPanier&id_MEMBRES={$id_MEMBRES}");
 
     }
-    // ------------------
-    // ANNONCE SUR 1 PAGE
-    // ------------------
-
-    public function annonce($id) {
-
-        $id_MEMBRES= $_SESSION[id];  
-        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
-        $annonce = $this->addManager->getAnnonce($id);
-        $allComments = $this->commentManager->getComments($id);
-        $total = $this->addManager->countAnnonce();
-        $totalMembres = $this->memberManager->countTotalMembres();
-        $like= $this->addManager->getLikes($id);
-        $disLike= $this->addManager->getDisLikes($id);
-        $nbAlert= $this->commentManager->CountAlerts();
-    
-
-        
-        require('view/frontend/annonceView.php');
-        
-
-    }
-
     // ---------------------
     // J AIME / J AIME PAS
     // ---------------------
@@ -491,7 +546,7 @@ class Controller
         $tempPath = 'assets/img/tmp' . $file['name'];
         $target_file=$folder.basename($file["name"]);
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
-        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif', 'GIF'); 
+        $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif','GIF'); 
         $filename=$file['name']; 
         $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
         { 

@@ -122,7 +122,7 @@ class AddManager extends Manager
     }
 
    
-
+    // AFFICHAGE D UNE ANNONCE
 
     public function getAnnonce($id)
     {
@@ -135,6 +135,73 @@ class AddManager extends Manager
 
         return $annonce;
     }
+
+    // INFO D UNE ANNONCE AVANT EDITION 
+
+    public function getThisAnnonce($id_ANNONCES){
+
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT * 
+        FROM annonces WHERE annonces.id = $id_ANNONCES");
+        $req->execute(array());
+        $thisAnnonce = $req->fetch();
+        $req->closeCursor();
+
+        return $thisAnnonce;
+    }
+
+    // LISTE DE TOUTES MES ANNONCES 
+
+    public function getToutesMesAnnonces($id_MEMBRES)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare("SELECT annonces.id , membres.id AS id_MEMBRES,  ville, logo, titre, presentation, descriptif, contact,  photo1 ,photo2 ,pseudo
+        FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE id_MEMBRES = $id_MEMBRES");
+        $req->execute(array());
+        $myAnnonces = $req->fetchall();
+        $req->closeCursor();
+
+        return $myAnnonces;    
+        
+    }
+
+    // EDITION ANNONCE 
+    
+    public function editAnnonce($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT annonces.id , ville, logo, titre, presentation, descriptif, contact,  photo1 ,photo2 ,pseudo
+        FROM annonces INNER JOIN membres ON id_MEMBRES = membres.id WHERE annonces.id = ? ');
+        $req->execute(array($id));
+        $annonce = $req->fetch();
+        $req->closeCursor();
+
+        return $editAnnonce;
+    }
+
+    public function editAnnonces($id_ANNONCES,$ville,$newLogo,$titre,$presentation,$descriptif,$contact ,$newPhoto1,$newPhoto2){
+
+        $db = $this->dbConnect();
+        $updateannonce = $db->prepare('UPDATE annonces SET ville=(:ville), logo=(:logo), titre=(:titre), presentation=(:presentation), 
+        descriptif=(:descriptif), contact=(:contact),  photo1=(:photo1) ,photo2=(:photo2) 
+        WHERE annonces.id=(:id)');
+        $edit = $updateannonce->execute(array(
+             "id" => $id_ANNONCES,
+            "ville" => $ville,
+            "logo" =>$newLogo,
+            "titre"=>$titre,
+            "presentation"=>$presentation,
+            "descriptif"=>$descriptif,
+            "contact"=>$contact,
+             "photo1"=>$newPhoto1,
+             "photo2"=>$newPhoto2
+ 
+            ));
+       
+        return $edit;
+
+    }
+    
 
 
     // --------------------

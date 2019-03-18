@@ -3,7 +3,7 @@
 
 
 
-    <h1 class="text-center my-4 h1annonces">MA <span>S</span>ELECTION</h1>
+<h1 class="text-center my-4 h1annonces">MA <span>S</span>ELECTION</h1>
 
 <div class="container-fluid mb-4">
     <div class="row d-flex">
@@ -15,7 +15,7 @@
 
         <?php
        
-        foreach ($getSelection as $data) { ?>
+        foreach ($getSelection as $data) : ?>
 
 
         <div class="col-sm-8 offset-sm-2  selection">
@@ -41,9 +41,9 @@
 
         </div>
 
-        <?php
-    }
-    ?>
+        <?php endforeach;?>
+
+
 
     </div>
 
