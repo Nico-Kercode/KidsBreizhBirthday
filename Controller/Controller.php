@@ -576,7 +576,7 @@ class Controller
             $path = $folder . $image ; 
 
             $this->fctredimimage($width,$height,$folder,$image,$srcPath,$srcFile);
-            unlink($tempPath); // supprime le fichier temporaire
+            // unlink($tempPath); // supprime le fichier temporaire
 
             return $path;
         } 
