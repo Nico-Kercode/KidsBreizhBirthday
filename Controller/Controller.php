@@ -94,32 +94,39 @@ class Controller
     }
 
     
-    // -----------------------
-    // REGISTER NOUVEAU MEMBRE 
-    // -----------------------
+    // -----------------------------
+    // ENREGISTREMENT NOUVEAU MEMBRE 
+    // -----------------------------
 
 
     public function addMember() {
 
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $email= htmlspecialchars($_POST['email']);
-        $password = htmlspecialchars($_POST['password_1']);
+        $password1 = htmlspecialchars($_POST['password_1']);
         $password_2 = htmlspecialchars($_POST['password_2']);
         $rang=$_POST['rang'];
 
-            if($password == $password_2) {
-                $password_1 = $password_2;
+            if($password1 == $password_2) {
+                $password = $password_2;
                         } 
 
             else {
                     throw new Exception('les mots de passe ne correspondent pas');
-                }     
+                }  
+                
+            if(!preg_match("/^[a-zA-Z\-\ \_\1-9]+$/",$pseudo)) { 
+                    die ("Merci de saisir un pseudo valide !!! ");
+                
+                }
+            if(!preg_match("/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/",$email)) { 
+                die ("Email non Valide !");}
+            
         $picProfile= $this->manageFile($_FILES['image'],400,400);
-        $passHash= password_hash($password_1, PASSWORD_DEFAULT );
+        $passHash= password_hash($password, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile,$rang);
-        
-    
-        header('Location: index.php');
+
+        $this->isLogged($pseudo,$password);
     }  
 
     // ------------------
@@ -131,11 +138,16 @@ class Controller
         $pseudo = htmlspecialchars($_POST['username']);
         $password = htmlspecialchars($_POST['password']);
 
+        $this->isLogged($pseudo,$password);
+  
+    }
+
+    private function isLogged($pseudo,$password) {
 
         $member = $this->memberManager->loginMember($pseudo,$password);
 
         if (password_verify($password,$member['password'])) {
-    
+
             $_SESSION['id']=$member['id'];
             $_SESSION['pseudo']=$member['pseudo'];
             $_SESSION['email']= $member['email'];
@@ -144,13 +156,12 @@ class Controller
             $_SESSION['password']= $member['password'];
 
             header('Location: index.php');
-         }    
-       else {
+        } 
+        else {
             throw new Exception('Mauvaise combinaison login/password');
-        }      
-    
+        }
+           
     }
-
     // -------------------------
     // EDITON INFOS UTILISATEURS
     // -------------------------
@@ -493,7 +504,7 @@ class Controller
     }
 
 
-    function editForm($commentID,$annonceID){
+    public function editForm($commentID,$annonceID){
         
         $editCommentaire = $this->commentManager->getCommentaire($commentID,$annonceID);
         $total = $this->addManager->countAnnonce();
@@ -506,7 +517,7 @@ class Controller
     }
     
     
-    function editComment($id,$editCommentaire,$id_ANNONCES){
+    public function editComment($id,$editCommentaire,$id_ANNONCES){
        
     
         $affectedLines = $this->commentManager->editCommentaire($id, $editCommentaire);
@@ -560,7 +571,7 @@ class Controller
             $ary = explode('/',$tempPath);
             $srcFile = array_pop($ary);
             $srcPath = join('/', $ary) . '/';
-            $folder ="assets/img/webFiles/test"; 
+            $folder ="assets/img/webFiles/"; 
             $image = rand(1000, 10000000).$file['name']; 
             $path = $folder . $image ; 
 

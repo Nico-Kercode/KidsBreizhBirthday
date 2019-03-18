@@ -56,16 +56,15 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-1.12.4.min.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/alert&like.js"></script>
     <script src="assets/js/jquery.slider.js"></script>
     <script src="assets/js/menuResponsive.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script>
     $.validate({
         lang: 'fr',
         modules: 'file'
-    });
-    </script>
+    }); -->
+    <!-- </script> -->
     <!-- COOKIES -->
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
