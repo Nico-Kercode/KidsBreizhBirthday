@@ -183,9 +183,10 @@ class CommentManager extends Manager
 
     }
 
-       // COMPTE LES  
+    // COMPTE LES  
     //    ----SIGNALEMENTS ----
     // -----------------------
+    
     public function CountAlerts() 
     {
         $db = $this->dbConnect();

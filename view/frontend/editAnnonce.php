@@ -20,14 +20,13 @@
                 </div>
 
                 <div class="form-group">
-
-
-                    <?php $ary = explode('/',$ann['logo']); ?>              
+                    
                     
                     <img  class="img-fluid w-25" src="<?=$ann['logo']?>" alt="logo">
+
                     <label for="formControl" class="col-sm-510">LOGO (max. 1 Mo)</label>
                     <input type="file" name="newlogo" class="form-control-file my-2" data-validation="size"
-                        data-validation-max-size="1M" value="<?= $ary[3]; ?>">
+                        data-validation-max-size="1M">
 
                     
                 </div>
@@ -50,19 +49,21 @@
                     <textarea class="form-control" rows="5" name="contact"><?=$ann['contact']?></textarea>
                 </div>
                 <div class="form-group">
-                <?php $arry = explode('/',$ann['photo1']); ?>
+                
                 <img class="img-fluid w-25"  src="<?=$ann['photo1']?>" alt="photo1">
+
                     <label for="formControl" class="col-sm-510">Photo 1 (max. 1 Mo)</label>
                     <input type="file" name="newphoto1" class="form-control-file my-2" data-validation="size"
-                        data-validation-max-size="1M" value="<?= $arry[3]; ?>">
+                        data-validation-max-size="1M" >
                         
                 </div>
-                <?php $array = explode('/',$ann['photo1']); ?>
+                
                 <div class="form-group">
                 <img class="img-fluid w-25" src="<?=$ann['photo2']?>" alt="photo2">
+                
                     <label for="formControl" class="col-sm-510">Photo 2 (max. 1 Mo)</label>
                     <input type="file" name="newphoto2"  class="form-control-file my-2" data-validation="size"
-                        data-validation-max-size="1M" value="<?= $array[3]; ?>">
+                        data-validation-max-size="1M" >
                         
                 </div>
                 <div class="form-group">
