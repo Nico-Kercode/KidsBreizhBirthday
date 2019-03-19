@@ -115,12 +115,15 @@ class Controller
                     throw new Exception('les mots de passe ne correspondent pas');
                 }  
                 
-            if(!preg_match("/^[a-zA-Z\-\ \_\1-9]+$/",$pseudo)) { 
-                    die ("Merci de saisir un pseudo valide !!! ");
+            if(!preg_match("/^[a-zA-Zéèêîïôüäë]+([\ -]{0,1})[a-zA-Zéèêîïôüäë]*$/",$pseudo)) {   
+               
+                    throw new Exception('Veuillez choisir un pseudo valide');
+             
                 
                 }
             if(!preg_match("/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/",$email)) { 
-                die ("Email non Valide !");}
+
+                throw new Exception('Veuillez choisir un email valide'); }
             
         $picProfile= $this->manageFile($_FILES['image'],400,400);
         $passHash= password_hash($password, PASSWORD_DEFAULT );

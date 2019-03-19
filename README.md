@@ -31,9 +31,10 @@ la limite d upload de fichier est de 1Mo.
 Ce site utilise une architecture MVC 
 
 * PHP
-* BOOTSTRAP
+* BOOTSTRAP 4
 * JQUERY
 * PDO / mySQL
+* composer ( -> composer update à l initialisation du projet)
 
 **AUTEUR** 
 ---------

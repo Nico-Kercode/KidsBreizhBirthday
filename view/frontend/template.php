@@ -27,16 +27,46 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-   
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- CSS + BOOTSTRAP + GOOGLE FONTS -->
     <link rel="stylesheet" type="text/css"
-    href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+        href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/navBarstyle.css">
     <link rel="stylesheet" href="assets/css/anim.css">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+
+ <!-- COOKIES -->
+
+    <link rel="stylesheet" type="text/css"
+        href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+    window.addEventListener("load", function() {
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#000"
+                },
+                "button": {
+                    "background": "#f1d600"
+                }
+            },
+            "position": "top",
+            "static": true,
+            "content": {
+                "message": "En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies .",
+                "dismiss": "Acceptez !",
+                "link": "En savoir plus",
+                "href": "https://www.kidsbreizhbirthday.fr/index.php?action=rgpd"
+            }
+        })
+    });
+    </script>
+
 </head>
 
 <body>
@@ -58,38 +88,6 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/jquery.slider.js"></script>
     <script src="assets/js/menuResponsive.js"></script>
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-    <script>
-    $.validate({
-        lang: 'fr',
-        modules: 'file'
-    }); -->
-    <!-- </script> -->
-    <!-- COOKIES -->
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-    <script>
-    window.addEventListener("load", function() {
-        window.cookieconsent.initialise({
-            "palette": {
-                "popup": {
-                    "background": "#ffdb5c",
-                    "text": "#2e4eec"
-                },
-                "button": {
-                    "background": "#ffe15c",
-                    "text": "#2e4eec"
-                }
-            },
-            "position": "bottom-right",
-            "content": {
-                "message": "En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies .",
-                "dismiss": "Acceptez !",
-                "link": ""
-            }
-        })
-    });
-    </script>
 
     <!-- FOOTER -->
     <?php include('elements/footer.php');?>
