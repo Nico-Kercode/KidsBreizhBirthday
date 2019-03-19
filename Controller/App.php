@@ -191,9 +191,7 @@ class App
 
                         $this->controller->editThisAnnonce();             
 
-                }
-
-                
+                }            
                 
                 }elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
 

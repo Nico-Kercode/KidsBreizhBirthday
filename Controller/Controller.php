@@ -32,7 +32,7 @@ class Controller
 
     public function indexView() {
 
-        $id_MEMBRES= $_SESSION[id];
+        $id_MEMBRES= $_SESSION['id'];
         $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();    
         $totalMembres = $this->memberManager->countTotalMembres();
