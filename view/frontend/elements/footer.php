@@ -19,7 +19,7 @@
 
                 <!--Copyright-->
                 <p class="text-center text-md-left">© 2019 Copyright :
-                    <a href="#">
+                    <a href="mailto:admin@kidsbreizhbirthday.fr">
                         TraouaWeb 
                     </a>
                 </p>
@@ -36,6 +36,13 @@
                         <li class="list-inline-item">
                             <a href="index.php?action=rgpd" class=" article mr-4">Protection des données</a>
                         </li>
+
+                        <li class="list-inline-item">
+                            <a href="mailto:contact@kidsbreizhbirthday.fr" class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+
                         <li class="list-inline-item">
                             <a  href="https://www.facebook.com/developpeur.web.vannes?ref=bookmarks" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-facebook-f"></i>
