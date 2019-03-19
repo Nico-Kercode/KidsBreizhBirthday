@@ -29,28 +29,3 @@ $(function() {
   });
   });
   
-  // VALIDATION 
-  $.validate({
-    modules : 'file'
-  });
-
-  // COOKIES 
-
-  window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#ffdb5c",
-          "text": "#2e4eec"
-        },
-        "button": {
-          "background": "#ffe15c",
-          "text": "#2e4eec"
-        }
-      },
-      "content": {
-        "message": "En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies .",
-        "dismiss": "Acceptez !",
-        "link": "En savoir plus"
-      }
-    })});
