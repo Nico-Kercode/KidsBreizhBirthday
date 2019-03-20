@@ -183,9 +183,10 @@ class CommentManager extends Manager
 
     }
 
-       // COMPTE LES  
+    // COMPTE TOUT LES  
     //    ----SIGNALEMENTS ----
     // -----------------------
+    
     public function CountAlerts() 
     {
         $db = $this->dbConnect();
@@ -196,6 +197,20 @@ class CommentManager extends Manager
 
         return $nbAlert;
     }
+
+    public function CountSignalement($id_COMMENTAIRE)
+    {
+
+    $db = $this->dbConnect();
+    $req= $db->query("SELECT sum(id_MEMBRES) AS nbreReport FROM alert WHERE id_COMMENTAIRES= $id_COMMENTAIRE");
+    $count=$req->fetch();
+    $nbSignal=$count['nbreReport'];
+    $req->closeCursor();
+
+    return $nbSignal;
+
+    }
+
 
 
 

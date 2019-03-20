@@ -73,7 +73,7 @@
                              };                            
                              ?>
                     <?php 
-                for($i=1; $i <= $nbDePageAlert; $i++){
+                for($i=1; $i <= $nbDePage; $i++){
                     if( $page ==$i){
 
                     echo'<li class="page-item"><a class="page-link" href="index.php?action=admin&page='.$i.'">'.$i."</a></li>";

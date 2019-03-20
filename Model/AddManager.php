@@ -52,8 +52,7 @@ class AddManager extends Manager
         $db = $this->dbConnect();
 
         $req = $db->prepare("SELECT * FROM annonces WHERE ville = ? ORDER BY annonces.titre ASC LIMIT $starter, $parPage");
-        $req->execute(array($ville)); 
-       
+        $req->execute(array($ville));       
         $annonces = $req->fetchAll();
         $req->closeCursor();
         
@@ -107,6 +106,21 @@ class AddManager extends Manager
         return $like;
 
     }
+    
+    // si déja aimé masque les boutons j'aime et j'aime pas puis affiche le compteur 
+    public function limitLike($id){
+
+        $membre=$_SESSION['id'];
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(type)AS vote FROM votes WHERE type=1 AND votes.id_MEMBRES=$membre  AND id_ANNONCES =$id");
+        $count = $resultat->fetch();
+        $totalLike=$count['vote'];
+        $resultat->closeCursor();
+
+        return $totalLike;
+
+    }
+
 
     public function getDisLikes($id)
     {
@@ -120,6 +134,24 @@ class AddManager extends Manager
         return $disLike;
 
     }
+
+    // si déja aimé masque les boutons j'aime et j'aime pas puis affiche le compteur 
+
+    public function DisLike($id)
+    {
+
+        $membre=$_SESSION['id'];
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(type)AS vote FROM votes WHERE type=2 AND votes.id_MEMBRES=$membre  AND id_ANNONCES =$id");
+        $count = $resultat->fetch();
+        $totalDisLike=$count['vote'];
+        $resultat->closeCursor();
+
+        return $totalDisLike;
+
+    }
+
+
 
    
     // AFFICHAGE D UNE ANNONCE
@@ -165,7 +197,11 @@ class AddManager extends Manager
         
     }
 
-    // EDITION ANNONCE 
+    // --------------------
+    // EDITION ANNONCES
+    // --------------------
+
+    // Recupere les infos -> page edition 
     
     public function editAnnonce($id)
     {
@@ -179,22 +215,36 @@ class AddManager extends Manager
         return $editAnnonce;
     }
 
+    // Fonction EDITION Annonce + IMAGES 
+
     public function editAnnonces($id_ANNONCES,$ville,$newLogo,$titre,$presentation,$descriptif,$contact ,$newPhoto1,$newPhoto2){
 
         $db = $this->dbConnect();
-        $updateannonce = $db->prepare('UPDATE annonces SET ville=(:ville), logo=(:logo), titre=(:titre), presentation=(:presentation), 
-        descriptif=(:descriptif), contact=(:contact),  photo1=(:photo1) ,photo2=(:photo2) 
-        WHERE annonces.id=(:id)');
+
+        $requete='UPDATE annonces SET ville=(:ville), titre=(:titre), presentation=(:presentation), 
+        descriptif=(:descriptif), contact=(:contact)' ;
+
+        if(!empty($newLogo)){
+            $requete = $requete. ",logo='$newLogo'";
+        }
+        if(!empty($newPhoto1)){
+
+            $requete = $requete.",photo1='$newPhoto1'"; 
+        }
+        if(!empty($newPhoto2)){
+            $requete = $requete.",photo2='$newPhoto2'"; 
+        }
+            $requete =$requete." WHERE annonces.id=(:id)";
+            
+        $updateannonce = $db->prepare($requete);
         $edit = $updateannonce->execute(array(
              "id" => $id_ANNONCES,
             "ville" => $ville,
-            "logo" =>$newLogo,
             "titre"=>$titre,
             "presentation"=>$presentation,
             "descriptif"=>$descriptif,
-            "contact"=>$contact,
-             "photo1"=>$newPhoto1,
-             "photo2"=>$newPhoto2
+            "contact"=>$contact
+            
  
             ));
        

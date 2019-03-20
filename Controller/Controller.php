@@ -32,7 +32,7 @@ class Controller
 
     public function indexView() {
 
-        $id_MEMBRES= $_SESSION[id];
+        $id_MEMBRES= $_SESSION['id'];
         $getSelection= $this->addManager->getSelection($id_MEMBRES);
         $total = $this->addManager->countAnnonce();    
         $totalMembres = $this->memberManager->countTotalMembres();
@@ -310,21 +310,26 @@ class Controller
 
     public function annonce($id) {
 
-        $id_MEMBRES= $_SESSION['id'];  
-        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
-        $annonce = $this->addManager->getAnnonce($id);
+        $id_MEMBRES= $_SESSION['id']; 
+        $annonce = $this->addManager->getAnnonce($id); 
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);          
         $allComments = $this->commentManager->getComments($id);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
         $nbAlert= $this->commentManager->CountAlerts();
+
+        if(!empty($_SESSION['id'])){
+
+        $totalLike= $this->addManager->limitLike($id);
+        $totalDisLike= $this->addManager->DisLike($id);
+        }
+
     
 
         
         require('view/frontend/annonceView.php');
-        
-
     }
 
     // --------------------
@@ -369,15 +374,27 @@ class Controller
 
     public function editThisAnnonce(){       
         
+
+      
         $ville=$_POST['commune'];
-        $newLogo=$this->manageFile($_FILES['newlogo'],160,80);
+
+
+        if(!empty($_FILES['newlogo']['name'])){
+            $newLogo=$this->manageFile($_FILES['newlogo'],160,80);
+        }
+        
         $titre=htmlspecialchars($_POST['titre']);
         $presentation= htmlspecialchars($_POST['presentation']);
         $descriptif= htmlspecialchars($_POST['descriptif']);
         $contact= htmlspecialchars($_POST['contact']);
-        $newPhoto1=$this->manageFile($_FILES['newphoto1'],600,400);
-        $newPhoto2=$this->manageFile($_FILES['newphoto2'],600,400);
+        if(!empty($_FILES['newphoto1']['name'])){
+            $newPhoto1=$this->manageFile($_FILES['newphoto1'],600,400);
+        }
+        if(!empty($_FILES['newphoto2']['name'])){
+            $newPhoto2=$this->manageFile($_FILES['newphoto2'],600,400);
+        }
         $id_ANNONCES=$_GET['id_ANNONCES']; 
+
         $edit= $this->addManager->editAnnonces($id_ANNONCES,$ville,$newLogo,$titre,$presentation,$descriptif,$contact,$newPhoto1,$newPhoto2);
 
         header("Location: index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
@@ -478,13 +495,13 @@ class Controller
         $id_MEMBRES= $_SESSION['id'];
         $id_COMMENTAIRE= $_GET['id_COMMENTAIRE'];
         $incrementAlert= $this->commentManager->incrementAlert($id_ANNONCES,$id_MEMBRES,$id_COMMENTAIRE);
+        
 
         header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
 
 
     }
       // -----------------------
-
   
     // ------------------
     // AJOUT COMMENTAIRES
@@ -562,7 +579,10 @@ class Controller
         $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
         $allowed=array('jpeg','JPEG','png','PNG','jpg','JPG','gif','GIF'); 
         $filename=$file['name']; 
-        $ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
+        $ext=pathinfo($filename, PATHINFO_EXTENSION); 
+    
+
+        if(!in_array($ext,$allowed) ) 
         { 
 
             throw new Exception('mauvais format de fichier');
