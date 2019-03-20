@@ -129,11 +129,12 @@ class App
 
                 } elseif ($_GET['action'] == 'annonce'){        // -> Fonction  affichage d'une annonce 
                   
-                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) {                 
+                    if ((isset($_GET['id'])) && $_GET['id'] > 0 ) { 
+
                         $id = $_GET['id'];
                         $id_COMMENTAIRES=$_GET['id_COMMENTAIRE']; 
                                            
-                        $this->controller->annonce($id,$id_COMMENTAIRES);
+                        $this->controller->annonce($id);
 
                     }
                      else {

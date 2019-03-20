@@ -310,21 +310,26 @@ class Controller
 
     public function annonce($id) {
 
-        $id_MEMBRES= $_SESSION['id'];  
-        $getSelection= $this->addManager->getSelection($id_MEMBRES);   
-        $annonce = $this->addManager->getAnnonce($id);
+        $id_MEMBRES= $_SESSION['id']; 
+        $annonce = $this->addManager->getAnnonce($id); 
+        $getSelection= $this->addManager->getSelection($id_MEMBRES);          
         $allComments = $this->commentManager->getComments($id);
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
         $nbAlert= $this->commentManager->CountAlerts();
+
+        if(!empty($_SESSION['id'])){
+
+        $totalLike= $this->addManager->limitLike($id);
+        $totalDisLike= $this->addManager->DisLike($id);
+        }
+
     
 
         
         require('view/frontend/annonceView.php');
-        
-
     }
 
     // --------------------
@@ -490,13 +495,13 @@ class Controller
         $id_MEMBRES= $_SESSION['id'];
         $id_COMMENTAIRE= $_GET['id_COMMENTAIRE'];
         $incrementAlert= $this->commentManager->incrementAlert($id_ANNONCES,$id_MEMBRES,$id_COMMENTAIRE);
+        
 
         header('Location: index.php?action=annonce&id='.$id_ANNONCES.'&id_MEMBRES='.$id_MEMBRES);
 
 
     }
       // -----------------------
-
   
     // ------------------
     // AJOUT COMMENTAIRES

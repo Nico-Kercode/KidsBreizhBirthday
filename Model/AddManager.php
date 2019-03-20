@@ -52,8 +52,7 @@ class AddManager extends Manager
         $db = $this->dbConnect();
 
         $req = $db->prepare("SELECT * FROM annonces WHERE ville = ? ORDER BY annonces.titre ASC LIMIT $starter, $parPage");
-        $req->execute(array($ville)); 
-       
+        $req->execute(array($ville));       
         $annonces = $req->fetchAll();
         $req->closeCursor();
         
@@ -107,6 +106,21 @@ class AddManager extends Manager
         return $like;
 
     }
+    
+    // si déja aimé masque les boutons j'aime et j'aime pas puis affiche le compteur 
+    public function limitLike($id){
+
+        $membre=$_SESSION['id'];
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(type)AS vote FROM votes WHERE type=1 AND votes.id_MEMBRES=$membre  AND id_ANNONCES =$id");
+        $count = $resultat->fetch();
+        $totalLike=$count['vote'];
+        $resultat->closeCursor();
+
+        return $totalLike;
+
+    }
+
 
     public function getDisLikes($id)
     {
@@ -120,6 +134,24 @@ class AddManager extends Manager
         return $disLike;
 
     }
+
+    // si déja aimé masque les boutons j'aime et j'aime pas puis affiche le compteur 
+
+    public function DisLike($id)
+    {
+
+        $membre=$_SESSION['id'];
+        $db = $this->dbConnect();
+        $resultat = $db->query("SELECT COUNT(type)AS vote FROM votes WHERE type=2 AND votes.id_MEMBRES=$membre  AND id_ANNONCES =$id");
+        $count = $resultat->fetch();
+        $totalDisLike=$count['vote'];
+        $resultat->closeCursor();
+
+        return $totalDisLike;
+
+    }
+
+
 
    
     // AFFICHAGE D UNE ANNONCE
