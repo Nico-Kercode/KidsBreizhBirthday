@@ -148,7 +148,7 @@
                         <a class="likeBtn"
                             
                              href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a> 
-                        Ce message à déja été signalé <?= $nbAlert?> fois
+                        Ce message à déja été signalé <?=$comment['nbreReport']?> fois
 
 
                         <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>

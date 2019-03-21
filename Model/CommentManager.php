@@ -42,8 +42,10 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         
-        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
-        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
+        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo , COUNT(alert.id_MEMBRES) AS nbreReport
+        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id 
+        INNER JOIN alert ON alert.id_COMMENTAIRES = commentaires.id  WHERE commentaires.id_ANNONCES = ? 
+        GROUP BY commentaires.id 
         ORDER BY date_commentaire DESC');
 
         $comments->execute(array($id));
@@ -196,19 +198,6 @@ class CommentManager extends Manager
         $req->closeCursor();
 
         return $nbAlert;
-    }
-
-    public function CountSignalement($id_COMMENTAIRE)
-    {
-
-    $db = $this->dbConnect();
-    $req= $db->query("SELECT sum(id_MEMBRES) AS nbreReport FROM alert WHERE id_COMMENTAIRES= $id_COMMENTAIRE");
-    $count=$req->fetch();
-    $nbSignal=$count['nbreReport'];
-    $req->closeCursor();
-
-    return $nbSignal;
-
     }
 
 
