@@ -19,24 +19,24 @@
                     </div>
                     <div class="col-sm-4 text-right p-2">
 
-                    <?php if ($totalLike['vote'] == 0 && $totalDisLike['vote'] == 0 ) { ?>
+                        <?php if ($totalLike['vote'] == 0 && $totalDisLike['vote'] == 0 ) { ?>
                         <a class="likeBtn"
                             href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
-                        <?= $like?>                       
+                        <?= $like?>
                         <?php } elseif($like < 2){ 
                                 echo $like ?> personne aime <br>
-                                <?php } elseif ($like > 1) { ?>
-                                <?= $like?> personnes aiment <br> <?php }?>
+                        <?php } elseif ($like > 1) { ?>
+                        <?= $like?> personnes aiment <br> <?php }?>
 
 
-                    <?php if ($totalDisLike['vote'] == 0 && $totalLike['vote'] == 0) { ?> 
+                        <?php if ($totalDisLike['vote'] == 0 && $totalLike['vote'] == 0) { ?>
                         <a class="likeBtn"
                             href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
                             n'aime pas</a> <?=$disLike?>
-                            <?php } elseif($disLike < 2){ 
+                        <?php } elseif($disLike < 2){ 
                                 echo $disLike ?> personne n'aime pas<br>
-                                <?php } elseif ($disLike > 1) { ?>
-                                <?= $disLike?> personnes n'aiment pas<br> <?php }?>
+                        <?php } elseif ($disLike > 1) { ?>
+                        <?= $disLike?> personnes n'aiment pas<br> <?php }?>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -140,22 +140,22 @@
                 <h4 class="text-left my-2 h4color"> <em>Les derniers avis :</em></h4>
                 <!-- COMMENTAIRES -->
                 <?php foreach ($allComments as $comment): ?>
+
                 <div class="col-sm-12 result annonceContent ">
                     <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
                                 <em></strong> le
                         <?= $comment['date_commentaire'] ?>
 
                         <a class="likeBtn"
-                            
-                             href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a> 
-                        Ce message à déja été signalé <?=$comment['nbreReport']?> fois
+                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
+                        Ce message à déja été signalé <?= $nbAlert?> fois
 
 
                         <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
                         </p>
                 </div>
 
-                <?php endforeach;?>
+                <?php endforeach ;?>
 
             </div>
         </div>

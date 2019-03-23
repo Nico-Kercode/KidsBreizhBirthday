@@ -71,6 +71,10 @@ class MemberManager extends Manager{
 
     }
 
+    // --------------
+    // UPDATE AvATAR
+    // -------------- 
+
     public function upAvatar($member_id,$newAvatar){
 
         $db = $this->dbConnect();
@@ -101,6 +105,11 @@ class MemberManager extends Manager{
 
     }
 
+    // -----------------------
+    // LISTE  MEMBRES INSCRITS
+    //  MENU ADMIN
+    // -----------------------
+
     public function getMembers($starter,$parPage)
     {
        
@@ -115,6 +124,10 @@ class MemberManager extends Manager{
         return $getMembres;
     }
 
+    // ----------------------------
+    // CALCUL PAGINATION MENU ADMIN
+    // ----------------------------
+
     public function CountMembers()
     {
         $db = $this->dbConnect();
@@ -125,6 +138,10 @@ class MemberManager extends Manager{
 
         return $nbDeMembres;
     }
+    
+    // ----------------------
+    // TOTAL MEMBRES INSCRITS 
+    // ----------------------
 
     public function countTotalMembres()
     {   

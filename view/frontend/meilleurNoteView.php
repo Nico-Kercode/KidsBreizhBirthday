@@ -1,20 +1,12 @@
-<?php $title = 'Vannes'; ?>
+<?php $title = 'Classement par note'; ?>
 <?php ob_start(); ?>
 
-
-
-
 <h1 class="text-center my-4 h1annonces"> <span>L</span>es mieux notés</h1>
-
-
-
-
-
 <div class="container" id="best">
     <div class="row">
 
         <?php
-foreach ($bestAnnonces as $data) { ?>
+foreach ($bestAnnonces as $data) : ?>
         <div class="col-sm-5 offset-sm-1 mainAnnonces">
             <!-- boucle affichage des annonces -->
             <div class="row annonceHaut" >
@@ -41,13 +33,10 @@ foreach ($bestAnnonces as $data) { ?>
             </div>
         </div>
         <!-- END FOREACH -->
-        <?php
-}
-?>
+        <?php endforeach; ?>
     </div>
 </div>
 <!--  -->
-<div class="baspost">
-</div>
+
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>

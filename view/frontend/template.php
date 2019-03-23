@@ -7,8 +7,8 @@
     <meta name="Content-Language" content="fr">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Description" content="sélection de lieux où fêter un anniversaire pour son enfant en Bretagne .
-    Idées de lieux où fêter l'anniversaire de son enfant en Bretagne , Morbihan , Vannes , Lorients.">
+    <meta name="Description"
+        content="Idees de lieux où fêter l'anniversaire de son enfant en Bretagne , Morbihan , Vannes , Lorients.">
     <meta name="Keywords"
         content="anniversaire enfant Bretagne - Vannes Morbihan Lorient idée fête anniversaire où fêter un l'anniversaire de son enfant  ">
     <meta name="Subject" content="anniversaire enfant bretagne">
@@ -37,11 +37,12 @@
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
 
- <!-- COOKIES -->
+    <!-- COOKIES -->
 
     <link rel="stylesheet" type="text/css"
         href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
     <script>
     window.addEventListener("load", function() {
         window.cookieconsent.initialise({
@@ -64,11 +65,9 @@
         })
     });
     </script>
-
 </head>
 
 <body>
-
     <!-- Include Nav Bar + Sidebar -->
     <?php include('elements/nav.php');?>
 

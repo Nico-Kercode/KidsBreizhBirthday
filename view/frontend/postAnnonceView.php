@@ -1,4 +1,4 @@
-<?php $title = 'New annonce'; ?>
+<?php $title = 'Publication Annonce'; ?>
 <?php ob_start(); ?>
 
 <div class="container">
@@ -20,8 +20,8 @@
 
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">LOGO (max. 1 Mo)</label>
-                    <input type="file" name="logo" required class="form-control-file my-2"
-                    data-validation="size" data-validation-max-size="1M">
+                    <input type="file" name="logo" required class="form-control-file my-2" data-validation="size"
+                        data-validation-max-size="1M">
                 </div>
                 <div class="form-group">
                     <label for="title" class="col-sm-3 control-label">Titre</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="contenu">Presentation du lieu (maxi 500 caracters) </label>
-                    <textarea class="form-control" rows="5"  maxlength="600"required name="contentA"></textarea>
+                    <textarea class="form-control" rows="5" maxlength="600" required name="contentA"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="contenu">Descriptif des activités proposées (maxi 500 caracters)</label>
@@ -43,14 +43,14 @@
                 </div>
                 <div class="form-group">
 
-                    <label for="formControl" class="col-sm-510">Photo 1 (max. 1 Mo)</label>        
-                    <input type="file" name="photo1" required class="form-control-file my-2"
-                    data-validation="size" data-validation-max-size="1M">
+                    <label for="formControl" class="col-sm-510">Photo 1 (max. 1 Mo)</label>
+                    <input type="file" name="photo1" required class="form-control-file my-2" data-validation="size"
+                        data-validation-max-size="1M">
                 </div>
                 <div class="form-group">
                     <label for="formControl" class="col-sm-510">Photo 2 (max. 1 Mo)</label>
-                    <input type="file" name="photo2" required class="form-control-file my-2"
-                    data-validation="size" data-validation-max-size="1M">
+                    <input type="file" name="photo2" required class="form-control-file my-2" data-validation="size"
+                        data-validation-max-size="1M">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-dark" name="ajoutAnnonce">Envoyer</button>
@@ -60,6 +60,7 @@
         </div>
     </div>
     <div class="baspost">
+        <p>Vos annonces seront controlées , nous vous contacterons si quelque chose n'etait pas conforme .</p>
     </div>
 </div> <!-- ./container -->
 

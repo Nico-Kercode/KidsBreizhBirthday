@@ -8,7 +8,7 @@
         <div class="col-sm-12 col-lg-8">
             <div class="row">
                 <?php
-foreach ($annonces as $data) { ?>
+foreach ($annonces as $data) : ?>
                 <div class="col-sm-5 offset-sm-1 mainAnnonces">
                     <!-- boucle affichage des annonces -->
                     <div class="row annonceHaut">
@@ -32,9 +32,8 @@ foreach ($annonces as $data) { ?>
                     </div>
                 </div>
                 <!-- END FOREACH -->
-                <?php
-}
-?>
+                <?php endforeach ;?>
+
             </div>
         </div>
         <!--  -->

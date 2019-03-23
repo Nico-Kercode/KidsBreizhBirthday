@@ -1,13 +1,13 @@
-<?php $title = 'Lorient'; ?>
+<?php $title = 'Annonce par ville : Lorient'; ?>
 <?php ob_start(); ?>
 <h1 class="text-center  h1annonces"> <span>L</span>ORIENT</h1>
 <div class="container-fluid d-flex">
     <div class="row">
-        <div class=" d-none d-md-block col-md-2">          
+        <div class=" d-none d-md-block col-md-2">
         </div>
         <div class="col-sm-12 col-lg-8">
             <div class="row">
-                <?php foreach ($annonces as $data) { ?>
+                <?php foreach ($annonces as $data) : ?>
                 <div class="col-sm-5 offset-sm-1 mainAnnonces">
                     <!-- boucle affichage des annonces -->
                     <div class="row annonceHaut">
@@ -33,9 +33,9 @@
                     </div>
                 </div>
                 <!-- END FOREACH -->
-                <?php
-}
-?>
+                <?php endforeach;?>
+
+
             </div>
         </div>
         <div class=" d-none d-md-block col-sm-2 ">

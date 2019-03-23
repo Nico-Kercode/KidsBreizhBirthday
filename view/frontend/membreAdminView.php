@@ -1,17 +1,14 @@
 <?php $title = 'Administration'; ?>
 <?php ob_start(); ?>
 
-
-
 <div class="container">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
-<a class="reportBtn" href="index.php?action=admin&page=1">Retour</a>
+    <a class="reportBtn" href="index.php?action=admin&page=1">Retour</a>
     <div class="col-sm-12 admin">
-
         <h2 class="text-center">Liste des Membres Inscrits</h2>
         <div class="row">
             <?php
-foreach ($getMembres as $data) { ?>
+foreach ($getMembres as $data) : ?>
             <div class="col-sm-6">
 
                 <?php if($data['rang'] == '0') {
@@ -23,26 +20,17 @@ foreach ($getMembres as $data) { ?>
         }
         elseif($data['rang'] == '2') {
             $rang='ADMINISTRATEUR';
-
         } ?>
-
-
                 <p class="list"> Pseudo :
                     <?= $data['pseudo'].'<br>  Email  : '.$data['email'].'<br>   Date d\'inscription :  '.$data['date_inscription']?>
                     <br>Rang : <?= $rang ?> <br>
                     <br> </p>
             </div>
-
             <!-- END FOREACH -->
-            <?php
-}
-?>
-
+            <?php endforeach ;?>
         </div>
     </div>
     <!--  -->
-
-
     <!--  PAGINATION -->
 
     <div class="row">
