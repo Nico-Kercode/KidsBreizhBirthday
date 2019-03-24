@@ -38,14 +38,31 @@ class CommentManager extends Manager
     // AFICHAGE COMMENTAIRE
     // --------------------
 
+      // version avec total de signalement pas commentaires , PB a resoudre  ...
+    // public function getComments($id)
+    // {
+    //     $db = $this->dbConnect();
+        
+    //     $comments = $db->prepare('SELECT commentaires.id, contenu, date_commentaire, pseudo , COUNT(alert.id_MEMBRES) AS nbreReport
+    //     FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id 
+    //     INNER JOIN alert ON alert.id_COMMENTAIRES = commentaires.id  WHERE commentaires.id_ANNONCES = ? 
+    //     GROUP BY commentaires.id 
+    //     ORDER BY date_commentaire DESC');
+
+    //     $comments->execute(array($id));
+        
+    //     $allComments= $comments->fetchAll();
+       
+    //     return $allComments;
+
+    // }
+
     public function getComments($id)
     {
         $db = $this->dbConnect();
         
-        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo , COUNT(alert.id_MEMBRES) AS nbreReport
-        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id 
-        INNER JOIN alert ON alert.id_COMMENTAIRES = commentaires.id  WHERE commentaires.id_ANNONCES = ? 
-        GROUP BY commentaires.id 
+        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
+        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
         ORDER BY date_commentaire DESC');
 
         $comments->execute(array($id));

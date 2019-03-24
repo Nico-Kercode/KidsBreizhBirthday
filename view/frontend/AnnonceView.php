@@ -142,15 +142,13 @@
                 <?php foreach ($allComments as $comment): ?>
 
                 <div class="col-sm-12 result annonceContent ">
-                    <h6 class="text-left">commentaire de : <strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
-                                <em></strong> le
-                        <?= $comment['date_commentaire'] ?>
+                <p class="text-right">commentaire de : &nbsp;<strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
+                                <em></strong>&nbsp; le
+                        <?= $comment['date_commentaire'] ?> &nbsp;
 
-                        <a class="likeBtn"
-                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
-                        Ce message à déja été signalé <?= $nbAlert?> fois
-
-
+                         Ce message à déja été signalé <?= $nbAlert?> fois  &nbsp;
+                        <a href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
+                        </p>
                         <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
                         </p>
                 </div>

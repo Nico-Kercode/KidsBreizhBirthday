@@ -179,11 +179,6 @@ class Controller
         if($password == $password_2) {
             $password_1 = $password_2;
         } 
-
-        if(!preg_match("/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/",$email)) { 
-
-            throw new Exception('Veuillez choisir un email valide'); 
-        }
         $passHash= password_hash($password_1, PASSWORD_DEFAULT );
         $registerMember = $this->memberManager->updtMember($email,$passHash,$member_id);
         $total = $this->addManager->countAnnonce();
@@ -191,7 +186,6 @@ class Controller
         $nbAlert= $this->commentManager->CountAlerts();
 
 
-        $_SESSION['email']= $email;
 
         header('Location: index.php?action=moncompte');
                
@@ -606,11 +600,12 @@ class Controller
             $srcFile = array_pop($ary);
             $srcPath = join('/', $ary) . '/';
             $folder ="assets/img/webFiles/"; 
-            $image = rand(1000, 10000000).$file['name']; 
+            // ajoute timastamp devant le nom de l image pour eviter les doublons
+            $image = time().$file['name'];
             $path = $folder . $image ; 
 
             $this->fctredimimage($width,$height,$folder,$image,$srcPath,$srcFile);
-            // unlink($tempPath); // supprime le fichier temporaire
+            unlink($tempPath); // supprime le fichier temporaire
 
             return $path;
         } 

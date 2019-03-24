@@ -279,10 +279,15 @@ img {
 
 .annonceContent {
     font-family: 'Neucha', cursive !important;
+    min-height: 100px;
+    padding: .8rem;
     margin: 0 auto !important;
     font-weight: normal !important;
     font-size: 1em;
     text-shadow: none;
+    h6,p{
+        border-bottom: 2px solid $jaune2;
+    }
 }
 
 .CommContent {
