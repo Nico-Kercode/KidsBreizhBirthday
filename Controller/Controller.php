@@ -324,6 +324,7 @@ class Controller
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
         $nbAlert= $this->commentManager->CountAlerts();
+        $allComments=$this->commentManager->getComments($id);
 
         if(!empty($_SESSION['id'])){
 
@@ -331,10 +332,9 @@ class Controller
         $totalDisLike= $this->addManager->DisLike($id);
         }
 
-    
+        require('view/frontend/annonceView.php');
 
         
-        require('view/frontend/annonceView.php');
     }
 
     // --------------------

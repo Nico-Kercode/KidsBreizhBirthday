@@ -138,15 +138,15 @@
         <div class="row d-flex CommContent">
             <div class="col-sm-12 my-4">
                 <h4 class="text-left my-2 h4color"> <em>Les derniers avis :</em></h4>
-                <!-- COMMENTAIRES -->
+                <!-- COMMENTAIRES -->   
                 <?php foreach ($allComments as $comment): ?>
 
                 <div class="col-sm-12 result annonceContent ">
                 <p class="text-right">commentaire de : &nbsp;<strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
                                 <em></strong>&nbsp; le
                         <?= $comment['date_commentaire'] ?> &nbsp;
-
-                         Ce message à déja été signalé <?= $nbAlert?> fois  &nbsp;
+                    
+                         Ce message à déja été signalé <?= $comment['nbreReport']?> fois  &nbsp;
                         <a href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
                         </p>
                         <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>

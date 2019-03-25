@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 15 mars 2019 à 18:40
+-- Généré le :  lun. 25 mars 2019 à 09:03
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.0
 
@@ -35,6 +35,13 @@ CREATE TABLE `alert` (
   `id_COMMENTAIRES` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `alert`
+--
+
+INSERT INTO `alert` (`id`, `id_MEMBRES`, `id_ANNONCES`, `id_COMMENTAIRES`) VALUES
+(23, 1, 146, 33);
+
 -- --------------------------------------------------------
 
 --
@@ -59,7 +66,7 @@ CREATE TABLE `annonces` (
 --
 
 INSERT INTO `annonces` (`id`, `ville`, `logo`, `titre`, `presentation`, `descriptif`, `contact`, `photo1`, `photo2`, `id_MEMBRES`) VALUES
-(1, 'vannes', 'assets\\img\\artworkIMG\\logos\\yakapark.png', 'YAKAPARK', 'Le YakaPark est un parc de jeux couvert climatisé accueillant les enfants de 1 à 12 ans.\r\nLe Parc est constitué de 2 structures de jeux où les enfants peuvent s\'amuser en toute sécurité.\r\nPour le plaisirs de vos enfants et de leurs amis, nous organisons également leurs anniversaires. ', '3 Formules au choix \r\n Nos formules intègrent la réservation et la décoration de la table, un accès aux espaces de jeux, les boissons.\r\nVous apportez seulement le gâteau et les bonbons !!!\r\nNous mettons à disposition un animateur et ou animatrice au moment de fêter l\'anniversaire de votre enfant.\r\nDroit d\'entrée à partir du 3ème adultes de 1,70 €\r\n( minimum 6 enfants )\r\n\r\n', 'Comment faire pour réserver un anniversaire ?\r\nPar tél : 02 97 63 80 68 au heures d\'ouvertures du Parc\r\nou\r\nau 06 08 91 15 22 du mardi au vendredi de 10h00 à 18h00\r\nmartine@domainedeyaka.com\r\n', 'assets/img/webFiles/9926493photoyka.PNG', 'assets/img/webFiles/4815439yaka.PNG', 1),
+(1, 'vannes', 'assets/img/webFiles/3885166logo.png', 'YAKAPARK', 'Le YakaPark est un parc de jeux couvert climatisé accueillant les enfants de 1 à 12 ans.\r\nLe Parc est constitué de 2 structures de jeux où les enfants peuvent s\'amuser en toute sécurité.\r\nPour le plaisirs de vos enfants et de leurs amis, nous organisons également leurs anniversaires. ', '3 Formules au choix \r\n Nos formules intègrent la réservation et la décoration de la table, un accès aux espaces de jeux, les boissons.\r\nVous apportez seulement le gâteau et les bonbons !!!\r\nNous mettons à disposition un animateur et ou animatrice au moment de fêter l\'anniversaire de votre enfant.\r\nDroit d\'entrée à partir du 3ème adultes de 1,70 €\r\n( minimum 6 enfants )\r\n\r\n', 'Comment faire pour réserver un anniversaire ?\r\nPar tél : 02 97 63 80 68 au heures d\'ouvertures du Parc\r\nou\r\nau 06 08 91 15 22 du mardi au vendredi de 10h00 à 18h00\r\nmartine@domainedeyaka.com\r\n', 'assets/img/webFiles/9926493photoyka.PNG', 'assets/img/webFiles/4815439yaka.PNG', 1),
 (119, 'vannes', 'assets\\img\\artworkIMG\\logos\\foretAdrenaline.png', 'Foret Adrenaline', 'Forêt Adrénaline vous propose de 1h30 à 3h30 d’activité.  Dès 2 ans, profitez de 15 parcours aventures et 1 parcours filet à 17m de haut.\r\nMise à disposition d’un espace pour organiser vous-même goûter ou pique-nique. \r\n', 'Envie d’un anniversaire unique ? Notre équipe vous propose des prestations personnalisées !\r\no	3 à 4 parcours aventure avec baudrier pendant 2h30.\r\n(habillage et briefing inclus).\r\nAventure ESCALADE\r\n30 min sur le bloc d’escalade animé par un membre de l’équipe Forêt Adrénaline.\r\nAventure DUEL\r\n30 min de Challenge animé sur le parcours Duel : deux équipes s’affrontent en course relais sur deux parcours identiques en parallèle. Chaque équipe peut déstabiliser son adversaire.\r\n\r\n', 'Adresse : Fontainebleau, 56340 Carnac\r\nTéléphone : 02 90 84 00 20', 'assets/img/webFiles/8540843foret.PNG', 'assets/img/webFiles/2754420foret2.PNG', 1),
 (120, 'vannes', 'assets\\img\\artworkIMG\\logos\\jumpSession.png', 'Jump Session 56', 'Venez jumper et vous amuser, chez Jump Session, le trampoline parc intérieur à Vannes. Profitez des activités sur trampolines et de l\'espace restauration.', 'Souffler ses bougies chez Jump’ Session\r\nPlus besoin de se torturer l’esprit pour trouver une idée originale pour fêter l’anniversaire de votre enfant, Jump’ Session s’occupe de tout ! Nous préparons une journée pleine de rebondissements pour votre enfant et tous ses amis. Une manière ludique et atypique de fêter son anniversaire, tout en variant les activités : balle au prisonniers, basket, ou encore baby-foot. Le trampoline parc est à eux !\r\n', ' Ouverture\r\nDe 7 à 77 ans\r\nLundi 12h – 20h\r\nMardi Fermé\r\nMercredi 12h – 20h\r\nJeudi 12h – 22h\r\nVendredi 12h – 22h\r\nSamedi 10h – 22h\r\nDimanche 10h – 20h\r\nVacances scolaires :\r\nTOUS les jours dès 10h\r\n18 r. aristide Boucicaut 56000 VANNES 02 90 73 55 26', 'assets/img/webFiles/3946949tof1.jpg', 'assets/img/webFiles/4248728tof2.jpg', 1),
 (121, 'vannes', 'assets/img/webFiles/6366836logoPatinoire.png', 'Patinoire de Vannes', 'Patinoire de VANNES \r\nPremière option : dans la cafétéria\r\n- Vous pouvez faire votre réservation directement à la patinoire, par mail direction@patinium.com ou nous téléphoner au 0297409123.\r\nVous pouvez choisir :\r\n- un ou plusieurs gâteaux (gâteaux chocolat, crumble pommes...)\r\n- choisir une décoration (nappe, gobelets, ballons…) \r\n- choisir des boissons individuelles, grandes bouteilles (coca, Fanta,... selon disponibilité) et carafes\r\n', 'Deuxième option : espace chalet en bord de piste\r\n- Vous pouvez faire votre réservation directement à la patinoire, par téléphone au 0297409123 ou par mail direction@patinium.com\r\n- Vous apportez vos consommations et vos décorations (bougies et alcool interdits).\r\n9,70€ par personne (avec location de patins)\r\n', 'Patinoire de Vannes,\r\n 6 rue Georges CALDRAY, \r\n56000 Vannes \r\n0297409123 \r\ndirection@patinium.com', 'assets/img/webFiles/9418418anniv.jpg', 'assets/img/webFiles/6641098patin.PNG', 1),
@@ -81,7 +88,12 @@ INSERT INTO `annonces` (`id`, `ville`, `logo`, `titre`, `presentation`, `descrip
 (137, 'lorient', 'assets/img/webFiles/3229344logo.png', 'Le Poisson Volant', 'Parc aventure de Ploemeur\r\nsur le thème de la mer\r\n\r\nLe Poisson Volant est un parc aventure sur le thème de la mer situé à Ploemeur dans le Morbihan. On peut aussi y fêter un anniversaire d\'enfant.\r\n', 'Les 6 - 10 ans : parcours vert, vert+ et bleu à partir de 6ans, bleu tyros à partir de de 8ans, bleu+à partir de de 9 ans, rouges à partir de de 10 ans. \r\nEn toute sérénité grâce aux mousquetons intelligents ! Ce système d\'assurage évite le décrochage accidentel des 2 connecteurs à la fois !\r\nAprès les consignes d\'utilisation du matériel et explications de début de séance, le groupe effectue un petit parcours test pour ensuite, évoluer progressivement, en autonomie, surveillé par des Opérateurs en', 'Douar Gwen, \r\n56270 Ploemeur', 'assets/img/webFiles/3386471tof 1.jpg', 'assets/img/webFiles/3347482tof 2.jpg', 1),
 (138, 'lorient', 'assets/img/webFiles/3997269logo.png', 'MAYAPARK', 'MAYAPARK est un parc d\'attractions et de loisirs couvert et climatisé pour enfants sur le thème du peuple Maya : un espace entièrement sécurisé pour les enfants', 'Anniversaires 2h, (minimum 8 enfants)\r\nFormule de base : 8€50/enfant + 5€50 de frais de décoration (comprend table décorée, personnalisée, assiettes, gobelets, serviettes, cartons d\'invitations)\r\nEn option :\r\n•	Option 1 - gâteau d\'anniversaire avec bougies : 2€/enfant\r\n•	Option 2 - boissons comprises (jus d\'oranges, coca-cola, eau de source : 2€/enfant)\r\n•	Option 3 - bonbons, friandises : 2€/enfant\r\n', 'Zone Artisanale Manebos, \r\nRue Jean Marie Djibaou, \r\n56600 Lanester', 'assets/img/webFiles/5209420tof 1.jpg', 'assets/img/webFiles/3788664photo1.PNG', 1),
 (139, 'lorient', 'assets/img/webFiles/5650358logo.PNG', 'Metropolis Bowling Laser ', 'Bowling, Laser Blade, Jeux d\'arcade, Bar, votre centre Metropolis vous offre un lieu de bonne humeur pour sortir en famille ou entre amis ! ', 'Métropolis est un complexe multi-loisirs pour les familles, qui accueillent ... Les enfants, jusqu\'à 13 ans, peuvent venir fêter leur anniversaire à Métropolis avec leurs ... Formule &quot;simple&quot; (bowling ou laser) avec 1 boisson : 8 euros par enfant.', 'rue Gustave Zede, \r\nZa de Manebos,\r\n 56600 Lanester', 'assets/img/webFiles/1918890tof1.PNG', 'assets/img/webFiles/2259098tof2.PNG', 1),
-(140, 'lorient', 'assets/img/webFiles/7250946logo.PNG', 'Zoo de Pont Scorff', 'Zoo de Pont Scorff  de Lorient', '5heures de visites et spectacles\r\nGouter dans l\'espace restauration \r\nGateau \r\nBoissons ...', ' ZOO DE PONT-SCORFF - \r\nKeruisseau  \r\n56620 Pont-Scorff \r\n-02 97 32 60 86\r\nFax : 02 97 32 57 06 ', 'assets/img/webFiles/2490300tof1.PNG', 'assets/img/webFiles/2490300tof1.PNG', 1);
+(140, 'lorient', 'assets/img/webFiles/7250946logo.PNG', 'Zoo de Pont Scorff', 'Zoo de Pont Scorff  de Lorient', '5heures de visites et spectacles\r\nGouter dans l\'espace restauration \r\nGateau \r\nBoissons ...', ' ZOO DE PONT-SCORFF - \r\nKeruisseau  \r\n56620 Pont-Scorff \r\n-02 97 32 60 86\r\nFax : 02 97 32 57 06 ', 'assets/img/webFiles/2490300tof1.PNG', 'assets/img/webFiles/2490300tof1.PNG', 1),
+(143, 'vannes', 'assets/img/webFiles/1553422576logo.png', 'titre Test update image une a une ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at urna arcu. Sed quis nulla sapien. Nam felis mauris, tincidunt at convallis id, temp', 'blablbalbalbalabla', 'assets/img/webFiles/1553422555Aquagolfe-.jpg', 'assets/img/webFiles/1553422556piscine2.jpg', 1),
+(144, 'vannes', 'assets/img/webFiles/3986323logo.png', 'ytetz', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at urna arcu. Sed quis nulla sapien. Nam felis mauris, tincidunt at convallis id, temp', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at urna arcu. Sed quis nulla sapien. Nam felis mauris, tincidunt at convallis id, temp', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at urna arcu. Sed quis nulla sapien. Nam felis mauris, tincidunt at convallis id, tempor molestie libero. Quisque viverra sollicitudin nisl sit amet hendrerit. Etiam sit amet arcu sem. Morbi eu nibh condimentum, interdum est quis, tempor nisi. Vivamus convallis erat in pharetra elementum. Phasellus metus neque, commodo vitae venenatis sed, pellentesque non purus. Pellentesque egestas convallis suscipit. Ut luctus, leo quis porta vulputate, purus purus pellentesque ex, id consequat mi nisl quis eros. Integer ornare libero quis risus fermentum consequat. Mauris pharetra odio sagittis, vulputate magna at, lobortis nulla. Proin efficitur, nisi vel finibus elementum, orci sem volutpat eros, eget ultrices velit mi sagittis massa. Vestibulum sagittis ullamcorper cursus. Ut turpis dolor, tempor ut tellus et, sodales ultricies elit. Ut pharetra tristique est ac dictum. Integer ac consectetur purus, vehicula efficitur urna. Donec ultrices accumsan ipsum vitae faucibus. Quisque malesuada ex nisi, a bibendum erat commodo in. Pellentesque suscipit varius gravida. Nam scelerisque est sit amet laoreet pharetra. Vivamus quis ligula sed lacus mattis mollis. Vivamus facilisis orci rutrum nulla porta dignissim. Fusce fermentum id nibh laoreet volutpat. Suspendisse venenatis, risus sed euismod finibus, risus arcu fringilla augue, nec vulputate felis nisl et enim. In ornare, massa a cursus cursus, nisl mi ornare mauris, nec porttitor risus erat ut odio. Integer malesuada hendrerit purus ullamcorper molestie. Fusce imperdiet orci vitae purus suscipit rutrum..', 'assets/img/webFiles/2152596tof2.jpg', 'assets/img/webFiles/1553422503piscine.jpg', 1),
+(145, 'vannes', 'assets/img/webFiles/8509040foret.jpg', 'atest', 'tetzetz', 'zetzet', 'tezzet', 'assets/img/webFiles/7485212foret.jpg', 'assets/img/webFiles/88453868540843foret.PNG', 2),
+(146, 'vannes', 'assets/img/webFiles/6103742drapeau-bretagne.jpg', 'atesssttt', 'azeraeaeze', 'edaedaede', 'aededaedae', 'assets/img/webFiles/7032131Gwenn_ha_Du_(1923).svg.png', 'assets/img/webFiles/9525896lol.jpg', 63),
+(147, 'vannes', 'assets/img/webFiles/1553422413myAvatar.png', 'TIME test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at urna arcu. Sed quis nulla sapien. Nam felis mauris, tincidunt at convallis id, temp', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at urna arcu. Sed quis nulla sapien. Nam felis mauris, tincidunt at convallis id, tempor molestie libero. Quisque viverra sollicitudin nisl sit amet hendrerit. Etiam sit amet arcu sem. Morbi eu nibh condimentum, interdum est quis, tempor nisi. Vivamus convallis erat in pharetra elementum. Phasellus metus neque, commodo vitae venenatis sed, pellentesque non purus. Pellentesque egestas convallis suscipit. Ut luctus, leo quis porta vulputate, purus purus pellentesque ex, id consequat mi nisl quis eros. Integer ornare libero quis risus fermentum consequat. Mauris pharetra odio sagittis, vulputate magna at, lobortis nulla. Proin efficitur, nisi vel finibus elementum, orci sem volutpat eros, eget ultrices velit mi sagittis massa. Vestibulum sagittis ullamcorper cursus. Ut turpis dolor, tempor ut tellus et, sodales ultricies elit. Ut pharetra tristique est ac dictum. Integer ac consectetur purus, vehicula efficitur urna. Donec ultrices accumsan ipsum vitae faucibus. Quisque malesuada ex nisi, a bibendum erat commodo in. Pellentesque suscipit varius gravida. Nam scelerisque est sit amet laoreet pharetra. Vivamus quis ligula sed lacus mattis mollis. Vivamus facilisis orci rutrum nulla porta dignissim. Fusce fermentum id nibh laoreet volutpat. Suspendisse venenatis, risus sed euismod finibus, risus arcu fringilla augue, nec vulputate felis nisl et enim. In ornare, massa a cursus cursus, nisl mi ornare mauris, nec porttitor risus erat ut odio. Integer malesuada hendrerit purus ullamcorper molestie. Fusce imperdiet orci vitae purus suscipit rutrum..', 'assets/img/webFiles/15534224668540843foret.PNG', 'assets/img/webFiles/1553499357Gwenn_ha_Du_(1923).svg.png', 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +115,9 @@ CREATE TABLE `commentaires` (
 --
 
 INSERT INTO `commentaires` (`id`, `contenu`, `date_commentaire`, `id_parent`, `id_ANNONCES`, `id_MEMBRES`) VALUES
-(1, 'Les montagnes russe sont trés sympa\r\n', '2019-03-15 09:02:15', 0, 123, 1);
+(1, 'Les montagnes russe sont trés sympa\r\n', '2019-03-15 09:02:15', 0, 123, 1),
+(33, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.', '2019-03-24 13:02:16', 0, 146, 1),
+(34, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.', '2019-03-24 13:30:58', 0, 146, 1);
 
 -- --------------------------------------------------------
 
@@ -126,9 +140,19 @@ CREATE TABLE `membres` (
 --
 
 INSERT INTO `membres` (`id`, `pseudo`, `email`, `password`, `avatar`, `rang`, `date_inscription`) VALUES
-(1, 'admin', 'admin@kidsbreizhBirthday.fr', '$2y$10$aAKag5gKEkUGdN5ceijkK.5nXigHs2yUA/m4DomOCjvKEPcqII6xC', 'assets/img/webFiles/3838192lol.jpg', 2, '2019-02-21 16:06:23'),
-(2, 'soan', 'onsenfout', '$2y$10$mkw5nbWL1BB1T4yOCbIH0.CWclCx4W4kHwSsbhJhNL4DD4kv4zeD.', 'assets/img/webFiles/219322carte bzh.jpg', 1, '2019-02-24 17:53:16'),
-(41, 'koni', 'koni@mail.com', '$2y$10$8RMW/5IBM8PEIxLnLgRPreerW8ksHe3.W577Pc29Dk3SdBV9xFTwy', 'assets/img/webFiles/test4129569myAvatar.png', 1, '2019-03-13 17:24:54');
+(1, 'admin', 'admin@kidsbreizhBirthday.fr', '$2y$10$aAKag5gKEkUGdN5ceijkK.5nXigHs2yUA/m4DomOCjvKEPcqII6xC', 'assets/img/webFiles/1553499317Gwenn_ha_Du_(1923).svg.png', 2, '2019-02-21 16:06:23'),
+(2, 'soan', 'soan@free.fr', '$2y$10$hNFPW7Uu/b74PAS85iB2huvvgq01RS67mRyeG2lRRuul2mnCieUR6', 'assets/img/webFiles/219322carte bzh.jpg', 1, '2019-02-24 17:53:16'),
+(41, 'koni', 'koni@mail.com', '$2y$10$8RMW/5IBM8PEIxLnLgRPreerW8ksHe3.W577Pc29Dk3SdBV9xFTwy', 'assets/img/webFiles/test4129569myAvatar.png', 1, '2019-03-13 17:24:54'),
+(42, 'testVente', 'test2@test.fr', '$2y$10$jSQC2pgoL5UXr10lzkGaAeWeWdSPBFR4BKnwJlvEKHqbyWeGQSiX.', 'assets/img/webFiles/test4187852myAvatar.png', 1, '2019-03-17 12:13:39'),
+(55, 'test connexion', 'azerty@free.fr', '$2y$10$WWIDs9PfKVKCbGROc8pRGOixyC5o9uunmlUG2XfBr4h6yK2bTW7M2', 'assets/img/webFiles/test4533980carte bzh.jpg', 0, '2019-03-18 10:54:06'),
+(56, 'aaaaaaaaaaaa', 'aaaaaaaa@aaa.de', '$2y$10$hTv73.jIvl3dF3RefW8d3.gD09nK0JU0Wu.WADrlkQCuYm4t1iM/q', 'assets/img/webFiles/test1836008carte bzh.jpg', 0, '2019-03-18 10:55:08'),
+(57, 'treretrt', 'ttttt@tr.tr', '$2y$10$4wPRyGIJnQnGGDi/3A625uPndtYj8vJwwh9y5bL5tkSNY3nJp2Ybm', 'assets/img/webFiles/test6145132carte bzh.jpg', 0, '2019-03-18 10:56:55'),
+(58, 'test565', 'aaaa@fr.fr', '$2y$10$bnSjIiG.T/85LRTGU0iZD.wdrz7XpqmRu7VTrJ.djyfdL56IJUJNO', 'assets/img/webFiles/test3747184carte bzh.jpg', 0, '2019-03-18 10:59:10'),
+(59, 'derpp', 'testt@tttt.fr', '$2y$10$5A9i7ZcbAHHQjCCM2DlPY.qjS9pYAnVqV.ZL5.xHqN5MH3gOcOdV.', 'assets/img/webFiles/test3118741carte bzh.jpg', 0, '2019-03-18 11:29:44'),
+(60, 'test 6999', 'rerer@rer.fr', '$2y$10$2UPNrHi6wU5sM9eQyUj9yejqlZ6h.jKN5rGUMKbpIQOy0SMJEoPzi', 'assets/img/webFiles/test6411508carte bzh.jpg', 0, '2019-03-18 11:40:29'),
+(61, 'jean michel', 'aaaaaa@mail.de', '$2y$10$.wOJC2q2.9kcTnghKfFyfOF7ajVoKcqHMp109/INLqWf2jr9e/jTC', 'assets/img/webFiles/9168336logo.png', 1, '2019-03-18 13:35:11'),
+(62, 'Oulan', 'lediableenpersonne@prata.com', '$2y$10$HiIRJC93.AZukip6MxgrXuXdF3KDw39XVEB2DZhy97DzeS6jFFr4a', 'assets/img/webFiles/1987343tof2.jpg', 0, '2019-03-21 09:38:41'),
+(63, 'gerard', 'jean@free.fr', '$2y$10$EbDNyQG6tTU6bAT8dFAe8uqvPsHkk.vQV6tCaW1aDYKeWtfklTwVK', 'assets/img/webFiles/9230738drapeau-bretagne.jpg', 1, '2019-03-23 16:22:42');
 
 -- --------------------------------------------------------
 
@@ -141,6 +165,16 @@ CREATE TABLE `selection` (
   `id_MEMBRES` int(11) NOT NULL,
   `id_ANNONCES` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `selection`
+--
+
+INSERT INTO `selection` (`id`, `id_MEMBRES`, `id_ANNONCES`) VALUES
+(1, 1, 131),
+(2, 62, 120),
+(3, 62, 139),
+(4, 1, 143);
 
 -- --------------------------------------------------------
 
@@ -160,27 +194,31 @@ CREATE TABLE `votes` (
 --
 
 INSERT INTO `votes` (`id`, `id_MEMBRES`, `id_ANNONCES`, `type`) VALUES
-(135, 1, 133, 1),
-(136, 1, 133, 2),
-(137, 1, 133, 1),
-(138, 1, 133, 1),
-(139, 1, 133, 1),
-(140, 1, 133, 1),
-(141, 1, 133, 1),
-(142, 1, 133, 1),
-(143, 1, 133, 2),
-(144, 1, 133, 1),
-(145, 1, 131, 1),
-(146, 1, 131, 1),
-(147, 1, 131, 1),
-(148, 1, 131, 1),
-(149, 1, 131, 1),
-(150, 1, 131, 1),
-(151, 1, 131, 1),
-(152, 1, 136, 1),
-(153, 1, 136, 2),
-(154, 2, 131, 1),
-(155, 1, 119, 1);
+(154, 2, 131, 2),
+(161, 1, 131, 1),
+(162, 42, 145, 1),
+(164, 42, 131, 1),
+(165, 42, 131, 2),
+(166, 42, 134, 1),
+(167, 42, 135, 1),
+(168, 42, 129, 2),
+(169, 42, 126, 1),
+(170, 42, 136, 2),
+(171, 42, 136, 1),
+(172, 42, 137, 2),
+(173, 42, 137, 1),
+(174, 42, 125, 2),
+(175, 42, 129, 2),
+(176, 1, 145, 1),
+(178, 2, 137, 1),
+(179, 1, 135, 1),
+(180, 1, 126, 1),
+(181, 62, 139, 1),
+(182, 63, 144, 1),
+(183, 1, 143, 1),
+(184, 1, 147, 1),
+(185, 1, 144, 1),
+(186, 1, 146, 1);
 
 --
 -- Index pour les tables déchargées
@@ -240,37 +278,37 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT pour la table `alert`
 --
 ALTER TABLE `alert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `annonces`
 --
 ALTER TABLE `annonces`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `membres`
 --
 ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT pour la table `selection`
 --
 ALTER TABLE `selection`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- Contraintes pour les tables déchargées
