@@ -2,4 +2,4 @@ vendor/*
 assets/img/*
 tmp/*
 node_modules/*
-Model/Manager.php
+
