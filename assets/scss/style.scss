@@ -204,7 +204,9 @@ img {
     margin-bottom: 15px;
     text-shadow: none !important;
 }
-
+.row{
+    min-width: 100%;
+}
 #mainAnnonceContent {
     border: 1px solid orange !important;
     border-bottom: 6px solid orange !important;
@@ -295,7 +297,7 @@ img {
     font-weight: normal !important;
     font-size: 1em;
     text-shadow: none;
-    /* background-color: #FAC32D; */
+    background-color: rgb(252, 248, 238);   
     min-height: 50px;
 }
 
@@ -346,7 +348,7 @@ img {
 #basAdd {
     margin-top: 15px;
     padding: 1%;
-    border-top: 1px solid #fa6e59;
+   
 }
 
 #contact {
@@ -649,5 +651,15 @@ img {
 }
 
 .activePagination{
-    background-color:  red !important;
+    background-color: $jaune1 !important;
+}
+#alertBtn{
+    background-color: rgb(241, 71, 71) !important;
+    padding:.2rem !important;
+    color: black!important;
+    
+    &:hover{
+        color: white !important;
+        background-color: red !important;
+    }
 }

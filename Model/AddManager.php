@@ -259,6 +259,22 @@ class AddManager extends Manager
         return $edit;
 
     }
+
+
+    public function deleteAnnonce($id_ANNONCES){
+
+
+        $db = $this->dbConnect();
+        $delete = $db->prepare("DELETE FROM annonces WHERE annonces.id =? ");
+        $delete->execute(array($id_ANNONCES));
+
+        return $delete;
+
+
+
+
+
+    }
     
 
 

@@ -69,9 +69,9 @@
                 <ul class="pagination justify-content-center">
                     <?php 
                 for($i=1; $i <= $nbDePage; $i++){
-                    if( $page ==$i){
+                    if( $_GET['page'] ==$i){
 
-                    echo'<li class="page"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
+                    echo'<li class="page"><a class="page-link activePagination" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
                 }else{
                     echo '<li class="page"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
                 }

@@ -26,10 +26,13 @@
                     <br> <br>
 
                     <a href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
-                        class="reportBtn mx-4">EDITER</a>
+                        class="reportBtn mx-4">Edition Comm</a>
 
                     <a href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>"
-                        class="reportBtn mx-4">SUPPRIMER</a>
+                        class="reportBtn mx-4">Suppr Comm</a>
+
+                    <a href="index.php?action=deleteReport&id=<?= $rep['id_COMMENTAIRES'] ?>"
+                        class="reportBtn mx-4">Suppr Alert</a>
                     </h3>
 
                 </p>
@@ -37,7 +40,7 @@
             <?php endforeach; ?>
             <!-- ROW -->
         </div>
-       <!--  -->
+        <!--  -->
     </div>
     <!--  PAGINATION -->
     <div class="row">

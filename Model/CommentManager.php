@@ -73,7 +73,7 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         
-        $comments = $db->prepare('SELECT commentaires.id, contenu, date_commentaire, pseudo , COUNT(alert.id_MEMBRES) AS nbreReport
+        $comments = $db->prepare('SELECT commentaires.id, contenu, DATE_FORMAT(date_commentaire,"%d/%m/%Y") AS date_commentaire, pseudo , COUNT(alert.id_MEMBRES) AS nbreReport
         FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id 
         LEFT JOIN alert ON alert.id_COMMENTAIRES = commentaires.id  WHERE commentaires.id_ANNONCES = ? 
         GROUP BY commentaires.id 
