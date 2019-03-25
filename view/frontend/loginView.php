@@ -1,8 +1,5 @@
 <?php $title = "Login"; ?>
-
 <?php ob_start(); ?>
-
-
 
 
 <div class="container-fluid my-4">
@@ -18,7 +15,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-
                     <label for="password" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input type="password" id="password" name="password" placeholder="Mot de passe"
@@ -28,18 +24,12 @@
                 <div class="input-group ">
                     <button type="submit" class="btn btn-light ml-3 " name="login_user" id="button">Connexion</button>
                 </div>
-
-
-
                 <div class="col-lg-9" id="deja2">
                     <p class="butform text-right">
                         Pas encore inscrit ? <a href="index.php?action=formRegister" id="register" ">S'enregistrer</a>
-
                 </p>
-                </div>
-            
+                </div>           
             </form>
-
         </div>
     </div>
 </div>

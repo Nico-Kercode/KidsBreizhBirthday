@@ -25,12 +25,10 @@ class CommentManager extends Manager
             
         "contenu" => $comment,
         "id_ANNONCES" => $id_ANNONCES,
-        "id_MEMBRES"  => $id_MEMBRES
-           
+        "id_MEMBRES"  => $id_MEMBRES          
            
           ));
      
-
         return $affectedLines;
     }
 
@@ -38,21 +36,77 @@ class CommentManager extends Manager
     // AFICHAGE COMMENTAIRE
     // --------------------
 
+      // version avec total de signalement pas commentaires , PB a resoudre  ...
+
+    public function getSignalements($id)
+    {
+        $db = $this->dbConnect();       
+        $result = $db->query("SELECT id_COMMENTAIRES ,COUNT(alert.id_MEMBRES) AS nbre
+        FROM  alert WHERE id_ANNONCES = $id
+        GROUP BY alert.id_COMMENTAIRES");
+        $count = $result->fetch();
+        $rep=$count['nbre'];
+        $result->closeCursor();
+        
+       
+        return $count;
+
+    }
+
+    // public function getComments($id)
+    // {
+    //     $db = $this->dbConnect();
+        
+    //     $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
+    //     FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
+    //     ORDER BY date_commentaire DESC');
+
+    //     $comments->execute(array($id));
+        
+    //     $allComments= $comments->fetchAll();
+       
+    //     return $allComments;
+
+    // }
+
     public function getComments($id)
     {
         $db = $this->dbConnect();
         
-        $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
-        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
+        $comments = $db->prepare('SELECT commentaires.id, contenu, date_commentaire, pseudo , COUNT(alert.id_MEMBRES) AS nbreReport
+        FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id 
+        LEFT JOIN alert ON alert.id_COMMENTAIRES = commentaires.id  WHERE commentaires.id_ANNONCES = ? 
+        GROUP BY commentaires.id 
         ORDER BY date_commentaire DESC');
 
         $comments->execute(array($id));
         
         $allComments= $comments->fetchAll();
        
+        $comments->closeCursor();
         return $allComments;
 
     }
+
+
+    // public function getSignals($id)
+    // {
+    // $db = $this->dbConnect();
+    // $req= $db->prepare("SELECT id_COMMENTAIRES, date_commentaire, alert.id_ANNONCES, titre, pseudo, contenu , count(alert.id_COMMENTAIRES) as report
+    // FROM alert
+    // INNER JOIN membres ON alert.id_MEMBRES = membres.id AND pseudo =membres.pseudo
+    // INNER JOIN annonces ON alert.id_ANNONCES= annonces.id AND titre =annonces.titre
+    // INNER JOIN commentaires ON alert.id_COMMENTAIRES=commentaires.id AND contenu= commentaires.contenu
+    // GROUP BY alert.id_COMMENTAIRES
+    // ");
+    // $req->execute(array());
+    // $signal = $req->fetchAll();
+    // $req->closeCursor();
+        
+
+    // return $signal;
+    // }
+
 
     // -----------------------
     // SIGNALEMENT COMMENTAIRE
@@ -196,19 +250,6 @@ class CommentManager extends Manager
         $req->closeCursor();
 
         return $nbAlert;
-    }
-
-    public function CountSignalement($id_COMMENTAIRE)
-    {
-
-    $db = $this->dbConnect();
-    $req= $db->query("SELECT sum(id_MEMBRES) AS nbreReport FROM alert WHERE id_COMMENTAIRES= $id_COMMENTAIRE");
-    $count=$req->fetch();
-    $nbSignal=$count['nbreReport'];
-    $req->closeCursor();
-
-    return $nbSignal;
-
     }
 
 

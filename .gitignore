@@ -3,3 +3,4 @@ assets/img/*
 tmp/*
 node_modules/*
 Model/Manager.php
+Model/Manager.save.php

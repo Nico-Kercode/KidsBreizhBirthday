@@ -1,4 +1,4 @@
-<?php $title = "Kid's Breizh Birthday- Accueil"; ?>
+<?php $title = "Accueil"; ?>
 <?php ob_start(); ?>
 <div class="container-fluid ">
     <div class="row ">
@@ -6,7 +6,7 @@
             <img class="img-fluid my-auto mx-4 " src="assets/img/artworkIMG/used/ballon3.png" alt="BallonRose">
         </div>
         <div class="col-lg-8">
-            <div id="vhmin">
+            <div id="vhmin" class="my-4">
                 <div class="col-sm-8 offset-sm-2" id="pacc">
                     <p id="texteAccueil" class="my-auto"> <span class="tabulation">Un</span> anniversaire à fêter ? <br>
                         Kid's Breizh Birthday à reférencé pour vous de nombreux lieux dans le Morbihan.<br>
@@ -16,11 +16,9 @@
                         Enregistrez vous ! <br>
                         Vous êtes professionnel dans le Morbihan et vous souhaitez publier une annonce, enregistrez vous
                         ! <br>
-                    </p>
-                  
+                    </p>                
                 </div>
-            </div>
-          
+            </div>         
         </div> <!-- end lg8 -->
         <div class="col-lg-2 d-none d-lg-block  my-auto ">
             <img class="img-fluid " src="assets/img/artworkIMG/cadeauJaune.png" alt="cadeauJaune">
@@ -28,7 +26,7 @@
         <!-- row -->
     </div>
     <div class="row">
-        <div class="col-sm-12" id="sliderAccueil">
+        <div class="col-sm-12 mt-4" id="sliderAccueil">
             <ul id="slider" class="d-none d-md-block">
                 <li><img src="assets/img/artworkIMG/logos/kingoland.png" alt="kingoland" /></li>
                 <li><img src="assets/img/artworkIMG/logos/jumpSession.png" alt="jumpsession" /></li>

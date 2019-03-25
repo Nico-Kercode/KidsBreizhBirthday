@@ -13,17 +13,13 @@
 
         </div>
 
-        <?php
-       
+        <?php      
         foreach ($getSelection as $data) : ?>
 
-
         <div class="col-sm-8 offset-sm-2  selection">
-
             <a id="supBtn"
                 href="index.php?action=viderSelection&id_MEMBRES=<?=$id_MEMBRES?>&id_ANNONCES=<?= $data['id_ANNONCES'] ?>">supprimer
             </a>
-
             <div class="col-sm-8 titreAnnonce">
                 <a class=" p-4 "
                     href="index.php?action=annonce&id=<?= $data['id_ANNONCES'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
@@ -37,16 +33,9 @@
 
                 <img class="img-fluid " src="<?= $data['logo'] ?>" alt="logo">
             </div>
-
-
         </div>
-
         <?php endforeach;?>
-
-
-
     </div>
-
 </div>
 
 <?php $content = ob_get_clean(); ?>

@@ -184,8 +184,13 @@ class Controller
         $total = $this->addManager->countAnnonce();
         $totalMembres = $this->memberManager->countTotalMembres();
         $nbAlert= $this->commentManager->CountAlerts();
+
+
+
+        header('Location: index.php?action=moncompte');
                
     }
+
 
     // -------------------------
     // EDITON INFOS AVATAR *****
@@ -319,6 +324,7 @@ class Controller
         $like= $this->addManager->getLikes($id);
         $disLike= $this->addManager->getDisLikes($id);
         $nbAlert= $this->commentManager->CountAlerts();
+        $allComments=$this->commentManager->getComments($id);
 
         if(!empty($_SESSION['id'])){
 
@@ -326,10 +332,9 @@ class Controller
         $totalDisLike= $this->addManager->DisLike($id);
         }
 
-    
+        require('view/frontend/annonceView.php');
 
         
-        require('view/frontend/annonceView.php');
     }
 
     // --------------------
@@ -595,11 +600,12 @@ class Controller
             $srcFile = array_pop($ary);
             $srcPath = join('/', $ary) . '/';
             $folder ="assets/img/webFiles/"; 
-            $image = rand(1000, 10000000).$file['name']; 
+            // ajoute timastamp devant le nom de l image pour eviter les doublons
+            $image = time().$file['name'];
             $path = $folder . $image ; 
 
             $this->fctredimimage($width,$height,$folder,$image,$srcPath,$srcFile);
-            // unlink($tempPath); // supprime le fichier temporaire
+            unlink($tempPath); // supprime le fichier temporaire
 
             return $path;
         } 

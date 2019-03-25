@@ -8,7 +8,7 @@
         <div class="col-sm-12 col-lg-8">
             <div class="row">
                 <?php
-foreach ($annonces as $data) { ?>
+foreach ($annonces as $data) : ?>
                 <div class="col-sm-5 offset-sm-1 mainAnnonces">
                     <!-- boucle affichage des annonces -->
                     <div class="row annonceHaut">
@@ -32,9 +32,8 @@ foreach ($annonces as $data) { ?>
                     </div>
                 </div>
                 <!-- END FOREACH -->
-                <?php
-}
-?>
+                <?php endforeach ;?>
+
             </div>
         </div>
         <!--  -->
@@ -68,9 +67,9 @@ foreach ($annonces as $data) { ?>
                 <ul class="pagination justify-content-center">
                     <?php 
                 for($i=1; $i <= $nbDePage; $i++){
-                    if( $page ==$i){
+                    if( $_GET['page'] ==$i){
 
-                    echo'<li class="page"><a class="page-link" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
+                    echo'<li class="page "><a class="page-link activePagination" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
                 }else{
                     echo '<li class="page"><a class="page-link" href="index.php?action=vannes&page='.$i.'">'.$i."</a></li>";
                 }

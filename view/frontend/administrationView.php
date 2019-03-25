@@ -12,14 +12,10 @@
         <h2 class="text-center my-4">Messages Signalés : </h2>
         <div class="row">
 
-
-
-            <?php foreach ($getReports as $rep) { ?>
-
+            <?php foreach ($getReports as $rep) : ?>
 
             <div class="col-sm-6">
                 <p class="list">
-
                     id du commentaire : <?= $rep['id_COMMENTAIRES']?> <br>
                     id de l'annonce : <?= $rep['id_ANNONCES']?> <br>
                     Titre de l'annonce : <a
@@ -28,33 +24,22 @@
                     Commentaire : <?= $rep['contenu']?> <br>
                     signalé : <?= $rep['report']?> fois
                     <br> <br>
-                  
-                        <a href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
-                            class="reportBtn mx-4">EDITER</a>
 
-                        <a href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>" class="reportBtn mx-4">SUPPRIMER</a>
-                        </h3>
-    
+                    <a href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
+                        class="reportBtn mx-4">EDITER</a>
+
+                    <a href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>"
+                        class="reportBtn mx-4">SUPPRIMER</a>
+                    </h3>
+
                 </p>
             </div>
-            <?php } ?>
-
-
-
-            <!-- END FOREACH -->
-
-
+            <?php endforeach; ?>
             <!-- ROW -->
-
-
         </div>
-
-
-        <!--  -->
+       <!--  -->
     </div>
-
     <!--  PAGINATION -->
-
     <div class="row">
         <div class="col-sm-12 mt-4 fixed-bottom">
 

@@ -94,6 +94,11 @@ class AddManager extends Manager
         return $bestAnnonces;
     }
 
+    // -------------------------------------------
+    // RECUPERE le nombre de "j'aime"
+    // -------------------------------------------
+
+
     public function getLikes($id)
     {
         $db = $this->dbConnect();
@@ -120,6 +125,9 @@ class AddManager extends Manager
         return $totalLike;
 
     }
+    // -------------------------------------------
+    // RECUPERE le nombre de "je n'aime pas"
+    // -------------------------------------------
 
 
     public function getDisLikes($id)
@@ -337,6 +345,10 @@ class AddManager extends Manager
 
     }
 
+    // -------------------------------------------
+    // RECUPERE les annonces ajoutées a la selection
+    // -------------------------------------------
+
     public function getSelection($id_MEMBRES) {
 
         $db = $this->dbConnect();
@@ -355,7 +367,11 @@ class AddManager extends Manager
 
     }
 
-    
+    // -------------------------
+    // Supprime de la selection
+    // -------------------------
+
+
     public function suppSelection($id_ANNONCES) {
 
         $db = $this->dbConnect();
