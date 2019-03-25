@@ -25,12 +25,10 @@ class CommentManager extends Manager
             
         "contenu" => $comment,
         "id_ANNONCES" => $id_ANNONCES,
-        "id_MEMBRES"  => $id_MEMBRES
-           
+        "id_MEMBRES"  => $id_MEMBRES          
            
           ));
      
-
         return $affectedLines;
     }
 
@@ -72,7 +70,6 @@ class CommentManager extends Manager
         return $allComments;
 
     }
-
     // -----------------------
     // SIGNALEMENT COMMENTAIRE
     // -----------------------
