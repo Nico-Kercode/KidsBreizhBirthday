@@ -137,20 +137,23 @@
         <!-- bloc commentaires -->
         <div class="row d-flex CommContent">
             <div class="col-sm-12 my-4">
-                <h4 class="text-left my-2 h4color"> <em>Les derniers avis :</em></h4>
-                <!-- COMMENTAIRES -->   
+                <h4 class="text-left my-2  border-bottom border-warning  "> <em>Les derniers avis :</em></h4>
+                <!-- COMMENTAIRES -->
                 <?php foreach ($allComments as $comment): ?>
 
                 <div class="col-sm-12 result annonceContent ">
-                <p class="text-right">commentaire de : &nbsp;<strong> <em> <?= htmlspecialchars($comment['pseudo']) ?>
-                                <em></strong>&nbsp; le
+                    <p class="text-right border-bottom border-dark p-2 ">commentaire de : &nbsp;<strong> <em>
+                                <?= htmlspecialchars($comment['pseudo']) ?>
+                            </em></strong>&nbsp; le
                         <?= $comment['date_commentaire'] ?> &nbsp;
-                    
-                         Ce message à déja été signalé <?= $comment['nbreReport']?> fois  &nbsp;
-                        <a href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
-                        </p>
-                        <p> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
-                        </p>
+
+                        <?php if($comment['nbreReport'] != 0 ) :?>
+                        Ce message à déja été signalé <?= $comment['nbreReport']?> fois &nbsp; <?php endif; ?>
+                        <a id="alertBtn"
+                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
+                    </p>
+                    <p class="CommContent p-4"> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
+                    </p>
                 </div>
 
                 <?php endforeach ;?>

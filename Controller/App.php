@@ -195,7 +195,15 @@ class App
 
                 }            
                 
-                }elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
+                }elseif ($_GET['action'] == 'supprAnnonce' && $_SESSION['rang'] > 0){  // -> Suppression annonce 
+
+                    
+
+                        $this->controller->delThisAnnonce();             
+
+                        
+                                                               
+                } elseif ($_GET['action'] == 'addComment' && $_SESSION['rang'] >= 0) {            // -> Fonction ajout d un commentaire
 
                     if (isset($_GET['id']) && $_GET['id'] > 0)
                     {
@@ -266,7 +274,18 @@ class App
                         throw new Exception('Aucun identifiant de commentaire envoyé');
                     }
 
-                } elseif ($_GET['action'] == 'search') {            // -> Fonction BARRE DE RECHERCHE
+                }elseif ($_GET['action'] == 'deleteReport'  && $_SESSION['rang'] ==  '2'){
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {                        // -> Fonction SUPPRESSION COMMENTAIRE 
+
+                        $commentID = $_GET['id']; 
+                        
+                        $this->controller->delReports($commentID);
+
+                    }else {
+                        throw new Exception('Aucun identifiant de commentaire envoyé');
+                    }
+                                 
+                }elseif ($_GET['action'] == 'search') {            // -> Fonction BARRE DE RECHERCHE
                    
 
                     if (isset(($_POST ['submitSearch']))) {                       

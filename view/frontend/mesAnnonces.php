@@ -12,9 +12,14 @@
         <?php foreach ($myAnnonces  as $data) : ?>
 
         <div class="col-sm-8 offset-sm-2  selection">
-            <a id="supBtn"
+            <a 
                 href="index.php?action=editerAnnonce&id_ANNONCES=<?= $data['id'] ?>&id_MEMBRES=<?=$data['id_MEMBRES']?>">Editer
             </a>
+            <a id="supBtn" class="p-2"
+                href="index.php?action=supprAnnonce&id_ANNONCES=<?= $data['id'] ?>">Supprimer
+            </a>
+
+
 
             <div class="col-sm-8 titreAnnonce">
                 <a class=" p-4 "

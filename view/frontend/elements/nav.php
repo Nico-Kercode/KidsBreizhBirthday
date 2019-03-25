@@ -62,7 +62,7 @@
 
 
             <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '2'):?>
-            <h6 id="bienvenue"> <em> Bienvenue chez toi <span><?=  ucfirst($_SESSION['pseudo'])?></span>. Il y a
+            <h6 class="bienvenue"> <em> Bienvenue chez toi <span><?=  ucfirst($_SESSION['pseudo'])?></span>. Il y a
                     actuellement <?= $total ?> activités référencées, un total de
                     <?= $totalMembres ?> membres enregistrés. Nos membres nous on signalés <?=$nbAlert['nbreAlerts']?>
                     messages </em>
@@ -70,13 +70,13 @@
             <?php endif; ?>
 
             <?php if(isset($_SESSION['rang']) && $_SESSION['rang'] == '0' || $_SESSION['rang'] =='1'):?>
-            <h6 id="bienvenue"> <em> Bienvenue <span><?=  ucfirst($_SESSION['pseudo'])?></span>, merci de vous être
+            <h6 class="bienvenue"> <em> Bienvenue <span><?=  ucfirst($_SESSION['pseudo'])?></span>, merci de vous être
                     connecté(e). Il y a actuellement <?= $total ?> activités référencées et un total de
                     <?= $totalMembres ?> membres enregistrés . </em></h6>
             <?php endif; ?>
 
             <?php if(empty($_SESSION)):?>
-            <h6 id="bienvenue"> <em> Pour plus de contenu,</em> <a class="text-primary  bg-warning rounded"
+            <h6 class="bienvenue"> <em> Pour plus de contenu,</em> <a class="text-primary  bg-warning rounded"
                     href="index.php?action=formRegister">Enregistrez vous !
                 </a> <em> &nbsp; Il y a actuellement <?= $total ?> activités référencées et un total de
                     <?= $totalMembres ?> membres enregistrés .</em> </h6>

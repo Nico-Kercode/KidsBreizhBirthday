@@ -10,8 +10,7 @@
 
 ***Permission ***
 ---------------------
-
-Seuls *l'administrateur* et les *professionnels* peuvent publier / editer une annonce.
+Seuls *l'administrateur* (rang=2) et les *professionnels*(rang=1) peuvent publier / editer une annonce.
 
 Pour cela, ils doivent s'enregistrer en selectionnant "professionnel" dans le menu déroulant, ils pourront alors
 publier une annonce .
@@ -20,7 +19,7 @@ la limite d upload de fichier est de 1Mo.
 
 
 
-*l'administrateur* à acces au menu d'administration, sont regroupés les messages signalés afin d'etre edités ou supprimés , la liste de tout les membres.
+*l'administrateur* (rang=2) à acces au menu d'administration, y sont regroupés les messages signalés afin d'etre edités, supprimés (ou bien pour supprimer le signalement) , ainsi que la liste de tout les membres.
 
 *Tout utilisateur inscrit* peut laisser un commentaire, signaler un commentaires , "aimer" ou "ne pas aimer" une activité , editer ses informations perso et modifier son avatar.
 
@@ -40,13 +39,17 @@ Ce site utilise une architecture MVC en POO
 
 * PHP
 * BOOTSTRAP 4
+* Javascript
 * JQUERY
 * PDO / mySQL
-* composer ( -> composer update à l initialisation du projet -> namespace)
+* composer ( -> composer update à l initialisation du projet )
 * SASS
 
 **AUTEUR** 
----------
+----------
 
-*Nicolas HUBERT* Projet de certification "titre professionnel Developpeur en application web (niv3)" Kercode 2019
+*Nicolas HUBERT* (*TraouaWeb*) 
+
+* Projet de certification "titre professionnel Developpeur en application web (niv3)" 
+* Kercode 2019
 

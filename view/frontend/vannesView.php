@@ -6,7 +6,7 @@
         <div class=" d-none d-md-block col-md-2 ">
         </div>
         <div class="col-sm-12 col-lg-8">
-            <div class="row">
+            <div class="row blocMain" >
                 <?php
 foreach ($annonces as $data) : ?>
                 <div class="col-sm-5 offset-sm-1 mainAnnonces">

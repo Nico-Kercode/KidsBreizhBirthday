@@ -252,7 +252,7 @@ class Controller
 
     // SUPPRESSION COMMENTAIRES
 
-    function delComment($commentID){
+    public function delComment($commentID){
     
          $delalert= $this->commentManager->deleteAlerts($commentID);
          $delComment= $this->commentManager->deleteCommentaire($commentID);
@@ -260,8 +260,16 @@ class Controller
     
         header('Location:index.php?action=admin&page=1');
     }
-    
 
+    public function delReports($commentID) {
+
+    $delalert= $this->commentManager->deleteAlerts($commentID);
+
+    header('Location:index.php?action=admin&page=1');
+
+    }
+    
+    
     // ------------------
     // AJOUT ANNONCE
     // ------------------
@@ -405,8 +413,17 @@ class Controller
         header("Location: index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
     }
 
+    public function delThisAnnonce(){
 
-        // -------------------
+    $id_ANNONCES=$_GET['id_ANNONCES'];    
+    $delete= $this->addManager->deleteAnnonce($id_ANNONCES);
+
+        header('Location: index.php?action=gererAnnonces');
+
+    }
+
+
+    // -------------------
     // CLASSEMENT PAR NOTE
     // -------------------
 
