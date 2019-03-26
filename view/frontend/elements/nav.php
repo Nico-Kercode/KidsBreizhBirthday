@@ -27,8 +27,8 @@
 
                 <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '1' || $_SESSION['rang'] == '2') : ?>
                 <ul>
-                    <li class="mx-4" >     <a href="#" id="clic">MES ANNONCES</a>
-                        <ul id="navMain"class="none ">
+                    <li class="mx-4"> <a href="#" id="clic">MES ANNONCES</a>
+                        <ul id="navMain" class="none ">
                             <li class="mx-4"><a class="<?= $_GET['action'] == 'ajoutAnnonce' ? 'activeMenu' : '' ?> id="
                                     menuD" href="index.php?action=ajoutAnnonce">AJOUTER UNE ANNONCE</a></li>
                             <li class="mx-4"><a class="<?= $_GET['action'] == 'gererAnnonce' ? 'activeMenu' : '' ?> id="
@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                 </ul>
-                
+
                 <?php endif; ?>
 
                 <?php if(empty($_SESSION)) : ?>
@@ -105,18 +105,27 @@
     || $_GET['action'] == 'moncompte'
     || $_GET['action'] == 'ajoutAnnonce' ? 'none' : '' ?>">
 
-        <div class="d-flex mx-auto" id="choixAccueil">
-            <a class="ml-4 <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
-                href="index.php?action=vannes&page=1">Secteur de Vannes</a>
-            <a class="ml-4 <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
-                href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-            <a class="ml-4 <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
-                href="index.php?action=meilleurNote">Les 10 mieux notés</a>
+        <div class="d-md-flex mx-auto" id="choixAccueil">
 
-            <?php if(!empty($getSelection)):?>
-            <a class="ml-4 <?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
-                href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id']?>">Ma selection</a>
-            <?php endif; ?>
+            <div>
+                <a class="ml-4 alink <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
+                    href="index.php?action=vannes&page=1">Secteur de Vannes</a>
+            </div>
+            <div>
+                <a class="ml-4 alink <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
+                    href="index.php?action=lorient&page=1">Secteur de Lorient</a>
+            </div>
+            <div>
+                <a class="ml-4 alink <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
+                    href="index.php?action=meilleurNote">Les 10 mieux notés</a>
+            </div>
+            <div>
+                <?php if(!empty($getSelection)):?>
+                <a class="ml-4  alink<?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
+                    href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id']?>">Ma selection</a>
+                <?php endif; ?>
+            </div>
+
         </div>
 
 

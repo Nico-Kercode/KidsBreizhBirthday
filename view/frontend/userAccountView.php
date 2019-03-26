@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-sm-4 col-md-4 col-lg-4 ">
-            <h4>
+            <h4 class="my-4">
                 Bienvenue <em> <span><?= $_SESSION['pseudo']?></span> </em>
             </h4>
             <?php if(isset($_SESSION['pseudo'])) { ?>
@@ -15,7 +15,7 @@
                 action="index.php?action=updavatar">
 
                 <div class="form-group">
-                    <label for="formControl" class="col-sm-10 my-2">Modifiez votre image de profil </label>
+                    <label for="formControl" class="col-sm-10 my-2"></label>
                     <input type="file" name="imageProfil" class="form-control-file my-2">
                 </div>
                 <div class="form-group">

@@ -229,6 +229,7 @@ class Controller
         $totalMembres = $this->memberManager->countTotalMembres();
         
         
+        
         require('view/frontend/membreAdminView.php');
         
         
@@ -545,6 +546,7 @@ class Controller
 
     }
 
+    // Vers Edition Commentaire Vue
 
     public function editForm($commentID,$annonceID){
         
@@ -557,6 +559,8 @@ class Controller
         require('view/frontend/editCommentView.php');
         
     }
+
+    // Edition de commentaire
     
     
     public function editComment($id,$editCommentaire,$id_ANNONCES){
