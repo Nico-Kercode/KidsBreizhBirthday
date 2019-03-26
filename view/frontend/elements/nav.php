@@ -15,7 +15,7 @@
 
             <ul class="response--site-menu mx-auto p-2 ">
 
-                <li class="mx-4 "><a class="<?= $_GET['action'] == 'home' ? 'activeMenu' : '' ?>"
+                <li class="mx-4"><a class="<?= $_GET['action'] == 'home' ? 'activeMenu' : '' ?>"
                         href="index.php?action=home">ACCUEIL</a></li>
 
                 <?php if (isset($_SESSION['rang']) && $_SESSION['rang'] == '2') : ?>
@@ -43,10 +43,10 @@
                 <?php endif; ?>
 
                 <?php if(empty($_SESSION)) : ?>
-                <li class="mx-4"><a href="index.php?action=formLogin">CONNEXION</a></li>
+                <li class="mx-4 border-dark "><a href="index.php?action=formLogin">CONNEXION</a></li>
                 <?php endif; ?>
                 <?php if(isset($_SESSION['pseudo'])) : ?>
-                <li class="mx-4"><a href="index.php?action=deco">DECONNEXION</a></li>
+                <li class="mx-4  "><a  href="index.php?action=deco">DECONNEXION</a></li>
                 <?php endif; ?>
 
             </ul>
@@ -79,8 +79,10 @@
             <?php endif; ?>
 
             <?php if(empty($_SESSION)):?>
-            <h6 class="bienvenue"> <em> Pour plus de contenu,</em> <a class="text-primary  bg-warning rounded"
-                    href="index.php?action=formRegister">Enregistrez vous !
+            <h6 class="bienvenue"> <em> Pour plus de contenu,</em> <a class="btn btn-info btn-sm mb-2 <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
+            href="index.php?action=formRegister">Enregistrez vous !</a>
+            
+            
                 </a> <em> &nbsp; Il y a actuellement <?= $total ?> activités référencées et un total de
                     <?= $totalMembres ?> membres enregistrés .</em> </h6>
             <?php endif; ?>
@@ -91,11 +93,11 @@
     || $_GET['action'] == 'moncompte'
     || $_GET['action'] == 'ajoutAnnonce' ? 'none' : '' ?>">
 
-        <div class="col-sm-12 ">
+        <div class="col-sm-6 offset-sm-3 border-dark ">
             <form method="POST" action="index.php?action=search" class="input-group  input-lg my-2">
-                <input class=" form-control " type="search" value="" name="searchbar" id="search" required>
+                <input class=" form-control border-dark  " type="search" value="" name="searchbar" id="search" required>
                 <span class="input-group-append">
-                    <button class="btn border-left-0 border" name="submitSearch" type="submit">
+                    <button class="btn border-left-2 border border-dark " name="submitSearch" type="submit">
                         <i class="fa fa-search"></i>
                     </button>
                 </span>
@@ -112,21 +114,21 @@
             <div class="row">
 
                 <div class="col-sm-12 col-md-6  mx-auto ">
-                    <a class="btn btn-warning  <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
+                    <a class="btn btn-warning  border-dark   <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
                         href="index.php?action=vannes&page=1">Secteur de Vannes</a>
 
-                    <a class="btn btn-warning  <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
+                    <a class="btn btn-warning border-dark   <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
                         href="index.php?action=lorient&page=1">Secteur de Lorient</a>
 
 
 
-                    <a class="btn btn-warning <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
+                    <a class="btn btn-warning border-dark <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
                         href="index.php?action=meilleurNote">Les 10 mieux notés</a>
 
                     <?php if(!empty($getSelection)):?>
 
 
-                    <a class="btn btn-warning  <?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
+                    <a class="btn btn-warning  border-dark  <?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
                         href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id']?>">Ma selection</a>
                 </div>
             </div>

@@ -5,13 +5,13 @@
     <div class="row d-flex">
 
         <div class="col-sm-12 col-lg-4 my-4">
-            <a class="Back" href="index.php?action=vannes&page=1">RETOUR</a>
+            <a class="Back border bg-light border-light" href="index.php?action=vannes&page=1">RETOUR</a>
 
         </div>
 
         <?php foreach ($myAnnonces  as $data) : ?>
 
-        <div class="col-sm-8 offset-sm-2  selection">
+        <div class="col-sm-8 offset-sm-2 selection border border-light">
             <a 
                 href="index.php?action=editerAnnonce&id_ANNONCES=<?= $data['id'] ?>&id_MEMBRES=<?=$data['id_MEMBRES']?>">Editer
             </a>

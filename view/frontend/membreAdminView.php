@@ -3,13 +3,13 @@
 
 <div class="container">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
-    <a class="reportBtn" href="index.php?action=admin&page=1">Retour</a>
+    <a class="btn btn-light btn-sm border-dark " href="index.php?action=admin&page=1">Gestion des messages</a>
     <div class="col-sm-12 admin">
-        <h2 class="text-center">Liste des Membres Inscrits</h2>
+        <h2 class="text-center my-4">Liste des Membres Inscrits</h2>
         <div class="row">
             <?php
 foreach ($getMembres as $data) : ?>
-            <div class="col-sm-6">
+            <div class="col-sm-6 border border-light p-4">
 
                 <?php if($data['rang'] == '0') {
             $rang='Membre';
@@ -21,7 +21,7 @@ foreach ($getMembres as $data) : ?>
         elseif($data['rang'] == '2') {
             $rang='ADMINISTRATEUR';
         } ?>
-                <p class="list"> Pseudo :
+                <p class="list p-2"> Pseudo :
                     <?= $data['pseudo'].'<br>  Email  : '.$data['email'].'<br>   Date d\'inscription :  '.$data['date_inscription']?>
                     <br>Rang : <?= $rang ?> <br>
                     <br> </p>
@@ -52,9 +52,9 @@ foreach ($getMembres as $data) : ?>
                              ?>
                     <?php 
                 for($i=1; $i <= $nbDeMembres; $i++){
-                    if( $page ==$i){
+                    if(  $_GET['page'] ==$i){
 
-                    echo'<li class="page-item"><a class="page-link" href="index.php?action=adminmembres&page='.$i.'">'.$i."</a></li>";
+                    echo'<li class="page-item "><a class="page-link activePagination" href="index.php?action=adminmembres&page='.$i.'">'.$i."</a></li>";
                 }else{
                     echo '<li class="page-item"><a class="page-link" href="index.php?action=adminmembres&page='.$i.'">'.$i."</a></li>";
                 }

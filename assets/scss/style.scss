@@ -31,7 +31,8 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     color: #021c1e;
-    background-color: #f1f1f2 !important;
+    // background-color: #f1f1f2 !important;
+    background-color: $jaune1 !important;
     font-family: 'Acme', sans-serif !important;
 }
 
@@ -65,7 +66,7 @@ img {
 }
 
 .btn {
-    color: #E46DCB;
+    color: $bleu1;
 }
 
 .Back {
@@ -104,12 +105,12 @@ img {
     padding: .3rem .5rem;
     background-color: $jaune2;
     border: 1px solid #FED100;
-    border-radius: 15px;
-    text-shadow: none !important;
+    // border-radius: 15px;
+ 
     color: rgb(20,20,20)!important;
     &:hover {
         
-        border-radius: 20px;
+        border-radius: 5px;
         color: $bleu1!important;
         border: 1px solid $jaune2;
     }
@@ -121,7 +122,7 @@ img {
         border-bottom: 2px solid rgb(204, 142, 26);
         border-left: 1px solid rgb(170, 114, 29);
         border-top: 1px solid rgb(204, 142, 26);
-        border-radius: 20px;
+        border-radius: 5px;
         text-shadow: none !important;
         color: blue !important;
     }
@@ -172,7 +173,7 @@ img {
 
 #texteAccueil {
     font-size: 1.1rem;
-    text-shadow: none !important;
+    text-shadow: 1px 1px white !important;
     text-align: justify !important;
 }
 
@@ -211,6 +212,7 @@ img {
 
 .mainAnnonces {
     background-color: $jaune1 !important;
+    border: 2px solid $jaune2;
     text-shadow: 1px 1px #adaaaa;
     padding-bottom: 2%;
     margin-bottom: 15px;
@@ -220,7 +222,7 @@ img {
     min-width: 100%;
 }
 #mainAnnonceContent {
-    border: 1px solid orange !important;
+    border: 1px solid whitesmoke!important;
     border-bottom: 6px solid orange !important;
     background-color: $jaune1;
 }
@@ -293,7 +295,7 @@ img {
 
 .annonceContent {
     font-family: 'Neucha', cursive !important;
-    min-height: 100px;
+    min-height: 43vh;
     padding: .8rem;
     margin: 0 auto !important;
     font-weight: normal !important;
@@ -393,7 +395,6 @@ img {
 
 .admin {
     margin-top: 30px;
-    border: 1px solid black;
     min-height: 300px;
     margin-bottom: 10%;
     a {
@@ -540,7 +541,7 @@ img {
 .show-nav,
 .hide-nav {
     padding: 10px;
-    background-color: #A1C159;
+    background-color: $bleu1;
     border: 0;
     border-radius: 20px;
     color: #fff;
@@ -552,6 +553,7 @@ img {
     justify-content: space-around;
     li a {
         color: rgb(20,20,20)!important;
+        text-shadow: 1px 1px white !important;
      
     }
     & li a:hover {
@@ -665,12 +667,13 @@ img {
 }
 
 .activePagination{
-    background-color: $jaune1 !important;
+    background-color: $jaune2 !important;
 }
 #alertBtn{
-    background-color: rgb(241, 71, 71) !important;
+    background-color: red!important;
     padding:.2rem !important;
     color: black!important;
+    border-radius: 20px;
     
     &:hover{
         color: white !important;

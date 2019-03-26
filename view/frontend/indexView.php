@@ -3,7 +3,7 @@
 <div class="container-fluid ">
     <div class="row ">
         <div class="col-lg-2 d-none d-lg-block ">
-            <img class="img-fluid my-auto mx-4 " src="assets/img/artworkIMG/used/ballon3.png" alt="BallonRose">
+            <img class="img-fluid my-auto mx-4  " src="assets/img/artworkIMG/used/ballon3.png" alt="BallonRose">
         </div>
         <div class="col-lg-8">
             <div id="vhmin" class="my-4">
@@ -26,7 +26,7 @@
         <!-- row -->
     </div>
     <div class="row">
-        <div class="col-sm-12 mt-4" id="sliderAccueil">
+        <div class="col-sm-12 mt-4 border border-warning" id="sliderAccueil">
             <ul id="slider">
                 <li><img src="assets/img/artworkIMG/logos/kingoland.png" alt="kingoland" /></li>
                 <li><img src="assets/img/artworkIMG/logos/jumpSession.png" alt="jumpsession" /></li>

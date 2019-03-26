@@ -621,7 +621,7 @@ class Controller
             $srcFile = array_pop($ary);
             $srcPath = join('/', $ary) . '/';
             $folder ="assets/img/webFiles/"; 
-            // ajoute timastamp devant le nom de l image pour eviter les doublons
+            // ajoute timestamp devant le nom de l image pour eviter les doublons
             $image = time().$file['name'];
             $path = $folder . $image ; 
 
@@ -649,7 +649,7 @@ class Controller
         if (file_exists($rep_Src.$img_Src) && ($W_max!=0 || $H_max!=0)) { 
           // ----------------------
           // extensions acceptées : 
-           $extension_Allowed = 'jpg,jpeg,png,JPEG,JPG,PNG,gif,GIF';	// (sans espaces)
+           $extension_Allowed = 'jpg,jpeg,png,JPEG,JPG,PNG,gif,GIF';
           // extension fichier Source
            $extension_Src = strtolower(pathinfo($img_Src,PATHINFO_EXTENSION));
           // ----------------------

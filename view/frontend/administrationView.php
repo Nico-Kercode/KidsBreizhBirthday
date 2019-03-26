@@ -6,7 +6,7 @@
 <div class="container vue" id="adminView">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
 
-    <a class="reportBtn" href="index.php?action=adminmembres&page=1">Gestion des membres</a>
+    <a class=" btn btn-light btn-sm border border-dark " href="index.php?action=adminmembres&page=1">Gestion des membres</a>
 
     <div class="col-sm-12 admin">
         <h2 class="text-center my-4">Messages Signalés : </h2>
@@ -14,7 +14,7 @@
 
             <?php foreach ($getReports as $rep) : ?>
 
-            <div class="col-sm-12 col-md-12 col-xl-6">
+            <div class="col-sm-12 col-md-12 col-xl-6 border border-light">
                 <p class="list">
                     id du commentaire : <?= $rep['id_COMMENTAIRES']?> <br>
                     id de l'annonce : <?= $rep['id_ANNONCES']?> <br>
@@ -26,14 +26,14 @@
                     <br> <br>
 
 
-                    <a class="btn btn-warning btn-sm mx-2"
+                    <a class="btn btn-light btn-sm border border-dark mx-2"
                         href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
                         role="button">Editer</a>
 
-                    <a class="btn btn-danger btn-sm mx-2"
+                    <a class="btn btn-light btn-sm border border-dark  mx-2"
                         href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>" role="button">Effacer</a>
 
-                    <a class="btn btn-light btn-sm"
+                    <a class="btn btn-light btn-sm border border-dark "
                         href="index.php?action=deleteReport&id=<?= $rep['id_COMMENTAIRES'] ?>" role="button">Annuler</a>
 
                     </h3>
