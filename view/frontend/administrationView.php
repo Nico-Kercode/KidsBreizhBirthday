@@ -3,7 +3,7 @@
 
 
 
-<div class="container" id="adminView">
+<div class="container vue" id="adminView">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
 
     <a class="reportBtn" href="index.php?action=adminmembres&page=1">Gestion des membres</a>

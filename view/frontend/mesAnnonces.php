@@ -1,6 +1,6 @@
 <?php $title = 'Gestion Annonces publiées'; ?>
 <?php ob_start(); ?>
-<div class="container my-4">
+<div class="container my-4 vue">
 
     <div class="row d-flex">
 

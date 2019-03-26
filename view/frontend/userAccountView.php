@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<div class="container">
+<div class="container vue">
     <div class="row my-5">
         <div class="col-sm-4 col-md-4 col-lg-4 ">
             <h4 class="my-4">
