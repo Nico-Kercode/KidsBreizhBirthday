@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 
-<div class="container">
+<div class="container vue">
     <div class="row">
         <div class="col-sm-12 my-2">
             <h1 class="text-center my-4"> <em>Resultat de votre recherche :</em></h1>
@@ -33,11 +33,11 @@
 
             <?php endforeach ;?>
         </div>
-
     </div>
 </div>
-</div>
-</div>
+
+
+
 
 <?php $content = ob_get_clean(); ?>
 

@@ -91,7 +91,7 @@
     || $_GET['action'] == 'moncompte'
     || $_GET['action'] == 'ajoutAnnonce' ? 'none' : '' ?>">
 
-        <div class="col-sm-8 offset-sm-2">
+        <div class="col-sm-12 ">
             <form method="POST" action="index.php?action=search" class="input-group  input-lg my-2">
                 <input class=" form-control " type="search" value="" name="searchbar" id="search" required>
                 <span class="input-group-append">
@@ -111,24 +111,24 @@
         <div class="d-inline-flex col-sm-12 col-md-10 offset-md-2" id="choixAccueil">
             <div class="row">
 
-            <div class="col-sm-12 col-md-6  mx-auto ">
-                <a class="btn btn-warning  <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
-                    href="index.php?action=vannes&page=1">Secteur de Vannes</a>
+                <div class="col-sm-12 col-md-6  mx-auto ">
+                    <a class="btn btn-warning  <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
+                        href="index.php?action=vannes&page=1">Secteur de Vannes</a>
 
-                <a class="btn btn-warning  <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
-                    href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-
-            
-
-                <a class="btn btn-warning <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
-                    href="index.php?action=meilleurNote">Les 10 mieux notés</a>
-
-                <?php if(!empty($getSelection)):?>
+                    <a class="btn btn-warning  <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
+                        href="index.php?action=lorient&page=1">Secteur de Lorient</a>
 
 
-                <a class="btn btn-warning  <?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
-                    href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id']?>">Ma selection</a>
-            </div>
+
+                    <a class="btn btn-warning <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
+                        href="index.php?action=meilleurNote">Les 10 mieux notés</a>
+
+                    <?php if(!empty($getSelection)):?>
+
+
+                    <a class="btn btn-warning  <?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
+                        href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id']?>">Ma selection</a>
+                </div>
             </div>
 
             <?php endif; ?>
@@ -139,3 +139,6 @@
 
     </div>
 </div>
+
+</div>
+</div> <!-- important ne pas suppr les fermetures de div -->

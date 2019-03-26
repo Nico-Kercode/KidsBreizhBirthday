@@ -133,11 +133,7 @@ img {
 #moncompte {
     color: #ABBCBA !important;
 }
-#adminView{
-    min-height: 100vh;
 
-
-}
 
 #accueil {
     margin-bottom: 15%;
@@ -167,6 +163,10 @@ img {
         border-radius: 20px;
         background-color: rgb(236, 255, 113);
     }
+}
+
+.vue{
+    min-height: 80vh!important;
 }
 
 #texteAccueil {

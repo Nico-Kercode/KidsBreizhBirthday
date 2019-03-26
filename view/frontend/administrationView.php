@@ -30,8 +30,8 @@
                         href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
                         role="button">Editer</a>
 
-                    <a class="btn btn-danger btn-sm mx-2" href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>"
-                        role="button">Effacer</a>
+                    <a class="btn btn-danger btn-sm mx-2"
+                        href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>" role="button">Effacer</a>
 
                     <a class="btn btn-light btn-sm"
                         href="index.php?action=deleteReport&id=<?= $rep['id_COMMENTAIRES'] ?>" role="button">Annuler</a>

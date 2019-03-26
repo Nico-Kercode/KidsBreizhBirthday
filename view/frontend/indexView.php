@@ -27,7 +27,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 mt-4" id="sliderAccueil">
-            <ul id="slider" class="d-none d-md-block">
+            <ul id="slider" class="d-sm-none d-md-block">
                 <li><img src="assets/img/artworkIMG/logos/kingoland.png" alt="kingoland" /></li>
                 <li><img src="assets/img/artworkIMG/logos/jumpSession.png" alt="jumpsession" /></li>
                 <li><img src="assets/img/artworkIMG/logos/laserkid.png" alt="laserkid" /></li>
