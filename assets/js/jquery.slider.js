@@ -3,7 +3,7 @@
     $.fn.slider = function (options) {
 
         let defaults = $.extend({
-            visibleItems: 4,
+            visibleItems: 6,
             itemsToScroll: 3,
             animationSpeed: 400,
             infinite: true,
@@ -26,7 +26,7 @@
                 },
                 tablet: {
                     changePoint: 768,
-                    visibleItems: 3,
+                    visibleItems: 5,
                     itemsToScroll: 3
                 }
             },
@@ -403,3 +403,24 @@
     };
 
 })(jQuery);
+
+
+$(function() {
+    $(window).load(function() {
+       
+        $("#slider").slider({
+            visibleItems: 7,
+            itemsToScroll: 1,         
+            autoPlay: {
+                enable: true,
+                interval: 1500,
+                pauseOnHover: true,
+
+            }        
+        });
+      
+        
+    });
+    });
+  
+  

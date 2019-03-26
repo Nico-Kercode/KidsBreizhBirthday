@@ -110,7 +110,7 @@ img {
     &:hover {
         
         border-radius: 20px;
-        color: $bleu1 !important;
+        color: $bleu1!important;
         border: 1px solid $jaune2;
     }
     &.active {
@@ -132,6 +132,11 @@ img {
 }
 #moncompte {
     color: #ABBCBA !important;
+}
+#adminView{
+    min-height: 100vh;
+
+
 }
 
 #accueil {

@@ -1,9 +1,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 header d-flex">
-            <div class="mx-auto my-auto">
-                <a href="index.php?action=home"><img class="img-fluid" src="assets/img/artworkIMG/lettrage2.png"
-                        alt="backHome"></a>
+            <div class="mx-auto my-auto ">
+                <a class="d-none d-sm-block" href="index.php?action=home"><img class="img-fluid"
+                        src="assets/img/artworkIMG/lettrage2.png" alt="backHome"></a>
+
+                <a class="d-block d-sm-none" href="index.php?action=home"><img class="img-fluid"
+                        src="assets/img/artworkIMG/lettrage.png" alt="backHome"></a>
             </div>
         </div>
 
@@ -88,7 +91,7 @@
     || $_GET['action'] == 'moncompte'
     || $_GET['action'] == 'ajoutAnnonce' ? 'none' : '' ?>">
 
-        <div class="col-sm-10 offset-sm-1">
+        <div class="col-sm-8 offset-sm-2">
             <form method="POST" action="index.php?action=search" class="input-group  input-lg my-2">
                 <input class=" form-control " type="search" value="" name="searchbar" id="search" required>
                 <span class="input-group-append">
@@ -105,27 +108,30 @@
     || $_GET['action'] == 'moncompte'
     || $_GET['action'] == 'ajoutAnnonce' ? 'none' : '' ?>">
 
-        <div class="d-md-flex mx-auto" id="choixAccueil">
+        <div class="d-inline-flex col-sm-12 col-md-10 offset-md-2" id="choixAccueil">
+            <div class="row">
 
-            <div>
-                <a class="ml-4 alink <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
+            <div class="col-sm-12 col-md-6  mx-auto ">
+                <a class="btn btn-warning  <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
                     href="index.php?action=vannes&page=1">Secteur de Vannes</a>
-            </div>
-            <div>
-                <a class="ml-4 alink <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
+
+                <a class="btn btn-warning  <?= $_GET['action'] == 'lorient' ? 'active' : '' ?>"
                     href="index.php?action=lorient&page=1">Secteur de Lorient</a>
-            </div>
-            <div>
-                <a class="ml-4 alink <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
+
+            
+
+                <a class="btn btn-warning <?= $_GET['action'] == 'meilleurNote' ? 'active' : '' ?>"
                     href="index.php?action=meilleurNote">Les 10 mieux notés</a>
-            </div>
-            <div>
+
                 <?php if(!empty($getSelection)):?>
-                <a class="ml-4  alink<?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
+
+
+                <a class="btn btn-warning  <?= $_GET['action'] == 'monPanier' ? 'active' : '' ?>"
                     href="index.php?action=monPanier&id_MEMBRES=<?= $_SESSION['id']?>">Ma selection</a>
-                <?php endif; ?>
+            </div>
             </div>
 
+            <?php endif; ?>
         </div>
 
 

@@ -20,7 +20,7 @@
                 <!--Copyright-->
                 <p class="text-center text-md-left">© 2019 Copyright :
                     <a href="mailto:admin@kidsbreizhbirthday.fr">
-                        TraouaWeb 
+                        Kid's Breizh Birthday 
                     </a>
                 </p>
 

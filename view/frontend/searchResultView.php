@@ -33,11 +33,11 @@
 
             <?php endforeach ;?>
         </div>
+
     </div>
 </div>
-
-
-
+</div>
+</div>
 
 <?php $content = ob_get_clean(); ?>
 

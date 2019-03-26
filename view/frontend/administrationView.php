@@ -3,7 +3,7 @@
 
 
 
-<div class="container">
+<div class="container" id="adminView">
     <h1 class="text-center my-4 h1annonces"> <span>A</span>dministration</h1>
 
     <a class="reportBtn" href="index.php?action=adminmembres&page=1">Gestion des membres</a>
@@ -14,7 +14,7 @@
 
             <?php foreach ($getReports as $rep) : ?>
 
-            <div class="col-sm-6">
+            <div class="col-sm-12 col-md-12 col-xl-6">
                 <p class="list">
                     id du commentaire : <?= $rep['id_COMMENTAIRES']?> <br>
                     id de l'annonce : <?= $rep['id_ANNONCES']?> <br>
@@ -25,14 +25,17 @@
                     signalé : <?= $rep['report']?> fois
                     <br> <br>
 
-                    <a href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
-                        class="reportBtn mx-4">Edition Comm</a>
 
-                    <a href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>"
-                        class="reportBtn mx-4">Suppr Comm</a>
+                    <a class="btn btn-warning btn-sm mx-2"
+                        href="index.php?action=editForm&id=<?= $rep['id_COMMENTAIRES'] ?>&id_ANNONCES=<?= $rep['id_ANNONCES']?>"
+                        role="button">Editer</a>
 
-                    <a href="index.php?action=deleteReport&id=<?= $rep['id_COMMENTAIRES'] ?>"
-                        class="reportBtn mx-4">Suppr Alert</a>
+                    <a class="btn btn-danger btn-sm mx-2" href="index.php?action=delete&id=<?= $rep['id_COMMENTAIRES'] ?>"
+                        role="button">Effacer</a>
+
+                    <a class="btn btn-light btn-sm"
+                        href="index.php?action=deleteReport&id=<?= $rep['id_COMMENTAIRES'] ?>" role="button">Annuler</a>
+
                     </h3>
 
                 </p>
