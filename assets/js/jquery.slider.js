@@ -16,18 +16,18 @@
             responsiveBreakpoints: {
                 portrait: {
                     changePoint: 480,
-                    visibleItems: 1,
+                    visibleItems: 2,
                     itemsToScroll: 1
                 },
                 landscape: {
                     changePoint: 640,
-                    visibleItems: 2,
-                    itemsToScroll: 2
+                    visibleItems: 5,
+                    itemsToScroll: 1
                 },
                 tablet: {
-                    changePoint: 768,
-                    visibleItems: 5,
-                    itemsToScroll: 3
+                    changePoint: 769,
+                    visibleItems: 4,
+                    itemsToScroll: 1
                 }
             },
             loaded: function () { },
