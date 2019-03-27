@@ -52,6 +52,21 @@ class MemberManager extends Manager{
     }
 
     // -------------------
+    // DELETE COMPTE 
+    // -------------------
+
+
+    public function supprCompte($member_id){
+
+
+        $db = $this->dbConnect();
+        $supprCompte = $db->query("DELETE FROM membres WHERE id= $member_id");
+
+
+
+    }
+
+    // -------------------
     // UPDATE INFOS MEMBRE
     // -------------------
 

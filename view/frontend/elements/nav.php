@@ -79,7 +79,7 @@
             <?php endif; ?>
 
             <?php if(empty($_SESSION)):?>
-            <h6 class="bienvenue"> <em> Pour plus de contenu,</em> <a class="btn btn-info btn-sm mb-2 <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
+            <h6 class="bienvenue"> <em> Pour plus de contenu :</em> <a class="btn btn-warning btn-sm mb-2 <?= $_GET['action'] == 'vannes' ? 'active' : '' ?>"
             href="index.php?action=formRegister">Enregistrez vous !</a>
             
             

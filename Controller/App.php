@@ -92,6 +92,12 @@ class App
                         $this->controller->updatePicProfile($member_id) ;
                     }
 
+
+                } elseif ($_GET['action'] == 'supprimerMonCompte') {
+
+                    $member_id = $_SESSION['id'];
+                                            
+                        $this->controller->deleteMember($member_id);
                     //  FIN GESTION DES MEMBRES
 
                     // ***************************************//

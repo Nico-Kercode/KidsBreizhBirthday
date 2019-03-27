@@ -3,8 +3,8 @@
 <?php ob_start(); ?>
 
 <div class="container vue">
-    <div class="row my-5">
-        <div class="col-sm-4 col-md-4 col-lg-4 ">
+    <div class="row my-5 border border-warning">
+        <div class="col-sm-4 col-md-4 col-lg-4 p-4 ">
             <h4 class="my-4">
                 Bienvenue <em> <span><?= $_SESSION['pseudo']?></span> </em>
             </h4>
@@ -19,7 +19,7 @@
                     <input type="file" name="imageProfil" class="form-control-file my-2">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-dark" name="updateAvatar">Envoyer</button>
+                    <button type="submit" class="btn btn-dark text-light" name="updateAvatar">Envoyer</button>
                     <div class="col-sm-9 my-4">
                     </div>
                 </div> <!-- /.form-group -->
@@ -48,8 +48,14 @@
                         <input type="password" name="password_2" class="form-control">
                     </div>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-dark" name="update_user" id="button">Envoyer</button>
+                <div class="form-group ml-3">
+                    <button type="submit" class="btn btn-dark text-light" name="update_user" id="button">Envoyer</button>
+                    <div class="col-sm-9">
+                    </div>
+                </div> <!-- /.form-group -->
+
+                <div class="form-group ml-3">
+                    <a href="index.php?action=supprimerMonCompte"  class="btn btn-dark text-danger border border-danger">Supprimer mon compte</a>
                     <div class="col-sm-9">
                     </div>
                 </div> <!-- /.form-group -->

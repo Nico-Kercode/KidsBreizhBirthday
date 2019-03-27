@@ -236,6 +236,22 @@ class Controller
   
     }
 
+    // Fonction delete membre !  
+
+    public function deleteMember($member_id){
+
+
+        $supprCompte = $this->memberManager->supprCompte($member_id);
+
+        session_unset();
+        session_destroy();
+
+        require('view/frontend/indexView.php');
+    }
+
+
+
+
 
     // RECUPERATION DES SIGNALEMENTS DE COMMENTAIRES 
 
