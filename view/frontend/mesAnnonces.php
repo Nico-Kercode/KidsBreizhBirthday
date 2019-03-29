@@ -19,9 +19,39 @@
                 <a class="btn btn-warning btn-sm  "
                     href="index.php?action=editerAnnonce&id_ANNONCES=<?= $data['id'] ?>&id_MEMBRES=<?=$data['id_MEMBRES']?>">Editer
                 </a>
-                <a class="btn btn-danger btn-sm text-light"
-                    href="index.php?action=supprAnnonce&id_ANNONCES=<?= $data['id'] ?>">Supprimer
-                </a>
+
+                <button type="button" class="btn btn-danger btn-sm text-light" data-toggle="modal"
+                    data-target="#suppressionAnnonceModal">
+                    Supprimer
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="suppressionAnnonceModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Etes vous sur de vouloir
+                                    supprimer votre annonce ? </h5>
+
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <a class="btn btn-danger btn-sm text-light"
+                                    href="index.php?action=supprAnnonce&id_ANNONCES=<?= $data['id'] ?>">OUI SUPPRIMER
+                                </a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">NON RETOUR
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <?php endforeach;?>
