@@ -16,7 +16,7 @@ class MemberManager extends Manager{
     // -----------------------------
 
 
-    public function registerMember($pseudo,$email, $passHash,$picProfile,$rang){
+    public function registerMember($pseudo,$email, $passHash,$rang){
 
         $db = $this->dbConnect();
 
@@ -39,12 +39,11 @@ class MemberManager extends Manager{
 
 
 
-        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , avatar, rang, date_inscription) VALUES(:pseudo,:email,:password,:upic,:rang ,now())');
+        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , rang, date_inscription) VALUES(:pseudo,:email,:password,:rang ,now())');
         $addNewMember = $addmember->execute(array(
             "pseudo" => $pseudo,
             "email" => $email,
             "password" =>$passHash,
-            "upic"=>$picProfile,
             "rang" =>$rang
             ));
         }

@@ -1,6 +1,6 @@
 <?php $title = "Accueil"; ?>
 <?php ob_start(); ?>
-<div class="container-fluid ">
+<div class="container-fluid vueAnnonce">
     <div class="row ">
         <div class="col-lg-2 d-none d-lg-block ">
             <img class="img-fluid my-auto mx-4  " src="assets/img/artworkIMG/used/ballon3.png" alt="BallonRose">
@@ -9,10 +9,10 @@
             <div id="vhmin" class="my-4">
                 <div class="col-sm-8 offset-sm-2" id="pacc">
                     <p id="texteAccueil" class="my-auto"> <span class="tabulation">Un</span> anniversaire à fêter ? <br>
-                        Kid's Breizh Birthday à reférencé pour vous de nombreux lieux dans le Morbihan.<br>
+                        Kid's Breizh Birthday a référencé pour vous de nombreux lieux dans le Morbihan.<br>
                         Le site est toujours en developpement, donc soyez indulgents si vous trouvez quelques erreurs :)
                         <br>
-                        Si vous souhaitez laisser un avis sur une des prestations que nous avons référencé ...
+                        Si vous souhaitez laisser un avis sur une des prestations que nous avons référencés ...
                         Enregistrez vous ! <br>
                         Vous êtes professionnel dans le Morbihan et vous souhaitez publier une annonce, enregistrez vous
                         ! <br>

@@ -1,33 +1,41 @@
 <?php $title = 'Vannes'; ?>
 <?php ob_start(); ?>
-<h1 class="text-center my-4 h1annonces"> <span>V</span>ANNES</h1>
-<div class="container-fluid d-flex">
-    <div class="row">
+
+<div class="container-fluid d-flex vueAnnonce">
+
+    <div class="row ">
+
         <div class=" d-none d-md-block col-md-2 ">
+
         </div>
-        <div class="col-sm-12 col-lg-8">
-            <div class="row blocMain" >
+        <div class="col-sm-12 col-lg-8 my-4">
+            <div class="separation">
+
+            </div>
+            <div class="row blocMain">
+
                 <?php
 foreach ($annonces as $data) : ?>
-                <div class="col-sm-5 offset-sm-1 mainAnnonces">
+                <div class="col-sm-5 mx-auto mainAnnonces">
                     <!-- boucle affichage des annonces -->
                     <div class="row annonceHaut">
-                        <div class="col-xs-8 col-sm-8 col-lg-8 titreAnnonce">
-                            <a class=" text-left font-weight-bold p-4 "
+                        <div class="col-xs-12 titreAnnonce mx-auto">
+                            <a class="p-4 "
                                 href="index.php?action=annonce&id=<?= $data['id'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
                                 <h2 class="text-center h2annonces">
                                     <?= htmlspecialchars($data['titre']) ?>
                                 </h2>
                             </a>
                         </div>
-                        <div class="d-none d-sm-block col-sm-4 col-lg-4 my-auto">
-                            <img class="img-fluid " src="<?= $data['logo']?>" alt="logo">
+                        <div class="d-none d-md-block col-sm-4 col-lg-4 ">
+                            <img class="img-fluid" src="<?= $data['logo'] ?>" alt="logo">
                         </div>
+                       
                     </div>
                     <!--  -->
                     <div class="row my-4 ">
                         <div class="mx-auto">
-                            <img class="img-fluid img-thumbnail my-auto" src="<?= $data['photo1']?>" alt="Photo1">
+                            <img class="rounded mx-auto img1"src="<?= $data['photo1']?>" alt="Photo1">
                         </div>
                     </div>
                 </div>
@@ -37,7 +45,7 @@ foreach ($annonces as $data) : ?>
             </div>
         </div>
         <!--  -->
-        <div class=" d-none d-md-block col-sm-2 ">
+        <div class=" d-none d-lg-block col-sm-2 ">
             <!-- widget API meteo -->
             <div class="d-none d-sm-block mx-auto" id="widget_4f2fdfad140809744f0aeb691f2d709c">
                 <span id="t_4f2fdfad140809744f0aeb691f2d709c">Météo Vannes</span>
@@ -60,7 +68,7 @@ foreach ($annonces as $data) : ?>
     </div>
 </div>
 <!--  PAGINATION -->
-<div class="container-fluid">
+<div class="container-fluid vueAnnonce2">
     <div class="row">
         <div class="col-sm-12 ">
             <nav aria-label="Page navigation example">

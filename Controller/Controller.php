@@ -124,10 +124,9 @@ class Controller
             if(!preg_match("/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/",$email)) { 
 
                 throw new Exception('Veuillez choisir un email valide'); }
-            
-        $picProfile= $this->manageFile($_FILES['image'],400,400);
+         
         $passHash= password_hash($password, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile,$rang);
+        $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$rang);
 
         $this->isLogged($pseudo,$password);
     }  
@@ -295,7 +294,7 @@ class Controller
 
       
         $ville=$_POST['commune'];
-        $logo=$this->manageFile($_FILES['logo'],160,80);
+        $logo=$this->manageFile($_FILES['logo'],120,80);
         $titreA=htmlspecialchars($_POST['titreA']);
         $presentation= htmlspecialchars($_POST['contentA']);
         $descriptif= htmlspecialchars($_POST['contentC']);
@@ -410,7 +409,7 @@ class Controller
 
 
         if(!empty($_FILES['newlogo']['name'])){
-            $newLogo=$this->manageFile($_FILES['newlogo'],160,80);
+            $newLogo=$this->manageFile($_FILES['newlogo'],120,80);
         }
         
         $titre=htmlspecialchars($_POST['titre']);

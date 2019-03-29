@@ -3,7 +3,7 @@
         <div class="col-sm-12 header d-flex">
             <div class="mx-auto my-auto ">
                 <a class="d-none d-sm-block" href="index.php?action=home"><img class="img-fluid"
-                        src="assets/img/artworkIMG/lettrage2.png" alt="backHome"></a>
+                        src="assets/img/artworkIMG/lettrage4.png" alt="backHome"></a>
 
                 <a class="d-block d-sm-none" href="index.php?action=home"><img class="img-fluid"
                         src="assets/img/artworkIMG/lettrage.png" alt="backHome"></a>

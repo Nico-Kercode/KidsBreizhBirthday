@@ -3,38 +3,45 @@
 
 
 
-<h1 class="text-center my-4 h1annonces">MA <span>S</span>ELECTION</h1>
 
-<div class="container-fluid mb-4 vue">
-    <div class="row d-flex">
 
-        <div class="col-sm-12 col-lg-4 my-4">
-            <a class="Back" href="index.php?action=vannes&page=1">RETOUR</a>
+<div class="container-fluid mb-4 vueAnnonce">
 
+    <div class="row ">
+        <div class="col-md-4">
+
+            <div class="col-sm-4 col-lg-2 my-4">
+                <a class="btn btn-light" href="index.php?action=home">RETOUR</a>
+
+            </div>
         </div>
-
-        <?php      
+        <div class="col-md-4">
+            <h1 class="text-center my-auto h1annonces">MA <span>S</span>ELECTION</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 offset-sm-3 ">
+            <?php      
         foreach ($getSelection as $data) : ?>
 
-        <div class="col-sm-8 offset-sm-2  selection">
-            <a id="supBtn"
-                href="index.php?action=viderSelection&id_MEMBRES=<?=$id_MEMBRES?>&id_ANNONCES=<?= $data['id_ANNONCES'] ?>">supprimer
-            </a>
-            <div class="col-sm-8 titreAnnonce">
-                <a class=" p-4 "
-                    href="index.php?action=annonce&id=<?= $data['id_ANNONCES'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
-                    <h2 class="text-center h2annonces">
-                        <?= htmlspecialchars($data['titre']) ?>
-                    </h2>
+<div  class="col-sm-9 selection border border-light" >
+                <a id="supBtn" class="btn btn-light my-2"
+                    href="index.php?action=viderSelection&id_MEMBRES=<?=$id_MEMBRES?>&id_ANNONCES=<?= $data['id_ANNONCES'] ?>">supprimer
                 </a>
+                <div class="col-sm-12 titreAnnonce">
+                    <a class=" p-4 "
+                        href="index.php?action=annonce&id=<?= $data['id_ANNONCES'] ?>&id_MEMBRES=<?= $data['id_MEMBRES']?>">
+                        <h3 class="text-center h3annonce">
+                            <?= htmlspecialchars($data['titre']) ?>
+                        </h3>
+                    </a>
+
+                </div>
 
             </div>
-            <div class="d-none d-sm-block ">
 
-                <img class="img-fluid " src="<?= $data['logo'] ?>" alt="logo">
-            </div>
+            <?php endforeach;?>
         </div>
-        <?php endforeach;?>
     </div>
 </div>
 

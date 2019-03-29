@@ -122,7 +122,7 @@ class App
                     if (isset($_GET['page'])){
 
                         $numeroPage= $_GET['page'];      
-                        $annonceParPage =4;
+                        $annonceParPage =6;
                         
                     $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
                     else {

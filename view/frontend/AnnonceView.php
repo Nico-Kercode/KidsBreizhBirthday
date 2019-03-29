@@ -13,7 +13,7 @@
                 <div class="row my-2">
                     <?php if(isset($_SESSION['pseudo'])): ?>
                     <div class="col-sm-8 p-2">
-                        <a class="btn btn-light btn-sm border-dark"
+                        <a class="btn btn-light border-dark"
                             href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
                             a ma selection</a>
                     </div>
@@ -21,7 +21,9 @@
 
                         <?php if ($totalLike['vote'] == 0 && $totalDisLike['vote'] == 0 ) { ?>
                         <a class="btn btn-light btn-sm border-dark"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1"><i class="far fa-thumbs-up"></i></a>
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">
+                            <i class="far fa-thumbs-up like"></i></a>
+
                         <?= $like?>
                         <?php } elseif($like < 2){ 
                                 echo $like ?> personne aime <br>
@@ -31,7 +33,7 @@
 
                         <?php if ($totalDisLike['vote'] == 0 && $totalLike['vote'] == 0) { ?>
                         <a class="btn btn-light btn-sm border-dark"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2"><i class="far fa-thumbs-down"></i></a> <?=$disLike?>
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2"><i class="far fa-thumbs-down dislike"></i></a> <?=$disLike?>
                         <?php } elseif($disLike < 2){ 
                                 echo $disLike ?> personne n'aime pas<br>
                         <?php } elseif ($disLike > 1) { ?>
@@ -45,7 +47,7 @@
                         <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
                     </div>
                     <div class="col-lg-7">
-                        <h2 class="text-center p-4 h2annonces bg-warning border border-dark">
+                        <h2 class="text-center p-4 h2annonce">
                             <?= htmlspecialchars($annonce['titre']) ?>
                         </h2>
                     </div>
@@ -59,14 +61,14 @@
                         </p>
                     </div>
                     <div class="col-lg-6 mx-auto">
-                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
+                        <img class="img-fluid rounded" src="<?= $annonce['photo1']?>" alt="Photo1">
                     </div>
                 </div>
                 <!-- END annonce haut -->
                 <!-- annonce bas -->
                 <div class="row d-flex">
                     <div class="col-sm-12 col-lg-6 mx-auto">
-                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
+                        <img class="img-fluid rounded" src="<?= $annonce['photo2']?>" alt="Photo2">
                     </div>
                     <div class="col-sm-12 col-lg-6">
                         <p class="p-4  annonceContent  bg-light">

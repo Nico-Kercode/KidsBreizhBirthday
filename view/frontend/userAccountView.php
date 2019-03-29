@@ -15,7 +15,7 @@
                 action="index.php?action=updavatar">
 
                 <div class="form-group">
-                    <label for="formControl" class="col-sm-10 my-2"></label>
+                    <label for="formControl" class="col-sm-10 ">Ajoutez ou modifiez votre Avatar</label>
                     <input type="file" name="imageProfil" class="form-control-file my-2">
                 </div>
                 <div class="form-group">
