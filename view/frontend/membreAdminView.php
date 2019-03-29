@@ -32,7 +32,6 @@ foreach ($getMembres as $data) : ?>
     </div>
     <!--  -->
     <!--  PAGINATION -->
-
     <div class="row">
         <div class="col-sm-12 mt-4 ">
 

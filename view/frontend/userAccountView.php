@@ -49,13 +49,15 @@
                     </div>
                 </div>
                 <div class="form-group ml-3">
-                    <button type="submit" class="btn btn-dark text-light" name="update_user" id="button">Envoyer</button>
+                    <button type="submit" class="btn btn-dark text-light" name="update_user"
+                        id="button">Envoyer</button>
                     <div class="col-sm-9">
                     </div>
                 </div> <!-- /.form-group -->
 
                 <div class="form-group ml-3">
-                    <a href="index.php?action=supprimerMonCompte"  class="btn btn-dark text-danger border border-danger">Supprimer mon compte</a>
+                    <a href="index.php?action=supprimerMonCompte"
+                        class="btn btn-dark text-danger border border-danger">Supprimer mon compte</a>
                     <div class="col-sm-9">
                     </div>
                 </div> <!-- /.form-group -->
@@ -63,30 +65,7 @@
             </form>
 
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div> <!-- row-->
-
-
 </div><!-- container -->
 
 <?php $content = ob_get_clean(); ?>

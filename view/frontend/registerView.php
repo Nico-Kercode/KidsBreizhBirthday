@@ -4,8 +4,6 @@
 
 <div class="container">
     <div class="row">
-
-
         <div class="col-sm-12 col-lg-10 offset-lg-2 my-4">
             <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data"
                 action="index.php?action=register" id="formulaireEnregistrement">
@@ -30,8 +28,8 @@
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Mot de passe</label>
                     <div class="col-sm-9">
-                        <input type="password" name="password_1" class="form-control" placeholder="Minimum de 6 caractères !" required minlength="6"
-                            maxlength="10">
+                        <input type="password" name="password_1" class="form-control"
+                            placeholder="Minimum de 6 caractères !" required minlength="6" maxlength="10">
                     </div>
                 </div>
                 <div class="form-group">
@@ -48,7 +46,7 @@
                         <option value="1">Professionnel</option>
                     </select>
                 </div>
-                
+
             </form>
             <div class="row">
 

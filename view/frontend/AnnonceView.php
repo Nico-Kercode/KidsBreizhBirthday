@@ -33,7 +33,8 @@
 
                         <?php if ($totalDisLike['vote'] == 0 && $totalLike['vote'] == 0) { ?>
                         <a class="btn btn-light btn-sm border-dark"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2"><i class="far fa-thumbs-down dislike"></i></a> <?=$disLike?>
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2"><i
+                                class="far fa-thumbs-down dislike"></i></a> <?=$disLike?>
                         <?php } elseif($disLike < 2){ 
                                 echo $disLike ?> personne n'aime pas<br>
                         <?php } elseif ($disLike > 1) { ?>
@@ -102,7 +103,6 @@
                                 <input class="mt-2" type="submit" />
                             </div>
                         </form>
-
                         <?php endif; ?>
                         <!-- fin autorisation -->
                     </div>
@@ -151,14 +151,13 @@
                         <?php if($comment['nbreReport'] != 0 ) :?>
                         Ce message à déja été signalé <?= $comment['nbreReport']?> fois &nbsp; <?php endif; ?>
                         <a id="alertBtn"
-                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>"><i class="fas fa-exclamation-triangle"></i></a>
+                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>"><i
+                                class="fas fa-exclamation-triangle"></i></a>
                     </p>
                     <p class="CommContent p-4"> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
                     </p>
                 </div>
-
                 <?php endforeach ;?>
-
             </div>
         </div>
     </div>

@@ -63,8 +63,6 @@
         <p>Vos annonces seront controlées , nous vous contacterons si quelque chose n'etait pas conforme .</p>
     </div>
 </div> <!-- ./container -->
-
-
 <?php $content = ob_get_clean(); ?>
 
 

@@ -16,9 +16,9 @@
                         Enregistrez vous ! <br>
                         Vous êtes professionnel dans le Morbihan et vous souhaitez publier une annonce, enregistrez vous
                         ! <br>
-                    </p>                
+                    </p>
                 </div>
-            </div>         
+            </div>
         </div> <!-- end lg8 -->
         <div class="col-lg-2 d-none d-lg-block  my-auto ">
             <img class="img-fluid " src="assets/img/artworkIMG/cadeauJaune.png" alt="cadeauJaune">

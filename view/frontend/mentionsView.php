@@ -5,7 +5,7 @@
 
 <div class="container" id="rgpd">
 
-<h1 class="text-center"> R.G.P.D</h1>
+    <h1 class="text-center"> R.G.P.D</h1>
 
     <h2>Définitions</h2>
     <p><b>Client&nbsp;:</b>&nbsp;tout professionnel ou personne physique capable au sens des articles 1123 et suivants

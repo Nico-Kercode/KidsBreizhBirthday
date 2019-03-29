@@ -30,12 +30,12 @@ foreach ($annonces as $data) : ?>
                         <div class="d-none d-md-block col-sm-4 col-lg-4 ">
                             <img class="img-fluid" src="<?= $data['logo'] ?>" alt="logo">
                         </div>
-                       
+
                     </div>
                     <!--  -->
                     <div class="row my-4 ">
                         <div class="mx-auto">
-                            <img class="rounded mx-auto img1"src="<?= $data['photo1']?>" alt="Photo1">
+                            <img class="rounded mx-auto img1" src="<?= $data['photo1']?>" alt="Photo1">
                         </div>
                     </div>
                 </div>

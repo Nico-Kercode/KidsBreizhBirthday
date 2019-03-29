@@ -1,6 +1,5 @@
 <?php $title = 'Annonce par ville : Lorient'; ?>
 <?php ob_start(); ?>
-
 <div class="container-fluid d-flex vueAnnonce">
     <div class="row">
         <div class=" d-none d-md-block col-md-2">
@@ -27,18 +26,13 @@
                         </div>
                     </div>
                     <div class="row mx-auto">
-
-                        <div >
-
+                        <div>
                             <img class="img-fluid rounded img1 mx-auto" src="<?= $data['photo1']?>" alt="Photo1">
-
                         </div>
                     </div>
                 </div>
                 <!-- END FOREACH -->
                 <?php endforeach;?>
-
-
             </div>
         </div>
         <div class=" d-none d-lg-block col-sm-2 ">
@@ -75,10 +69,9 @@
                     if( $_GET['page'] ==$i){
 
                     echo'<li class="page"><a class="page-link activePagination" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
-                }else{
+                    }else{
                     echo '<li class="page"><a class="page-link" href="index.php?action=lorient&page='.$i.'">'.$i."</a></li>";
-                }
-
+                    }
                 } // END FOR PAGINATION              
                 ?>
                 </ul>
@@ -87,6 +80,4 @@
     </div>
 </div>
 <?php $content = ob_get_clean(); ?>
-
-
 <?php require('template.php'); ?>
