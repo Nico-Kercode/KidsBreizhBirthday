@@ -92,6 +92,12 @@ class App
                         $this->controller->updatePicProfile($member_id) ;
                     }
 
+
+                } elseif ($_GET['action'] == 'supprimerMonCompte') {
+
+                    $member_id = $_SESSION['id'];
+                                            
+                        $this->controller->deleteMember($member_id);
                     //  FIN GESTION DES MEMBRES
 
                     // ***************************************//
@@ -107,16 +113,14 @@ class App
                     $this->controller->getComReports(); 
                     
                     
-                    // -------------------------------------- //  
-            
-            
+                    // -------------------------------------- //              
                                 
                 } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {   // -> Fonction affichage résumé annonces par Ville
 
                     if (isset($_GET['page'])){
 
                         $numeroPage= $_GET['page'];      
-                        $annonceParPage =4;
+                        $annonceParPage =6;
                         
                     $this->controller->listAnnonces($numeroPage,$annonceParPage,$_GET['action']);}
                     else {

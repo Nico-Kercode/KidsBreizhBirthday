@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Kbb\Model;
 
 use \Kbb\Model\Manager;
@@ -12,7 +10,6 @@ use \PDO;
 class CommentManager extends Manager
 {
     
-
     // -----------------
     // AJOUT COMMENTAIRE
     // -----------------
@@ -36,7 +33,6 @@ class CommentManager extends Manager
     // AFICHAGE COMMENTAIRE
     // --------------------
 
-      // version avec total de signalement pas commentaires , PB a resoudre  ...
 
     public function getSignalements($id)
     {
@@ -52,22 +48,6 @@ class CommentManager extends Manager
         return $count;
 
     }
-
-    // public function getComments($id)
-    // {
-    //     $db = $this->dbConnect();
-        
-    //     $comments = $db->prepare('SELECT  commentaires.id, contenu, date_commentaire, pseudo 
-    //     FROM commentaires INNER JOIN membres ON id_MEMBRES =membres.id WHERE id_ANNONCES = ?  
-    //     ORDER BY date_commentaire DESC');
-
-    //     $comments->execute(array($id));
-        
-    //     $allComments= $comments->fetchAll();
-       
-    //     return $allComments;
-
-    // }
 
     public function getComments($id)
     {
@@ -87,26 +67,6 @@ class CommentManager extends Manager
         return $allComments;
 
     }
-
-
-    // public function getSignals($id)
-    // {
-    // $db = $this->dbConnect();
-    // $req= $db->prepare("SELECT id_COMMENTAIRES, date_commentaire, alert.id_ANNONCES, titre, pseudo, contenu , count(alert.id_COMMENTAIRES) as report
-    // FROM alert
-    // INNER JOIN membres ON alert.id_MEMBRES = membres.id AND pseudo =membres.pseudo
-    // INNER JOIN annonces ON alert.id_ANNONCES= annonces.id AND titre =annonces.titre
-    // INNER JOIN commentaires ON alert.id_COMMENTAIRES=commentaires.id AND contenu= commentaires.contenu
-    // GROUP BY alert.id_COMMENTAIRES
-    // ");
-    // $req->execute(array());
-    // $signal = $req->fetchAll();
-    // $req->closeCursor();
-        
-
-    // return $signal;
-    // }
-
 
     // -----------------------
     // SIGNALEMENT COMMENTAIRE
@@ -142,11 +102,9 @@ class CommentManager extends Manager
     }
 
     // -----------------------
-    // SUPPRESSION COMMENTAIRE
+    // SUPPRESSION ALERT
     //    ---- ADMIN ----
     // -----------------------
-
-    //  suppression table alert en 1er
 
     public function deleteAlerts($commentID){
         $db = $this->dbConnect();
@@ -159,7 +117,7 @@ class CommentManager extends Manager
 
     }
 
-    // puis suppression du commentaire
+    // suppression du commentaire
 
     public function deleteCommentaire($commentID)
     {
@@ -251,8 +209,5 @@ class CommentManager extends Manager
 
         return $nbAlert;
     }
-
-
-
 
 }

@@ -8,7 +8,7 @@
 * Ou les annonces sont classées par "like" .
 
 
-***Permission ***
+***Permission***
 ---------------------
 Seuls *l'administrateur* (rang=2) et les *professionnels*(rang=1) peuvent publier / editer une annonce.
 

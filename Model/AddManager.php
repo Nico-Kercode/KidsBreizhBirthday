@@ -43,7 +43,7 @@ class AddManager extends Manager
 
 
     // --------------------------------------
-    // RECUPERE TOUTES LES ANNONCES PAR VILLE
+    // REGROUPE TOUTES LES ANNONCES PAR VILLE
     // -------------------------------------- 
 
     public function getAnnonces($starter,$parPage,$ville)
@@ -58,6 +58,7 @@ class AddManager extends Manager
         
         return $annonces;
     }
+
     // ----------------------------
     // CALCUL NBRE DE PAGES / VILLE
     // ----------------------------
@@ -74,7 +75,7 @@ class AddManager extends Manager
     }
 
     // -------------------------------------------
-    // RECUPERE TOUTES LES ANNONCES PAR CLASSEMENT
+    // REGROUPE TOUTES LES ANNONCES PAR CLASSEMENT
     // ------------------------------------------- 
 
     public function getBestAnnonces()
@@ -113,6 +114,7 @@ class AddManager extends Manager
     }
     
     // si déja aimé masque les boutons j'aime et j'aime pas puis affiche le compteur 
+
     public function limitLike($id){
 
         $membre=$_SESSION['id'];
@@ -158,10 +160,7 @@ class AddManager extends Manager
         return $totalDisLike;
 
     }
-
-
-
-   
+  
     // AFFICHAGE D UNE ANNONCE
 
     public function getAnnonce($id)
@@ -260,6 +259,10 @@ class AddManager extends Manager
 
     }
 
+    // -------------------
+    // Suppression annonce
+    // -------------------
+
 
     public function deleteAnnonce($id_ANNONCES){
 
@@ -270,14 +273,8 @@ class AddManager extends Manager
 
         return $delete;
 
-
-
-
-
     }
     
-
-
     // --------------------
     // COMPTE TOTAL ANNONCE
     // --------------------
@@ -291,7 +288,6 @@ class AddManager extends Manager
         $resultat->closeCursor();
         
          return $total;
-
        
     }
     // ------------------
@@ -357,8 +353,6 @@ class AddManager extends Manager
                 
         return $selection;
 
-
-
     }
 
     // -------------------------------------------
@@ -380,7 +374,6 @@ class AddManager extends Manager
        
         return $getSelection;
 
-
     }
 
     // -------------------------
@@ -396,10 +389,7 @@ class AddManager extends Manager
 
         return $viderSelection;
 
-
     }
     
-
-
 }
 

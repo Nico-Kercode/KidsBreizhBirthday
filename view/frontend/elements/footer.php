@@ -20,7 +20,7 @@
                 <!--Copyright-->
                 <p class="text-center text-md-left">© 2019 Copyright :
                     <a href="mailto:admin@kidsbreizhbirthday.fr">
-                        TraouaWeb 
+                        Kid's Breizh Birthday 
                     </a>
                 </p>
 
@@ -34,7 +34,7 @@
                 <div class="text-center text-md-right">
                     <ul class="list-unstyled list-inline">
                         <li class="list-inline-item">
-                            <a href="index.php?action=rgpd" class=" article mr-4">Protection des données</a>
+                            <a href="index.php?action=rgpd" class=" article mr-4">R.G.P.D</a>
                         </li>
 
                         <li class="list-inline-item">

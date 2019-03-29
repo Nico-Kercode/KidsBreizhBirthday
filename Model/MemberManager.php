@@ -1,12 +1,9 @@
 <?php
-
-
 namespace Kbb\Model;
 
 use \Kbb\Model\Manager;
 use \Exception;
 use \PDO;
-
 
 
 class MemberManager extends Manager{
@@ -16,12 +13,9 @@ class MemberManager extends Manager{
     // -----------------------------
 
 
-    public function registerMember($pseudo,$email, $passHash,$picProfile,$rang){
+    public function registerMember($pseudo,$email, $passHash,$rang){
 
         $db = $this->dbConnect();
-
-        
- 
         $reponse = $db->query('SELECT pseudo FROM membres WHERE pseudo = "' . $pseudo . '" ');
             $login = $reponse->fetch();
              
@@ -39,15 +33,28 @@ class MemberManager extends Manager{
 
 
 
-        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , avatar, rang, date_inscription) VALUES(:pseudo,:email,:password,:upic,:rang ,now())');
+        $addmember = $db->prepare('INSERT INTO membres( pseudo, email, password , rang, date_inscription) VALUES(:pseudo,:email,:password,:rang ,now())');
         $addNewMember = $addmember->execute(array(
             "pseudo" => $pseudo,
             "email" => $email,
             "password" =>$passHash,
-            "upic"=>$picProfile,
             "rang" =>$rang
             ));
         }
+
+    }
+
+    // -------------------
+    // SUPPRESSION  COMPTE 
+    // -------------------
+
+
+    public function supprCompte($member_id){
+
+
+        $db = $this->dbConnect();
+        $supprCompte = $db->query("DELETE FROM membres WHERE id= $member_id");
+
 
     }
 

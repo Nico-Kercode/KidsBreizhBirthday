@@ -39,9 +39,7 @@ class Controller
         $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
  
-        
-        
-        
+               
         require('view/frontend/indexView.php');
           
         
@@ -124,10 +122,9 @@ class Controller
             if(!preg_match("/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/",$email)) { 
 
                 throw new Exception('Veuillez choisir un email valide'); }
-            
-        $picProfile= $this->manageFile($_FILES['image'],400,400);
+         
         $passHash= password_hash($password, PASSWORD_DEFAULT );
-        $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$picProfile,$rang);
+        $registerMember = $this->memberManager->registerMember($pseudo,$email,$passHash,$rang);
 
         $this->isLogged($pseudo,$password);
     }  
@@ -229,12 +226,25 @@ class Controller
         $totalMembres = $this->memberManager->countTotalMembres();
         
         
+        
         require('view/frontend/membreAdminView.php');
         
         
   
     }
 
+    // Fonction delete membre !  
+
+    public function deleteMember($member_id){
+
+
+        $supprCompte = $this->memberManager->supprCompte($member_id);
+
+        session_unset();
+        session_destroy();
+
+        require('view/frontend/indexView.php');
+    }
 
     // RECUPERATION DES SIGNALEMENTS DE COMMENTAIRES 
 
@@ -278,7 +288,7 @@ class Controller
 
       
         $ville=$_POST['commune'];
-        $logo=$this->manageFile($_FILES['logo'],160,80);
+        $logo=$this->manageFile($_FILES['logo'],120,80);
         $titreA=htmlspecialchars($_POST['titreA']);
         $presentation= htmlspecialchars($_POST['contentA']);
         $descriptif= htmlspecialchars($_POST['contentC']);
@@ -371,10 +381,8 @@ class Controller
     public function gererMonAnnonce(){
 
        
-        $id_ANNONCES=$_GET['id_ANNONCES']; 
-          
+        $id_ANNONCES=$_GET['id_ANNONCES'];         
         $ann = $this->addManager->getThisAnnonce($id_ANNONCES);
-
         require('view/frontend/editAnnonce.php');
 
         return $ann;
@@ -393,7 +401,7 @@ class Controller
 
 
         if(!empty($_FILES['newlogo']['name'])){
-            $newLogo=$this->manageFile($_FILES['newlogo'],160,80);
+            $newLogo=$this->manageFile($_FILES['newlogo'],120,80);
         }
         
         $titre=htmlspecialchars($_POST['titre']);
@@ -483,8 +491,6 @@ class Controller
         
         
         $id_ANNONCES= $_GET['id_ANNONCES'];
-        
-
         $viderSelection= $this->addManager->suppSelection($id_ANNONCES);
         
         header("Location:index.php?action=monPanier&id_MEMBRES={$id_MEMBRES}");
@@ -500,9 +506,7 @@ class Controller
 
         $id_ANNONCES = $_GET['id'];
         $id_MEMBRES= $_SESSION['id'];
-        $type=$_GET['type'];
-        
-                   
+        $type=$_GET['type'];                 
         $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
 
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
@@ -545,6 +549,7 @@ class Controller
 
     }
 
+    // Vers Edition Commentaire Vue
 
     public function editForm($commentID,$annonceID){
         
@@ -557,6 +562,8 @@ class Controller
         require('view/frontend/editCommentView.php');
         
     }
+
+    // Edition de commentaire
     
     
     public function editComment($id,$editCommentaire,$id_ANNONCES){
@@ -590,9 +597,9 @@ class Controller
     }
 
     
-    // -----------------
-    // ENVOI IMAGES assets/img/webFiles/test
-    // ----------------
+    // -------------
+    // ENVOI IMAGES 
+    // -------------
 
     private function manageFile($file,$width,$height) {
 
@@ -617,7 +624,7 @@ class Controller
             $srcFile = array_pop($ary);
             $srcPath = join('/', $ary) . '/';
             $folder ="assets/img/webFiles/"; 
-            // ajoute timastamp devant le nom de l image pour eviter les doublons
+            // ajoute timestamp devant le nom de l image pour eviter les doublons
             $image = time().$file['name'];
             $path = $folder . $image ; 
 
@@ -629,9 +636,9 @@ class Controller
 
     }
     
-    // -----------------
+    // ----------------------------
     // REDIMENSIONNEMENT IMAGES !!! 
-    // ----------------
+    // ----------------------------
 
     private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
 
@@ -645,7 +652,7 @@ class Controller
         if (file_exists($rep_Src.$img_Src) && ($W_max!=0 || $H_max!=0)) { 
           // ----------------------
           // extensions acceptées : 
-           $extension_Allowed = 'jpg,jpeg,png,JPEG,JPG,PNG,gif,GIF';	// (sans espaces)
+           $extension_Allowed = 'jpg,jpeg,png,JPEG,JPG,PNG,gif,GIF';
           // extension fichier Source
            $extension_Src = strtolower(pathinfo($img_Src,PATHINFO_EXTENSION));
           // ----------------------

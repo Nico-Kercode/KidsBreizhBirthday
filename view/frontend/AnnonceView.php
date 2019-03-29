@@ -4,24 +4,26 @@
     <div class="row d-flex">
         <div class="col-sm-2 ">
             <!-- sidebar left -->
-            <a class="Back my-4" href="index.php?action=vannes&page=1"> RETOUR </a>
+            <a class="btn btn-light btn-sm border-dark" href="index.php?action=vannes&page=1"> RETOUR </a>
             <img class="img-fluid my-4 d-none d-lg-block " src="assets\img\artworkIMG\cadeauJaune.png" alt="cadeau">
         </div> <!-- sidebar left -->
         <div class="col-sm-8">
             <!-- main -->
-            <div class="col-sm-12" id="mainAnnonceContent">
+            <div class="col-sm-12 " id="mainAnnonceContent">
                 <div class="row my-2">
                     <?php if(isset($_SESSION['pseudo'])): ?>
                     <div class="col-sm-8 p-2">
-                        <a class=" likeBtn"
+                        <a class="btn btn-light border-dark"
                             href="index.php?action=panier&id=<?= $annonce['id'] ?>&id_MEMBRES=<?= $_SESSION['id'] ?>">Ajouter
                             a ma selection</a>
                     </div>
                     <div class="col-sm-4 text-right p-2">
 
                         <?php if ($totalLike['vote'] == 0 && $totalDisLike['vote'] == 0 ) { ?>
-                        <a class="likeBtn"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">J'aime</a>
+                        <a class="btn btn-light btn-sm border-dark"
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=1">
+                            <i class="far fa-thumbs-up like"></i></a>
+
                         <?= $like?>
                         <?php } elseif($like < 2){ 
                                 echo $like ?> personne aime <br>
@@ -30,9 +32,9 @@
 
 
                         <?php if ($totalDisLike['vote'] == 0 && $totalLike['vote'] == 0) { ?>
-                        <a class="likeBtn"
-                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2">Je
-                            n'aime pas</a> <?=$disLike?>
+                        <a class="btn btn-light btn-sm border-dark"
+                            href="index.php?action=like&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id'] ?>&type=2"><i
+                                class="far fa-thumbs-down dislike"></i></a> <?=$disLike?>
                         <?php } elseif($disLike < 2){ 
                                 echo $disLike ?> personne n'aime pas<br>
                         <?php } elseif ($disLike > 1) { ?>
@@ -46,7 +48,7 @@
                         <img class="img-fluid " src="<?= $annonce['logo']?>" alt="logo">
                     </div>
                     <div class="col-lg-7">
-                        <h2 class="text-center p-4 h2annonces">
+                        <h2 class="text-center p-4 h2annonce">
                             <?= htmlspecialchars($annonce['titre']) ?>
                         </h2>
                     </div>
@@ -55,22 +57,22 @@
                 <!-- annonce haut -->
                 <div class="row my-4 d-flex">
                     <div class="col-sm-12 col-lg-6">
-                        <p class="p-4  annonceContent">
+                        <p class="p-4  annonceContent bg-light">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['presentation']))) ?>
                         </p>
                     </div>
                     <div class="col-lg-6 mx-auto">
-                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo1']?>" alt="Photo1">
+                        <img class="img-fluid rounded" src="<?= $annonce['photo1']?>" alt="Photo1">
                     </div>
                 </div>
                 <!-- END annonce haut -->
                 <!-- annonce bas -->
                 <div class="row d-flex">
                     <div class="col-sm-12 col-lg-6 mx-auto">
-                        <img class="img-fluid img-thumbnail" src="<?= $annonce['photo2']?>" alt="Photo2">
+                        <img class="img-fluid rounded" src="<?= $annonce['photo2']?>" alt="Photo2">
                     </div>
                     <div class="col-sm-12 col-lg-6">
-                        <p class="p-4  annonceContent">
+                        <p class="p-4  annonceContent  bg-light">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['descriptif']))) ?>
                         </p>
                     </div>
@@ -78,7 +80,7 @@
                 <!-- END annonce bas -->
                 <!-- Contact + formulaire commentaire -->
                 <div class="row " id="basAdd">
-                    <div class="col-sm-12 col-lg-6 annonceContent" id="contact">
+                    <div class="col-sm-12 col-lg-6 bg-light" id="contact">
                         <h6 class="mt-4">CONTACT :</h6>
                         <p class="p-2">
                             <?= nl2br(ucfirst(htmlspecialchars($annonce['contact']))) ?>
@@ -87,7 +89,7 @@
                     <div class="col-lg-6 ">
                         <?php if(!empty($_SESSION['pseudo'])) : ?>
                         <!-- autorise les comm si enregistré -->
-                        <h6 class="my-4 annonceContent"> <em>Utilisez le formulaire pour laisser un commentaire !
+                        <h6 class="my-4 "> <em>Utilisez le formulaire pour laisser un commentaire !
                             </em>
                         </h6>
                         <form
@@ -101,7 +103,6 @@
                                 <input class="mt-2" type="submit" />
                             </div>
                         </form>
-
                         <?php endif; ?>
                         <!-- fin autorisation -->
                     </div>
@@ -141,7 +142,7 @@
                 <!-- COMMENTAIRES -->
                 <?php foreach ($allComments as $comment): ?>
 
-                <div class="col-sm-12 result annonceContent ">
+                <div class="col-sm-12 ">
                     <p class="text-right border-bottom border-dark p-2 ">commentaire de : &nbsp;<strong> <em>
                                 <?= htmlspecialchars($comment['pseudo']) ?>
                             </em></strong>&nbsp; le
@@ -150,14 +151,13 @@
                         <?php if($comment['nbreReport'] != 0 ) :?>
                         Ce message à déja été signalé <?= $comment['nbreReport']?> fois &nbsp; <?php endif; ?>
                         <a id="alertBtn"
-                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>">Signaler</a>
+                            href="index.php?action=alert&id=<?= $annonce['id']?>&id_MEMBRES=<?= $_SESSION['id']?>&id_COMMENTAIRE=<?= $comment['id']?>"><i
+                                class="fas fa-exclamation-triangle"></i></a>
                     </p>
                     <p class="CommContent p-4"> <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
                     </p>
                 </div>
-
                 <?php endforeach ;?>
-
             </div>
         </div>
     </div>
