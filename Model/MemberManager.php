@@ -1,12 +1,9 @@
 <?php
-
-
 namespace Kbb\Model;
 
 use \Kbb\Model\Manager;
 use \Exception;
 use \PDO;
-
 
 
 class MemberManager extends Manager{
@@ -19,9 +16,6 @@ class MemberManager extends Manager{
     public function registerMember($pseudo,$email, $passHash,$rang){
 
         $db = $this->dbConnect();
-
-        
- 
         $reponse = $db->query('SELECT pseudo FROM membres WHERE pseudo = "' . $pseudo . '" ');
             $login = $reponse->fetch();
              
@@ -51,7 +45,7 @@ class MemberManager extends Manager{
     }
 
     // -------------------
-    // DELETE COMPTE 
+    // SUPPRESSION  COMPTE 
     // -------------------
 
 
@@ -60,7 +54,6 @@ class MemberManager extends Manager{
 
         $db = $this->dbConnect();
         $supprCompte = $db->query("DELETE FROM membres WHERE id= $member_id");
-
 
 
     }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta name="Content-Type" content="UTF-8">
     <meta name="Content-Language" content="fr">
@@ -75,7 +76,7 @@
     <?= $content ?>
 
     <!-- Scripts -->
-    
+
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery-1.12.4.min.js"></script>

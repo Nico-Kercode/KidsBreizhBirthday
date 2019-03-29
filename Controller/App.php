@@ -113,9 +113,7 @@ class App
                     $this->controller->getComReports(); 
                     
                     
-                    // -------------------------------------- //  
-            
-            
+                    // -------------------------------------- //              
                                 
                 } elseif($_GET['action'] =='vannes' || $_GET['action'] =='lorient') {   // -> Fonction affichage résumé annonces par Ville
 

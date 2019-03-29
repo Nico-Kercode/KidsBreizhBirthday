@@ -218,16 +218,18 @@ img {
 /*  annonces view */
 
 .mainAnnonces {
-    background: linear-gradient(white, whitesmoke); 
-    border:2px solid rgb(221, 221, 221);
-    border-radius:10px;
+    background: linear-gradient(white, whitesmoke);
+    border: 2px solid rgb(221, 221, 221);
+    border-radius: 10px;
     text-shadow: 1px 1px #adaaaa;
     margin-bottom: 15px;
-        
+
 }
-.img1{
-    width:70%;
- }
+
+.img1 {
+    width: 70%;
+}
+
 .row {
     min-width: 100%;
 }
@@ -247,10 +249,11 @@ img {
 }
 
 .vueAnnonce {
-    background: linear-gradient($jaune1, $jaune2,$jaune1,$jaune2);
+    background: linear-gradient($jaune1, $jaune2, $jaune1, $jaune2);
 }
+
 .vueAnnonce2 {
-    background: linear-gradient($jaune2, $jaune1,$jaune2,$jaune1);
+    background: linear-gradient($jaune2, $jaune1, $jaune2, $jaune1);
 }
 
 
@@ -284,7 +287,7 @@ img {
 }
 
 .titreAnnonce a {
-    
+
     margin-bottom: 1%;
 
     h2:hover {
@@ -555,9 +558,10 @@ img {
     margin-bottom: 4%;
     padding: .5rem;
 }
-.separation{
+
+.separation {
     min-height: 10vh !important;
-    
+
 }
 
 // ---------
@@ -639,10 +643,12 @@ img {
     display: flex;
     height: 50px;
     justify-content: space-around;
+
     li a {
-        color: rgb(20,20,20)!important;
-     
+        color: rgb(20, 20, 20) !important;
+
     }
+
     & li a:hover {
         color: $bleu1 !important;
         // border-radius: 10px;
@@ -651,21 +657,24 @@ img {
 
 .activeMenu {
     border-bottom: 3px solid #F69501;
-    font-weight: 600;  
-    color: blue!important;
+    font-weight: 600;
+    color: blue !important;
 }
 
 .response--main-navigation {
-    margin: 0;   
+    margin: 0;
     background-color: $jaune1;
+
     a {
         display: block;
         text-decoration: none;
         padding: 10px;
     }
+
     ul {
         padding: 0;
     }
+
     li {
         list-style-type: none;
     }
@@ -686,9 +695,10 @@ img {
 }
 
 .bienvenue {
-    
-    color: rgb(20,20,20);
+
+    color: rgb(20, 20, 20);
     word-spacing: 3px;
+
     span {
         color: blue;
     }
@@ -745,25 +755,27 @@ img {
 #navMain {
     position: absolute;
     margin: 0 auto !important;
-    background: linear-gradient($jaune1,$jaune2);
+    background: linear-gradient($jaune1, $jaune2);
     min-height: 100px;
     z-index: 1000;
+
     a:hover {
         color: blue !important;
         background: $jaune1;
     }
 }
 
-.activePagination{
+.activePagination {
     background-color: $jaune2 !important;
-    
+
 }
-#alertBtn{
+
+#alertBtn {
     background-color: rgb(241, 71, 71) !important;
-    padding:.2rem !important;
-    color: black!important;
-    
-    &:hover{
+    padding: .2rem !important;
+    color: black !important;
+
+    &:hover {
         color: white !important;
         background-color: red !important;
     }

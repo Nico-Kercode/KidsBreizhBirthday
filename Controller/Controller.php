@@ -39,9 +39,7 @@ class Controller
         $getReports= $this->commentManager->getReports();
         $nbAlert= $this->commentManager->CountAlerts();
  
-        
-        
-        
+               
         require('view/frontend/indexView.php');
           
         
@@ -248,10 +246,6 @@ class Controller
         require('view/frontend/indexView.php');
     }
 
-
-
-
-
     // RECUPERATION DES SIGNALEMENTS DE COMMENTAIRES 
 
     public function getComReports(){
@@ -387,10 +381,8 @@ class Controller
     public function gererMonAnnonce(){
 
        
-        $id_ANNONCES=$_GET['id_ANNONCES']; 
-          
+        $id_ANNONCES=$_GET['id_ANNONCES'];         
         $ann = $this->addManager->getThisAnnonce($id_ANNONCES);
-
         require('view/frontend/editAnnonce.php');
 
         return $ann;
@@ -499,8 +491,6 @@ class Controller
         
         
         $id_ANNONCES= $_GET['id_ANNONCES'];
-        
-
         $viderSelection= $this->addManager->suppSelection($id_ANNONCES);
         
         header("Location:index.php?action=monPanier&id_MEMBRES={$id_MEMBRES}");
@@ -516,9 +506,7 @@ class Controller
 
         $id_ANNONCES = $_GET['id'];
         $id_MEMBRES= $_SESSION['id'];
-        $type=$_GET['type'];
-        
-                   
+        $type=$_GET['type'];                 
         $like = $this->addManager->incrementJaime($id_ANNONCES,$id_MEMBRES,$type);
 
         header("Location:index.php?action=annonce&id={$id_ANNONCES}&id_MEMBRES={$id_MEMBRES}");
@@ -609,9 +597,9 @@ class Controller
     }
 
     
-    // -----------------
-    // ENVOI IMAGES assets/img/webFiles/test
-    // ----------------
+    // -------------
+    // ENVOI IMAGES 
+    // -------------
 
     private function manageFile($file,$width,$height) {
 
@@ -648,9 +636,9 @@ class Controller
 
     }
     
-    // -----------------
+    // ----------------------------
     // REDIMENSIONNEMENT IMAGES !!! 
-    // ----------------
+    // ----------------------------
 
     private function fctredimimage($W_max, $H_max, $rep_Dst, $img_Dst, $rep_Src, $img_Src) {
 
