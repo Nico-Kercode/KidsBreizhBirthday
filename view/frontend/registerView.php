@@ -46,16 +46,18 @@
                         <option value="1">Professionnel</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-light ml-4" name="reg_user">Envoyer</button>
+                    <div class="col-sm-9">
+                    </div>
+                </div> <!-- /.form-group -->
 
             </form>
             <div class="row">
 
-                <div class="container">
-                    <p class="butform">
-                        <span>Déja enregistré ? :</span> <a href="index.php?action=formLogin" id="co">Connexion</a>
-                    </p>
-                </div>
             </div>
+
+
             <!-- </div> ./container -->
         </div>
     </div>
